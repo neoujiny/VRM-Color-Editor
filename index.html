@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.536-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph
+  Version: v5.4.540-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option
   ==================================================
 -->
 <!--
@@ -13,6 +13,27 @@
   未実装
     逆再生のばねは、まだ決めない。
     動画の録画は、今回は入れない。
+
+  保留案件 / 2026-11-09 / Claude: サウンド(MP4 に音を入れる)。状態: 保留(映像の書き出しが実機で安定してから再開)
+    今決めること(作り直しを避けるため): (1) 書き出しは、時刻を一定の刻み(1/30秒など)で進める。 (2) 書き出しの入口に「音(任意)」の口を、空のまま用意する(今は音なしで動く)。 (3) 音の設定の画面は、まだ作らない。
+    段階: 第1段=BGM 1曲(読み込み、動画の長さに合わせて切る/繰り返す、音量、頭と終わりのフェード)。第2段=効果音を重ねる(一覧で開始時刻と音量)。第3段=鑑賞モードでの実時間の試聴。
+    方法の案: 音の合成は OfflineAudioContext(実時間でなく速く計算)。圧縮して MP4 に組み込む。映像は H.264 を標準とし、音の対応は、書き出しの前に調べ、だめなら案内を出す(映像だけの書き出しは常に使える)。
+    ブラウザ: WebCodecs は、Safari 16.4 から映像のみ、Safari 26.0 から音声を含む全体に対応(調査時点)。音を入れる場合の条件は、映像だけより、1段厳しい。
+    確認用: 1秒ごとに画面が光り、同時に短い音が鳴る試験用の動画を作り、書き出した MP4 で、光と音のずれを、目と耳で確認する。
+    再開の条件: 映像の MP4 書き出しが、実機(MacBook Pro M2 の Chrome と Safari)で安定したら。
+    未決: 音の形式(AAC を想定)、BGM の著作権の扱い(ユーザーが読み込んだファイルだけを使い、アプリには、音源を同梱しない案)、音量の既定値。
+
+  v5.4.540 / 2026-11-11 / Super Grok（土台は v5.4.539）
+    追加: パーツの追加編集に「薄い板を読み込み時に両面にする」。既定はオフ。オフでは、片面の透過パーツを両面にしない。オンでは、厚みが長辺の8.5%未満、または頂点が12以下の透過パーツを、GLBとVPOの読み込み時だけ両面にする。描画タイプで「透過・1枚」を選んだときは、これまでどおり両面。
+
+  v5.4.539 / 2026-11-11 / Super Grok（土台は v5.4.538）
+    修正: 平らな片面パーツを、読み込みと書き出しで両面にしていた。厚みや「薄い板」では両面にしない。元の材質が両面のときだけ、両面のままにする。すでにファイルへ保存済みの両面は、この読み込みでは戻さない。
+
+  v5.4.538 / 2026-11-10 / Super Grok（土台は v5.4.537）
+    修正: テクスチャの無い材質は、編集側だけ色が暗くずれた。色変更用の画像へ、明るさの変換前の数値を書き、その画像を陰にも掛けていた。無編集のあいだは白い画像だけを重ね、材質の色と陰の色はファイルのまま使う。
+
+  v5.4.537 / 2026-11-09 / Super Grok（土台は v5.4.536）
+    記録: MP4 に音を入れる件は保留。上の保留案件に、設計メモをそのまま残した。画面と書き出しの動作は変えていない。
 
   v5.4.536 / 2026-11-08 / Super Grok（土台は v5.4.535）
     追加: ノードグラフに、人型以外の骨へ乗っている本体メッシュを出す。付け先は、一番重みのある人型の骨。同じ骨の並びの材質は1つの箱にまとめる。展開するとその骨が見え、ばねになっている骨を押すと、硬さ・抵抗・重力・半径を変えられる。骨の親子、削除、付け替えはしない。
@@ -1076,7 +1097,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.536</title>
+  <title>VRM Color Editor - v5.4.540</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2594,7 +2615,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.536</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.540</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -2750,6 +2771,10 @@
               <div id="glbFileNameDisplay" class="file-name-display">未選択</div>
             </div>
             <div class="vrm-drop-hint">この枠へ .glb または .vpo をドラッグ＆ドロップしても追加できます</div>
+            <label style="display:flex; gap:6px; align-items:flex-start; font-size:11px; line-height:1.45; margin-top:8px;">
+              <input type="checkbox" id="autoDoubleSideThin" style="margin-top:2px;">
+              <span>薄い板を読み込み時に両面にする<span style="display:block; color:#aaa;">オフでは、片面の指定を両面にしません。オンでは、厚みが長辺の8.5%未満、または頂点が12以下の透過パーツを、GLBとVPOの読み込み時だけ両面にします。既定はオフです。</span></span>
+            </label>
             <button type="button" id="btnGlbFitHead" aria-pressed="false" title="読み込んだままでは、位置や大きさが極端で、プレビューの視界から外れてしまうことがあります。" style="width:100%; flex:none; margin-top:6px; background:#455a64;">頭の上に収める</button>
             <div id="glbFitHeadNote" style="font-size:11px; color:#ffcc80; line-height:1.45; margin:4px 0 8px;">読み込んだままでは、位置や大きさが極端で、プレビューの視界から外れてしまうことがあります。このボタンを選ぶと、VRMモデルの10%の大きさに縮め、原点をそのパーツの重心へ移します。読み込み前にアタッチ先ボーンを選んであるときは、頭の上ではなく、そのボーンの位置へ原点を合わせます。選んでいないときは頭の上へ置きます。</div>
             <div id="sampleMeshBox" style="margin:8px 0; padding:8px; border:1px solid #6a1b4d; border-radius:6px; background:#241018;">
@@ -4214,7 +4239,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.536';
+    const APP_VERSION = 'v5.4.540';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -11158,6 +11183,22 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       return false;
     }
 
+    function sideKeepingSource(srcMat) {
+      if (srcMat && srcMat.side === THREE.DoubleSide) return THREE.DoubleSide;
+      if (srcMat && srcMat.side === THREE.BackSide) return THREE.BackSide;
+      return THREE.FrontSide;
+    }
+
+    function autoDoubleSideThinOn() {
+      const box = document.getElementById('autoDoubleSideThin');
+      return !!(box && box.checked);
+    }
+
+    function sideForThinAuto(srcMat) {
+      if (autoDoubleSideThinOn()) return THREE.DoubleSide;
+      return sideKeepingSource(srcMat);
+    }
+
     function isHelmetSized(mesh) {
       const s = meshLocalSize(mesh);
       return Math.max(s.x, s.y, s.z) > 0.15;
@@ -11363,7 +11404,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const matName = fromGlb ? `${baseName}_Blend` : keepMaterialName(srcMat, `${baseName}_Blend`);
       mesh.material = makeMToon(srcMat, {
         name: matName, role: thin ? 'thin' : 'outer', color, alpha: 1,
-        transparent: true, depthWrite: false, side: thin ? THREE.DoubleSide : THREE.FrontSide,
+        transparent: true, depthWrite: false, side: thin ? sideForThinAuto(srcMat) : sideKeepingSource(srcMat),
         shadingToony: 0.5, shadingShift: 0,
         matcap: roleMatcapIntensity(srcMat, false, 0.15),
         rimColor: [0, 0, 0], rimPower: 5, rimLift: 0, rimMix: 1,
@@ -11376,13 +11417,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       stampRole(mesh, baseName, thin ? 'thin' : 'outer', fromGlb);
     }
 
-    function applyThinTransparentMToon(mesh, srcMat, baseName, fromGlb, slotIndex) {
+    function applyThinTransparentMToon(mesh, srcMat, baseName, fromGlb, slotIndex, forceBoth) {
       const useGlass = !!fromGlb;
       const alpha = roleAlpha(mesh, srcMat, 'thin', useGlass);
       const matName = fromGlb ? `${baseName}_Thin` : keepMaterialName(srcMat, `${baseName}_Thin`);
       const mat = makeMToon(srcMat, {
         name: matName, role: 'thin', color: roleColor(srcMat, useGlass), alpha,
-        transparent: true, depthWrite: false, side: THREE.DoubleSide,
+        transparent: true, depthWrite: false, side: forceBoth ? THREE.DoubleSide : sideForThinAuto(srcMat),
         shadingToony: useGlass ? 0.35 : (srcMat && srcMat.shadingToonyFactor != null ? srcMat.shadingToonyFactor : 0.9),
         shadingShift: useGlass ? -0.15 : (srcMat && srcMat.shadingShiftFactor != null ? srcMat.shadingShiftFactor : 0),
         matcap: roleMatcapIntensity(srcMat, useGlass, 0.25),
@@ -11579,15 +11620,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
 
     function ensureSolidColorMap(mat) {
-      if (mat.map && mat.map.image) return;
+      if (!mat || (mat.map && mat.map.image)) return;
       const c = document.createElement('canvas');
       c.width = 64; c.height = 64;
       const ctx = c.getContext('2d');
-      const col = mat.color || new THREE.Color(1, 1, 1);
-      ctx.fillStyle = `rgb(${Math.round(col.r * 255)},${Math.round(col.g * 255)},${Math.round(col.b * 255)})`;
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, 64, 64);
       const tex = new THREE.CanvasTexture(c);
       tex.colorSpace = THREE.SRGBColorSpace;
+      tex.flipY = false;
       tex.needsUpdate = true;
       mat.map = tex;
       if (!mat.shadeMultiplyTexture) mat.shadeMultiplyTexture = tex;
@@ -12169,7 +12210,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!(type === 'solid' && fromGlb)) removePairedMesh(mesh);
 
       if (type === 'opaque') applyOpaqueMToon(mesh, srcMat, baseName, fromGlb, slotIndex);
-      else if (type === 'thin') applyThinTransparentMToon(mesh, srcMat, baseName, fromGlb, slotIndex);
+      else if (type === 'thin') applyThinTransparentMToon(mesh, srcMat, baseName, fromGlb, slotIndex, true);
       else if (type === 'solid') {
         applyThickOuterMToon(mesh, srcMat, baseName, fromGlb, slotIndex);
         if (fromGlb) {
@@ -12397,7 +12438,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const om = Array.isArray(outer.material) ? outer.material[0] : outer.material;
       if (om && om.userData && om.userData.mtoonProfile && !om.userData.mtoonProfile.role) {
         om.userData.mtoonProfile.role = role === 'opaque' ? 'opaque' : (role === 'solid' ? 'outer' : 'thin');
-        om.userData.mtoonProfile.doubleSided = role === 'thin';
+        om.userData.mtoonProfile.doubleSided = om.side === THREE.DoubleSide;
       }
       if (outer.userData && outer.userData.mtoonPairUuid && meshMap.has(outer.userData.mtoonPairUuid)) {
         const inner = meshMap.get(outer.userData.mtoonPairUuid).mesh;
@@ -21363,6 +21404,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         try { localStorage.setItem('vrmColorEditor.glbFitHead', next ? '1' : '0'); } catch (_) {}
       });
     })();
+    (function initAutoDoubleSideThin() {
+      const box = document.getElementById('autoDoubleSideThin');
+      if (!box) return;
+      try { box.checked = localStorage.getItem('vrmColorEditor.autoDoubleSideThin') === '1'; } catch (_) {}
+      box.addEventListener('change', () => {
+        try { localStorage.setItem('vrmColorEditor.autoDoubleSideThin', box.checked ? '1' : '0'); } catch (_) {}
+      });
+    })();
     const glbDropBlock = document.querySelector('[data-block-id="glbAttach"]');
     if (glbDropBlock) {
       const isFileDrag = (e) => e.dataTransfer && [...(e.dataTransfer.types || [])].includes('Files');
@@ -23594,7 +23643,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         baseColor[3] = alpha;
         mat.pbrMetallicRoughness.baseColorFactor = baseColor;
         mat.alphaMode = 'BLEND';
-        mat.doubleSided = profile.doubleSided === true || role === 'thin';
+        mat.doubleSided = profile.doubleSided === true;
       } else {
         mat.alphaMode = mat.alphaMode || 'OPAQUE';
         if (mat.doubleSided == null) mat.doubleSided = false;
@@ -23648,7 +23697,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const alpha = (profile && typeof profile.alpha === 'number') ? profile.alpha : (color[3] ?? 1);
       const col = [color[0], color[1], color[2], role === 'opaque' ? 1 : alpha];
       const blend = role === 'opaque' ? 0 : 2;
-      const cull = (profile && profile.doubleSided) || role === 'thin' ? 0 : 2;
+      const cull = (profile && profile.doubleSided) ? 0 : 2;
       const queue = role === 'opaque' ? 2000 : (3000 + ((profile && profile.queueOffset) || 0));
       const srcBlend = blend === 2 ? 5 : 1;
       const dstBlend = blend === 2 ? 10 : 0;
