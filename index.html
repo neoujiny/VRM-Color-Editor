@@ -2,14 +2,63 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.540-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option
+  Version: v5.4.556-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof
   ==================================================
 -->
 <!--
   ==================================================
   Changelog / Handoff (新しいものを上に追記。AI間の引き継ぎ時は最初にここを読む)
   ==================================================
+  鉄則 / 2026-11-11 / Super Grok
+    編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.556 / 2026-11-12 / Super Grok（土台は v5.4.555）
+    修正: Safariの動画は、書けると出た形式でも1枚も書けず、動きを先頭へ戻しただけで止まっていた。Chrome以外は、1枚書いてからその形式を使う。書けないときは先頭へ戻さない。進み具合は画面の上に出す。Chromeの書き出しはそのまま。
+
+  v5.4.555 / 2026-11-12 / Super Grok（土台は v5.4.554）
+    変更: ブレンドシェイプの説明から、笑顔の口の文を外した。
+
+  v5.4.554 / 2026-11-12 / Super Grok（土台は v5.4.553）
+    変更: 表情のスライダーと一杯の強さを、VRMAタブから外し、その下の「ブレンドシェイプ」タブへ移した。中身は同じ。
+
+  v5.4.553 / 2026-11-12 / Super Grok（土台は v5.4.552）
+    追加: 表情ごとに「一杯の強さ」。1がオリジナル。下げると、その表情を一杯にしても口などの形が弱くなる。見た目も、書き出すVRMも、同じ強さになる。今見ている強さのスライダーとは別。
+
+  v5.4.552 / 2026-11-12 / Super Grok（土台は v5.4.551）
+    追加: VRMAタブに表情のスライダー。読み込んだVRMの表情を、0から1で見る。動きを再生しているあいだは、動きの表情が優先される。止めると、スライダーの形に戻る。書き出すVRMの表情の定義は変えない。
+
+  v5.4.551 / 2026-11-12 / Super Grok（土台は v5.4.550）
+    追加: 鑑賞の全画面に入ったとき、Chrome以外なら「このバージョンではMP4書き出し機能はブラウザがChrome以外ではMP4のダウンロードができないかもしれません。」と出す。Chromeでは出さない。鑑賞中はいつもの確認窓が隠れるので、全画面の前面に出す。
+
+  v5.4.550 / 2026-11-12 / Super Grok（土台は v5.4.549）
+    修正: 影2の縁のぼかしが、離れた点だけを拾っていたため、縞模様のモアレになっていた。点を重ねて、縁がなめらかに薄くなるようにした。
+    変更: 影の濃さのスライダーは、影3だけでなく影2にも効く。スライダーを動かしていなければ、影2の濃さはこれまでと同じ。
+
+  v5.4.549 / 2026-11-12 / Super Grok（土台は v5.4.548）
+    修正: 影が止まっていた原因を探すあいだに足した、影絵の毎フレーム描き直しと、書き出し1枚ごとの完了待ちをやめた。影と花弁と落ち葉は動いたまま。影絵は1枚おきに描く。丸い影の大きさは、毎回測り直さない。
+    修正: Safariの動画は、自動では保存しない。全画面を閉じたままにし、下の「保存する」を押したときだけファイルにする。書き出しの途中で全画面が一瞬外れても、書き出しは止めない。
+
+  v5.4.548 / 2026-11-12 / Super Grok（土台は v5.4.547）
+    修正: 版のボタンは、今開いているページを取り直して保存する。古いページが残っていると、547 ではなく 546 が落ちる。入口のアドレスに版を付け、保存する中身の版が画面と違うときは保存しない。大きなHTMLは、渡す前にアドレスを消さない。
+
+  v5.4.547 / 2026-11-12 / Super Grok（土台は v5.4.546）
+    修正: VRMAを選ぶと、足が左右にずれた瞬間、床の高さを取る処理が落ちて、影と花弁と落ち葉の更新が止まっていた。足の位置を床の物体と取り違えない。止まっても、花弁の計算は続ける。
+    修正: Safariの動画保存は、全画面のまま保存を始めると全画面がすぐ戻って保存できない。保存の前に全画面を閉じ、鑑賞の窓は残す。自動で始まらないときは「保存する」を押す。そのあと「全画面に戻す」で戻れる。
+
+  v5.4.546 / 2026-11-12 / Super Grok（土台は v5.4.545）
+    修正: MacのSafariで、鑑賞のMP4を書き出せなかった。Safariは、映像を開始符号付きで返し、形式情報を別に出さないことがある。開始符号からMP4へ組み直し、コマのコピーが終わってからファイルにする。自動で保存が始まらないときは、「保存する」を押す。
+
+  v5.4.545 / 2026-11-12 / Super Grok（土台は v5.4.544）
+    修正: 鑑賞で動きを再生すると、影が止まったままになり、花弁と落ち葉も止まっていた。影の範囲を再生前の箱ではなく今の骨から取り、毎フレーム描き直す。花弁は、影の処理が失敗しても進める。
+
+  v5.4.544 / 2026-11-12 / Super Grok（土台は v5.4.543）
+    追加: プレビュー表示設定に「ステージ用GLB」。初期はオフで、編集画面には出さない。オンのときだけ編集画面に出す。全画面の鑑賞中は、このチェックに関係なく出す。各GLBの目玉は、これまでどおり。
+
+  v5.4.543 / 2026-11-12 / Super Grok（土台は v5.4.542）
+    修正: 鑑賞でGLBを選んでも、移動・回転・大きさのハンドルが出ていなかった。毎フレーム、照明用の印が無い対象はギズモを消していた。GLBもハンドルを出す。
+    変更: 鑑賞のライト1とライト2は、初めはオフ。オンにしたときだけ光る。
+
   未実装
     逆再生のばねは、まだ決めない。
     動画の録画は、今回は入れない。
@@ -22,6 +71,12 @@
     確認用: 1秒ごとに画面が光り、同時に短い音が鳴る試験用の動画を作り、書き出した MP4 で、光と音のずれを、目と耳で確認する。
     再開の条件: 映像の MP4 書き出しが、実機(MacBook Pro M2 の Chrome と Safari)で安定したら。
     未決: 音の形式(AAC を想定)、BGM の著作権の扱い(ユーザーが読み込んだファイルだけを使い、アプリには、音源を同梱しない案)、音量の既定値。
+
+  v5.4.542 / 2026-11-11 / Super Grok（土台は v5.4.541）
+    記録: 編集前の控え、構文チェック、ワークスペースの整合を鉄則として上に残した。画面と書き出しの動作は変えていない。
+
+  v5.4.541 / 2026-11-11 / Super Grok（土台は v5.4.540）
+    追加: 鑑賞の窓から、GLBをいくつでも追加できる。ドロップ枠もある。リストの目玉で、それぞれ表示を切り替えられる。選んだGLBは、ギズモで位置、回転、大きさを変えられる。中のメッシュは、色彩編集のパーツ一覧にも出て、他のパーツと同じように選べる。書き出しのVRMには入れない。
 
   v5.4.540 / 2026-11-11 / Super Grok（土台は v5.4.539）
     追加: パーツの追加編集に「薄い板を読み込み時に両面にする」。既定はオフ。オフでは、片面の透過パーツを両面にしない。オンでは、厚みが長辺の8.5%未満、または頂点が12以下の透過パーツを、GLBとVPOの読み込み時だけ両面にする。描画タイプで「透過・1枚」を選んだときは、これまでどおり両面。
@@ -1097,7 +1152,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.540</title>
+  <title>VRM Color Editor - v5.4.556</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -1924,6 +1979,16 @@
       display: none !important;
     }
     #vrmaWatchWin { width: 340px; }
+    #watchMp4Note {
+      position: fixed;
+      inset: 0;
+      z-index: 500200;
+      background: rgba(0,0,0,.42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #watchMp4Note[hidden] { display: none !important; }
     #watchMovieHud { position: fixed; top: 0; left: 0; right: 0; z-index: 80000; display: flex; flex-direction: column; gap: 8px; padding: 8px 12px 10px; background: rgba(12, 16, 20, 0.94); color: #eee; box-shadow: 0 4px 16px rgba(0,0,0,0.45); pointer-events: auto; }
     #watchMovieHud[hidden] { display: none !important; }
     #watchMovieHud .watch-movie-hud-row { display: flex; align-items: center; gap: 12px; font-size: 13px; }
@@ -2615,7 +2680,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.540</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.556</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -2681,6 +2746,11 @@
                 <input type="checkbox" id="toggleColliders" checked style="width:16px; height:16px; margin:0;">
                 ⚪ コライダー
               </label>
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin: 0;">
+                <input type="checkbox" id="toggleStageGlb" style="width:16px; height:16px; margin:0;">
+                ステージ用GLB
+              </label>
+              <div style="font-size:11px; color:#aaa; line-height:1.4;">オフのときは編集画面に出しません。全画面の鑑賞中は出します。</div>
               <button id="btnHeightMode" type="button" style="padding: 4px 8px; font-size: 11px; background: #1565c0;">📏 身長</button>
             </div>
           </div>
@@ -2734,13 +2804,23 @@
             <label>ステージ</label>
             <div class="file-upload-wrapper">
               <label for="vrmaStageFile" class="custom-file-btn">ステージ用GLBを読み込む</label>
-              <input type="file" id="vrmaStageFile" accept=".glb,.gltf,model/gltf-binary" style="display: none;">
+              <input type="file" id="vrmaStageFile" accept=".glb,.gltf,model/gltf-binary" multiple style="display: none;">
               <div id="vrmaStageName" class="file-name-display">未選択</div>
             </div>
             <button type="button" id="btnVrmaStageClear" style="width:100%; background:#555; margin:0 0 8px;">ステージを外す</button>
-            <div style="font-size:11px; color:#aaa; line-height:1.4; margin-bottom:8px;">手元のGLBを選びます。全画面の鑑賞のときだけ、足の裏がステージの床に来る高さで出します。書き出しには入りません。鑑賞中の矢印キーで前後左右、Shift と上下で高さ、Shift と左右で回転です。</div>
+            <div style="font-size:11px; color:#aaa; line-height:1.4; margin-bottom:8px;">手元のGLBを選びます。いくつでも追加できます。鑑賞の窓にも、同じ追加と一覧があります。足の裏が床に来る高さで出します。書き出しには入りません。鑑賞中の矢印キーは、選んでいるGLBを動かします。選んでいないときは、読み込んだGLBを全部動かします。</div>
             <button type="button" id="btnVrmaWatch" aria-pressed="false" style="width:100%; background:#4a148c;">全画面で鑑賞</button>
             <div style="font-size:11px; color:#aaa; line-height:1.4; margin:6px 0 0;">正規プレビューをオンにして、編集中のモデルだけを全画面にします。戻すのは Esc だけです。前の画面の分け方に戻ります。クリックでは部品を選び替えず、入る前の選択は残ります。ダブルクリックで部品を中央へ寄せることもしません。W で、他の浮動窓と同じ「鑑賞」の窓を出します。もう一度 W、または赤い丸で閉じます。ライトと風のギズモは出ます。マウスでカメラを移動、回転、拡大縮小できます。</div>
+          </div>
+        </section>
+
+        <section class="menu-block needs-vrm disabled collapsed" data-block-id="blend">
+          <div class="menu-block-tab" draggable="true">😃 ブレンドシェイプ</div>
+          <div class="menu-block-body">
+            <div class="need-state warn" data-need="vrm">VRMファイルを読み込んで下さい</div>
+            <div style="font-size:11px; color:#aaa; line-height:1.4; margin-bottom:8px;">読み込んだVRMの表情です。上のスライダーは、今見ている強さです。動きを再生しているあいだは、動きの表情が優先されます。下の「一杯の強さ」は、その表情を一杯にしたときの形です。1がオリジナルです。下げると、書き出すVRMにも残ります。</div>
+            <button type="button" id="btnVrmaFaceClear" style="width:100%; background:#555; margin:0 0 8px;">表情を全部戻す</button>
+            <div id="vrmaFaceList" style="max-height:420px; overflow:auto; margin:0;"></div>
           </div>
         </section>
 
@@ -3821,6 +3901,14 @@
             <button type="button" id="watchGizmoBarHide">しまう</button>
           </div>
           <p>全画面の鑑賞中に W で出します。もう一度 W、または赤い丸で閉じます。タブはドラッグで動かせます。</p>
+          <h4>GLB</h4>
+          <div class="file-upload-wrapper">
+            <label for="watchPropFile" class="custom-file-btn">GLBを追加</label>
+            <input type="file" id="watchPropFile" accept=".glb,.gltf,model/gltf-binary" multiple style="display:none;">
+          </div>
+          <div id="watchPropDrop" class="vrm-drop-hint">この枠へ .glb をドロップして追加します</div>
+          <div id="watchPropList"></div>
+          <p class="watch-note">いくつでも追加できます。目玉で、そのGLBだけ表示を切り替えます。名前を押すと選び、位置・回転・大きさのギズモが出ます。中のメッシュは、色彩編集のパーツ一覧にも出ます。VRMの書き出しには入りません。</p>
           <h4>動き</h4>
           <label class="watch-row">プリセット<select id="watchVrmaPreset"><option value="">未選択</option></select></label>
           <div class="file-upload-wrapper">
@@ -3859,7 +3947,7 @@
           <p class="watch-note">置いた場所から光るライトです。2個までです。色と強さは、それぞれの欄です。</p>
           <div class="watch-card">
             <div class="watch-card-title">ライト 1</div>
-            <label class="watch-row watch-check"><input id="watchLight1On" type="checkbox" checked>このライトを使う</label>
+            <label class="watch-row watch-check"><input id="watchLight1On" type="checkbox">このライトを使う</label>
             <label class="watch-row">ライト1の色<input id="watchLight1Color" type="color" value="#fff1d0"></label>
             <label class="watch-row">ライト1の強さ<input id="watchLight1Intensity" type="range" min="0" max="8" step="0.1" value="3"></label>
             <button type="button" class="watch-move" id="watchMoveLight1" data-watch-move="lightA">ライト1の位置を動かす</button>
@@ -3881,7 +3969,7 @@
           <label class="watch-row">花弁の光<input id="watchMoteEmit" type="range" min="0" max="4" step="0.05" value="2.2"></label>
           <h4>影</h4>
           <label class="watch-row">影の種類<select id="watchShadowMode"><option value="off">なし</option><option value="blob">1. 足元の丸い影</option><option value="planar">2. 平らな面への投影</option><option value="picture">3. 低い解像度の影絵</option></select></label>
-          <label class="watch-row">影絵の濃さ<input id="watchPictureOpacity" type="range" min="0" max="1" step="0.01" value="0.82" title="影3だけに効きます"></label>
+          <label class="watch-row">影の濃さ<input id="watchPictureOpacity" type="range" min="0" max="1" step="0.01" value="0.82" title="影2と影3に効きます"></label>
           <p id="watchShadowNote">影は出しません。本当の影マップは使いません。</p>
           <h4>発光</h4>
           <label class="watch-row">発光の強さ<input id="watchEmit" type="range" min="0" max="3" step="0.05" value="1"></label>
@@ -4142,6 +4230,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     </div>
     <div id="vrmHistoryFullBody"></div>
   </div>
+  <div id="watchMp4Note" hidden>
+      <div class="vce-card" style="width:min(420px, calc(100% - 32px)); background:#1e1e24; color:#eee; border:1px solid #555; border-radius:10px; padding:16px; box-shadow:0 12px 40px rgba(0,0,0,.45);">
+        <div id="watchMp4NoteText" style="font-size:13px; line-height:1.6;"></div>
+        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:14px;">
+          <button type="button" id="watchMp4NoteOk" style="background:#1565c0;">OK</button>
+        </div>
+      </div>
+    </div>
   <div id="vceDialog">
       <div class="vce-card" style="width:min(420px, calc(100% - 32px)); background:#1e1e24; color:#eee; border:1px solid #555; border-radius:10px; padding:16px; box-shadow:0 12px 40px rgba(0,0,0,.45);">
         <div id="vceDialogText" style="font-size:13px; line-height:1.6; white-space:pre-wrap;"></div>
@@ -4239,7 +4335,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.540';
+    const APP_VERSION = 'v5.4.556';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -5160,7 +5256,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (gizmoBtn) gizmoBtn.hidden = !isMenuOpen;
     });
 
-    const DEFAULT_MENU_ORDER = ['vrmFile', 'preview', 'vrma', 'glbAttach', 'meshSelect', 'powerEditor', 'partGraph', 'baseColor', 'syncShade', 'shadeColor', 'copyPaste', 'matcap', 'rim', 'uvAnim', 'emission', 'export', 'history', 'settings'];
+    const DEFAULT_MENU_ORDER = ['vrmFile', 'preview', 'vrma', 'blend', 'glbAttach', 'meshSelect', 'powerEditor', 'partGraph', 'baseColor', 'syncShade', 'shadeColor', 'copyPaste', 'matcap', 'rim', 'uvAnim', 'emission', 'export', 'history', 'settings'];
     const MENU_ORDER_KEY = 'vrmColorEditor.menuOrder.v594';
 
     function applyMenuOrder(order) {
@@ -5171,6 +5267,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const at = list.indexOf('preview');
         if (at >= 0) list.splice(at + 1, 0, 'vrma');
         else list.unshift('vrma');
+      }
+      if (list.indexOf('blend') < 0) {
+        const at = list.indexOf('vrma');
+        if (at >= 0) list.splice(at + 1, 0, 'blend');
+        else list.push('blend');
       }
       const seen = new Set();
       [...list, ...DEFAULT_MENU_ORDER].forEach((id) => {
@@ -5476,15 +5577,27 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     sceneEdited.add(vrmaStageRoot);
     let vrmaStageMixer = null;
     let vrmaStageUserMoved = false;
+    const watchProps = [];
+    let watchPropSelected = '';
+    let watchPropMode = 'translate';
     const vrmaStageRay = new THREE.Raycaster();
     const vrmaStageDown = new THREE.Vector3(0, -1, 0);
     function syncVrmaStageGrid() {
       const gridOn = document.getElementById('toggleGrid');
       const want = !gridOn || !!gridOn.checked;
-      gridEdited.visible = vrmaStageRoot.visible ? false : want;
+      const blocking = !!(typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn && vrmaStageRoot.children.length);
+      gridEdited.visible = blocking ? false : want;
+    }
+    function stageGlbPreviewOn() {
+      const el = document.getElementById('toggleStageGlb');
+      return !!(el && el.checked);
     }
     function syncVrmaStageVis() {
-      vrmaStageRoot.visible = !!(typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn && vrmaStageRoot.children.length);
+      const watching = typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn;
+      vrmaStageRoot.visible = vrmaStageRoot.children.length > 0 && (watching || stageGlbPreviewOn());
+      vrmaStageRoot.children.forEach((child) => {
+        if (child.userData && child.userData.watchProp) child.visible = child.userData.watchVisible !== false;
+      });
       syncVrmaStageGrid();
     }
     function disposeVrmaStageObject(obj) {
@@ -5501,11 +5614,22 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         });
       });
     }
+    function watchForgetPropMeshes(root) {
+      if (!root) return;
+      root.traverse((obj) => {
+        if (!obj.isMesh) return;
+        meshMap.delete(obj.uuid);
+        const li = document.querySelector('#meshList li[data-mesh-uuid="' + obj.uuid + '"]');
+        if (li) li.remove();
+      });
+    }
     function clearVrmaStage() {
-      if (vrmaStageMixer) {
-        vrmaStageMixer.stopAllAction();
-        vrmaStageMixer = null;
-      }
+      watchProps.splice(0, watchProps.length).forEach((prop) => {
+        if (prop.mixer) prop.mixer.stopAllAction();
+        watchForgetPropMeshes(prop.root);
+      });
+      watchPropSelected = '';
+      vrmaStageMixer = null;
       while (vrmaStageRoot.children.length) {
         const child = vrmaStageRoot.children[0];
         vrmaStageRoot.remove(child);
@@ -5521,6 +5645,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (nameEl) { nameEl.textContent = '未選択'; nameEl.title = ''; }
       const input = document.getElementById('vrmaStageFile');
       if (input) input.value = '';
+      const watchInput = document.getElementById('watchPropFile');
+      if (watchInput) watchInput.value = '';
+      if (typeof watchRenderPropList === 'function') watchRenderPropList();
       if (typeof watchSceneRenderFiles === 'function') watchSceneRenderFiles();
     }
     function vceEditedFootPlant() {
@@ -5556,9 +5683,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       return { x: x, y: y, z: z };
     }
-    function vrmaStageFloorY(x, z, nearY) {
-      vrmaStageRoot.updateWorldMatrix(true, true);
-      const box = new THREE.Box3().setFromObject(vrmaStageRoot);
+    function vrmaStageFloorY(root, x, z, nearY) {
+      const host = (root && typeof root.updateWorldMatrix === 'function') ? root : vrmaStageRoot;
+      if (!host || typeof host.updateWorldMatrix !== 'function') return null;
+      host.updateWorldMatrix(true, true);
+      const box = new THREE.Box3().setFromObject(host);
       if (box.isEmpty()) return null;
       const spots = [[0, 0], [0.18, 0], [-0.18, 0], [0, 0.18], [0, -0.18]];
       let bestUp = null;
@@ -5568,7 +5697,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       spots.forEach((spot) => {
         vrmaStageRay.set(new THREE.Vector3(x + spot[0], box.max.y + 1, z + spot[1]), vrmaStageDown);
         vrmaStageRay.far = (box.max.y - box.min.y) + 4;
-        const hits = vrmaStageRay.intersectObject(vrmaStageRoot, true);
+        const hits = vrmaStageRay.intersectObject(host, true);
         hits.forEach((hit) => {
           const dist = Math.abs(hit.point.y - nearY);
           if (dist < bestAnyDist) { bestAnyDist = dist; bestAny = hit.point.y; }
@@ -5584,13 +5713,24 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       });
       return bestUp != null ? bestUp : bestAny;
     }
-    function alignVrmaStageToFeet() {
-      if (!vrmaStageRoot.children.length || vrmaStageUserMoved) return;
+    function alignWatchPropToFeet(group) {
+      if (!group || group.userData.watchUserMoved) return;
       const foot = vceEditedFootPlant();
       if (!foot) return;
-      const floorY = vrmaStageFloorY(foot.x, foot.z, foot.y);
+      const floorY = vrmaStageFloorY(group, foot.x, foot.z, foot.y);
       if (floorY == null) return;
-      vrmaStageRoot.position.y += foot.y - floorY;
+      group.position.y += foot.y - floorY;
+    }
+    function alignVrmaStageToFeet() {
+      if (!vrmaStageRoot.children.length || vrmaStageUserMoved) return;
+      vrmaStageRoot.children.forEach((child) => {
+        if (child.userData && child.userData.watchProp && !child.userData.watchUserMoved) alignWatchPropToFeet(child);
+      });
+    }
+    function watchPropTargets() {
+      const picked = watchProps.filter((prop) => prop.id === watchPropSelected);
+      if (picked.length) return picked;
+      return watchProps.slice();
     }
     function nudgeVrmaStage(key, shift) {
       const cam = cameraSingle;
@@ -5604,24 +5744,24 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       ahead.multiplyScalar(-1);
       if (ahead.lengthSq() < 1e-8) ahead.set(0, 0, -1);
       else ahead.normalize();
-      const step = 0.05;
-      if (shift && (key === 'ArrowUp' || key === 'ArrowDown')) {
-        vrmaStageRoot.position.y += key === 'ArrowUp' ? 0.01 : -0.01;
-        vrmaStageUserMoved = true;
-        return;
-      }
-      if (shift && (key === 'ArrowLeft' || key === 'ArrowRight')) {
-        vrmaStageRoot.rotation.y += key === 'ArrowLeft' ? Math.PI / 36 : -Math.PI / 36;
-        vrmaStageUserMoved = true;
-        return;
-      }
-      const dir = new THREE.Vector3();
-      if (key === 'ArrowUp') dir.copy(ahead);
-      else if (key === 'ArrowDown') dir.copy(ahead).multiplyScalar(-1);
-      else if (key === 'ArrowRight') dir.copy(right);
-      else if (key === 'ArrowLeft') dir.copy(right).multiplyScalar(-1);
-      else return;
-      vrmaStageRoot.position.addScaledVector(dir, step);
+      const targets = watchPropTargets().map((prop) => prop.root);
+      if (!targets.length) return;
+      targets.forEach((root) => {
+        if (shift && (key === 'ArrowUp' || key === 'ArrowDown')) {
+          root.position.y += key === 'ArrowUp' ? 0.01 : -0.01;
+        } else if (shift && (key === 'ArrowLeft' || key === 'ArrowRight')) {
+          root.rotation.y += key === 'ArrowLeft' ? Math.PI / 36 : -Math.PI / 36;
+        } else {
+          const dir = new THREE.Vector3();
+          if (key === 'ArrowUp') dir.copy(ahead);
+          else if (key === 'ArrowDown') dir.copy(ahead).multiplyScalar(-1);
+          else if (key === 'ArrowRight') dir.copy(right);
+          else if (key === 'ArrowLeft') dir.copy(right).multiplyScalar(-1);
+          else return;
+          root.position.addScaledVector(dir, 0.05);
+        }
+        root.userData.watchUserMoved = true;
+      });
       vrmaStageUserMoved = true;
     }
     function fitVrmaStage(root) {
@@ -5642,38 +5782,191 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       root.position.x -= center.x;
       root.position.z -= center.z;
       root.position.y -= fitted.min.y;
-      alignVrmaStageToFeet();
+    }
+    function watchPropById(id) {
+      return watchProps.find((prop) => prop.id === id) || null;
+    }
+    function watchUpdatePropMixers(delta) {
+      watchProps.forEach((prop) => {
+        if (prop.mixer) prop.mixer.update(delta);
+      });
+    }
+    function watchSyncStageName() {
+      const nameEl = document.getElementById('vrmaStageName');
+      if (!nameEl) return;
+      if (!watchProps.length) {
+        nameEl.textContent = '未選択';
+        nameEl.title = '';
+        return;
+      }
+      const names = watchProps.map((prop) => prop.name).join('、');
+      nameEl.textContent = watchProps.length + '件';
+      nameEl.title = names;
+    }
+    function watchRenderPropList() {
+      const host = document.getElementById('watchPropList');
+      if (!host) return;
+      host.textContent = '';
+      if (!watchProps.length) {
+        const empty = document.createElement('p');
+        empty.className = 'watch-note';
+        empty.textContent = 'まだGLBはありません。';
+        host.appendChild(empty);
+        return;
+      }
+      watchProps.forEach((prop) => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex; gap:4px; align-items:center; margin:4px 0;';
+        if (prop.id === watchPropSelected) row.style.outline = '1px solid #7ee0ea';
+        const eye = document.createElement('button');
+        eye.type = 'button';
+        eye.textContent = prop.root.userData.watchVisible === false ? '🙈' : '👁';
+        eye.title = '表示/非表示';
+        eye.style.cssText = 'flex:0 0 28px; padding:2px 0;';
+        eye.addEventListener('click', () => {
+          const next = prop.root.userData.watchVisible === false;
+          prop.root.userData.watchVisible = next;
+          prop.root.visible = next;
+          syncVrmaStageVis();
+          watchRenderPropList();
+        });
+        const name = document.createElement('button');
+        name.type = 'button';
+        name.textContent = prop.name;
+        name.title = '選んでギズモを出す';
+        name.style.cssText = 'flex:1; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;';
+        name.addEventListener('click', () => watchFocusProp(prop.id));
+        const modes = [['translate', '位置'], ['rotate', '回転'], ['scale', '大きさ']];
+        row.appendChild(eye);
+        row.appendChild(name);
+        modes.forEach((pair) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = pair[1];
+          btn.style.cssText = 'flex:0 0 auto; padding:2px 4px; font-size:10px;';
+          if (prop.id === watchPropSelected && watchPropMode === pair[0]) btn.style.background = '#00695c';
+          btn.addEventListener('click', () => {
+            watchPropMode = pair[0];
+            watchFocusProp(prop.id);
+          });
+          row.appendChild(btn);
+        });
+        const drop = document.createElement('button');
+        drop.type = 'button';
+        drop.textContent = '外す';
+        drop.style.cssText = 'flex:0 0 auto; padding:2px 4px; font-size:10px; background:#555;';
+        drop.addEventListener('click', () => watchRemoveProp(prop.id));
+        row.appendChild(drop);
+        host.appendChild(row);
+      });
+    }
+    function watchFocusProp(id) {
+      const prop = watchPropById(id);
+      if (!prop) return;
+      watchPropSelected = id;
+      watchRenderPropList();
+      const which = 'prop:' + id;
+      if (typeof watchGizmoWhich !== 'undefined') watchGizmoWhich = which;
+      if (typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn && typeof watchAttachGizmo === 'function') {
+        watchAttachGizmo();
+        return;
+      }
+      try { transformControl.attach(prop.root); } catch (_) {}
+      try { transformControl.setMode(watchPropMode); } catch (_) {}
+      transformControl.visible = true;
+      transformControl.enabled = true;
+    }
+    function watchRemoveProp(id) {
+      const index = watchProps.findIndex((prop) => prop.id === id);
+      if (index < 0) return;
+      const prop = watchProps[index];
+      watchProps.splice(index, 1);
+      if (prop.mixer) prop.mixer.stopAllAction();
+      if (vrmaStageMixer === prop.mixer) vrmaStageMixer = (watchProps[0] && watchProps[0].mixer) || null;
+      watchForgetPropMeshes(prop.root);
+      if (prop.root.parent) prop.root.parent.remove(prop.root);
+      disposeVrmaStageObject(prop.root);
+      if (watchPropSelected === id) {
+        watchPropSelected = '';
+        if (typeof watchGizmoWhich !== 'undefined' && watchGizmoWhich === 'prop:' + id) {
+          watchGizmoWhich = '';
+          if (typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn && typeof watchAttachGizmo === 'function') watchAttachGizmo();
+          else { try { transformControl.detach(); } catch (_) {} }
+        }
+      }
+      syncVrmaStageVis();
+      watchSyncStageName();
+      watchRenderPropList();
+      if (typeof watchSceneRenderFiles === 'function') watchSceneRenderFiles();
+    }
+    function watchTagPropMeshes(prop) {
+      if (typeof registerGlbMeshes !== 'function') return;
+      prop.root.traverse((obj) => {
+        if (!obj.isMesh) return;
+        obj.userData.watchPropId = prop.id;
+        obj.userData.editorOnly = false;
+      });
+      registerGlbMeshes(prop.root, null);
+      prop.root.traverse((obj) => {
+        if (!obj.isMesh || !meshMap.has(obj.uuid)) return;
+        const data = meshMap.get(obj.uuid);
+        data.watchPropId = prop.id;
+        data.name = '[鑑賞] ' + prop.name + ' / ' + (obj.name || 'メッシュ');
+        const li = document.querySelector('#meshList li[data-mesh-uuid="' + obj.uuid + '"]');
+        const nameEl = li && li.querySelector('.mesh-name');
+        if (nameEl) nameEl.textContent = data.name;
+      });
+    }
+    function watchReregisterProps() {
+      watchProps.forEach((prop) => {
+        watchForgetPropMeshes(prop.root);
+        watchTagPropMeshes(prop);
+      });
     }
     function loadVrmaStageBuffer(buf, label) {
       const loader = new GLTFLoader();
       loader.parse(buf, '', (gltf) => {
-        clearVrmaStage();
         const scene = gltf.scene || (gltf.scenes && gltf.scenes[0]);
         if (!scene) {
-          vceAlert('このGLBには表示できるステージがありません。');
+          vceAlert('このGLBには表示できる形がありません。');
           return;
         }
+        const shown = String(label || 'GLB').replace(/\.(glb|gltf)$/i, '');
+        const group = new THREE.Group();
+        group.name = shown;
+        group.userData.watchProp = true;
+        group.userData.watchVisible = true;
+        group.userData.vceStage = true;
         scene.traverse((obj) => {
           obj.userData.vceStage = true;
-          obj.userData.editorOnly = true;
+          obj.userData.watchPropId = '';
           obj.frustumCulled = false;
+          if (obj.isMesh) obj.userData.editorOnly = false;
         });
-        vrmaStageRoot.add(scene);
-        fitVrmaStage(vrmaStageRoot);
+        group.add(scene);
+        fitVrmaStage(group);
+        vrmaStageRoot.add(group);
+        alignWatchPropToFeet(group);
+        let mixer = null;
         const clips = gltf.animations || [];
         if (clips.length) {
-          vrmaStageMixer = new THREE.AnimationMixer(scene);
+          mixer = new THREE.AnimationMixer(scene);
           clips.forEach((clip) => {
-            const action = vrmaStageMixer.clipAction(clip);
+            const action = mixer.clipAction(clip);
             action.reset().setLoop(THREE.LoopRepeat, Infinity).play();
           });
+          vrmaStageMixer = mixer;
         }
-        const nameEl = document.getElementById('vrmaStageName');
-        if (nameEl) { nameEl.textContent = label || 'ステージ'; nameEl.title = label || ''; }
+        const prop = { id: 'wp-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), name: shown, root: group, mixer: mixer };
+        scene.traverse((obj) => { if (obj.isMesh) obj.userData.watchPropId = prop.id; });
+        watchProps.push(prop);
+        try { watchTagPropMeshes(prop); } catch (err) { console.error(err); }
+        watchSyncStageName();
         syncVrmaStageVis();
+        watchFocusProp(prop.id);
         if (typeof watchSceneRenderFiles === 'function') watchSceneRenderFiles();
       }, () => {
-        vceAlert('ステージの読み込みに失敗しました。GLBを選んでください。');
+        vceAlert('GLBの読み込みに失敗しました。GLBを選んでください。');
       });
     }
 
@@ -5681,6 +5974,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!vrmaStageRoot.visible) gridEdited.visible = e.target.checked;
       gridOriginal.visible = e.target.checked;
     });
+    document.getElementById('toggleStageGlb').addEventListener('change', () => syncVrmaStageVis());
     document.getElementById('toggleColliders').addEventListener('change', () => {
       syncColliderVisButton();
       if (typeof refreshBodyColliderVis === 'function') refreshBodyColliderVis();
@@ -5908,6 +6202,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     transformControl.addEventListener('objectChange', function () {
       const watchObj = transformControl.object;
+      if (watchObj && watchObj.userData && watchObj.userData.watchProp) {
+        watchObj.userData.watchUserMoved = true;
+        vrmaStageUserMoved = true;
+        return;
+      }
       if (watchObj && watchObj.userData && watchObj.userData.watchHandle) {
         if (typeof watchHelpA !== 'undefined' && watchObj === watchHelpA && watchLightA) watchLightA.position.copy(watchObj.position);
         if (typeof watchHelpB !== 'undefined' && watchObj === watchHelpB && watchLightB) watchLightB.position.copy(watchObj.position);
@@ -6062,6 +6361,32 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let partFrameVisible = true;
     let vrmaWatchOn = false;
     let vrmaWatchModeRestore = '';
+    let watchMp4NotePending = false;
+    function vceBrowserIsChrome() {
+      const ua = String(navigator.userAgent || '');
+      const brands = (navigator.userAgentData && navigator.userAgentData.brands) || [];
+      const brandText = brands.map((b) => (b && b.brand) || '').join(' ');
+      if (/Edg\/|OPR\/|SamsungBrowser/.test(ua)) return false;
+      if (navigator.brave) return false;
+      if (/Google Chrome/.test(brandText)) return true;
+      if (/Edge|Opera/.test(brandText)) return false;
+      return /Chrome\/|CriOS\//.test(ua);
+    }
+    function watchShowMp4Note() {
+      const root = document.getElementById('watchMp4Note');
+      const text = document.getElementById('watchMp4NoteText');
+      if (!root || !text) return;
+      text.textContent = 'このバージョンではMP4書き出し機能はブラウザがChrome以外ではMP4のダウンロードができないかもしれません。';
+      root.hidden = false;
+    }
+    function watchMaybeNoteMp4() {
+      if (!watchMp4NotePending || !vrmaWatchOn) return;
+      const still = document.fullscreenElement || document.webkitFullscreenElement;
+      if (!still) return;
+      watchMp4NotePending = false;
+      if (vceBrowserIsChrome()) return;
+      watchShowMp4Note();
+    }
     function vrmaWatchKeepsGroup(g) {
       if (!g) return false;
       if (typeof activeAttachGroupId !== 'undefined' && activeAttachGroupId && g.id === activeAttachGroupId) return true;
@@ -6092,8 +6417,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (canon && !canon.checked) canon.checked = true;
         try { controlsSingle.enabled = true; } catch (_) {}
         const root = document.documentElement;
-        if (!document.fullscreenElement && root.requestFullscreen) {
-          root.requestFullscreen().catch(() => {});
+        const already = document.fullscreenElement || document.webkitFullscreenElement;
+        if (!already && root.requestFullscreen) {
+          watchMp4NotePending = true;
+          try {
+            const p = root.requestFullscreen();
+            if (p && p.then) p.then(() => {}, () => { watchMp4NotePending = false; });
+          } catch (_) { watchMp4NotePending = false; }
         }
       } else if (document.fullscreenElement && document.exitFullscreen) {
         document.exitFullscreen().catch(() => {});
@@ -7171,7 +7501,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!transformControl) return;
       if (vrmaWatchOn) {
         const obj = transformControl.object;
-        const on = !!(obj && obj.userData && obj.userData.watchHandle);
+        const on = !!(obj && obj.userData && (obj.userData.watchHandle || obj.userData.watchProp));
         transformControl.visible = on;
         transformControl.enabled = on;
         if (on) transformControl.camera = cameraSingle;
@@ -7928,6 +8258,182 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!name || !root) return null;
       return root.getObjectByName(name);
     }
+    const vceFaceLabel = { neutral: '無表情', aa: 'あ', ih: 'い', ou: 'う', ee: 'え', oh: 'お', blink: 'まばたき', blinkLeft: '左まばたき', blinkRight: '右まばたき', happy: '喜', angry: '怒', sad: '哀', relaxed: '楽', surprised: '驚', lookUp: '上', lookDown: '下', lookLeft: '左', lookRight: '右' };
+    const vceVrm0FaceRuntime = { neutral: 'neutral', a: 'aa', i: 'ih', u: 'ou', e: 'ee', o: 'oh', blink: 'blink', joy: 'happy', angry: 'angry', sorrow: 'sad', fun: 'relaxed', lookup: 'lookUp', lookdown: 'lookDown', lookleft: 'lookLeft', lookright: 'lookRight', blink_l: 'blinkLeft', blink_r: 'blinkRight', surprise: 'surprised' };
+    let vceFaceTouched = false;
+    const vceFaceScale = new Map();
+    const vceFaceBindBase = new WeakMap();
+    function vceFaceMotionOwns() {
+      return !!(vrmAnimation && vrmaStarted && !vrmaUserPaused && !previewPoseFrozen);
+    }
+    function vceFaceScaleOf(name) {
+      let n = vceFaceScale.has(name) ? vceFaceScale.get(name) : 1;
+      if (!isFinite(n)) n = 1;
+      if (n < 0) n = 0;
+      if (n > 1) n = 1;
+      return n;
+    }
+    function vceRememberFaceBinds() {
+      [vrmEdited, vrmOriginal].forEach((vrm) => {
+        const em = vrm && vrm.expressionManager;
+        const map = em && em.expressionMap;
+        if (!map) return;
+        Object.keys(map).forEach((name) => {
+          const expr = map[name];
+          const binds = expr && expr.morphTargetBinds;
+          if (!expr || !binds || vceFaceBindBase.has(expr)) return;
+          vceFaceBindBase.set(expr, binds.map((b) => (b && typeof b.weight === 'number') ? b.weight : 1));
+        });
+      });
+    }
+    function vceApplyFaceScales() {
+      vceRememberFaceBinds();
+      [vrmEdited, vrmOriginal].forEach((vrm) => {
+        const em = vrm && vrm.expressionManager;
+        const map = em && em.expressionMap;
+        if (!map) return;
+        Object.keys(map).forEach((name) => {
+          const expr = map[name];
+          const binds = expr && expr.morphTargetBinds;
+          const base = expr && vceFaceBindBase.get(expr);
+          if (!binds || !base) return;
+          const scale = vceFaceScaleOf(name);
+          for (let i = 0; i < binds.length; i++) {
+            if (!binds[i]) continue;
+            const w = base[i] == null ? 1 : base[i];
+            binds[i].weight = w * scale;
+          }
+        });
+        try { if (em.update) em.update(); } catch (_) {}
+      });
+    }
+    function vceFaceNames(vrm) {
+      const em = vrm && vrm.expressionManager;
+      const map = em && em.expressionMap;
+      if (!map) return [];
+      const names = Object.keys(map);
+      const order = Object.keys(vceFaceLabel);
+      names.sort((a, b) => {
+        const ia = order.indexOf(a);
+        const ib = order.indexOf(b);
+        if (ia >= 0 && ib >= 0) return ia - ib;
+        if (ia >= 0) return -1;
+        if (ib >= 0) return 1;
+        return a < b ? -1 : (a > b ? 1 : 0);
+      });
+      return names;
+    }
+    function vceRebuildFaceSliders() {
+      const box = document.getElementById('vrmaFaceList');
+      if (!box) return;
+      box.innerHTML = '';
+      vceFaceTouched = false;
+      vceFaceScale.clear();
+      vceRememberFaceBinds();
+      const names = vceFaceNames(vrmEdited);
+      names.forEach((name) => {
+        const row = document.createElement('label');
+        row.className = 'vrma-scrub';
+        const title = document.createElement('span');
+        title.textContent = vceFaceLabel[name] || name;
+        title.title = name;
+        title.style.flex = '0 0 72px';
+        const input = document.createElement('input');
+        input.type = 'range';
+        input.min = '0';
+        input.max = '1';
+        input.step = '0.01';
+        input.value = '0';
+        input.setAttribute('data-face', name);
+        const num = document.createElement('span');
+        num.textContent = '0.00';
+        num.style.flex = '0 0 36px';
+        input.addEventListener('input', () => {
+          vceFaceTouched = true;
+          num.textContent = Number(input.value).toFixed(2);
+          vceApplyFaceSliders();
+        });
+        row.appendChild(title);
+        row.appendChild(input);
+        row.appendChild(num);
+        box.appendChild(row);
+        const scaleRow = document.createElement('label');
+        scaleRow.className = 'vrma-scrub';
+        const scaleTitle = document.createElement('span');
+        scaleTitle.textContent = '一杯の強さ';
+        scaleTitle.title = (vceFaceLabel[name] || name) + ' を一杯にしたときの形。1がオリジナルです';
+        scaleTitle.style.flex = '0 0 72px';
+        const scale = document.createElement('input');
+        scale.type = 'range';
+        scale.min = '0';
+        scale.max = '1';
+        scale.step = '0.01';
+        scale.value = '1';
+        scale.setAttribute('data-face-scale', name);
+        const scaleNum = document.createElement('span');
+        scaleNum.textContent = '1.00';
+        scaleNum.style.flex = '0 0 36px';
+        scale.addEventListener('input', () => {
+          let n = parseFloat(scale.value);
+          if (!isFinite(n)) n = 1;
+          vceFaceScale.set(name, n);
+          scaleNum.textContent = n.toFixed(2);
+          vceApplyFaceScales();
+        });
+        scaleRow.appendChild(scaleTitle);
+        scaleRow.appendChild(scale);
+        scaleRow.appendChild(scaleNum);
+        box.appendChild(scaleRow);
+      });
+    }
+    function vceApplyFaceSliders() {
+      if (!vceFaceTouched || vceFaceMotionOwns()) return;
+      const box = document.getElementById('vrmaFaceList');
+      if (!box) return;
+      const sliders = box.querySelectorAll('input[data-face]');
+      if (!sliders.length) return;
+      [vrmEdited, vrmOriginal].forEach((vrm) => {
+        const em = vrm && vrm.expressionManager;
+        if (!em || !em.setValue) return;
+        sliders.forEach((el) => {
+          const name = el.getAttribute('data-face');
+          let n = parseFloat(el.value);
+          if (!isFinite(n)) n = 0;
+          try { em.setValue(name, n); } catch (_) {}
+        });
+        try { if (em.update) em.update(); } catch (_) {}
+      });
+    }
+    function vceClearFaceSliders() {
+      const box = document.getElementById('vrmaFaceList');
+      if (box) {
+        box.querySelectorAll('input[data-face]').forEach((el) => {
+          el.value = '0';
+          const num = el.nextElementSibling;
+          if (num) num.textContent = '0.00';
+        });
+        box.querySelectorAll('input[data-face-scale]').forEach((el) => {
+          el.value = '1';
+          const num = el.nextElementSibling;
+          if (num) num.textContent = '1.00';
+        });
+      }
+      vceFaceTouched = false;
+      vceFaceScale.clear();
+      vceApplyFaceScales();
+      [vrmEdited, vrmOriginal].forEach((vrm) => {
+        const em = vrm && vrm.expressionManager;
+        if (!em || !em.setValue) return;
+        vceFaceNames(vrm).forEach((name) => { try { em.setValue(name, 0); } catch (_) {} });
+        try { if (em.update) em.update(); } catch (_) {}
+      });
+      if (vrmAnimation && vrmaMixerEdited) {
+        try { vrmaMixerEdited.update(0); } catch (_) {}
+        try { if (vrmaMixerOriginal) vrmaMixerOriginal.update(0); } catch (_) {}
+        try { if (vrmEdited) vceUpdateVrmPreview(vrmEdited, 0); } catch (_) {}
+        try { if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
+      }
+    }
     function vrmaReadExpressions(vrm) {
       const em = vrm && vrm.expressionManager;
       if (!em || !em.expressionMap) return null;
@@ -8377,13 +8883,45 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       src.dispatchEvent(new Event('change'));
     });
     document.getElementById('vrmaStageFile').addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      file.arrayBuffer().then((buf) => loadVrmaStageBuffer(buf, file.name)).catch(() => {
-        vceAlert('ステージの読み込みに失敗しました。GLBを選んでください。');
+      const files = [...(e.target.files || [])];
+      if (!files.length) return;
+      files.forEach((file) => {
+        file.arrayBuffer().then((buf) => loadVrmaStageBuffer(buf, file.name)).catch(() => {
+          vceAlert('GLBの読み込みに失敗しました。GLBを選んでください。');
+        });
       });
     });
     document.getElementById('btnVrmaStageClear').addEventListener('click', () => clearVrmaStage());
+    function watchTakePropFiles(fileList) {
+      [...(fileList || [])].forEach((file) => {
+        if (!file || !/\.(glb|gltf)$/i.test(file.name || '')) return;
+        file.arrayBuffer().then((buf) => loadVrmaStageBuffer(buf, file.name)).catch(() => {
+          vceAlert('GLBの読み込みに失敗しました。GLBを選んでください。');
+        });
+      });
+    }
+    const watchPropFile = document.getElementById('watchPropFile');
+    if (watchPropFile) watchPropFile.addEventListener('change', (e) => {
+      watchTakePropFiles(e.target.files);
+      e.target.value = '';
+    });
+    const watchPropDrop = document.getElementById('watchPropDrop');
+    if (watchPropDrop) {
+      watchPropDrop.addEventListener('dragover', (e) => {
+        if (!e.dataTransfer) return;
+        e.preventDefault();
+        e.stopPropagation();
+        watchPropDrop.classList.add('vrm-file-over');
+      });
+      watchPropDrop.addEventListener('dragleave', () => watchPropDrop.classList.remove('vrm-file-over'));
+      watchPropDrop.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        watchPropDrop.classList.remove('vrm-file-over');
+        watchTakePropFiles(e.dataTransfer && e.dataTransfer.files);
+      });
+    }
+    if (typeof watchRenderPropList === 'function') watchRenderPropList();
     bindFileDrop(
       document.querySelector('[data-block-id="vrma"]'),
       (f) => /\.(vrma|glb|gltf)$/i.test(f.name || ''),
@@ -8418,6 +8956,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     document.getElementById('btnVrmaWatch').addEventListener('click', () => {
       if (!vrmaWatchOn) setVrmaWatch(true);
     });
+    const btnVrmaFaceClear = document.getElementById('btnVrmaFaceClear');
+    if (btnVrmaFaceClear) btnVrmaFaceClear.addEventListener('click', () => { try { vceClearFaceSliders(); } catch (err) { console.error(err); } });
     document.addEventListener('keydown', (e) => {
       if (!vrmaWatchOn || e.key !== 'Escape') return;
       e.preventDefault();
@@ -8436,7 +8976,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }, true);
     document.addEventListener('fullscreenchange', leaveVrmaWatchIfFullscreenGone);
     document.addEventListener('webkitfullscreenchange', leaveVrmaWatchIfFullscreenGone);
+    document.addEventListener('fullscreenchange', watchMaybeNoteMp4);
+    document.addEventListener('webkitfullscreenchange', watchMaybeNoteMp4);
+    const watchMp4NoteOk = document.getElementById('watchMp4NoteOk');
+    if (watchMp4NoteOk) watchMp4NoteOk.addEventListener('click', () => {
+      const note = document.getElementById('watchMp4Note');
+      if (note) note.hidden = true;
+    });
     function leaveVrmaWatchIfFullscreenGone() {
+      if (watchSaveHold || watchMovieBusy) return;
       const still = document.fullscreenElement || document.webkitFullscreenElement;
       if (!vrmaWatchOn || still) return;
       if (watchMovieBusy) { watchMovieStop = true; watchMovieLeaveAfter = true; return; }
@@ -8533,6 +9081,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       disposeVrmaMixers();
       vrmEdited = null;
       vrmOriginal = null;
+      try { vceRebuildFaceSliders(); } catch (_) {}
       if (typeof clearSceneGizmoOverlays === 'function') clearSceneGizmoOverlays();
       if (attachGroups.length || attachedGlb) {
         transformControl.detach();
@@ -8569,6 +9118,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         snapshotVrmColliders();
         try { restoreAttachedPartsFromVrm(vrmEdited); } catch (err) { console.error(err); }
         try { if (vrmEdited.update) vrmEdited.update(0); } catch (_) {}
+        try { vceRebuildFaceSliders(); } catch (err) { console.error(err); }
         try { if (typeof vceRememberLoadedHeight === 'function') vceRememberLoadedHeight(); } catch (err) { console.error(err); }
         try { if (typeof buildNativeSpringList === 'function') buildNativeSpringList(vrmEdited); } catch (err) { console.error(err); }
         try { restorePaintLayersFromBuffer(rawVrmArrayBuffer); } catch (err) { console.error(err); }
@@ -8579,6 +9129,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           vrmOriginal = gltf2.userData.vrm; sceneOriginal.add(vrmOriginal.scene);
           try { vceSnapshotCanonicalRest(vrmOriginal); } catch (err) { console.error(err); }
           VRMUtils.rotateVRM0(vrmOriginal);
+          try { vceRememberFaceBinds(); vceApplyFaceScales(); } catch (err) { console.error(err); }
           try { mirrorAttachSpringsToOriginal(); } catch (err) { console.error(err); }
           try { if (vrmAnimation && vrmaStarted) bindVrmaToVrms(); } catch (err) { console.error(err); }
           document.querySelectorAll('.needs-vrm').forEach((el) => el.classList.remove('disabled')); URL.revokeObjectURL(blobUrl);
@@ -8694,6 +9245,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (groupId) selectAttachGroup(groupId, true);
         else if (activeAttachGroupId) clearAttachSelection(true);
         framePreviewSelection();
+        if (obj.userData && obj.userData.watchPropId && typeof watchFocusProp === 'function') watchFocusProp(obj.userData.watchPropId);
       });
       li.addEventListener('mouseenter', () => {
         if (vrmaWatchOn) return;
@@ -8979,6 +9531,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         meshMap.set(obj.uuid, meshData);
         ul.appendChild(createMeshListItem(obj, meshData));
       });
+      if (typeof watchReregisterProps === 'function') watchReregisterProps();
       rebuildCopyPartMenus();
     }
 
@@ -11682,7 +12235,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         return;
       }
       const lis = [...document.querySelectorAll('#meshList li[data-from-glb="1"]')];
-      const ordered = lis.map((li) => meshMap.get(li.dataset.meshUuid)).filter((d) => d && d.mesh && !d.deleted);
+      const ordered = lis.map((li) => meshMap.get(li.dataset.meshUuid)).filter((d) => d && d.mesh && !d.deleted && !d.watchPropId);
       ordered.forEach((data, i) => {
         data.glbIndex = i + 1;
         data.name = formatGlbListName(data.mesh, i + 1, ordered.length);
@@ -26838,6 +27391,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       return out;
     }
     // 候補を順に取得し、このアプリのHTMLだと確かめられたものだけを返す(エラーページなどは飛ばす)
+    function vceHtmlVersion(text) {
+      const m = String(text || '').match(/const APP_VERSION = '([^']+)'/);
+      return m ? m[1] : '';
+    }
     async function vceFetchSelfHtml(fetchFn, candidates) {
       for (const url of candidates) {
         try {
@@ -26845,8 +27402,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           if (!res || !res.ok) continue;
           const buf = await res.arrayBuffer();
           const head = new TextDecoder('utf-8').decode(buf);
-          if (head.indexOf('const APP_VERSION =') < 0) continue;
-          return { url, buf };
+          const ver = vceHtmlVersion(head);
+          if (!ver) continue;
+          return { url, buf, ver };
         } catch (_) {}
       }
       return null;
@@ -26858,6 +27416,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const token = packVersionToken(APP_VERSION);
         const got = await vceFetchSelfHtml((u, o) => fetch(u, o), vceSelfHtmlCandidates(location.href, token));
         if (!got) throw new Error('fetch');
+        if (got.ver !== APP_VERSION) {
+          await vceAlert('画面は ' + APP_VERSION + ' ですが、保存のために取り直した中身は ' + got.ver + ' でした。\n古い版は保存しません。プレビューを開き直して、画面の版が ' + APP_VERSION + ' になってから、もう一度押してください。');
+          return;
+        }
         const blob = new Blob([got.buf], { type: 'text/html' });
         const a = document.createElement('a');
         const url = URL.createObjectURL(blob);
@@ -26866,7 +27428,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         document.body.appendChild(a);
         a.click();
         a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 2000);
+        window.setTimeout(() => URL.revokeObjectURL(url), 180000);
       } catch (_) {
         await vceAlert('このHTMLを自動で保存できませんでした。\n\n'
           + 'ファイルを直接開いている場合や、このページの取得が制限されている場合に起きます。\n\n'
@@ -27233,6 +27795,47 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       };
       visit(root);
       return removed;
+    }
+    function applyFaceScaleToGltf(gltfJson) {
+      if (!gltfJson || !vceFaceScale.size) return 0;
+      const scaleFor = (name) => vceFaceScaleOf(name);
+      let changed = 0;
+      const touch = (expr, scale) => {
+        if (!expr || scale === 1 || !Array.isArray(expr.morphTargetBinds)) return;
+        expr.morphTargetBinds.forEach((b) => {
+          if (!b) return;
+          const w = typeof b.weight === 'number' ? b.weight : 1;
+          b.weight = Math.round(w * scale * 1000) / 1000;
+          changed += 1;
+        });
+      };
+      const v1 = gltfJson.extensions && gltfJson.extensions.VRMC_vrm && gltfJson.extensions.VRMC_vrm.expressions;
+      if (v1) {
+        const preset = v1.preset || {};
+        const custom = v1.custom || {};
+        Object.keys(preset).forEach((name) => touch(preset[name], scaleFor(name)));
+        Object.keys(custom).forEach((name) => touch(custom[name], scaleFor(name)));
+      }
+      const groups = gltfJson.extensions && gltfJson.extensions.VRM && gltfJson.extensions.VRM.blendShapeMaster && gltfJson.extensions.VRM.blendShapeMaster.blendShapeGroups;
+      if (Array.isArray(groups)) {
+        groups.forEach((g) => {
+          if (!g || !Array.isArray(g.binds)) return;
+          const preset = g.presetName && vceVrm0FaceRuntime[String(g.presetName).toLowerCase()];
+          const scale = scaleFor(preset || g.name || '');
+          if (scale === 1) return;
+          g.binds.forEach((b) => {
+            if (!b || typeof b.weight !== 'number') return;
+            b.weight = Math.round(b.weight * scale * 1000) / 1000;
+            changed += 1;
+          });
+        });
+      }
+      if (!changed) return 0;
+      gltfJson.extras = gltfJson.extras || {};
+      const list = Array.isArray(gltfJson.extras.vrmEditorHistory) ? gltfJson.extras.vrmEditorHistory : [];
+      list.push({ v: APP_VERSION, t: appNowStamp(), op: 'face-scale', file: '', id: '', n: changed });
+      gltfJson.extras.vrmEditorHistory = list;
+      return changed;
     }
     function vceApplyClusterLicense(gltfJson) {
       const vrm = gltfJson && gltfJson.extensions && gltfJson.extensions.VRMC_vrm;
@@ -27913,6 +28516,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         }
         let fullBin = concatExportBin(origBinBuffer, extraBinData);
         if (gltfJson.buffers && gltfJson.buffers[0]) gltfJson.buffers[0].byteLength = fullBin.byteLength;
+        try { applyFaceScaleToGltf(gltfJson); } catch (err) { console.error(err); }
         if (gltfJson.extensions && gltfJson.extensions.VRM && !gltfJson.extensions.VRMC_vrm) {
           const choice = await vceChoose('このモデルは VRM 0.x です。\nclusterのワールドでは、0.x のまま出すと、追加パーツの頂点が引っ張られることがあります。\n0.x を 1.0 に変換して出すと、その破綻は起きにくくなります。ファイルに書くとき、今見えている向きを 1.0 の座標に焼き込みます。画面のモデルは回しません。\n\n1.0の状態で再編集に戻るを選ぶと、ファイルは出ません。ばねは 1.0 で残る状態のまま、位置や倍率を直せます。0.x の原本は残っています。\n\n.vpox は 0.x のままの検証用です。VRMとしては使えません。', [
             { value: 'v1', label: '1.0にして書き出す', color: '#2e7d32' },
@@ -34335,6 +34939,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let watchMovieStop = false;
     let watchMovieFinish = false;
     let watchMovieLeaveAfter = false;
+    let watchSaveHold = false;
     let watchMovieMs = 0;
     let watchMovieKind = null;
     const watchGravSaved = new Map();
@@ -34363,15 +34968,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!note) return;
       const mode = el ? el.value : 'off';
       if (mode === 'blob') note.textContent = 'いちばん軽いです。半透明の板が1枚です。ほぼ増えません。姿勢の形は出ません。足が離れると薄くなります。';
-      else if (mode === 'planar') note.textContent = '太陽の向きへ、姿勢を床へ落とします。足元が濃く、離れるほど薄くなり、縁はぼかします。重なった面で黒は足しません。';
+      else if (mode === 'planar') note.textContent = '太陽の向きへ、姿勢を床へ落とします。足元が濃く、離れるほど薄くなります。縁はなめらかにぼかします。濃さは、上のスライダーです。重なった面で黒は足しません。';
       else if (mode === 'picture') note.textContent = '太陽の向きへ、今の姿勢を床へ落とします。濃さは、上のスライダーです。足元の丸い滲みはありません。';
       else note.textContent = '影は出しません。本当の影マップは使いません。';
       const opacity = document.getElementById('watchPictureOpacity');
-      if (opacity) opacity.disabled = mode !== 'picture';
+      if (opacity) opacity.disabled = mode !== 'picture' && mode !== 'planar';
     }
     function watchFloorAt(foot) {
       if (!foot) return 0;
-      const y = vrmaStageFloorY(foot.x, foot.z, foot.y);
+      const y = vrmaStageFloorY(vrmaStageRoot, foot.x, foot.z, foot.y);
       return y == null ? 0 : y;
     }
     function watchHideDecor(opts) {
@@ -34554,7 +35159,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         watchMoteList.push(mesh);
       }
       sceneEdited.add(watchMoteRoot);
-      watchPlanarMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1, depthWrite: false, depthTest: false, side: THREE.DoubleSide, skinning: true });
+      watchPlanarMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1, depthWrite: false, depthTest: false, side: THREE.DoubleSide });
+      watchPlanarMat.skinning = true;
       watchPlanarMat.blending = THREE.CustomBlending;
       watchPlanarMat.blendEquation = THREE.MaxEquation;
       watchPlanarMat.blendSrc = THREE.OneFactor;
@@ -34592,8 +35198,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       picMesh.visible = false;
       picMesh.userData.watchDecor = true;
       sceneEdited.add(picMesh);
-      watchPicture = { target: picTarget, tex: picSize, cam: new THREE.OrthographicCamera(-1, 1, 1, -1, 0.05, 40), mesh: picMesh, dark: new THREE.MeshBasicMaterial({ color: 0x000000, skinning: true }), view: picView, hit: new THREE.Vector3(), span: 1.6, corner: new THREE.Vector3(), bounds: null };
-      const project = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1, depthTest: false, depthWrite: false, side: THREE.DoubleSide, skinning: true });
+      watchPicture = { target: picTarget, tex: picSize, cam: new THREE.OrthographicCamera(-1, 1, 1, -1, 0.05, 40), mesh: picMesh, dark: new THREE.MeshBasicMaterial({ color: 0x000000 }), view: picView, hit: new THREE.Vector3(), span: 1.6, corner: new THREE.Vector3(), bounds: null };
+      watchPicture.dark.skinning = true;
+      const project = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1, depthTest: false, depthWrite: false, side: THREE.DoubleSide });
+      project.skinning = true;
       project.customProgramCacheKey = function () { return 'watchPicProject'; };
       project.onBeforeCompile = function (shader) {
         shader.uniforms.uFloorY = watchPlanarU.floorY;
@@ -34664,6 +35272,25 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         watchSyncGizmoBar('');
         return;
       }
+      if (String(which).indexOf('prop:') === 0) {
+        const prop = typeof watchPropById === 'function' ? watchPropById(which.slice(5)) : null;
+        if (watchHelpA) watchHelpA.visible = false;
+        if (watchHelpB) watchHelpB.visible = false;
+        if (watchWindArrow) watchWindArrow.visible = false;
+        if (watchSunArrow) watchSunArrow.visible = false;
+        if (!prop) {
+          watchGizmoWhich = '';
+          watchAttachGizmo();
+          return;
+        }
+        try { transformControl.attach(prop.root); } catch (_) {}
+        try { transformControl.setMode(watchPropMode || 'translate'); } catch (_) {}
+        transformControl.camera = cameraSingle;
+        transformControl.visible = true;
+        transformControl.enabled = true;
+        watchSyncGizmoBar(which);
+        return;
+      }
       let obj = watchHelpA;
       let mode = 'translate';
       if (which === 'lightB') obj = watchHelpB;
@@ -34686,7 +35313,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!bar) return;
       const names = { sun: '太陽の向き', lightA: 'ライト1の位置', lightB: 'ライト2の位置', wind: '風の向き' };
       bar.hidden = !which;
-      if (text && which) text.textContent = names[which] + 'を動かしています';
+      if (!text || !which) return;
+      if (String(which).indexOf('prop:') === 0) {
+        const prop = typeof watchPropById === 'function' ? watchPropById(which.slice(5)) : null;
+        const modeName = watchPropMode === 'rotate' ? '回転' : (watchPropMode === 'scale' ? '大きさ' : '位置');
+        text.textContent = (prop ? prop.name : 'GLB') + 'の' + modeName + 'を動かしています';
+        return;
+      }
+      text.textContent = names[which] + 'を動かしています';
     }
     function watchPutGizmoAway() {
       watchGizmoWhich = '';
@@ -34706,7 +35340,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchRenderWatchGizmo(camera, x, y, w, h) {
       const obj = transformControl && transformControl.object;
-      const on = !!(obj && obj.userData && obj.userData.watchHandle && transformControl.visible);
+      const propOn = !!(obj && obj.userData && obj.userData.watchProp);
+      const on = !!(obj && transformControl.visible && obj.userData && (obj.userData.watchHandle || propOn));
       if (!on || w <= 0 || h <= 0) return;
       const keep = new Set([transformControl, watchHelpA, watchHelpB, watchWindArrow, watchSunArrow]);
       const prev = [];
@@ -34844,6 +35479,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
                 watchMoteBoxPool[n] = box;
               }
               box.copy(bb).applyMatrix4(obj.matrixWorld);
+              const sx = box.max.x - box.min.x;
+              const sy = box.max.y - box.min.y;
+              const sz = box.max.z - box.min.z;
+              if (!isFinite(sx) || !isFinite(sy) || !isFinite(sz)) continue;
+              if (sx > 40 || sy > 40 || sz > 40) continue;
               if (!box.isEmpty()) n += 1;
             }
           }
@@ -34929,10 +35569,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           _watchMoteScale.setFromMatrixScale(m);
           const scale = Math.max(Math.abs(_watchMoteScale.x), Math.abs(_watchMoteScale.y), Math.abs(_watchMoteScale.z)) || 1;
           const radius = (shape.radius || 0.08) * scale + 0.04;
-          if (!(radius > 0)) continue;
+          if (!(radius > 0) || radius > 1.2 || !isFinite(radius)) continue;
           const off = shape.offset;
           if (off) _watchMoteA.copy(off).applyMatrix4(m);
           else _watchMoteA.setFromMatrixPosition(m);
+          if (!isFinite(_watchMoteA.x) || !isFinite(_watchMoteA.y) || !isFinite(_watchMoteA.z)) continue;
           let rec = watchMoteColPool[n];
           if (!rec) {
             rec = { ax: 0, ay: 0, az: 0, bx: 0, by: 0, bz: 0, r: 0, cap: 0 };
@@ -35053,7 +35694,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchRenderPicture(foot, floorY) {
       if (!vrmEdited || !vrmEdited.scene) return;
-      const box = new THREE.Box3().setFromObject(vrmEdited.scene);
+      const box = new THREE.Box3();
       const human = vrmEdited.humanoid;
       const corner = watchPicture.corner;
       if (human) {
@@ -35063,11 +35704,19 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           if (!node) return;
           node.updateWorldMatrix(true, false);
           node.getWorldPosition(corner);
+          if (!isFinite(corner.x) || !isFinite(corner.y) || !isFinite(corner.z)) return;
           box.expandByPoint(corner);
         });
       }
-      attachGroups.forEach((g) => { if (g && g.root) box.expandByObject(g.root); });
-      box.expandByScalar(0.08);
+      if (foot && isFinite(foot.x) && isFinite(foot.y) && isFinite(foot.z)) box.expandByPoint(corner.set(foot.x, foot.y, foot.z));
+      attachGroups.forEach((g) => {
+        if (!g || !g.root) return;
+        try { box.expandByObject(g.root); } catch (_) {}
+      });
+      if (box.isEmpty()) {
+        try { box.setFromObject(vrmEdited.scene); } catch (_) { return; }
+      }
+      box.expandByScalar(0.35);
       if (box.isEmpty()) return;
       const ray = watchLightRay(watchPlanarU.lightDir.value);
       watchPlanarU.floorY.value = floorY;
@@ -35094,6 +35743,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         floorMinZ = Math.min(floorMinZ, foot.z - minSpan);
         floorMaxZ = Math.max(floorMaxZ, foot.z + minSpan);
       }
+      if (!isFinite(floorMinX) || !isFinite(floorMaxX) || !isFinite(floorMinZ) || !isFinite(floorMaxZ)) return;
       watchPicture.bounds = { minX: floorMinX, maxX: floorMaxX, minZ: floorMinZ, maxZ: floorMaxZ };
       const cam = watchPicture.cam;
       const cx = (floorMinX + floorMaxX) * 0.5;
@@ -35157,10 +35807,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (watchPlanarBlur) return;
       const vert = 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }';
       const blurMat = new THREE.ShaderMaterial({
-        uniforms: { tDiffuse: { value: null }, texel: { value: new THREE.Vector2() }, radius: { value: 8 } },
+        uniforms: { tDiffuse: { value: null }, texel: { value: new THREE.Vector2() }, radius: { value: 1 } },
         depthTest: false, depthWrite: false,
         vertexShader: vert,
-        fragmentShader: 'uniform sampler2D tDiffuse; uniform vec2 texel; uniform float radius; varying vec2 vUv; void main(){ vec2 o = texel * radius; float a = texture2D(tDiffuse, vUv).a * 0.227027; a += texture2D(tDiffuse, vUv + o).a * 0.1945946; a += texture2D(tDiffuse, vUv - o).a * 0.1945946; a += texture2D(tDiffuse, vUv + o * 2.0).a * 0.1216216; a += texture2D(tDiffuse, vUv - o * 2.0).a * 0.1216216; a += texture2D(tDiffuse, vUv + o * 3.0).a * 0.054054; a += texture2D(tDiffuse, vUv - o * 3.0).a * 0.054054; a += texture2D(tDiffuse, vUv + o * 4.0).a * 0.016216; a += texture2D(tDiffuse, vUv - o * 4.0).a * 0.016216; gl_FragColor = vec4(0.0, 0.0, 0.0, a); }'
+        fragmentShader: 'uniform sampler2D tDiffuse; uniform vec2 texel; uniform float radius; varying vec2 vUv; void main(){ vec2 o = texel * radius; float a = texture2D(tDiffuse, vUv + vec2(-o.x, -o.y)).a; a += texture2D(tDiffuse, vUv + vec2(o.x, -o.y)).a; a += texture2D(tDiffuse, vUv + vec2(-o.x, o.y)).a; a += texture2D(tDiffuse, vUv + vec2(o.x, o.y)).a; gl_FragColor = vec4(0.0, 0.0, 0.0, a * 0.25); }'
       });
       const showMat = new THREE.ShaderMaterial({
         uniforms: { tDiffuse: { value: null }, gain: { value: 0.46 } },
@@ -35195,6 +35845,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           rt.texture.generateMipmaps = false;
           rt.texture.minFilter = THREE.LinearFilter;
           rt.texture.magFilter = THREE.LinearFilter;
+          rt.texture.wrapS = THREE.ClampToEdgeWrapping;
+          rt.texture.wrapT = THREE.ClampToEdgeWrapping;
           if (THREE.NoColorSpace) rt.texture.colorSpace = THREE.NoColorSpace;
           return rt;
         };
@@ -35216,10 +35868,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const prevColor = new THREE.Color();
       renderer.getClearColor(prevColor);
       const prevAlpha = renderer.getClearAlpha();
-      const blurTo = (src, dest, dirX, dirY) => {
+      const blurTo = (src, dest, radius) => {
         watchPlanarBlur.blurMat.uniforms.tDiffuse.value = src.texture;
-        watchPlanarBlur.blurMat.uniforms.texel.value.set(dirX / src.width, dirY / src.height);
-        watchPlanarBlur.blurMat.uniforms.radius.value = 8;
+        watchPlanarBlur.blurMat.uniforms.texel.value.set(1 / src.width, 1 / src.height);
+        watchPlanarBlur.blurMat.uniforms.radius.value = radius;
         watchPlanarBlur.quad.material = watchPlanarBlur.blurMat;
         renderer.setRenderTarget(dest);
         renderer.setViewport(0, 0, dest.width / dpr, dest.height / dpr);
@@ -35236,14 +35888,24 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         renderer.setClearColor(0x000000, 0);
         renderer.clear(true, true, true);
         renderer.render(sceneEdited, camera);
-        blurTo(watchPlanarBlur.a, watchPlanarBlur.b, 1, 0);
-        blurTo(watchPlanarBlur.b, watchPlanarBlur.a, 0, 1);
+        let read = watchPlanarBlur.a;
+        let write = watchPlanarBlur.b;
+        [1, 2, 3].forEach((radius) => {
+          blurTo(read, write, radius);
+          const swap = read;
+          read = write;
+          write = swap;
+        });
         renderer.setRenderTarget(prevTarget);
         renderer.setViewport(x, y, w, h);
         renderer.setScissor(x, y, w, h);
         renderer.setScissorTest(true);
         renderer.autoClear = false;
-        watchPlanarBlur.showMat.uniforms.tDiffuse.value = watchPlanarBlur.a.texture;
+        watchPlanarU.picture.value = watchNum('watchPictureOpacity', 0.82, 0, 1);
+        const dense = watchPlanarU.picture.value;
+        const gain = dense <= 0.82 ? (dense / 0.82) * 0.46 : 0.46 + ((dense - 0.82) / 0.18) * 0.34;
+        watchPlanarBlur.showMat.uniforms.gain.value = gain;
+        watchPlanarBlur.showMat.uniforms.tDiffuse.value = read.texture;
         watchPlanarBlur.quad.material = watchPlanarBlur.showMat;
         renderer.render(watchPlanarBlur.scene, watchPlanarBlur.cam);
       } finally {
@@ -35421,10 +36083,74 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         renderer.autoClear = prevClear;
       }
     }
+    function watchSyncPoseMatrices() {
+      const vrm = typeof vrmEdited !== 'undefined' ? vrmEdited : null;
+      if (!vrm || !vrm.scene) return;
+      vrm.scene.updateMatrixWorld(true);
+      vrm.scene.traverse((obj) => {
+        if (obj.isSkinnedMesh && obj.skeleton) {
+          try { obj.skeleton.update(); } catch (_) {}
+        }
+      });
+    }
+    function watchStepMotes(step, foot, floorY) {
+      if (!watchMoteRoot) return;
+      const on = !!(document.getElementById('watchMotes') && document.getElementById('watchMotes').checked);
+      watchMoteRoot.visible = on;
+      if (!on) return;
+      watchWindVector(_watchWind);
+      const windK = watchNum('watchMoteWind', 1, 0, 3);
+      const emit = watchNum('watchMoteEmit', 2.2, 0, 4);
+      const gravity = watchNum('watchMoteGravity', 1, -2, 2);
+      let left = step > 0 ? step : 0;
+      if (left > 0.1) left = 0.1;
+      let guard = 0;
+      if (left > 0) {
+        watchMoteStageBoxes();
+        watchMoteRefreshCols();
+      }
+      while (left > 1e-6 && guard < 8) {
+        const dt = left > (1 / 60) ? (1 / 60) : left;
+        left -= dt;
+        guard += 1;
+        watchState.moteTime = (watchState.moteTime || 0) + dt;
+        const t = watchState.moteTime;
+        watchMoteList.forEach((mesh) => {
+          mesh.position.x += _watchWind.x * dt * windK;
+          mesh.position.y += _watchWind.y * dt * windK * 0.35;
+          mesh.position.z += _watchWind.z * dt * windK;
+          mesh.userData.vy -= 0.35 * gravity * dt;
+          mesh.position.y += mesh.userData.vy * dt * 2.2;
+          mesh.rotation.z += mesh.userData.spin * dt;
+          mesh.rotation.x += Math.sin(t * mesh.userData.flicker + mesh.userData.phase) * mesh.userData.tumble * dt;
+          if (mesh.material) {
+            mesh.material.emissiveIntensity = emit * (mesh.userData.kind === 'leaf' ? 0.75 : 1);
+            if (mesh.userData.kind === 'petal') {
+              const wave = 0.5 + 0.5 * Math.sin(t * mesh.userData.flicker + mesh.userData.phase);
+              mesh.material.opacity = 0.25 + 0.5 * wave;
+            }
+          }
+          const stageNy = watchMoteHitStage(mesh, floorY);
+          const bodyNy = watchMoteHitBody(mesh.position);
+          let hitNy = stageNy;
+          if (bodyNy != null && (hitNy == null || Math.abs(bodyNy) > Math.abs(hitNy))) hitNy = bodyNy;
+          if (hitNy == null) mesh.userData.touch = 0;
+          else if (watchMoteBounce(mesh, hitNy)) watchResetMote(mesh, foot, gravity);
+          if (gravity < 0 && mesh.position.y > (foot ? foot.y : 1) + 3.4) watchResetMote(mesh, foot, gravity);
+        });
+      }
+      watchMoteRoot.updateMatrixWorld(true);
+    }
     function watchBeforeRender(step) {
       if (!vrmaWatchOn || !watchReady) return;
-      const foot = vceEditedFootPlant();
-      const floorY = watchFloorAt(foot);
+      try { watchSyncPoseMatrices(); } catch (_) {}
+      let foot = null;
+      let floorY = 0;
+      try {
+        foot = vceEditedFootPlant();
+        floorY = watchFloorAt(foot);
+      } catch (err) { console.error(err); foot = null; floorY = 0; }
+      try { watchStepMotes(step, foot, floorY); } catch (err) { console.error(err); }
       if (watchHelpA && transformControl.object === watchHelpA) watchLightA.position.copy(watchHelpA.position);
       else if (watchHelpA && watchLightA) watchHelpA.position.copy(watchLightA.position);
       if (watchHelpB && transformControl.object === watchHelpB) watchLightB.position.copy(watchHelpB.position);
@@ -35441,81 +36167,43 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       const mode = (document.getElementById('watchShadowMode') || {}).value || 'off';
       const gap = foot ? foot.y - floorY : 0;
-      if (mode === 'planar' || mode === 'picture') watchUpdateShadowFade(foot);
-      watchPlanarU.picture.value = watchNum('watchPictureOpacity', 0.82, 0, 1);
-      if (watchBlob) {
-        const show = mode === 'blob' && !!foot;
-        watchBlob.visible = show;
-        if (show) {
-          const box = new THREE.Box3().setFromObject(vrmEdited.scene);
-          const size = box.getSize(new THREE.Vector3());
-          const span = Math.max(0.35, Math.max(size.x, size.z) * 0.7);
-          watchBlob.scale.set(span, span, 1);
-          watchBlob.position.set(foot.x, floorY + 0.01, foot.z);
-          watchBlob.material.opacity = 0.8 * Math.max(0, Math.min(1, 1 - gap / 0.75));
-        }
-      }
-      if (watchPicture && watchPicture.mesh) {
-        const show = mode === 'picture' && !!foot && !!vrmEdited;
-        watchPicture.mesh.visible = show;
-        if (show) {
-          watchState.pictureTick += 1;
-          if (!watchPicture.bounds || watchState.pictureTick % 2 === 1) watchRenderPicture(foot, floorY);
-          const b = watchPicture.bounds;
-          if (b) {
-            watchPicture.mesh.scale.set(Math.max(0.2, b.maxX - b.minX), Math.max(0.2, b.maxZ - b.minZ), 1);
-            watchPicture.mesh.position.set((b.minX + b.maxX) * 0.5, floorY + 0.03, (b.minZ + b.maxZ) * 0.5);
+      try {
+        if (mode === 'planar' || mode === 'picture') watchUpdateShadowFade(foot);
+        watchPlanarU.picture.value = watchNum('watchPictureOpacity', 0.82, 0, 1);
+        if (watchBlob) {
+          const show = mode === 'blob' && !!foot;
+          watchBlob.visible = show;
+          if (show) {
+            watchState.blobTick = (watchState.blobTick || 0) + 1;
+            if (!(watchState.blobSpan > 0) || watchState.blobTick % 30 === 1) {
+              try {
+                const box = new THREE.Box3().setFromObject(vrmEdited.scene);
+                const size = box.getSize(new THREE.Vector3());
+                if (isFinite(size.x) && isFinite(size.z)) watchState.blobSpan = Math.max(0.35, Math.max(size.x, size.z) * 0.7);
+              } catch (_) {}
+            }
+            const span = watchState.blobSpan > 0 ? watchState.blobSpan : 0.55;
+            watchBlob.scale.set(span, span, 1);
+            watchBlob.position.set(foot.x, floorY + 0.01, foot.z);
+            watchBlob.material.opacity = 0.8 * Math.max(0, Math.min(1, 1 - gap / 0.75));
           }
         }
-      }
-      if (watchMoteRoot) {
-        const on = !!(document.getElementById('watchMotes') && document.getElementById('watchMotes').checked);
-        watchMoteRoot.visible = on;
-        if (on) {
-          watchWindVector(_watchWind);
-          const windK = watchNum('watchMoteWind', 1, 0, 3);
-          const emit = watchNum('watchMoteEmit', 2.2, 0, 4);
-          const gravity = watchNum('watchMoteGravity', 1, -2, 2);
-          let left = step > 0 ? step : 0;
-          if (left > 0.1) left = 0.1;
-          let guard = 0;
-          if (left > 0) {
-            watchMoteStageBoxes();
-            watchMoteRefreshCols();
+        if (watchPicture && watchPicture.mesh) {
+          const show = mode === 'picture' && !!foot && !!vrmEdited;
+          watchPicture.mesh.visible = show;
+          if (show) {
+            watchState.pictureTick += 1;
+            if (!watchPicture.bounds || watchState.pictureTick % 2 === 1) {
+              try { watchRenderPicture(foot, floorY); } catch (err) { console.error(err); }
+            }
+            const b = watchPicture.bounds;
+            if (b && isFinite(b.minX) && isFinite(b.maxX) && isFinite(b.minZ) && isFinite(b.maxZ)) {
+              watchPicture.mesh.scale.set(Math.max(0.2, b.maxX - b.minX), Math.max(0.2, b.maxZ - b.minZ), 1);
+              watchPicture.mesh.position.set((b.minX + b.maxX) * 0.5, floorY + 0.03, (b.minZ + b.maxZ) * 0.5);
+            }
           }
-          while (left > 1e-6 && guard < 8) {
-            const dt = left > (1 / 60) ? (1 / 60) : left;
-            left -= dt;
-            guard += 1;
-            watchState.moteTime = (watchState.moteTime || 0) + dt;
-            const t = watchState.moteTime;
-            watchMoteList.forEach((mesh) => {
-              mesh.position.x += _watchWind.x * dt * windK;
-              mesh.position.y += _watchWind.y * dt * windK * 0.35;
-              mesh.position.z += _watchWind.z * dt * windK;
-              mesh.userData.vy -= 0.35 * gravity * dt;
-              mesh.position.y += mesh.userData.vy * dt * 2.2;
-              mesh.rotation.z += mesh.userData.spin * dt;
-              mesh.rotation.x += Math.sin(t * mesh.userData.flicker + mesh.userData.phase) * mesh.userData.tumble * dt;
-              if (mesh.material) {
-                mesh.material.emissiveIntensity = emit * (mesh.userData.kind === 'leaf' ? 0.75 : 1);
-                if (mesh.userData.kind === 'petal') {
-                  const wave = 0.5 + 0.5 * Math.sin(t * mesh.userData.flicker + mesh.userData.phase);
-                  mesh.material.opacity = 0.25 + 0.5 * wave;
-                }
-              }
-              const stageNy = watchMoteHitStage(mesh, floorY);
-              const bodyNy = watchMoteHitBody(mesh.position);
-              let hitNy = stageNy;
-              if (bodyNy != null && (hitNy == null || Math.abs(bodyNy) > Math.abs(hitNy))) hitNy = bodyNy;
-              if (hitNy == null) mesh.userData.touch = 0;
-              else if (watchMoteBounce(mesh, hitNy)) watchResetMote(mesh, foot, gravity);
-              if (gravity < 0 && mesh.position.y > (foot ? foot.y : 1) + 3.4) watchResetMote(mesh, foot, gravity);
-            });
-          }
-          watchMoteRoot.updateMatrixWorld(true);
         }
-      }
+      } catch (err) { console.error(err); }
     }
     function watchAfterRender(camera) {
       if (!vrmaWatchOn || !watchReady || !vrmEdited) return;
@@ -35573,12 +36261,31 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       return watchNum('watchMovieSec', 10, 1, 60);
     }
-    async function watchMoviePickCodec() {
+    async function watchMoviePickCodecFast() {
       if (typeof VideoEncoder === 'undefined' || typeof VideoFrame === 'undefined') return null;
-      const base = { width: 1920, height: 1080, bitrate: 6000000, framerate: 30, latencyMode: 'quality' };
-      const mp4s = ['avc1.42E01E', 'avc1.4D401E', 'avc1.640028'];
-      for (let i = 0; i < mp4s.length; i++) {
-        const config = { codec: mp4s[i], avc: { format: 'avc' }, width: base.width, height: base.height, bitrate: base.bitrate, framerate: base.framerate, latencyMode: base.latencyMode };
+      const codecs = ['avc1.42E01E', 'avc1.42001f', 'avc1.4D401E', 'avc1.4D001F', 'avc1.640028', 'avc1.64001F'];
+      const shapes = [
+        { avc: { format: 'avc' } },
+        { avc: { format: 'annexb' } },
+        {},
+        { hardwareAcceleration: 'prefer-hardware' },
+        { hardwareAcceleration: 'prefer-hardware', avc: { format: 'annexb' } },
+        { hardwareAcceleration: 'prefer-hardware', avc: { format: 'avc' } }
+      ];
+      for (let c = 0; c < codecs.length; c++) {
+        for (let s = 0; s < shapes.length; s++) {
+          const config = { codec: codecs[c], width: 1920, height: 1080, bitrate: 6000000, framerate: 30 };
+          const shape = shapes[s];
+          if (shape.hardwareAcceleration) config.hardwareAcceleration = shape.hardwareAcceleration;
+          if (shape.avc) config.avc = shape.avc;
+          try {
+            const ok = await VideoEncoder.isConfigSupported(config);
+            if (ok && ok.supported) return { kind: 'mp4', config: config };
+          } catch (_) {}
+        }
+      }
+      for (let c = 0; c < codecs.length; c++) {
+        const config = { codec: codecs[c], width: 1920, height: 1080, bitrate: 6000000 };
         try {
           const ok = await VideoEncoder.isConfigSupported(config);
           if (ok && ok.supported) return { kind: 'mp4', config: config };
@@ -35586,13 +36293,79 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       const webs = ['vp8', 'vp09.00.10.08'];
       for (let i = 0; i < webs.length; i++) {
-        const config = { codec: webs[i], width: base.width, height: base.height, bitrate: base.bitrate, framerate: base.framerate, latencyMode: base.latencyMode };
+        const config = { codec: webs[i], width: 1920, height: 1080, bitrate: 6000000, framerate: 30 };
         try {
           const ok = await VideoEncoder.isConfigSupported(config);
           if (ok && ok.supported) return { kind: 'webm', config: config };
         } catch (_) {}
       }
       return null;
+    }
+    function watchMovieProveConfig(config, source) {
+      return new Promise((resolve) => {
+        let encoder = null;
+        let got = false;
+        let done = false;
+        const finish = (value) => {
+          if (done) return;
+          done = true;
+          try { if (encoder && encoder.state !== 'closed') encoder.close(); } catch (_) {}
+          resolve(!!value);
+        };
+        try {
+          encoder = new VideoEncoder({
+            output: () => { got = true; },
+            error: () => finish(false)
+          });
+          encoder.configure(config);
+          const canvas = source || document.createElement('canvas');
+          if (!source) {
+            canvas.width = config.width;
+            canvas.height = config.height;
+            const ctx = canvas.getContext('2d', { alpha: false });
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+          }
+          const frame = new VideoFrame(canvas, { timestamp: 0, duration: 33333 });
+          encoder.encode(frame, { keyFrame: true });
+          frame.close();
+          const flushed = encoder.flush();
+          if (flushed && flushed.then) flushed.then(() => setTimeout(() => finish(got), 40), () => finish(false));
+          else finish(got);
+        } catch (_) { finish(false); }
+        setTimeout(() => finish(got), 900);
+      });
+    }
+    async function watchMoviePickCodecChecked() {
+      const codecs = ['avc1.42E01E', 'avc1.4D401E', 'avc1.42001f', 'avc1.4D001F', 'avc1.640028', 'avc1.64001F'];
+      const shapes = [
+        { hardwareAcceleration: 'prefer-hardware', avc: { format: 'annexb' } },
+        { avc: { format: 'annexb' } },
+        { hardwareAcceleration: 'prefer-hardware', avc: { format: 'avc' } },
+        { avc: { format: 'avc' } },
+        { hardwareAcceleration: 'prefer-hardware' },
+        {}
+      ];
+      for (let c = 0; c < codecs.length; c++) {
+        for (let s = 0; s < shapes.length; s++) {
+          const config = { codec: codecs[c], width: 1920, height: 1080, bitrate: 6000000, framerate: 30 };
+          const shape = shapes[s];
+          if (shape.hardwareAcceleration) config.hardwareAcceleration = shape.hardwareAcceleration;
+          if (shape.avc) config.avc = shape.avc;
+          if (await watchMovieProveConfig(config)) return { kind: 'mp4', config: config };
+        }
+      }
+      const webs = ['vp8', 'vp09.00.10.08'];
+      for (let i = 0; i < webs.length; i++) {
+        const config = { codec: webs[i], width: 1920, height: 1080, bitrate: 6000000, framerate: 30 };
+        if (await watchMovieProveConfig(config)) return { kind: 'webm', config: config };
+      }
+      return null;
+    }
+    async function watchMoviePickCodec() {
+      if (typeof VideoEncoder === 'undefined' || typeof VideoFrame === 'undefined') return null;
+      if (vceBrowserIsChrome()) return watchMoviePickCodecFast();
+      return watchMoviePickCodecChecked();
     }
     function watchMovieRefreshLabel() {
       const el = document.getElementById('watchMovieFormat');
@@ -35678,6 +36451,119 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const v = new DataView(out.buffer);
       nums.forEach((n, i) => v.setUint32(i * 4, n >>> 0));
       return out;
+    }
+    function watchMovieCopyBytes(src) {
+      if (!src) return null;
+      if (src instanceof Uint8Array) return new Uint8Array(src);
+      if (src.buffer && src.byteLength != null) return new Uint8Array(src.buffer, src.byteOffset || 0, src.byteLength);
+      try { return new Uint8Array(src); } catch (_) { return null; }
+    }
+    function watchMovieAnnexB(data) {
+      if (!data || data.length < 4) return false;
+      if (data[0] === 0 && data[1] === 0 && data[2] === 1) return true;
+      return data[0] === 0 && data[1] === 0 && data[2] === 0 && data[3] === 1;
+    }
+    function watchMovieNalList(data) {
+      const marks = [];
+      for (let i = 0; i + 3 < data.length; i++) {
+        if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 1) { marks.push(i + 3); i += 2; continue; }
+        if (i + 4 < data.length && data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && data[i + 3] === 1) { marks.push(i + 4); i += 3; continue; }
+      }
+      const nals = [];
+      for (let m = 0; m < marks.length; m++) {
+        const from = marks[m];
+        let to = m + 1 < marks.length ? marks[m + 1] : data.length;
+        if (m + 1 < marks.length) {
+          const next = marks[m + 1];
+          to = next >= 4 && data[next - 4] === 0 && data[next - 3] === 0 && data[next - 2] === 0 && data[next - 1] === 1 ? next - 4 : next - 3;
+        }
+        if (to > from) nals.push(data.subarray(from, to));
+      }
+      return nals;
+    }
+    function watchMovieAvccNals(data) {
+      if (!data || data.length < 5 || watchMovieAnnexB(data)) return null;
+      const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+      const nals = [];
+      let o = 0;
+      while (o + 4 <= data.length) {
+        const len = view.getUint32(o);
+        o += 4;
+        if (!(len > 0) || o + len > data.length) return null;
+        nals.push(data.subarray(o, o + len));
+        o += len;
+      }
+      if (o !== data.length || !nals.length) return null;
+      return nals;
+    }
+    function watchMoviePackAvcc(nals) {
+      let n = 0;
+      nals.forEach((nal) => { n += 4 + nal.length; });
+      const out = new Uint8Array(n);
+      const view = new DataView(out.buffer);
+      let o = 0;
+      nals.forEach((nal) => {
+        view.setUint32(o, nal.length);
+        o += 4;
+        out.set(nal, o);
+        o += nal.length;
+      });
+      return out;
+    }
+    function watchMovieAvcC(sps, pps) {
+      const out = new Uint8Array(11 + sps.length + pps.length);
+      out[0] = 1;
+      out[1] = sps[1];
+      out[2] = sps[2];
+      out[3] = sps[3];
+      out[4] = 0xFF;
+      out[5] = 0xE1;
+      out[6] = (sps.length >> 8) & 255;
+      out[7] = sps.length & 255;
+      out.set(sps, 8);
+      let o = 8 + sps.length;
+      out[o] = 1;
+      out[o + 1] = (pps.length >> 8) & 255;
+      out[o + 2] = pps.length & 255;
+      out.set(pps, o + 3);
+      return out;
+    }
+    function watchMovieAsAvcC(description) {
+      const raw = watchMovieCopyBytes(description);
+      if (!raw || raw.length < 7) return null;
+      if (raw.length > 8 && raw[4] === 97 && raw[5] === 118 && raw[6] === 99 && raw[7] === 67) return raw.subarray(8);
+      if (raw[0] !== 1) return null;
+      return raw;
+    }
+    function watchMoviePrepMp4(chunks, description) {
+      let sps = null;
+      let pps = null;
+      const samples = [];
+      for (let i = 0; i < chunks.length; i++) {
+        const chunk = chunks[i];
+        const nals = watchMovieAnnexB(chunk.data) ? watchMovieNalList(chunk.data) : watchMovieAvccNals(chunk.data);
+        if (!nals || !nals.length) {
+          samples.push({ data: chunk.data, key: chunk.key, ts: chunk.ts });
+          continue;
+        }
+        const keep = [];
+        nals.forEach((nal) => {
+          if (!nal || !nal.length) return;
+          const kind = nal[0] & 31;
+          if (kind === 7) { if (!sps) sps = new Uint8Array(nal); return; }
+          if (kind === 8) { if (!pps) pps = new Uint8Array(nal); return; }
+          if (kind === 9) return;
+          keep.push(nal);
+        });
+        if (!keep.length) nals.forEach((nal) => { if (nal && nal.length && (nal[0] & 31) !== 9) keep.push(nal); });
+        if (!keep.length) return null;
+        samples.push({ data: watchMoviePackAvcc(keep), key: chunk.key, ts: chunk.ts });
+      }
+      const fromBits = sps && pps ? watchMovieAvcC(sps, pps) : null;
+      const fromMeta = watchMovieAsAvcC(description);
+      const avcC = fromBits || fromMeta;
+      if (!avcC) return null;
+      return { samples: samples, avcC: avcC };
     }
     function watchMovieMp4(width, height, avcC, samples) {
       const n = samples.length;
@@ -35890,7 +36776,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
             : '外から読み込んだ動きのファイルです。シーンには名前だけを残し、中身は入れません。'
         });
       }
-      if (stageName && stageName !== '未選択') {
+      watchProps.forEach((prop) => {
+        rows.push({
+          kind: 'stage',
+          name: prop.name.slice(0, 180),
+          note: '外から読み込んだGLBです。シーンには名前だけを残し、中身は入れません。'
+        });
+      });
+      if (!watchProps.length && stageName && stageName !== '未選択') {
         rows.push({
           kind: 'stage',
           name: stageName.slice(0, 180),
@@ -36238,16 +37131,112 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchMovieSave(bytes, ext) {
       const blob = new Blob([bytes], { type: ext === 'mp4' ? 'video/mp4' : 'video/webm' });
-      const a = document.createElement('a');
       const url = URL.createObjectURL(blob);
       const name = watchMovieFileName(ext);
-      a.href = url;
-      a.download = name;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      let link = document.getElementById('watchMovieDownload');
+      if (!link) {
+        link = document.createElement('a');
+        link.id = 'watchMovieDownload';
+        const note = document.getElementById('watchMovieProgress');
+        if (note && note.parentNode) note.parentNode.insertBefore(link, note.nextSibling);
+      }
+      if (link._url) { try { URL.revokeObjectURL(link._url); } catch (_) {} }
+      link._url = url;
+      link.href = url;
+      link.download = name;
+      link.textContent = '保存する：' + name;
+      link.style.display = 'block';
+      link.style.margin = '8px 0';
+      link.style.padding = '8px 10px';
+      link.style.background = '#2F4A6E';
+      link.style.color = '#F4F1EB';
+      link.style.fontWeight = '700';
+      link.style.textAlign = 'center';
+      link.style.textDecoration = 'none';
+      if (!link._bound) {
+        link._bound = true;
+        link.addEventListener('click', (e) => {
+          const fs = document.fullscreenElement || document.webkitFullscreenElement;
+          if (!fs) return;
+          e.preventDefault();
+          watchMovieLeaveFullscreenForSave().then(() => {
+            watchMovieNote('全画面を閉じました。もう一度「保存する」を押してください。自動では始まりません。');
+            watchMovieShowReturnFull();
+          });
+        });
+      }
       return name;
+    }
+    function watchMovieShowReturnFull() {
+      let btn = document.getElementById('watchReturnFull');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'watchReturnFull';
+        btn.textContent = '全画面に戻す';
+        btn.style.margin = '6px 0';
+        const link = document.getElementById('watchMovieDownload');
+        if (link && link.parentNode) link.parentNode.insertBefore(btn, link.nextSibling);
+        btn.addEventListener('click', () => {
+          watchSaveHold = false;
+          const root = document.documentElement;
+          const ask = root.requestFullscreen || root.webkitRequestFullscreen;
+          if (ask) { try { const p = ask.call(root); if (p && p.catch) p.catch(() => {}); } catch (_) {} }
+          btn.hidden = true;
+        });
+      }
+      btn.hidden = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    }
+    function watchMovieLeaveFullscreenForSave() {
+      const fs = document.fullscreenElement || document.webkitFullscreenElement;
+      if (!fs) return Promise.resolve();
+      watchSaveHold = true;
+      return new Promise((resolve) => {
+        let done = false;
+        const force = () => {
+          if (done) return;
+          done = true;
+          document.removeEventListener('fullscreenchange', finish);
+          document.removeEventListener('webkitfullscreenchange', finish);
+          setTimeout(resolve, 60);
+          setTimeout(() => { watchSaveHold = false; }, 8000);
+        };
+        const finish = () => {
+          if (done) return;
+          if (document.fullscreenElement || document.webkitFullscreenElement) return;
+          force();
+        };
+        document.addEventListener('fullscreenchange', finish);
+        document.addEventListener('webkitfullscreenchange', finish);
+        try {
+          const exit = document.exitFullscreen || document.webkitExitFullscreen;
+          const p = exit && exit.call(document);
+          if (p && p.then) p.then(() => finish(), () => force());
+          else setTimeout(finish, 200);
+        } catch (_) { force(); }
+        setTimeout(force, 900);
+      });
+    }
+    async function watchMovieDeliver(bytes, ext) {
+      const wasFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (wasFull) await watchMovieLeaveFullscreenForSave();
+      watchMovieSave(bytes, ext);
+      const win = document.getElementById('vrmaWatchWin');
+      if (win) win.hidden = false;
+      const link = document.getElementById('watchMovieDownload');
+      if (!wasFull && link && !(document.fullscreenElement || document.webkitFullscreenElement)) {
+        try {
+          const a = document.createElement('a');
+          a.href = link.href;
+          a.download = link.download;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        } catch (_) {}
+      }
+      if (link && link.scrollIntoView) { try { link.scrollIntoView({ block: 'nearest' }); } catch (_) {} }
+      watchMovieShowReturnFull();
+      return wasFull;
     }
     function watchMoviePaint(canvas, ctx) {
       renderer.setRenderTarget(null);
@@ -36268,6 +37257,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const framesWanted = Math.max(1, Math.min(1920, Math.round(seconds * 30)));
       const straightEl = document.getElementById('watchMovieStraight');
       const movieStraight = !!(straightEl && straightEl.checked);
+      const safariMovie = !vceBrowserIsChrome();
+      if (safariMovie) {
+        const win = document.getElementById('vrmaWatchWin');
+        if (win) win.hidden = false;
+      }
       watchMovieNote('形式を確認しています。');
       const kind = await watchMoviePickCodec();
       watchMovieKind = kind;
@@ -36275,6 +37269,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!kind) {
         if (formatEl) formatEl.textContent = 'このブラウザは動画を書けません。';
         watchMovieNote('このブラウザは動画を書けません。');
+        if (safariMovie) {
+          const win = document.getElementById('vrmaWatchWin');
+          if (win) win.hidden = false;
+        }
         return;
       }
       if (formatEl) formatEl.textContent = kind.kind === 'mp4' ? 'このブラウザは MP4 で書けます。' : 'このブラウザは MP4 を書けないので、WebM で書きます。';
@@ -36297,8 +37295,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchMovieLeaveAfter = false;
       watchMovieBusy = true;
       vrmaUserPaused = false;
-      watchMovieButtons(true, movieStraight);
-      if (movieStraight) {
+      watchMovieButtons(true, movieStraight && !safariMovie);
+      if (safariMovie) {
+        watchMovieHudSet(0, framesWanted, '書き出しています');
+        watchMovieNote('書き出しています。');
+      } else if (movieStraight) {
         watchMovieNote('一気に書き出しています。終わるまで止まりません。');
         await new Promise((resolve) => setTimeout(resolve, 0));
       } else {
@@ -36312,22 +37313,32 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         renderer.setSize(1920, 1080, false);
         cameraSingle.aspect = 1920 / 1080;
         cameraSingle.updateProjectionMatrix();
+        if (safariMovie) {
+          try { watchBeforeRender(0); } catch (_) {}
+          watchMoviePaint(canvas, ctx);
+          const painted = await watchMovieProveConfig(kind.config, canvas);
+          if (!painted) throw new Error('この画面からは動画を書けませんでした');
+        }
         const chunks = [];
+        const copies = [];
         let failed = null;
         let description = null;
         const encoder = new VideoEncoder({
           output: (chunk, meta) => {
             const data = new Uint8Array(chunk.byteLength);
-            chunk.copyTo(data);
-            if (meta && meta.decoderConfig && meta.decoderConfig.description && !description) description = new Uint8Array(meta.decoderConfig.description);
-            chunks.push({ data: data, key: chunk.type === 'key', ts: chunk.timestamp });
+            const done = Promise.resolve(chunk.copyTo(data)).then(() => {
+              if (!description && meta && meta.decoderConfig && meta.decoderConfig.description) {
+                description = watchMovieCopyBytes(meta.decoderConfig.description);
+              }
+              chunks.push({ data: data, key: chunk.type === 'key', ts: chunk.timestamp || 0 });
+            }, (err) => { failed = err || new Error('copy'); });
+            copies.push(done);
           },
           error: (err) => { failed = err || new Error('encode'); }
         });
-        encoder.configure(kind.config);
-        for (let i = 0; i < framesWanted; i++) {
-          if (failed) break;
-          if (!movieStraight && (watchMovieStop || watchMovieFinish || !vrmaWatchOn)) break;
+        try { encoder.configure(kind.config); } catch (err) { failed = err || new Error('configure'); }
+        for (let i = 0; i < framesWanted && !failed; i++) {
+          if ((safariMovie || !movieStraight) && (watchMovieStop || watchMovieFinish || !vrmaWatchOn)) break;
           watchMovieMs = i * (1000 / 30);
           const step = 1 / 30;
           if (i === 0) {
@@ -36345,39 +37356,64 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
               try { watchRestoreWind(); } catch (_) {}
             }
             watchMovieStepMaterials(step);
-            try { if (vrmaStageMixer) vrmaStageMixer.update(step); } catch (_) {}
+            try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(step); } catch (_) {}
           }
           if (vrmaMixerEdited) vrmaMixerEdited.timeScale = rate;
           if (vrmaMixerOriginal) vrmaMixerOriginal.timeScale = rate;
           try { if (i === 0 && vrmEdited) vceUpdateVrmPreview(vrmEdited, 0); } catch (_) {}
           try { if (i === 0 && vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
           if (i === 0) watchMovieStepMaterials(0);
+          try { vceApplyFaceSliders(); } catch (_) {}
           try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
           watchMoviePaint(canvas, ctx);
-          const timestamp = Math.round(i * 1000000 / 30);
-          const nextTs = Math.round((i + 1) * 1000000 / 30);
-          const frame = new VideoFrame(canvas, { timestamp: timestamp, duration: Math.max(1, nextTs - timestamp) });
-          encoder.encode(frame, { keyFrame: i % 30 === 0 });
-          frame.close();
+          const timestamp = Math.round((i + 1) * 1000000 / 30);
+          let frame = null;
+          try { frame = new VideoFrame(canvas, { timestamp: timestamp, alpha: 'discard' }); }
+          catch (_) {
+            try { frame = new VideoFrame(canvas, { timestamp: timestamp }); }
+            catch (err) { failed = err || new Error('frame'); }
+          }
+          if (!frame) break;
+          try {
+            if (i % 30 === 0) encoder.encode(frame, { keyFrame: true });
+            else encoder.encode(frame);
+          } catch (err) { failed = err || new Error('encode'); }
+          if (failed) {
+            try { frame.close(); } catch (_) {}
+            break;
+          }
+          try { frame.close(); } catch (_) {}
           drawn += 1;
-          if (!movieStraight) {
+          if (safariMovie) {
+            try { await encoder.flush(); } catch (err) { failed = err || new Error('flush'); }
+            watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。');
+            watchMovieHudSet(drawn, framesWanted, '書き出しています');
+            await new Promise((resolve) => setTimeout(resolve, 0));
+          } else if (!movieStraight) {
             watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。');
             watchMovieHudSet(drawn, framesWanted, '書き出しています');
             await new Promise((resolve) => setTimeout(resolve, 0));
           }
-          while (encoder.encodeQueueSize > 2 && !failed) await new Promise((resolve) => setTimeout(resolve, 10));
+          if (!safariMovie) {
+            let spins = 0;
+            while (encoder.encodeQueueSize > 2 && !failed && spins < 400) {
+              await new Promise((resolve) => setTimeout(resolve, 10));
+              spins += 1;
+            }
+          }
         }
-        const keepWriting = movieStraight || (!watchMovieStop && vrmaWatchOn);
+        const keepWriting = safariMovie ? (!watchMovieStop && vrmaWatchOn) : (movieStraight || (!watchMovieStop && vrmaWatchOn));
         if (keepWriting && !failed && drawn > 0) {
-          if (!movieStraight) {
+          if (safariMovie || !movieStraight) {
             watchMovieNote('ファイルにまとめています。');
             watchMovieHudSet(drawn, framesWanted, 'ファイルにまとめています');
           }
           await encoder.flush();
         }
         try { encoder.close(); } catch (_) {}
+        try { await Promise.all(copies); } catch (err) { if (!failed) failed = err; }
         if (failed) throw failed;
-        if (!movieStraight && (watchMovieStop || !vrmaWatchOn)) {
+        if ((safariMovie || !movieStraight) && (watchMovieStop || !vrmaWatchOn)) {
           watchMovieNote('中止しました。ファイルは作っていません。');
           return;
         }
@@ -36393,20 +37429,27 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         let bytes = null;
         let ext = kind.kind;
         if (kind.kind === 'mp4') {
-          if (!description) {
+          const prepped = watchMoviePrepMp4(chunks, description);
+          if (!prepped || !prepped.avcC) {
             watchMovieNote('MP4 の形式情報が取れなかったので、書き出していません。');
             return;
           }
-          bytes = watchMovieMp4(1920, 1080, description, chunks);
+          bytes = watchMovieMp4(1920, 1080, prepped.avcC, prepped.samples);
         } else {
           const codecId = String(kind.config.codec).indexOf('vp8') === 0 ? 'V_VP8' : 'V_VP9';
           bytes = watchMovieWebm(1920, 1080, codecId, chunks);
         }
-        const savedName = watchMovieSave(bytes, ext);
-        watchMovieNote(drawn + ' 枚を書きました。' + savedName);
+        const leftFull = await watchMovieDeliver(bytes, ext);
+        if (leftFull) watchMovieNote(drawn + ' 枚を書きました。全画面は閉じたままです。下の「保存する」を一度押してください。自動では始まりません。保存のあと「全画面に戻す」で戻れます。');
+        else watchMovieNote(drawn + ' 枚を書きました。自動で始まらないときは、下の「保存する」を押してください。');
       } catch (err) {
         console.error(err);
-        watchMovieNote('動画を書けませんでした。ファイルは作っていません。');
+        const why = err && err.message ? String(err.message) : '';
+        watchMovieNote(why ? ('動画を書けませんでした。' + why) : '動画を書けませんでした。ファイルは作っていません。');
+        if (safariMovie) {
+          const win = document.getElementById('vrmaWatchWin');
+          if (win) win.hidden = false;
+        }
       } finally {
         try { renderer.setPixelRatio(prevRatio); } catch (_) {}
         try { renderer.setSize(viewerWidth, viewerHeight); } catch (_) {}
@@ -36636,7 +37679,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       try { vceUpdateHeightGuide(); } catch (_) {}
       try { if (typeof stepPreviewFrame === 'function') stepPreviewFrame(performance.now()); } catch (_) {}
       try { applyGizmoHiddenNow(); } catch (_) {}
-      try { if (vrmaStageMixer) vrmaStageMixer.update(delta); } catch (_) {}
+      try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(delta); } catch (_) {}
       const limitNow = performance.now();
       if (previewOrtho && transformControl) {
         const baseCam = currentPreviewMode === 'dual' ? cameraRight : cameraSingle;
@@ -36673,6 +37716,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           vrmaAdvanceMixers(step);
           if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
           if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
+          try { vceApplyFaceSliders(); } catch (_) {}
         } finally {
           try { if (vrmaWatchOn) watchRestoreWind(); } catch (_) {}
         }
