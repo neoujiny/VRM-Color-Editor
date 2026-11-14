@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.556-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof
+  Version: v5.4.560-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download
   ==================================================
 -->
 <!--
@@ -12,6 +12,20 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.560 / 2026-11-14 / Super Grok（土台は v5.4.559）
+    変更: 動画の書き出しが終わると、保存するボタンを押さずにダウンロードを始める。既定はこれ。鑑賞の「保存するボタンで保存する」をオンにすると、全画面だったときは、今までどおり下の「保存する」を押したときだけファイルになる。
+
+  v5.4.559 / 2026-11-14 / Super Grok（土台は v5.4.558）
+    追加: パーツの追加編集に「VPOの片面メッシュを裏返しにする」。既定はオフ。オンのとき、.vpo を読むときだけ、片面の表と裏を入れ替える。両面はそのまま。GLBと見本メッシュには効かない。
+
+  v5.4.558 / 2026-11-13 / Super Grok（土台は v5.4.557）
+    追加: パーツの追加編集に「読み込み時に全て片面にする」。既定はオフ。オンのとき、GLBとVPOの材質を読むときだけ片面にする。裏面だけの指定はそのまま。両面は表だけにする。見本メッシュには効かない。オンのあいだは「薄い板を読み込み時に両面にする」は外れる。
+
+  v5.4.557 / 2026-11-13 / Super Grok（土台は v5.4.556）
+    修正: 鑑賞中の色の枠が、鑑賞の窓や進み具合の下に隠れていた。鑑賞中はいちばん手前に出す。
+    修正: 鑑賞を終えると、色の枠を閉じる。メインの画面に残さない。
+    変更: 鑑賞の全画面でファイルを選ぶと、ブラウザが全画面を外す。そのときメインの画面には戻さない。選び終わったら全画面へ戻す。OSのファイル窓は、全画面の中には出せない。
 
   v5.4.556 / 2026-11-12 / Super Grok（土台は v5.4.555）
     修正: Safariの動画は、書けると出た形式でも1枚も書けず、動きを先頭へ戻しただけで止まっていた。Chrome以外は、1枚書いてからその形式を使う。書けないときは先頭へ戻さない。進み具合は画面の上に出す。Chromeの書き出しはそのまま。
@@ -1152,7 +1166,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.556</title>
+  <title>VRM Color Editor - v5.4.560</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -1978,6 +1992,7 @@
     body.vrma-watch #attachPlaceDialog {
       display: none !important;
     }
+    body.vrma-watch #vceColorPop { z-index: 90000 !important; }
     #vrmaWatchWin { width: 340px; }
     #watchMp4Note {
       position: fixed;
@@ -2680,7 +2695,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.556</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.560</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -2854,6 +2869,14 @@
             <label style="display:flex; gap:6px; align-items:flex-start; font-size:11px; line-height:1.45; margin-top:8px;">
               <input type="checkbox" id="autoDoubleSideThin" style="margin-top:2px;">
               <span>薄い板を読み込み時に両面にする<span style="display:block; color:#aaa;">オフでは、片面の指定を両面にしません。オンでは、厚みが長辺の8.5%未満、または頂点が12以下の透過パーツを、GLBとVPOの読み込み時だけ両面にします。既定はオフです。</span></span>
+            </label>
+            <label style="display:flex; gap:6px; align-items:flex-start; font-size:11px; line-height:1.45; margin-top:8px;">
+              <input type="checkbox" id="forceSingleSideLoad" style="margin-top:2px;">
+              <span>読み込み時に全て片面にする<span style="display:block; color:#aaa;">既定はオフです。オンでは、GLBとVPOの材質を読むときだけ片面にします。両面は表だけにします。裏面だけの指定はそのままです。見本メッシュには効きません。オンにすると、上の両面にするチェックは外れます。</span></span>
+            </label>
+            <label style="display:flex; gap:6px; align-items:flex-start; font-size:11px; line-height:1.45; margin-top:8px;">
+              <input type="checkbox" id="flipVpoSingleSide" style="margin-top:2px;">
+              <span>VPOの片面メッシュを裏返しにする<span style="display:block; color:#aaa;">既定はオフです。オンでは、.vpo を読むときだけ、片面の表と裏を入れ替えます。両面はそのままです。GLBと見本メッシュには効きません。</span></span>
             </label>
             <button type="button" id="btnGlbFitHead" aria-pressed="false" title="読み込んだままでは、位置や大きさが極端で、プレビューの視界から外れてしまうことがあります。" style="width:100%; flex:none; margin-top:6px; background:#455a64;">頭の上に収める</button>
             <div id="glbFitHeadNote" style="font-size:11px; color:#ffcc80; line-height:1.45; margin:4px 0 8px;">読み込んだままでは、位置や大きさが極端で、プレビューの視界から外れてしまうことがあります。このボタンを選ぶと、VRMモデルの10%の大きさに縮め、原点をそのパーツの重心へ移します。読み込み前にアタッチ先ボーンを選んであるときは、頭の上ではなく、そのボーンの位置へ原点を合わせます。選んでいないときは頭の上へ置きます。</div>
@@ -3989,6 +4012,8 @@
           <p class="watch-note">速さは、今のスライダーの絶対値です。0のときは等速です。逆再生の向きでは書かず、正方向です。動きの長さに合わせると、その速さで1回分を書き、繰り返しがオンのときは「終端から開始へ戻す秒」も足します。その戻す秒は、遅くしても伸びません。繰り返しがオフのときは足しません。長さを秒で指定したときも、終わりに達すれば同じ戻りを書きます。60秒を超える動きは60秒で止めますが、戻す秒だけは足します。中止は捨てます。ここまで保存は、そこまでのファイルにします。Esc は中止です。一気に書き出すがオンのときは、進み具合も中止も出さず、終わるまで止まりません。</p>
           <label class="watch-row">ファイル名<input id="watchMovieName" type="text" maxlength="180" spellcheck="false" autocomplete="off"></label>
           <label class="watch-row watch-check"><input id="watchMovieStraight" type="checkbox" checked>一気に書き出す</label>
+          <label class="watch-row watch-check"><input id="watchMovieManualSave" type="checkbox">保存するボタンで保存する</label>
+          <p class="watch-note">オフでは、書き出しが終わるとダウンロードが始まります。オンでは、全画面だったとき、下の「保存する」を押したときだけファイルになります。</p>
           <button type="button" id="watchMovieStart">動画を書き出す</button>
           <button type="button" id="watchMovieCancel" hidden>中止</button>
           <p id="watchMovieProgress" class="watch-note"></p>
@@ -4335,7 +4360,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.556';
+    const APP_VERSION = 'v5.4.560';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -6362,6 +6387,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let vrmaWatchOn = false;
     let vrmaWatchModeRestore = '';
     let watchMp4NotePending = false;
+    let watchFileHold = false;
     function vceBrowserIsChrome() {
       const ua = String(navigator.userAgent || '');
       const brands = (navigator.userAgentData && navigator.userAgentData.brands) || [];
@@ -6404,6 +6430,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         btn.setAttribute('aria-pressed', vrmaWatchOn ? 'true' : 'false');
       }
       document.body.classList.toggle('vrma-watch', vrmaWatchOn);
+      if (!vrmaWatchOn) {
+        const pop = document.getElementById('vceColorPop');
+        const close = document.getElementById('vceCpClose');
+        if (pop && close && !pop.hidden) close.click();
+      }
       const modeSel = document.getElementById('previewModeSelect');
       if (vrmaWatchOn) {
         if (modeSel) {
@@ -8984,12 +9015,49 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (note) note.hidden = true;
     });
     function leaveVrmaWatchIfFullscreenGone() {
-      if (watchSaveHold || watchMovieBusy) return;
+      if (watchSaveHold || watchMovieBusy || watchFileHold) return;
       const still = document.fullscreenElement || document.webkitFullscreenElement;
       if (!vrmaWatchOn || still) return;
       if (watchMovieBusy) { watchMovieStop = true; watchMovieLeaveAfter = true; return; }
       setVrmaWatch(false);
     }
+    function watchReturnFullscreen() {
+      watchFileHold = false;
+      if (!vrmaWatchOn) return;
+      const root = document.documentElement;
+      if (document.fullscreenElement || document.webkitFullscreenElement) return;
+      const ask = root.requestFullscreen || root.webkitRequestFullscreen;
+      if (!ask) return;
+      try { const p = ask.call(root); if (p && p.catch) p.catch(() => {}); } catch (_) {}
+    }
+    function watchHoldForFile() {
+      if (!vrmaWatchOn) return;
+      watchFileHold = true;
+      let blurred = false;
+      const mark = () => { blurred = true; };
+      const restore = () => {
+        if (!blurred) return;
+        window.removeEventListener('blur', mark);
+        window.removeEventListener('focus', restore);
+        setTimeout(watchReturnFullscreen, 200);
+      };
+      window.addEventListener('blur', mark);
+      window.addEventListener('focus', restore);
+      setTimeout(() => {
+        window.removeEventListener('blur', mark);
+        window.removeEventListener('focus', restore);
+        if (watchFileHold && blurred) watchReturnFullscreen();
+        else if (document.fullscreenElement || document.webkitFullscreenElement) watchFileHold = false;
+      }, 120000);
+    }
+    ['watchPropFile', 'watchVrmaFile', 'watchSceneFile'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('click', watchHoldForFile, true);
+      const back = () => setTimeout(watchReturnFullscreen, 200);
+      el.addEventListener('change', back);
+      el.addEventListener('cancel', back);
+    });
     document.getElementById('vrmaLoop').addEventListener('change', () => {
       if (vrmAnimation && vrmaStarted) bindVrmaToVrms();
     });
@@ -11736,7 +11804,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       return false;
     }
 
+    let forceSingleSideThisLoad = false;
+
     function sideKeepingSource(srcMat) {
+      if (forceSingleSideThisLoad) {
+        if (srcMat && srcMat.side === THREE.BackSide) return THREE.BackSide;
+        return THREE.FrontSide;
+      }
       if (srcMat && srcMat.side === THREE.DoubleSide) return THREE.DoubleSide;
       if (srcMat && srcMat.side === THREE.BackSide) return THREE.BackSide;
       return THREE.FrontSide;
@@ -11748,6 +11822,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
 
     function sideForThinAuto(srcMat) {
+      if (forceSingleSideThisLoad) return THREE.FrontSide;
       if (autoDoubleSideThinOn()) return THREE.DoubleSide;
       return sideKeepingSource(srcMat);
     }
@@ -11875,6 +11950,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (srcMat && srcMat.userData && typeof srcMat.userData.gltfMaterialIndex === 'number') {
         mtoon.userData.gltfMaterialIndex = srcMat.userData.gltfMaterialIndex;
       }
+      mtoon.userData.vceSourceSide = srcMat && srcMat.side != null ? srcMat.side : THREE.FrontSide;
       if (srcCleared) mtoon.matcapTexture = null;
       const uvX = srcMat && typeof srcMat.uvAnimationScrollXSpeedFactor === 'number' ? srcMat.uvAnimationScrollXSpeedFactor : 0;
       const uvY = srcMat && typeof srcMat.uvAnimationScrollYSpeedFactor === 'number' ? srcMat.uvAnimationScrollYSpeedFactor : 0;
@@ -21670,13 +21746,19 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       mat.needsUpdate = true;
       return Promise.all(jobs);
     }
-    function absorbPowerMaterials(root, images) {
+    function absorbPowerMaterials(root, images, opt) {
       root.traverse((obj) => {
         if (!obj.isMesh) return;
         const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
         obj.userData._powerSpecs = mats.map((m) => (m && m.userData && m.userData.vrmPower) || null);
       });
-      convertMeshMaterialsToMToon(root);
+      const singleBox = document.getElementById('forceSingleSideLoad');
+      forceSingleSideThisLoad = !!(singleBox && singleBox.checked);
+      try {
+        convertMeshMaterialsToMToon(root);
+        if (opt && opt.flipSingle) flipVpoSingleSides(root);
+      }
+      finally { forceSingleSideThisLoad = false; }
       const jobs = [];
       root.traverse((obj) => {
         if (!obj.isMesh || !obj.userData._powerSpecs) return;
@@ -21685,6 +21767,25 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         delete obj.userData._powerSpecs;
       });
       return Promise.all(jobs);
+    }
+    function flipVpoSingleSides(root) {
+      if (!root) return;
+      root.traverse((obj) => {
+        if (!obj.isMesh || !obj.material) return;
+        const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+        mats.forEach((mat) => {
+          if (!mat || mat.side === THREE.DoubleSide) return;
+          const src = mat.userData && mat.userData.vceSourceSide;
+          if (src === THREE.DoubleSide) return;
+          const base = src === THREE.BackSide ? THREE.BackSide : THREE.FrontSide;
+          mat.side = base === THREE.BackSide ? THREE.FrontSide : THREE.BackSide;
+          if (mat.userData && mat.userData.mtoonProfile) {
+            mat.userData.mtoonProfile.doubleSided = false;
+            mat.userData.mtoonProfile.side = mat.side === THREE.BackSide ? 'back' : 'front';
+          }
+          mat.needsUpdate = true;
+        });
+      });
     }
     function canvasFromPowerUrl(url) {
       return new Promise((resolve) => {
@@ -21752,8 +21853,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         }
       }
     }
-    async function restorePowerAttach(loaded, power, fileName) {
-      await absorbPowerMaterials(loaded, power.images || {});
+    async function restorePowerAttach(loaded, power, fileName, opt) {
+      await absorbPowerMaterials(loaded, power.images || {}, opt);
       const nodes = [];
       loaded.traverse((obj) => {
         if (obj.userData && obj.userData.vrmPowerGroup && obj.userData.vrmPowerGroup.id) nodes.push(obj);
@@ -21858,8 +21959,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const loaded = gltf.scene;
         const power = loaded.userData && loaded.userData.vrmPower;
         const fileName = file.name.replace(/\.(glb|vpo)$/i, '') || file.name;
+      const flipSingle = /\.vpo$/i.test(file.name || '') && !!(document.getElementById('flipVpoSingleSide') && document.getElementById('flipVpoSingleSide').checked);
+      const loadOpt = { flipSingle: flipSingle };
         if (power && power.version >= 2 && Array.isArray(power.groups) && power.groups.length) {
-          restorePowerAttach(loaded, power, fileName).then(() => {
+          restorePowerAttach(loaded, power, fileName, loadOpt).then(() => {
             if (input) input.value = '';
           }).catch((err) => {
             console.error(err);
@@ -21868,7 +21971,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           });
           return;
         }
-        absorbPowerMaterials(loaded, power && power.images).then(() => {
+        absorbPowerMaterials(loaded, power && power.images, loadOpt).then(() => {
         const generator = (gltf.parser && gltf.parser.json && gltf.parser.json.asset && gltf.parser.json.asset.generator) || '';
         const judgment = judgeGlbMirror(loaded);
         const placeLoaded = (root, mirror) => {
@@ -21959,11 +22062,33 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     })();
     (function initAutoDoubleSideThin() {
       const box = document.getElementById('autoDoubleSideThin');
-      if (!box) return;
-      try { box.checked = localStorage.getItem('vrmColorEditor.autoDoubleSideThin') === '1'; } catch (_) {}
-      box.addEventListener('change', () => {
-        try { localStorage.setItem('vrmColorEditor.autoDoubleSideThin', box.checked ? '1' : '0'); } catch (_) {}
+      const single = document.getElementById('forceSingleSideLoad');
+      const flip = document.getElementById('flipVpoSingleSide');
+      if (box) {
+        try { box.checked = localStorage.getItem('vrmColorEditor.autoDoubleSideThin') === '1'; } catch (_) {}
+      }
+      if (single) {
+        try { single.checked = localStorage.getItem('vrmColorEditor.forceSingleSideLoad') === '1'; } catch (_) {}
+      }
+      if (flip) {
+        try { flip.checked = localStorage.getItem('vrmColorEditor.flipVpoSingleSide') === '1'; } catch (_) {}
+      }
+      if (box && single && box.checked && single.checked) box.checked = false;
+      const save = () => {
+        if (box) { try { localStorage.setItem('vrmColorEditor.autoDoubleSideThin', box.checked ? '1' : '0'); } catch (_) {} }
+        if (single) { try { localStorage.setItem('vrmColorEditor.forceSingleSideLoad', single.checked ? '1' : '0'); } catch (_) {} }
+        if (flip) { try { localStorage.setItem('vrmColorEditor.flipVpoSingleSide', flip.checked ? '1' : '0'); } catch (_) {} }
+      };
+      if (box) box.addEventListener('change', () => {
+        if (box.checked && single) single.checked = false;
+        save();
       });
+      if (single) single.addEventListener('change', () => {
+        if (single.checked && box) box.checked = false;
+        save();
+      });
+      if (flip) flip.addEventListener('change', save);
+      save();
     })();
     const glbDropBlock = document.querySelector('[data-block-id="glbAttach"]');
     if (glbDropBlock) {
@@ -37217,14 +37342,20 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         setTimeout(force, 900);
       });
     }
+    function watchMovieManualSave() {
+      const box = document.getElementById('watchMovieManualSave');
+      return !!(box && box.checked);
+    }
     async function watchMovieDeliver(bytes, ext) {
+      const manual = watchMovieManualSave();
       const wasFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
       if (wasFull) await watchMovieLeaveFullscreenForSave();
       watchMovieSave(bytes, ext);
       const win = document.getElementById('vrmaWatchWin');
       if (win) win.hidden = false;
       const link = document.getElementById('watchMovieDownload');
-      if (!wasFull && link && !(document.fullscreenElement || document.webkitFullscreenElement)) {
+      const stillFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
+      if (link && !stillFull && !(manual && wasFull)) {
         try {
           const a = document.createElement('a');
           a.href = link.href;
@@ -37440,8 +37571,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           bytes = watchMovieWebm(1920, 1080, codecId, chunks);
         }
         const leftFull = await watchMovieDeliver(bytes, ext);
-        if (leftFull) watchMovieNote(drawn + ' 枚を書きました。全画面は閉じたままです。下の「保存する」を一度押してください。自動では始まりません。保存のあと「全画面に戻す」で戻れます。');
-        else watchMovieNote(drawn + ' 枚を書きました。自動で始まらないときは、下の「保存する」を押してください。');
+        const manualSave = watchMovieManualSave();
+        if (leftFull && manualSave) watchMovieNote(drawn + ' 枚を書きました。全画面は閉じたままです。下の「保存する」を一度押してください。自動では始まりません。保存のあと「全画面に戻す」で戻れます。');
+        else if (leftFull) watchMovieNote(drawn + ' 枚を書きました。ダウンロードを始めました。全画面は閉じたままです。始まらないときは、下の「保存する」を押してください。そのあと「全画面に戻す」で戻れます。');
+        else if (manualSave) watchMovieNote(drawn + ' 枚を書きました。自動で始まらないときは、下の「保存する」を押してください。');
+        else watchMovieNote(drawn + ' 枚を書きました。ダウンロードを始めました。始まらないときは、下の「保存する」を押してください。');
       } catch (err) {
         console.error(err);
         const why = err && err.message ? String(err.message) : '';
@@ -37628,6 +37762,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (movieStart) movieStart.addEventListener('click', () => { watchMovieRun(); });
       const movieName = document.getElementById('watchMovieName');
       if (movieName) movieName.addEventListener('input', () => { movieName.dataset.touched = '1'; });
+      const movieManual = document.getElementById('watchMovieManualSave');
+      if (movieManual) {
+        try { movieManual.checked = localStorage.getItem('vrmColorEditor.watchMovieManualSave') === '1'; } catch (_) {}
+        movieManual.addEventListener('change', () => {
+          try { localStorage.setItem('vrmColorEditor.watchMovieManualSave', movieManual.checked ? '1' : '0'); } catch (_) {}
+        });
+      }
       watchMovieApplySuggestedName(true);
       const sceneName = document.getElementById('watchSceneName');
       const sceneSave = document.getElementById('watchSceneSave');
