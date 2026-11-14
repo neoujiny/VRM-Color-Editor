@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.560-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download
+  Version: v5.4.561-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate
   ==================================================
 -->
 <!--
@@ -12,6 +12,10 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.561 / 2026-11-15 / Super Grok（土台は v5.4.560）
+    修正: 全画面の鑑賞が30fpsに届かなくなっていた。毎フレーム、点滅していない材質まで更新し直していた。点滅を戻すときだけ更新する。
+    変更: 全画面の鑑賞では、描画の画素を長辺1920までに収める。編集画面の細かさは変えない。
 
   v5.4.560 / 2026-11-14 / Super Grok（土台は v5.4.559）
     変更: 動画の書き出しが終わると、保存するボタンを押さずにダウンロードを始める。既定はこれ。鑑賞の「保存するボタンで保存する」をオンにすると、全画面だったときは、今までどおり下の「保存する」を押したときだけファイルになる。
@@ -1166,7 +1170,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.560</title>
+  <title>VRM Color Editor - v5.4.561</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2695,7 +2699,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.560</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.561</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4360,7 +4364,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.560';
+    const APP_VERSION = 'v5.4.561';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -6388,6 +6392,25 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let vrmaWatchModeRestore = '';
     let watchMp4NotePending = false;
     let watchFileHold = false;
+    let watchPixelRatioSaved = 0;
+    function watchFitPixelRatio() {
+      const dpr = window.devicePixelRatio || 1;
+      const long = Math.max(viewerWidth || 0, viewerHeight || 0, 1);
+      return Math.max(1, Math.min(dpr, 1920 / long));
+    }
+    function watchApplyWatchPixelRatio() {
+      if (!watchPixelRatioSaved) watchPixelRatioSaved = renderer.getPixelRatio() || window.devicePixelRatio || 1;
+      const fit = watchFitPixelRatio();
+      if (Math.abs((renderer.getPixelRatio() || 1) - fit) > 0.02) renderer.setPixelRatio(fit);
+    }
+    function watchRestorePixelRatio() {
+      const back = watchPixelRatioSaved || window.devicePixelRatio || 1;
+      watchPixelRatioSaved = 0;
+      if (Math.abs((renderer.getPixelRatio() || 1) - back) > 0.02) {
+        renderer.setPixelRatio(back);
+        if (viewerWidth > 0 && viewerHeight > 0) renderer.setSize(viewerWidth, viewerHeight);
+      }
+    }
     function vceBrowserIsChrome() {
       const ua = String(navigator.userAgent || '');
       const brands = (navigator.userAgentData && navigator.userAgentData.brands) || [];
@@ -6466,6 +6489,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         }
         vrmaWatchModeRestore = '';
       }
+      if (!vrmaWatchOn) watchRestorePixelRatio();
       if (!vrmaWatchOn && typeof meshMap !== 'undefined') {
         meshMap.forEach((data) => {
           if (data && data.mesh) data.mesh.userData.hoverBlink = false;
@@ -7031,6 +7055,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     const resizeObserver = new ResizeObserver(entries => {
       for (let entry of entries) {
         viewerWidth = entry.contentRect.width; viewerHeight = entry.contentRect.height;
+        if (vrmaWatchOn) watchApplyWatchPixelRatio();
         renderer.setSize(viewerWidth, viewerHeight);
         syncEditedCameraAspect();
         updateSplitLayout();
@@ -37923,11 +37948,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           if (mesh.visible === false && !meshData.hidden && !meshData.deleted && !(mesh.userData && (mesh.userData.paintSoloHidden || mesh.userData.powerSoloHidden || mesh.userData.powerPickHidden))) mesh.visible = true;
           mats.forEach((m) => {
             if (!m) return;
-            if (m.userData._hoverColorBackup && m.color) { m.color.copy(m.userData._hoverColorBackup); delete m.userData._hoverColorBackup; }
-            if (m.userData._hoverShadeBackup && m.shadeColorFactor) { m.shadeColorFactor.copy(m.userData._hoverShadeBackup); delete m.userData._hoverShadeBackup; }
-            if (m.userData._hoverEmissiveBackup && m.emissive) { m.emissive.copy(m.userData._hoverEmissiveBackup); delete m.userData._hoverEmissiveBackup; }
-            if (m.userData._hoverEmissiveIntBackup != null && m.emissiveIntensity != null) { m.emissiveIntensity = m.userData._hoverEmissiveIntBackup; delete m.userData._hoverEmissiveIntBackup; }
-            m.needsUpdate = true;
+            let changed = false;
+            if (m.userData._hoverColorBackup && m.color) { m.color.copy(m.userData._hoverColorBackup); delete m.userData._hoverColorBackup; changed = true; }
+            if (m.userData._hoverShadeBackup && m.shadeColorFactor) { m.shadeColorFactor.copy(m.userData._hoverShadeBackup); delete m.userData._hoverShadeBackup; changed = true; }
+            if (m.userData._hoverEmissiveBackup && m.emissive) { m.emissive.copy(m.userData._hoverEmissiveBackup); delete m.userData._hoverEmissiveBackup; changed = true; }
+            if (m.userData._hoverEmissiveIntBackup != null && m.emissiveIntensity != null) { m.emissiveIntensity = m.userData._hoverEmissiveIntBackup; delete m.userData._hoverEmissiveIntBackup; changed = true; }
+            if (changed) m.needsUpdate = true;
           });
         }
       }
