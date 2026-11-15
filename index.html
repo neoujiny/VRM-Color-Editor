@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.565-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw
+  Version: v5.4.566-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move
   ==================================================
 -->
 <!--
@@ -12,6 +12,12 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.566 / 2026-11-15 / Super Grok（土台は v5.4.565）
+    修正: コントロールパネルから色を出すと、パネルの下に隠れて使えなかった。色はパネルの手前に出す。
+    追加: コントロールパネルの下端をドラッグすると、縦の高さを変えられる。
+    修正: 影2がモデルの全面に出て、足元が隠れていた。床の奥行きより手前のモデルには、影を重ねない。
+    追加: ステージのGLBが無いときの床の格子を、GLBと同じ矢印で動かせる。足の裏に合わせられる。鑑賞を出ると編集画面の高さへ戻し、もう一度入ると合わせた位置に戻す。
 
   v5.4.565 / 2026-11-15 / Super Grok（土台は v5.4.564）
     修正: 空の待ち表示のあと、画面が真っ黒になっていた。届いたファイルの中間データを、そのまま空に渡していた。ローダーが作った画像に戻した。進み具合の線と、終わるまで押せないことは残す。
@@ -1183,7 +1189,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.565</title>
+  <title>VRM Color Editor - v5.4.566</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2009,8 +2015,13 @@
     body.vrma-watch #attachPlaceDialog {
       display: none !important;
     }
-    body.vrma-watch #vceColorPop { z-index: 90000 !important; }
+    body.vrma-watch #vrmaWatchWin { z-index: 80000; }
     #vrmaWatchWin { width: 340px; }
+    #vrmaWatchResize {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 14px; z-index: 4;
+      cursor: ns-resize; touch-action: none;
+      background: linear-gradient(to top, rgba(196, 184, 164, 0.9), rgba(196, 184, 164, 0));
+    }
     #watchMp4Note {
       position: fixed;
       inset: 0;
@@ -2028,7 +2039,7 @@
     #watchMovieHud .watch-movie-hud-bar { height: 8px; background: #2a2a32; border-radius: 4px; overflow: hidden; }
     #watchMovieHudFill { height: 100%; width: 0%; background: #7fd0ff; }
     #watchMovieHud button { min-height: 32px; }
-    #vrmaWatchWin .vce-float-body { max-height: min(68vh, 520px); overflow: auto; }
+    #vrmaWatchWin .vce-float-body { max-height: min(68vh, 520px); overflow: auto; padding-bottom: 22px; }
     #vrmaWatchWin .vce-float-body h4 { margin: 18px 0 8px; padding-top: 12px; border-top: 1px solid #c4b8a4; font-size: 16px; color: #fff; font-weight: 700; letter-spacing: 0.02em; }
     #vrmaWatchWin .vce-float-body p,
     #vrmaWatchWin .watch-note { margin: 0 0 8px; font-size: 11px; color: #8e99a4; line-height: 1.45; }
@@ -2721,7 +2732,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.565</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.566</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -3963,6 +3974,8 @@
           <div id="watchPropDrop" class="vrm-drop-hint">この枠へ .glb をドロップして追加します</div>
           <div id="watchPropList"></div>
           <p class="watch-note">いくつでも追加できます。目玉で、そのGLBだけ表示を切り替えます。名前を押すと選び、位置・回転・大きさのギズモが出ます。中のメッシュは、色彩編集のパーツ一覧にも出ます。VRMの書き出しには入りません。</p>
+          <p class="watch-note">ステージのGLBが無いときは、床の格子が出ます。下のボタンで、GLBと同じ矢印を出して位置を動かせます。足の裏に合わせられます。鑑賞を出ると、編集画面の高さへ戻します。もう一度入ると、合わせた位置に戻ります。</p>
+          <button type="button" class="watch-move" id="watchMoveGrid" data-watch-move="grid">床の位置を動かす</button>
           <h4>動き</h4>
           <label class="watch-row">プリセット<select id="watchVrmaPreset"><option value="">未選択</option></select></label>
           <div class="file-upload-wrapper">
@@ -4072,6 +4085,7 @@
           <h4>ライセンス</h4>
           <p class="watch-note">空の HDRI は Poly Haven（CC0）です。一覧は Poly Haven の API から取ります。このアプリの識別は User-Agent: VRM Color Editor です。Poly Haven の公式製品ではありません。</p>
         </div>
+        <div id="vrmaWatchResize" title="高さを変える"></div>
       </aside>
       <div id="watchMovieHud" hidden>
         <div class="watch-movie-hud-row">
@@ -4404,7 +4418,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.565';
+    const APP_VERSION = 'v5.4.566';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -5646,11 +5660,55 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     sceneEdited.add(vrmaStageRoot);
     let vrmaStageMixer = null;
     let vrmaStageUserMoved = false;
+    let watchGridBase = null;
+    const watchGridShift = new THREE.Vector3();
     const watchProps = [];
     let watchPropSelected = '';
     let watchPropMode = 'translate';
     const vrmaStageRay = new THREE.Raycaster();
     const vrmaStageDown = new THREE.Vector3(0, -1, 0);
+    function watchGridApplyShift() {
+      if (!gridEdited || !watchGridBase) return;
+      gridEdited.position.copy(watchGridBase).add(watchGridShift);
+    }
+    function watchGridCaptureShift() {
+      if (!gridEdited || !watchGridBase) return;
+      watchGridShift.copy(gridEdited.position).sub(watchGridBase);
+    }
+    function watchGridEnter() {
+      if (!gridEdited) return;
+      if (!watchGridBase) watchGridBase = gridEdited.position.clone();
+      watchGridApplyShift();
+    }
+    function watchGridLeave() {
+      if (gridEdited && watchGridBase) gridEdited.position.copy(watchGridBase);
+    }
+    function nudgeWatchGrid(key, shift) {
+      if (!gridEdited) return;
+      const cam = cameraSingle;
+      cam.updateMatrixWorld();
+      const right = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 0);
+      right.y = 0;
+      if (right.lengthSq() < 1e-8) right.set(1, 0, 0);
+      else right.normalize();
+      const ahead = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 2);
+      ahead.y = 0;
+      ahead.multiplyScalar(-1);
+      if (ahead.lengthSq() < 1e-8) ahead.set(0, 0, -1);
+      else ahead.normalize();
+      if (shift && (key === 'ArrowUp' || key === 'ArrowDown')) {
+        gridEdited.position.y += key === 'ArrowUp' ? 0.01 : -0.01;
+      } else {
+        const dir = new THREE.Vector3();
+        if (key === 'ArrowUp') dir.copy(ahead);
+        else if (key === 'ArrowDown') dir.copy(ahead).multiplyScalar(-1);
+        else if (key === 'ArrowRight') dir.copy(right);
+        else if (key === 'ArrowLeft') dir.copy(right).multiplyScalar(-1);
+        else return;
+        gridEdited.position.addScaledVector(dir, 0.05);
+      }
+      watchGridCaptureShift();
+    }
     function syncVrmaStageGrid() {
       const gridOn = document.getElementById('toggleGrid');
       const want = !gridOn || !!gridOn.checked;
@@ -6274,6 +6332,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (watchObj && watchObj.userData && watchObj.userData.watchProp) {
         watchObj.userData.watchUserMoved = true;
         vrmaStageUserMoved = true;
+        return;
+      }
+      if (watchObj === gridEdited) {
+        try { watchGridCaptureShift(); } catch (_) {}
         return;
       }
       if (watchObj && watchObj.userData && watchObj.userData.watchHandle) {
@@ -9062,13 +9124,16 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       setVrmaWatch(false);
     }, true);
     document.addEventListener('keydown', (e) => {
-      if (!vrmaWatchOn || !vrmaStageRoot.children.length) return;
+      if (!vrmaWatchOn) return;
+      const gridMove = typeof watchGizmoWhich !== 'undefined' && watchGizmoWhich === 'grid';
+      if (!gridMove && !vrmaStageRoot.children.length) return;
       if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
       const tag = e.target && e.target.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (e.target && e.target.isContentEditable)) return;
       e.preventDefault();
       e.stopPropagation();
-      nudgeVrmaStage(e.key, !!e.shiftKey);
+      if (gridMove) nudgeWatchGrid(e.key, !!e.shiftKey);
+      else nudgeVrmaStage(e.key, !!e.shiftKey);
     }, true);
     document.addEventListener('fullscreenchange', leaveVrmaWatchIfFullscreenGone);
     document.addEventListener('webkitfullscreenchange', leaveVrmaWatchIfFullscreenGone);
@@ -35165,9 +35230,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (opacity) opacity.disabled = mode !== 'picture' && mode !== 'planar';
     }
     function watchFloorAt(foot) {
-      if (!foot) return 0;
+      if (!foot) return gridEdited ? gridEdited.position.y : 0;
       const y = vrmaStageFloorY(vrmaStageRoot, foot.x, foot.z, foot.y);
-      return y == null ? 0 : y;
+      if (y != null) return y;
+      return gridEdited ? gridEdited.position.y : 0;
     }
     function watchHideDecor(opts) {
       const prev = [];
@@ -35463,6 +35529,19 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         watchSyncGizmoBar('');
         return;
       }
+      if (which === 'grid') {
+        if (watchHelpA) watchHelpA.visible = false;
+        if (watchHelpB) watchHelpB.visible = false;
+        if (watchWindArrow) watchWindArrow.visible = false;
+        if (watchSunArrow) watchSunArrow.visible = false;
+        try { transformControl.attach(gridEdited); } catch (_) {}
+        try { transformControl.setMode('translate'); } catch (_) {}
+        transformControl.camera = cameraSingle;
+        transformControl.visible = true;
+        transformControl.enabled = true;
+        watchSyncGizmoBar(which);
+        return;
+      }
       if (String(which).indexOf('prop:') === 0) {
         const prop = typeof watchPropById === 'function' ? watchPropById(which.slice(5)) : null;
         if (watchHelpA) watchHelpA.visible = false;
@@ -35502,7 +35581,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const bar = document.getElementById('watchGizmoBar');
       const text = document.getElementById('watchGizmoBarText');
       if (!bar) return;
-      const names = { sun: '太陽の向き', lightA: 'ライト1の位置', lightB: 'ライト2の位置', wind: '風の向き' };
+      const names = { sun: '太陽の向き', lightA: 'ライト1の位置', lightB: 'ライト2の位置', wind: '風の向き', grid: '床の位置' };
       bar.hidden = !which;
       if (!text || !which) return;
       if (String(which).indexOf('prop:') === 0) {
@@ -36004,10 +36083,18 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         fragmentShader: 'uniform sampler2D tDiffuse; uniform vec2 texel; uniform float radius; varying vec2 vUv; void main(){ vec2 o = texel * radius; float a = texture2D(tDiffuse, vUv + vec2(-o.x, -o.y)).a; a += texture2D(tDiffuse, vUv + vec2(o.x, -o.y)).a; a += texture2D(tDiffuse, vUv + vec2(-o.x, o.y)).a; a += texture2D(tDiffuse, vUv + vec2(o.x, o.y)).a; gl_FragColor = vec4(0.0, 0.0, 0.0, a * 0.25); }'
       });
       const showMat = new THREE.ShaderMaterial({
-        uniforms: { tDiffuse: { value: null }, gain: { value: 0.46 } },
-        transparent: true, depthTest: false, depthWrite: false,
+        uniforms: {
+          tDiffuse: { value: null },
+          gain: { value: 0.46 },
+          uFloorY: { value: 0 },
+          uProj: { value: new THREE.Matrix4() },
+          uView: { value: new THREE.Matrix4() },
+          uInvProj: { value: new THREE.Matrix4() },
+          uInvView: { value: new THREE.Matrix4() }
+        },
+        transparent: true, depthTest: true, depthWrite: false, depthFunc: THREE.LessEqualDepth,
         vertexShader: vert,
-        fragmentShader: 'uniform sampler2D tDiffuse; uniform float gain; varying vec2 vUv; void main(){ gl_FragColor = vec4(0.0, 0.0, 0.0, texture2D(tDiffuse, vUv).a * gain); }'
+        fragmentShader: 'uniform sampler2D tDiffuse; uniform float gain; uniform float uFloorY; uniform mat4 uProj; uniform mat4 uView; uniform mat4 uInvProj; uniform mat4 uInvView; varying vec2 vUv; void main(){ vec4 clip = vec4(vUv.x * 2.0 - 1.0, vUv.y * 2.0 - 1.0, 1.0, 1.0); vec4 view = uInvProj * clip; vec3 origin = (uInvView * vec4(0.0, 0.0, 0.0, 1.0)).xyz; vec3 ray = mat3(uInvView) * (view.xyz / view.w); if (abs(ray.y) < 1e-5) discard; float t = (uFloorY - origin.y) / ray.y; if (t <= 0.0) discard; vec3 world = origin + ray * t; vec4 clipP = uProj * uView * vec4(world, 1.0); gl_FragDepth = clamp(clipP.z / clipP.w, -1.0, 1.0) * 0.5 + 0.5; float a = texture2D(tDiffuse, vUv).a * gain; if (a <= 0.001) discard; gl_FragColor = vec4(0.0, 0.0, 0.0, a); }'
       });
       const scene = new THREE.Scene();
       const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.01, 3);
@@ -36097,6 +36184,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const gain = dense <= 0.82 ? (dense / 0.82) * 0.46 : 0.46 + ((dense - 0.82) / 0.18) * 0.34;
         watchPlanarBlur.showMat.uniforms.gain.value = gain;
         watchPlanarBlur.showMat.uniforms.tDiffuse.value = read.texture;
+        watchPlanarBlur.showMat.uniforms.uFloorY.value = watchPlanarU.floorY.value;
+        watchPlanarBlur.showMat.uniforms.uProj.value.copy(camera.projectionMatrix);
+        watchPlanarBlur.showMat.uniforms.uView.value.copy(camera.matrixWorldInverse);
+        watchPlanarBlur.showMat.uniforms.uInvProj.value.copy(camera.projectionMatrixInverse);
+        watchPlanarBlur.showMat.uniforms.uInvView.value.copy(camera.matrixWorld);
         watchPlanarBlur.quad.material = watchPlanarBlur.showMat;
         renderer.render(watchPlanarBlur.scene, watchPlanarBlur.cam);
       } finally {
@@ -37902,6 +37994,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchEnter() {
       watchEnsure();
+      watchGridEnter();
       watchState.savedMode = transformControl.mode;
       if (lightsEdited && lightsEdited.dir && !watchState.sunSaved) {
         watchState.sunSaved = {
@@ -37947,6 +38040,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchGizmoWhich = '';
       watchSyncGizmoBar('');
       try { transformControl.detach(); } catch (_) {}
+      watchGridLeave();
       try { transformControl.setMode(watchState.savedMode || 'translate'); } catch (_) {}
       watchState.speed = 1; watchState.target = 1; watchState.easeLeft = 0;
       try { applyVrmaTimeScale(); } catch (_) {}
@@ -38004,6 +38098,29 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const head = document.getElementById('vrmaWatchHead');
       const fold = document.getElementById('vrmaWatchFold');
       const close = document.getElementById('vrmaWatchClose');
+      const grip = document.getElementById('vrmaWatchResize');
+      if (grip && win) grip.addEventListener('pointerdown', (e) => {
+        if (e.button != null && e.button !== 0) return;
+        const body = win.querySelector('.vce-float-body');
+        if (!body) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const startY = e.clientY;
+        const startH = body.getBoundingClientRect().height;
+        const move = (ev) => {
+          const next = Math.max(160, Math.min(window.innerHeight - 48, startH + (ev.clientY - startY)));
+          body.style.height = next + 'px';
+          body.style.maxHeight = next + 'px';
+        };
+        const up = () => {
+          grip.removeEventListener('pointermove', move);
+          grip.removeEventListener('pointerup', up);
+          grip.removeEventListener('pointercancel', up);
+        };
+        grip.addEventListener('pointermove', move);
+        grip.addEventListener('pointerup', up);
+        grip.addEventListener('pointercancel', up);
+      });
       if (close && win) close.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -38780,14 +38897,16 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!win) return;
       let max = floatZ;
       document.querySelectorAll('.vce-float').forEach((el) => {
-        if (el === win) return;
+        if (el === win || el.id === 'vceColorPop') return;
         const inline = parseInt(el.style.zIndex, 10);
         const computed = parseInt(getComputedStyle(el).zIndex, 10);
         const z = isFinite(inline) && inline > 0 ? inline : (isFinite(computed) ? computed : 0);
-        if (z > max) max = z;
+        if (z > max && z < 400000) max = z;
       });
       floatZ = max + 1;
       win.style.zIndex = String(floatZ);
+      const pop = document.getElementById('vceColorPop');
+      if (pop && !pop.hidden && win !== pop) pop.style.zIndex = String(floatZ + 1);
     }
     window.vceNudgeCoveredTabs = vceNudgeCoveredTabs;
     document.addEventListener('pointerdown', (e) => {
@@ -39233,8 +39352,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         pop.hidden = false;
         var maxZ = 16000;
         document.querySelectorAll('.vce-float').forEach(function (el) {
+          if (el === pop) return;
           var z = parseInt(el.style.zIndex, 10);
-          if (z > maxZ) maxZ = z;
+          if (!isFinite(z)) z = parseInt(getComputedStyle(el).zIndex, 10);
+          if (z > maxZ && z < 400000) maxZ = z;
         });
         pop.style.zIndex = String(maxZ + 1);
         var r = (anchor || input).getBoundingClientRect();
