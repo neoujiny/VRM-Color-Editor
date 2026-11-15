@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.561-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate
+  Version: v5.4.565-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw
   ==================================================
 -->
 <!--
@@ -12,6 +12,19 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.565 / 2026-11-15 / Super Grok（土台は v5.4.564）
+    修正: 空の待ち表示のあと、画面が真っ黒になっていた。届いたファイルの中間データを、そのまま空に渡していた。ローダーが作った画像に戻した。進み具合の線と、終わるまで押せないことは残す。
+
+  v5.4.564 / 2026-11-15 / Super Grok（土台は v5.4.563）
+    変更: 空を選んだあとは、外から届くまでボタンを押せない。選んだ枠と、進み具合の線で待つことを示す。もう一度押しても、読み込みはやり直さない。
+
+  v5.4.563 / 2026-11-15 / Super Grok（土台は v5.4.562）
+    変更: 鑑賞の浮動窓のタイトルを「コントロールパネル」にした。中の見出しを少し大きくし、各見出しの上に区切り線を引いた。
+    追加: コントロールパネルと設定タブのクレジットに、Poly Haven 向けの識別「User-Agent: VRM Color Editor」を書いた。空の一覧を取るときも、同じ名前を送る。
+
+  v5.4.562 / 2026-11-15 / Super Grok（土台は v5.4.561）
+    追加: 鑑賞に空。Poly Haven の HDRI を全天周に貼る。名前で探して、1k か 2k を読む。明るさと回転を変えられる。モデルのライトは変えない。鑑賞を出ると画面からは外し、もう一度入ると戻す。シーンのJSONには入れない。
 
   v5.4.561 / 2026-11-15 / Super Grok（土台は v5.4.560）
     修正: 全画面の鑑賞が30fpsに届かなくなっていた。毎フレーム、点滅していない材質まで更新し直していた。点滅を戻すときだけ更新する。
@@ -1170,7 +1183,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.561</title>
+  <title>VRM Color Editor - v5.4.565</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2016,8 +2029,7 @@
     #watchMovieHudFill { height: 100%; width: 0%; background: #7fd0ff; }
     #watchMovieHud button { min-height: 32px; }
     #vrmaWatchWin .vce-float-body { max-height: min(68vh, 520px); overflow: auto; }
-    #vrmaWatchWin .vce-float-body h4 { margin: 14px 0 4px; font-size: 13px; color: #fff; font-weight: 600; }
-    #vrmaWatchWin .vce-float-body h4:first-child { margin-top: 0; }
+    #vrmaWatchWin .vce-float-body h4 { margin: 18px 0 8px; padding-top: 12px; border-top: 1px solid #c4b8a4; font-size: 16px; color: #fff; font-weight: 700; letter-spacing: 0.02em; }
     #vrmaWatchWin .vce-float-body p,
     #vrmaWatchWin .watch-note { margin: 0 0 8px; font-size: 11px; color: #8e99a4; line-height: 1.45; }
     #vrmaWatchWin .watch-row { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin: 0 0 10px; font-size: 12px; color: #d5dde3; }
@@ -2028,6 +2040,16 @@
     #vrmaWatchWin .watch-check { flex-direction: row; align-items: center; gap: 8px; }
     #vrmaWatchWin .watch-card { border: 1px solid #3a3a44; border-radius: 8px; padding: 8px 8px 2px; margin: 0 0 8px; }
     #vrmaWatchWin .watch-card-title { font-size: 13px; color: #fff; margin: 0 0 8px; }
+    #watchSkyGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 0 8px; }
+    #watchSkyGrid.is-busy button { pointer-events: none; opacity: 0.4; }
+    #watchSkyGrid button.is-wait { opacity: 1; outline: 2px solid #ffe082; }
+    #watchSkyWait { height: 8px; background: #2a2a32; border-radius: 4px; overflow: hidden; margin: 0 0 8px; }
+    #watchSkyWait[hidden] { display: none !important; }
+    #watchSkyWaitFill { height: 100%; width: 0%; background: #ffe082; }
+    #watchSkyStatus.is-wait { color: #ffe082; font-size: 13px; }
+    #watchSkyGrid button { padding: 0; border: 1px solid #3a3a44; background: #14181c; color: #d5dde3; cursor: pointer; text-align: left; }
+    #watchSkyGrid img { width: 100%; height: 64px; object-fit: cover; display: block; background: #111; }
+    #watchSkyGrid span { display: block; padding: 3px 4px 4px; font-size: 10px; line-height: 1.3; }
     #vrmaWatchWin .watch-move { width: 100%; margin: 0 0 8px; min-height: 32px; background: #24343a; }
     #vrmaWatchWin .watch-move.is-on { box-shadow: inset 0 0 0 1px #7fd0ff; background: #1c3a44; }
     #vrmaWatchWin .watch-gizmo-bar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 8px; padding: 6px 8px; background: #24343a; border-radius: 6px; }
@@ -2699,7 +2721,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.561</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.565</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -3893,6 +3915,11 @@
                 <span style="color:#888;">アプリ内の見本として組み込み、背景の白を抜いて使っています。クレジットの表示は必須ではありません。このアプリごと配ることはできます。この絵だけを、ほぼそのままの単体ファイルとして配布したり販売したりすることはできません。条件の概要は <a href="https://pixabay.com/service/license-summary/" target="_blank" rel="noopener" style="color:#9ab;">Pixabay Content License</a> です。</span>
               </div>
               <div style="margin-top:10px;">
+                空の HDRI（Poly Haven）<br>
+                <span style="color:#9ab;">HDRI は CC0 です。クレジットは不要です。一覧は Poly Haven の公開 API から取ります。</span><br>
+                <span style="color:#888;">識別は User-Agent: VRM Color Editor です。このアプリは Poly Haven の公式製品ではありません。条件は <a href="https://github.com/Poly-Haven/Public-API/blob/master/ToS.md" target="_blank" rel="noopener" style="color:#9ab;">API Terms of Service</a> と <a href="https://polyhaven.com/license" target="_blank" rel="noopener" style="color:#9ab;">CC0</a> です。</span>
+              </div>
+              <div style="margin-top:10px;">
                 サンプルモーション（VRMA）<br>
                 <span style="color:#9ab;">アプリ内で使用しているサンプルモーションデータ（VRMA）は、VRoid Project（株式会社ピクシブ）が提供する公式素材を使用しています。</span>
               </div>
@@ -3916,10 +3943,10 @@
 
     <!-- 3D ビューア領域 -->
     <div id="viewerArea">
-      <aside id="vrmaWatchWin" class="vce-float" data-tab-bound="1" hidden style="width:340px; left:24px; top:24px;" aria-label="鑑賞">
+      <aside id="vrmaWatchWin" class="vce-float" data-tab-bound="1" hidden style="width:340px; left:24px; top:24px;" aria-label="コントロールパネル">
         <div class="vce-float-head" id="vrmaWatchHead">
           <button type="button" class="vce-float-close" id="vrmaWatchClose" title="閉じる">×</button>
-          <span class="vce-float-title">鑑賞</span>
+          <span class="vce-float-title">コントロールパネル</span>
           <button type="button" class="vce-float-fold" id="vrmaWatchFold" title="タブだけにする">⌃</button>
         </div>
         <div class="vce-float-body">
@@ -3965,6 +3992,17 @@
           <p>スライダーは -300% から 300% です。0% はその場で止まり、マイナスは戻ります。繰り返しは、VRMAタブのチェックのままです。</p>
           <label class="watch-row">終端から開始へ戻す秒<input type="range" id="watchLoopBridge" min="0" max="4" step="0.1" value="2" title="ループのとき、終端の姿勢から開始の姿勢まで骨を動かす秒数です。0はすぐ戻します"></label>
           <p class="watch-note" id="watchLoopBridgeLabel">2.0秒。ループのときだけ、終端の姿勢から開始の姿勢へ骨を動かしてから、再生を続けます。0秒は、すぐ先頭に戻ります。</p>
+          <h4>空</h4>
+          <p class="watch-note">Poly Haven の HDRI を、全天周の空として貼ります。CC0 です。モデルのライトは変えません。1k が標準です。鑑賞を出ると画面からは外し、もう一度入ると戻します。シーンのJSONには入りません。</p>
+          <label class="watch-row">名前で探す<input id="watchSkyQuery" type="text" maxlength="80" spellcheck="false" autocomplete="off" placeholder="sunset, night, studio"></label>
+          <label class="watch-row">大きさ<select id="watchSkySize"><option value="1k" selected>1k</option><option value="2k">2k</option></select></label>
+          <label class="watch-row">空の明るさ<input id="watchSkyExposure" type="range" min="0.05" max="4" step="0.05" value="0.6"></label>
+          <label class="watch-row">空の回転<input id="watchSkyYaw" type="range" min="0" max="360" step="1" value="0"></label>
+          <button type="button" id="watchSkyList">一覧を読み込む</button>
+          <button type="button" id="watchSkyClear">空を外す</button>
+          <p id="watchSkyStatus" class="watch-note"></p>
+          <div id="watchSkyWait" hidden><div id="watchSkyWaitFill"></div></div>
+          <div id="watchSkyGrid"></div>
           <h4>太陽</h4>
           <p class="watch-note">向きだけのライトです。影が落ちる方向も、この向きです。色と明るさは、ここで変えます。鑑賞を出ると、向きも色も明るさも戻します。</p>
           <label class="watch-row">太陽の色<input id="watchSunColor" type="color" value="#ffffff"></label>
@@ -4031,6 +4069,8 @@
           <h4>読み込んだファイル</h4>
           <p class="watch-note">ここに名前と説明だけを出します。中身はシーンのJSONに入りません。</p>
           <div id="watchExternalFiles"></div>
+          <h4>ライセンス</h4>
+          <p class="watch-note">空の HDRI は Poly Haven（CC0）です。一覧は Poly Haven の API から取ります。このアプリの識別は User-Agent: VRM Color Editor です。Poly Haven の公式製品ではありません。</p>
         </div>
       </aside>
       <div id="watchMovieHud" hidden>
@@ -4364,7 +4404,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.561';
+    const APP_VERSION = 'v5.4.565';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -35133,6 +35173,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const prev = [];
       function hide(obj) { if (!obj) return; prev.push([obj, obj.visible]); obj.visible = false; }
       hide(watchBlob);
+      hide(watchSky);
       if (watchPicture) hide(watchPicture.mesh);
       if (!opts || !opts.keepMotes) hide(watchMoteRoot);
       hide(vrmaStageRoot);
@@ -36293,6 +36334,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchBeforeRender(step) {
       if (!vrmaWatchOn || !watchReady) return;
+      try { watchSkyFollow(); } catch (_) {}
       try { watchSyncPoseMatrices(); } catch (_) {}
       let foot = null;
       let floorY = 0;
@@ -37657,6 +37699,207 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!(raw > 0)) raw = 0;
       return raw;
     }
+    let watchSky = null;
+    let watchSkyTex = null;
+    let watchSkyCatalog = null;
+    let watchSkyLoaderPromise = null;
+    let watchSkyToken = 0;
+    let watchSkyBusy = false;
+    function watchSkyFetch(url) {
+      try {
+        return fetch(url, { headers: { 'User-Agent': 'VRM Color Editor' } });
+      } catch (_) {
+        return fetch(url);
+      }
+    }
+    function watchSkyStatus(text) {
+      const el = document.getElementById('watchSkyStatus');
+      if (el) el.textContent = text || '';
+    }
+    function watchSkySetWait(on, btn) {
+      const grid = document.getElementById('watchSkyGrid');
+      const bar = document.getElementById('watchSkyWait');
+      const fill = document.getElementById('watchSkyWaitFill');
+      const st = document.getElementById('watchSkyStatus');
+      const listBtn = document.getElementById('watchSkyList');
+      if (grid) grid.classList.toggle('is-busy', !!on);
+      if (bar) bar.hidden = !on;
+      if (!on && fill) fill.style.width = '0%';
+      if (st) st.classList.toggle('is-wait', !!on);
+      if (listBtn) listBtn.disabled = !!on;
+      if (grid) grid.querySelectorAll('button.is-wait').forEach((b) => b.classList.remove('is-wait'));
+      if (on && btn) btn.classList.add('is-wait');
+    }
+    function watchSkyProgress(got, total) {
+      const fill = document.getElementById('watchSkyWaitFill');
+      let msg = '外から空を取っています。';
+      if (total > 0) {
+        const pct = Math.max(1, Math.min(99, Math.round(got / total * 100)));
+        if (fill) fill.style.width = pct + '%';
+        msg += pct + '%。';
+      } else {
+        if (fill) fill.style.width = '40%';
+        msg += (got / 1048576).toFixed(1) + 'MB。';
+      }
+      watchSkyStatus(msg + '画面に出るまで、もう押さないでください。');
+    }
+    function watchSkyEnsure() {
+      if (watchSky) return watchSky;
+      const mat = new THREE.ShaderMaterial({
+        uniforms: {
+          map: { value: null },
+          exposure: { value: 0.6 }
+        },
+        side: THREE.BackSide,
+        depthWrite: false,
+        vertexShader: 'varying vec3 vDir; void main(){ vec4 wp = modelMatrix * vec4(position, 1.0); vDir = wp.xyz - cameraPosition; gl_Position = projectionMatrix * viewMatrix * wp; }',
+        fragmentShader: 'uniform sampler2D map; uniform float exposure; varying vec3 vDir; void main(){ vec3 d = normalize(vDir); float u = atan(d.z, d.x) * 0.15915494309 + 0.5; float v = asin(clamp(d.y, -1.0, 1.0)) * 0.31830988618 + 0.5; vec3 c = texture2D(map, vec2(u, v)).rgb * exposure; c = c / (c + vec3(1.0)); gl_FragColor = vec4(pow(max(c, vec3(0.0)), vec3(0.454545)), 1.0); }'
+      });
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 24), mat);
+      mesh.frustumCulled = false;
+      mesh.raycast = function () {};
+      mesh.userData.watchSky = true;
+      watchSky = mesh;
+      return mesh;
+    }
+    function watchSkyFollow() {
+      if (!watchSky || !watchSky.parent) return;
+      watchSky.position.copy(cameraSingle.position);
+      watchSky.rotation.y = THREE.MathUtils.degToRad(watchNum('watchSkyYaw', 0, 0, 360));
+      const exp = watchNum('watchSkyExposure', 0.6, 0.05, 4);
+      if (watchSky.material && watchSky.material.uniforms) watchSky.material.uniforms.exposure.value = exp;
+    }
+    function watchSkyAttach() {
+      if (!watchSky || !watchSkyTex || !vrmaWatchOn) return;
+      if (watchSky.parent !== sceneEdited) sceneEdited.add(watchSky);
+      watchSkyFollow();
+    }
+    function watchSkyDetach() {
+      if (watchSky && watchSky.parent) watchSky.parent.remove(watchSky);
+    }
+    function watchSkyClear() {
+      watchSkyToken += 1;
+      watchSkyBusy = false;
+      watchSkySetWait(false);
+      watchSkyDetach();
+      if (watchSky && watchSky.material && watchSky.material.uniforms) watchSky.material.uniforms.map.value = null;
+      if (watchSkyTex) {
+        try { watchSkyTex.dispose(); } catch (_) {}
+        watchSkyTex = null;
+      }
+      watchSkyStatus('空を外しました。');
+    }
+    function watchSkyRenderList() {
+      const grid = document.getElementById('watchSkyGrid');
+      if (!grid) return;
+      grid.replaceChildren();
+      const cat = watchSkyCatalog;
+      if (!cat) return;
+      const q = String((document.getElementById('watchSkyQuery') || {}).value || '').trim().toLowerCase();
+      const terms = q.split(/\s+/).filter(Boolean);
+      const rows = [];
+      Object.keys(cat).forEach((id) => {
+        const rec = cat[id] || {};
+        const blob = (id + ' ' + (rec.name || '') + ' ' + ((rec.categories || []).join(' ')) + ' ' + ((rec.tags || []).join(' '))).toLowerCase();
+        if (terms.some((term) => blob.indexOf(term) < 0)) return;
+        rows.push({ id: id, name: rec.name || id, n: rec.download_count || 0 });
+      });
+      rows.sort((a, b) => b.n - a.n);
+      const shown = rows.slice(0, 48);
+      shown.forEach((row) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.title = row.name;
+        const img = document.createElement('img');
+        img.alt = '';
+        img.loading = 'lazy';
+        img.src = 'https://cdn.polyhaven.com/asset_img/thumbs/' + encodeURIComponent(row.id) + '.png?width=160&height=90';
+        const span = document.createElement('span');
+        span.textContent = row.name;
+        btn.appendChild(img);
+        btn.appendChild(span);
+        btn.addEventListener('click', () => { watchSkyApply(row.id, row.name, btn); });
+        grid.appendChild(btn);
+      });
+      watchSkyStatus(shown.length ? (shown.length + ' 件を表示しています。名前を押すと空に貼ります。') : '当てはまる空がありません。');
+    }
+    async function watchSkyLoadCatalog() {
+      if (watchSkyCatalog) {
+        watchSkyRenderList();
+        return;
+      }
+      watchSkyStatus('Poly Haven の一覧を読み込んでいます。');
+      try {
+        const res = await watchSkyFetch('https://api.polyhaven.com/assets?t=hdris');
+        if (!res.ok) throw new Error('list');
+        const data = await res.json();
+        if (!data || typeof data !== 'object') throw new Error('list');
+        watchSkyCatalog = data;
+        watchSkyRenderList();
+      } catch (err) {
+        console.error(err);
+        watchSkyStatus('Poly Haven の一覧を読めませんでした。');
+      }
+    }
+    async function watchSkyApply(id, name, btn) {
+      if (watchSkyBusy) {
+        watchSkyStatus('まだ外から取っています。画面に出るまで、もう押さないでください。');
+        const st = document.getElementById('watchSkyStatus');
+        if (st) st.classList.add('is-wait');
+        return;
+      }
+      const token = ++watchSkyToken;
+      watchSkyBusy = true;
+      const sizeEl = document.getElementById('watchSkySize');
+      const size = sizeEl && sizeEl.value === '2k' ? '2k' : '1k';
+      watchSkySetWait(true, btn);
+      watchSkyStatus((name || id) + ' を ' + size + ' で取ります。画面に出るまで、もう押さないでください。');
+      try {
+        const res = await watchSkyFetch('https://api.polyhaven.com/files/' + encodeURIComponent(id));
+        if (!res.ok) throw new Error('file');
+        const data = await res.json();
+        const file = data && data.hdri && data.hdri[size] && data.hdri[size].hdr;
+        if (!file || !file.url) throw new Error('file');
+        if (token !== watchSkyToken) return;
+        if (!watchSkyLoaderPromise) {
+          watchSkyLoaderPromise = import('three/addons/loaders/RGBELoader.js').then((mod) => new mod.RGBELoader());
+        }
+        const loader = await watchSkyLoaderPromise;
+        if (token !== watchSkyToken) return;
+        const tex = await new Promise((resolve, reject) => {
+          loader.load(file.url, (texture) => resolve(texture), (ev) => {
+            if (token !== watchSkyToken || !ev) return;
+            if (ev.lengthComputable) watchSkyProgress(ev.loaded, ev.total);
+            else watchSkyProgress(ev.loaded || 0, 0);
+          }, () => reject(new Error('file')));
+        });
+        if (token !== watchSkyToken) {
+          try { tex.dispose(); } catch (_) {}
+          return;
+        }
+        tex.magFilter = THREE.LinearFilter;
+        tex.minFilter = THREE.LinearFilter;
+        tex.generateMipmaps = false;
+        tex.needsUpdate = true;
+        const sky = watchSkyEnsure();
+        if (watchSkyTex) {
+          try { watchSkyTex.dispose(); } catch (_) {}
+        }
+        watchSkyTex = tex;
+        sky.material.uniforms.map.value = tex;
+        watchSkyAttach();
+        watchSkyStatus((name || id) + ' を空に貼りました。Poly Haven（CC0）。');
+      } catch (err) {
+        if (token !== watchSkyToken) return;
+        console.error(err);
+        watchSkyStatus('この空を読めませんでした。通信を確認して、もう一度押してください。');
+      } finally {
+        if (token === watchSkyToken) {
+          watchSkyBusy = false;
+          watchSkySetWait(false);
+        }
+      }
+    }
     function watchEnter() {
       watchEnsure();
       watchState.savedMode = transformControl.mode;
@@ -37680,8 +37923,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const foot = vceEditedFootPlant();
       watchMoteList.forEach((mesh) => watchResetMote(mesh, foot, watchNum('watchMoteGravity', 1, -2, 2)));
       try { watchMovieRefreshLabel(); } catch (_) {}
+      watchSkyAttach();
     }
     function watchExit() {
+      watchSkyDetach();
       watchRestoreWind();
       watchRestoreEmission();
       if (watchLightA) sceneEdited.remove(watchLightA);
@@ -37726,6 +37971,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const comp = document.getElementById('watchBloomComp');
       const bloomColor = document.getElementById('watchBloomColor');
       if (comp && bloomColor) comp.addEventListener('change', () => { bloomColor.disabled = comp.checked; });
+      const skyList = document.getElementById('watchSkyList');
+      const skyClear = document.getElementById('watchSkyClear');
+      const skyQuery = document.getElementById('watchSkyQuery');
+      if (skyList) skyList.addEventListener('click', () => { watchSkyLoadCatalog(); });
+      if (skyClear) skyClear.addEventListener('click', () => { watchSkyClear(); });
+      if (skyQuery) skyQuery.addEventListener('input', () => { if (watchSkyCatalog) watchSkyRenderList(); });
       document.querySelectorAll('#vrmaWatchWin .watch-move').forEach((btn) => {
         btn.addEventListener('click', () => {
           const which = btn.getAttribute('data-watch-move') || '';
