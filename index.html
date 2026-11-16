@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.566-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move
+  Version: v5.4.571-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop
   ==================================================
 -->
 <!--
@@ -12,6 +12,23 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.571 / 2026-11-16 / Super Grok（土台は v5.4.570）
+    修正: 高さを変える位置にマウスを乗せると、ドラッグしていないのにその位置が逃げていた。取っ手がスクロールの中に重なっていた。スクロールの外へ出した。空の一覧も同じ。
+    修正: 空の一覧のサムネールを、コントロールパネルと同じ横長にした。下の床と球は出さない。名前は、絵の下に出す。
+
+  v5.4.570 / 2026-11-16 / Super Grok（土台は v5.4.569）
+    修正: 選んだ空のサムネールの下が、格子の床に見えていた。元の絵は 4:3 で、下に床が写っている。枠の高さを固定していたので、その床が残った。横長の空の部分だけを出す。
+
+  v5.4.569 / 2026-11-16 / Super Grok（土台は v5.4.568）
+    追加: 空を自動で回すを選べる。速さは、1周にかかる秒数で指定する。右へ回る。
+    追加: 動画のあいだは、その長さで指定した回数だけ、右か左へ回せる。選ぶと、1周の秒数は使わない。書き出しが終わると、その回転は戻す。
+
+  v5.4.568 / 2026-11-16 / Super Grok（土台は v5.4.567）
+    修正: 空の回転を動かしても、見た目が変わらなかった。球はカメラの中心にあるので、球自体を回しても向きは同じになる。空の絵を取り出す向きを回すようにした。
+
+  v5.4.567 / 2026-11-16 / Super Grok（土台は v5.4.566）
+    変更: 空の一覧は、コントロールパネルから外した。追加で、大きさを変えられる浮動枠に出す。選ぶと枠は閉じ、選んだサムネールだけをパネルに出す。削除は、鑑賞の空とサムネールを外す。進み具合は、選んだあとはサムネールの下に出る。
 
   v5.4.566 / 2026-11-15 / Super Grok（土台は v5.4.565）
     修正: コントロールパネルから色を出すと、パネルの下に隠れて使えなかった。色はパネルの手前に出す。
@@ -1189,7 +1206,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.566</title>
+  <title>VRM Color Editor - v5.4.571</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2006,7 +2023,7 @@
     body.vrma-watch #splitDivider,
     body.vrma-watch #splitLabelLeft,
     body.vrma-watch #splitLabelRight,
-    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop),
+    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop):not(#watchSkyWin),
     body.vrma-watch #stampPicker,
     body.vrma-watch #stampAimStatus,
     body.vrma-watch #vceDialog,
@@ -2016,11 +2033,12 @@
       display: none !important;
     }
     body.vrma-watch #vrmaWatchWin { z-index: 80000; }
-    #vrmaWatchWin { width: 340px; }
+    #vrmaWatchWin, #watchSkyWin { display: flex; flex-direction: column; overflow: visible; }
+    #vrmaWatchWin > .vce-float-head, #watchSkyWin > .vce-float-head { flex: 0 0 auto; }
     #vrmaWatchResize {
-      position: absolute; left: 0; right: 0; bottom: 0; height: 14px; z-index: 4;
+      position: relative; flex: 0 0 14px; height: 14px; z-index: 4;
       cursor: ns-resize; touch-action: none;
-      background: linear-gradient(to top, rgba(196, 184, 164, 0.9), rgba(196, 184, 164, 0));
+      background: linear-gradient(to top, rgba(196, 184, 164, 0.95), rgba(196, 184, 164, 0.15));
     }
     #watchMp4Note {
       position: fixed;
@@ -2039,7 +2057,7 @@
     #watchMovieHud .watch-movie-hud-bar { height: 8px; background: #2a2a32; border-radius: 4px; overflow: hidden; }
     #watchMovieHudFill { height: 100%; width: 0%; background: #7fd0ff; }
     #watchMovieHud button { min-height: 32px; }
-    #vrmaWatchWin .vce-float-body { max-height: min(68vh, 520px); overflow: auto; padding-bottom: 22px; }
+    #vrmaWatchWin .vce-float-body { max-height: min(68vh, 520px); overflow: auto; overscroll-behavior: contain; padding-bottom: 8px; }
     #vrmaWatchWin .vce-float-body h4 { margin: 18px 0 8px; padding-top: 12px; border-top: 1px solid #c4b8a4; font-size: 16px; color: #fff; font-weight: 700; letter-spacing: 0.02em; }
     #vrmaWatchWin .vce-float-body p,
     #vrmaWatchWin .watch-note { margin: 0 0 8px; font-size: 11px; color: #8e99a4; line-height: 1.45; }
@@ -2051,16 +2069,28 @@
     #vrmaWatchWin .watch-check { flex-direction: row; align-items: center; gap: 8px; }
     #vrmaWatchWin .watch-card { border: 1px solid #3a3a44; border-radius: 8px; padding: 8px 8px 2px; margin: 0 0 8px; }
     #vrmaWatchWin .watch-card-title { font-size: 13px; color: #fff; margin: 0 0 8px; }
-    #watchSkyGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 0 0 8px; }
+    #watchSkyGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; margin: 0; }
     #watchSkyGrid.is-busy button { pointer-events: none; opacity: 0.4; }
     #watchSkyGrid button.is-wait { opacity: 1; outline: 2px solid #ffe082; }
     #watchSkyWait { height: 8px; background: #2a2a32; border-radius: 4px; overflow: hidden; margin: 0 0 8px; }
     #watchSkyWait[hidden] { display: none !important; }
     #watchSkyWaitFill { height: 100%; width: 0%; background: #ffe082; }
-    #watchSkyStatus.is-wait { color: #ffe082; font-size: 13px; }
+    #watchSkyStatus.is-wait, #watchSkyFloatStatus.is-wait { color: #ffe082; font-size: 13px; }
     #watchSkyGrid button { padding: 0; border: 1px solid #3a3a44; background: #14181c; color: #d5dde3; cursor: pointer; text-align: left; }
-    #watchSkyGrid img { width: 100%; height: 64px; object-fit: cover; display: block; background: #111; }
-    #watchSkyGrid span { display: block; padding: 3px 4px 4px; font-size: 10px; line-height: 1.3; }
+    #watchSkyGrid img { width: 100%; aspect-ratio: 2 / 1; height: auto; object-fit: cover; object-position: center top; display: block; background: #111; }
+    #watchSkyGrid span { display: block; padding: 4px 4px 5px; font-size: 10px; line-height: 1.3; }
+    #watchSkyPick { margin: 0 0 8px; }
+    #watchSkyPickImg { width: 100%; aspect-ratio: 2 / 1; height: auto; object-fit: cover; object-position: center top; display: block; border-radius: 6px; background: #111; border: 1px solid #3a3a44; }
+    #watchSkyPickImg[hidden] { display: none !important; }
+    #watchSkyWin { width: 360px; display: flex; flex-direction: column; overflow: visible; }
+    #watchSkyWin .watch-row { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin: 0 0 8px; font-size: 12px; color: #d5dde3; }
+    #watchSkyWin .watch-row input { width: 100%; min-width: 0; }
+    #watchSkyWin .vce-float-body { height: 420px; overflow: auto; overscroll-behavior: contain; }
+    #watchSkyWinResize {
+      position: relative; align-self: flex-end; flex: 0 0 18px; width: 28px; height: 18px; z-index: 4;
+      cursor: nwse-resize; touch-action: none;
+      background: linear-gradient(135deg, transparent 50%, #c4b8a4 50%);
+    }
     #vrmaWatchWin .watch-move { width: 100%; margin: 0 0 8px; min-height: 32px; background: #24343a; }
     #vrmaWatchWin .watch-move.is-on { box-shadow: inset 0 0 0 1px #7fd0ff; background: #1c3a44; }
     #vrmaWatchWin .watch-gizmo-bar { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 8px; padding: 6px 8px; background: #24343a; border-radius: 6px; }
@@ -2732,7 +2762,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.566</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.571</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4006,16 +4036,25 @@
           <label class="watch-row">終端から開始へ戻す秒<input type="range" id="watchLoopBridge" min="0" max="4" step="0.1" value="2" title="ループのとき、終端の姿勢から開始の姿勢まで骨を動かす秒数です。0はすぐ戻します"></label>
           <p class="watch-note" id="watchLoopBridgeLabel">2.0秒。ループのときだけ、終端の姿勢から開始の姿勢へ骨を動かしてから、再生を続けます。0秒は、すぐ先頭に戻ります。</p>
           <h4>空</h4>
-          <p class="watch-note">Poly Haven の HDRI を、全天周の空として貼ります。CC0 です。モデルのライトは変えません。1k が標準です。鑑賞を出ると画面からは外し、もう一度入ると戻します。シーンのJSONには入りません。</p>
-          <label class="watch-row">名前で探す<input id="watchSkyQuery" type="text" maxlength="80" spellcheck="false" autocomplete="off" placeholder="sunset, night, studio"></label>
+          <p class="watch-note">Poly Haven の HDRI を、全天周の空として貼ります。CC0 です。モデルのライトは変えません。追加で一覧を開きます。選ぶと一覧は閉じ、ここにサムネールだけが残ります。削除は、空とサムネールを外します。1k が標準です。鑑賞を出ると画面からは外し、もう一度入ると戻します。シーンのJSONには入りません。</p>
+          <div id="watchSkyPick">
+            <img id="watchSkyPickImg" alt="" hidden>
+            <p id="watchSkyPickName" class="watch-note">未選択</p>
+          </div>
+          <div id="watchSkyPickBar"></div>
+          <div class="watch-actions">
+            <button type="button" id="watchSkyList">空を追加</button>
+            <button type="button" id="watchSkyClear">削除</button>
+          </div>
           <label class="watch-row">大きさ<select id="watchSkySize"><option value="1k" selected>1k</option><option value="2k">2k</option></select></label>
           <label class="watch-row">空の明るさ<input id="watchSkyExposure" type="range" min="0.05" max="4" step="0.05" value="0.6"></label>
           <label class="watch-row">空の回転<input id="watchSkyYaw" type="range" min="0" max="360" step="1" value="0"></label>
-          <button type="button" id="watchSkyList">一覧を読み込む</button>
-          <button type="button" id="watchSkyClear">空を外す</button>
+          <label class="watch-row watch-check"><input id="watchSkySpin" type="checkbox">空を自動で回す</label>
+          <label class="watch-row">1周の秒数<input id="watchSkySpinSec" type="number" min="0.5" max="3600" step="0.1" value="20" title="1周するのにかける秒です"></label>
+          <label class="watch-row">動画のあいだの周回数<input id="watchSkyMovieTurns" type="number" min="0" max="30" step="0.1" value="1" title="書き出しの長さで、何周するかです"></label>
+          <label class="watch-row">動画中の回り方<select id="watchSkyMovieDir"><option value="off" selected>自動回転のまま</option><option value="right">右へ、この回数だけ</option><option value="left">左へ、この回数だけ</option></select></label>
+          <p class="watch-note">自動で回すをオンにすると、上の向きから右へ回ります。右は、回転の数を増やす向きです。1周の秒数は、1周にかかる時間です。動きを止めても回ります。動画中の回り方で右か左を選ぶと、書き出しの長さのあいだに、その回数だけ回します。そのときは1周の秒数は使いません。最初の絵は、上の向きです。書き出しが終わると、その回転は戻します。</p>
           <p id="watchSkyStatus" class="watch-note"></p>
-          <div id="watchSkyWait" hidden><div id="watchSkyWaitFill"></div></div>
-          <div id="watchSkyGrid"></div>
           <h4>太陽</h4>
           <p class="watch-note">向きだけのライトです。影が落ちる方向も、この向きです。色と明るさは、ここで変えます。鑑賞を出ると、向きも色も明るさも戻します。</p>
           <label class="watch-row">太陽の色<input id="watchSunColor" type="color" value="#ffffff"></label>
@@ -4085,7 +4124,22 @@
           <h4>ライセンス</h4>
           <p class="watch-note">空の HDRI は Poly Haven（CC0）です。一覧は Poly Haven の API から取ります。このアプリの識別は User-Agent: VRM Color Editor です。Poly Haven の公式製品ではありません。</p>
         </div>
-        <div id="vrmaWatchResize" title="高さを変える"></div>
+        <div id="vrmaWatchResize" aria-label="高さを変える"></div>
+      </aside>
+      <aside id="watchSkyWin" class="vce-float" hidden style="width:360px; left:380px; top:72px;" aria-label="空の一覧">
+        <div class="vce-float-head" id="watchSkyHead">
+          <button type="button" class="vce-float-close" id="watchSkyWinClose" title="閉じる">×</button>
+          <span class="vce-float-title">空の一覧</span>
+        </div>
+        <div class="vce-float-body" id="watchSkyBody">
+          <label class="watch-row">名前で探す<input id="watchSkyQuery" type="text" maxlength="80" spellcheck="false" autocomplete="off" placeholder="sunset, night, studio"></label>
+          <p id="watchSkyFloatStatus" class="watch-note"></p>
+          <div id="watchSkyFloatWait">
+            <div id="watchSkyWait" hidden><div id="watchSkyWaitFill"></div></div>
+          </div>
+          <div id="watchSkyGrid"></div>
+        </div>
+        <div id="watchSkyWinResize" aria-label="大きさを変える"></div>
       </aside>
       <div id="watchMovieHud" hidden>
         <div class="watch-movie-hud-row">
@@ -4418,7 +4472,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.566';
+    const APP_VERSION = 'v5.4.571';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -36426,7 +36480,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchBeforeRender(step) {
       if (!vrmaWatchOn || !watchReady) return;
-      try { watchSkyFollow(); } catch (_) {}
+      try { watchSkyAdvance(step); watchSkyFollow(); } catch (_) {}
       try { watchSyncPoseMatrices(); } catch (_) {}
       let foot = null;
       let floorY = 0;
@@ -37599,11 +37653,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (controlsSingle) controlsSingle.enabled = false;
       let drawn = 0;
       try {
+        watchSkyMovie = watchSkyMoviePlan(framesWanted);
         renderer.setPixelRatio(1);
         renderer.setSize(1920, 1080, false);
         cameraSingle.aspect = 1920 / 1080;
         cameraSingle.updateProjectionMatrix();
         if (safariMovie) {
+          if (watchSkyMovie) watchSkyMovie.frame = 0;
           try { watchBeforeRender(0); } catch (_) {}
           watchMoviePaint(canvas, ctx);
           const painted = await watchMovieProveConfig(kind.config, canvas);
@@ -37629,6 +37685,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         try { encoder.configure(kind.config); } catch (err) { failed = err || new Error('configure'); }
         for (let i = 0; i < framesWanted && !failed; i++) {
           if ((safariMovie || !movieStraight) && (watchMovieStop || watchMovieFinish || !vrmaWatchOn)) break;
+          if (watchSkyMovie) watchSkyMovie.frame = i;
           watchMovieMs = i * (1000 / 30);
           const step = 1 / 30;
           if (i === 0) {
@@ -37760,6 +37817,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const leave = watchMovieLeaveAfter;
         watchMovieLeaveAfter = false;
         watchMovieBusy = false;
+        watchSkyMovie = null;
         watchMovieButtons(false);
         if (leave) setVrmaWatch(false);
       }
@@ -37797,6 +37855,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let watchSkyLoaderPromise = null;
     let watchSkyToken = 0;
     let watchSkyBusy = false;
+    let watchSkyShown = null;
+    let watchSkySpinRad = 0;
+    let watchSkyMovie = null;
     function watchSkyFetch(url) {
       try {
         return fetch(url, { headers: { 'User-Agent': 'VRM Color Editor' } });
@@ -37804,9 +37865,52 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         return fetch(url);
       }
     }
-    function watchSkyStatus(text) {
-      const el = document.getElementById('watchSkyStatus');
-      if (el) el.textContent = text || '';
+    function watchSkyStatus(text, where) {
+      const say = (id) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text || '';
+      };
+      if (where === 'float') say('watchSkyFloatStatus');
+      else if (where === 'panel') say('watchSkyStatus');
+      else {
+        say('watchSkyStatus');
+        say('watchSkyFloatStatus');
+      }
+    }
+    function watchSkyParkWait(where) {
+      const bar = document.getElementById('watchSkyWait');
+      const host = document.getElementById(where === 'panel' ? 'watchSkyPickBar' : 'watchSkyFloatWait');
+      if (bar && host && bar.parentElement !== host) host.appendChild(bar);
+    }
+    function watchSkyThumbUrl(id) {
+      return 'https://cdn.polyhaven.com/asset_img/thumbs/' + encodeURIComponent(id) + '.png?width=640';
+    }
+    function watchSkyShowPick(rec) {
+      const img = document.getElementById('watchSkyPickImg');
+      const label = document.getElementById('watchSkyPickName');
+      if (!rec || !rec.id) {
+        if (img) { img.removeAttribute('src'); img.alt = ''; img.hidden = true; }
+        if (label) label.textContent = '未選択';
+        return;
+      }
+      if (img) {
+        img.hidden = false;
+        img.alt = rec.name || rec.id;
+        img.src = watchSkyThumbUrl(rec.id);
+      }
+      if (label) label.textContent = rec.name || rec.id;
+    }
+    function watchSkyCloseCatalog() {
+      const win = document.getElementById('watchSkyWin');
+      if (win) win.hidden = true;
+    }
+    function watchSkyOpenCatalog() {
+      const win = document.getElementById('watchSkyWin');
+      if (!win) return;
+      if (!watchSkyBusy) watchSkyParkWait('float');
+      win.hidden = false;
+      if (typeof raiseFloat === 'function') raiseFloat(win);
+      watchSkyLoadCatalog();
     }
     function watchSkySetWait(on, btn) {
       const grid = document.getElementById('watchSkyGrid');
@@ -37833,19 +37937,20 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (fill) fill.style.width = '40%';
         msg += (got / 1048576).toFixed(1) + 'MB。';
       }
-      watchSkyStatus(msg + '画面に出るまで、もう押さないでください。');
+      watchSkyStatus(msg + '画面に出るまで、もう押さないでください。', 'panel');
     }
     function watchSkyEnsure() {
       if (watchSky) return watchSky;
       const mat = new THREE.ShaderMaterial({
         uniforms: {
           map: { value: null },
-          exposure: { value: 0.6 }
+          exposure: { value: 0.6 },
+          yaw: { value: 0 }
         },
         side: THREE.BackSide,
         depthWrite: false,
         vertexShader: 'varying vec3 vDir; void main(){ vec4 wp = modelMatrix * vec4(position, 1.0); vDir = wp.xyz - cameraPosition; gl_Position = projectionMatrix * viewMatrix * wp; }',
-        fragmentShader: 'uniform sampler2D map; uniform float exposure; varying vec3 vDir; void main(){ vec3 d = normalize(vDir); float u = atan(d.z, d.x) * 0.15915494309 + 0.5; float v = asin(clamp(d.y, -1.0, 1.0)) * 0.31830988618 + 0.5; vec3 c = texture2D(map, vec2(u, v)).rgb * exposure; c = c / (c + vec3(1.0)); gl_FragColor = vec4(pow(max(c, vec3(0.0)), vec3(0.454545)), 1.0); }'
+        fragmentShader: 'uniform sampler2D map; uniform float exposure; uniform float yaw; varying vec3 vDir; void main(){ vec3 d = normalize(vDir); float c = cos(yaw); float s = sin(yaw); float x = c * d.x + s * d.z; float z = -s * d.x + c * d.z; float u = atan(z, x) * 0.15915494309 + 0.5; float v = asin(clamp(d.y, -1.0, 1.0)) * 0.31830988618 + 0.5; vec3 col = texture2D(map, vec2(u, v)).rgb * exposure; col = col / (col + vec3(1.0)); gl_FragColor = vec4(pow(max(col, vec3(0.0)), vec3(0.454545)), 1.0); }'
       });
       const mesh = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 24), mat);
       mesh.frustumCulled = false;
@@ -37854,12 +37959,40 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchSky = mesh;
       return mesh;
     }
+    function watchSkyMoviePlan(frames) {
+      const sel = document.getElementById('watchSkyMovieDir');
+      const dir = sel ? String(sel.value || 'off') : 'off';
+      if (dir !== 'right' && dir !== 'left') return null;
+      const turns = watchNum('watchSkyMovieTurns', 1, 0, 30);
+      if (!(turns > 0) || !(frames > 0)) return null;
+      return { sign: dir === 'left' ? -1 : 1, turns: turns, frames: frames, frame: 0 };
+    }
+    function watchSkyAdvance(step) {
+      if (watchSkyMovie) return;
+      const box = document.getElementById('watchSkySpin');
+      if (!box || !box.checked) {
+        watchSkySpinRad = 0;
+        return;
+      }
+      if (!(step > 0)) return;
+      const sec = watchNum('watchSkySpinSec', 20, 0.5, 3600);
+      if (!(sec > 0)) return;
+      watchSkySpinRad += Math.PI * 2 * (step / sec);
+    }
     function watchSkyFollow() {
       if (!watchSky || !watchSky.parent) return;
       watchSky.position.copy(cameraSingle.position);
-      watchSky.rotation.y = THREE.MathUtils.degToRad(watchNum('watchSkyYaw', 0, 0, 360));
+      let yaw = THREE.MathUtils.degToRad(watchNum('watchSkyYaw', 0, 0, 360));
+      if (watchSkyMovie && watchSkyMovie.frames > 0) {
+        yaw += watchSkyMovie.sign * Math.PI * 2 * watchSkyMovie.turns * (watchSkyMovie.frame / watchSkyMovie.frames);
+      } else {
+        yaw += watchSkySpinRad;
+      }
       const exp = watchNum('watchSkyExposure', 0.6, 0.05, 4);
-      if (watchSky.material && watchSky.material.uniforms) watchSky.material.uniforms.exposure.value = exp;
+      if (watchSky.material && watchSky.material.uniforms) {
+        if (watchSky.material.uniforms.exposure) watchSky.material.uniforms.exposure.value = exp;
+        if (watchSky.material.uniforms.yaw) watchSky.material.uniforms.yaw.value = yaw;
+      }
     }
     function watchSkyAttach() {
       if (!watchSky || !watchSkyTex || !vrmaWatchOn) return;
@@ -37879,7 +38012,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         try { watchSkyTex.dispose(); } catch (_) {}
         watchSkyTex = null;
       }
-      watchSkyStatus('空を外しました。');
+      watchSkyStatus('空を外しました。', 'panel');
+      watchSkyShown = null;
+      watchSkyShowPick(null);
+      watchSkyParkWait('float');
     }
     function watchSkyRenderList() {
       const grid = document.getElementById('watchSkyGrid');
@@ -37905,7 +38041,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const img = document.createElement('img');
         img.alt = '';
         img.loading = 'lazy';
-        img.src = 'https://cdn.polyhaven.com/asset_img/thumbs/' + encodeURIComponent(row.id) + '.png?width=160&height=90';
+        img.src = 'https://cdn.polyhaven.com/asset_img/thumbs/' + encodeURIComponent(row.id) + '.png?width=320';
         const span = document.createElement('span');
         span.textContent = row.name;
         btn.appendChild(img);
@@ -37913,14 +38049,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         btn.addEventListener('click', () => { watchSkyApply(row.id, row.name, btn); });
         grid.appendChild(btn);
       });
-      watchSkyStatus(shown.length ? (shown.length + ' 件を表示しています。名前を押すと空に貼ります。') : '当てはまる空がありません。');
+      watchSkyStatus(shown.length ? (shown.length + ' 件を表示しています。名前を押すと空に貼ります。') : '当てはまる空がありません。', 'float');
     }
     async function watchSkyLoadCatalog() {
       if (watchSkyCatalog) {
         watchSkyRenderList();
         return;
       }
-      watchSkyStatus('Poly Haven の一覧を読み込んでいます。');
+      watchSkyStatus('Poly Haven の一覧を読み込んでいます。', 'float');
       try {
         const res = await watchSkyFetch('https://api.polyhaven.com/assets?t=hdris');
         if (!res.ok) throw new Error('list');
@@ -37930,12 +38066,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         watchSkyRenderList();
       } catch (err) {
         console.error(err);
-        watchSkyStatus('Poly Haven の一覧を読めませんでした。');
+        watchSkyStatus('Poly Haven の一覧を読めませんでした。', 'float');
       }
     }
     async function watchSkyApply(id, name, btn) {
       if (watchSkyBusy) {
-        watchSkyStatus('まだ外から取っています。画面に出るまで、もう押さないでください。');
+        watchSkyStatus('まだ外から取っています。画面に出るまで、もう押さないでください。', 'panel');
         const st = document.getElementById('watchSkyStatus');
         if (st) st.classList.add('is-wait');
         return;
@@ -37944,8 +38080,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchSkyBusy = true;
       const sizeEl = document.getElementById('watchSkySize');
       const size = sizeEl && sizeEl.value === '2k' ? '2k' : '1k';
+      watchSkyShowPick({ id: id, name: name || id });
+      watchSkyParkWait('panel');
+      watchSkyCloseCatalog();
       watchSkySetWait(true, btn);
-      watchSkyStatus((name || id) + ' を ' + size + ' で取ります。画面に出るまで、もう押さないでください。');
+      watchSkyStatus((name || id) + ' を ' + size + ' で取ります。画面に出るまで、もう押さないでください。', 'panel');
       try {
         const res = await watchSkyFetch('https://api.polyhaven.com/files/' + encodeURIComponent(id));
         if (!res.ok) throw new Error('file');
@@ -37980,15 +38119,18 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         watchSkyTex = tex;
         sky.material.uniforms.map.value = tex;
         watchSkyAttach();
-        watchSkyStatus((name || id) + ' を空に貼りました。Poly Haven（CC0）。');
+        watchSkyShown = { id: id, name: name || id };
+        watchSkyStatus((name || id) + ' を空に貼りました。Poly Haven（CC0）。', 'panel');
       } catch (err) {
         if (token !== watchSkyToken) return;
         console.error(err);
-        watchSkyStatus('この空を読めませんでした。通信を確認して、もう一度押してください。');
+        watchSkyShowPick(watchSkyShown);
+        watchSkyStatus('この空を読めませんでした。通信を確認して、もう一度押してください。', 'panel');
       } finally {
         if (token === watchSkyToken) {
           watchSkyBusy = false;
           watchSkySetWait(false);
+          watchSkyParkWait('float');
         }
       }
     }
@@ -38046,6 +38188,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       try { applyVrmaTimeScale(); } catch (_) {}
       const watchWin = document.getElementById('vrmaWatchWin');
       if (watchWin) watchWin.hidden = true;
+      watchSkyCloseCatalog();
     }
     (function watchBindUi() {
       const speedBtn = document.getElementById('watchSpeedApply');
@@ -38068,9 +38211,46 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const skyList = document.getElementById('watchSkyList');
       const skyClear = document.getElementById('watchSkyClear');
       const skyQuery = document.getElementById('watchSkyQuery');
-      if (skyList) skyList.addEventListener('click', () => { watchSkyLoadCatalog(); });
+      if (skyList) skyList.addEventListener('click', () => { watchSkyOpenCatalog(); });
       if (skyClear) skyClear.addEventListener('click', () => { watchSkyClear(); });
       if (skyQuery) skyQuery.addEventListener('input', () => { if (watchSkyCatalog) watchSkyRenderList(); });
+      const skyWin = document.getElementById('watchSkyWin');
+      const skyHead = document.getElementById('watchSkyHead');
+      const skyClose = document.getElementById('watchSkyWinClose');
+      const skyGrip = document.getElementById('watchSkyWinResize');
+      if (skyClose) skyClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        watchSkyCloseCatalog();
+      });
+      if (skyWin && skyHead && typeof vceBindFloatHead === 'function') vceBindFloatHead(skyWin, skyHead);
+      if (skyGrip && skyWin) skyGrip.addEventListener('pointerdown', (e) => {
+        if (e.button != null && e.button !== 0) return;
+        const body = document.getElementById('watchSkyBody');
+        if (!body) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { skyGrip.setPointerCapture(e.pointerId); } catch (_) {}
+        const startX = e.clientX;
+        const startY = e.clientY;
+        const startW = skyWin.getBoundingClientRect().width;
+        const startH = body.getBoundingClientRect().height;
+        const move = (ev) => {
+          const nextW = Math.max(240, Math.min(window.innerWidth - 16, startW + (ev.clientX - startX)));
+          const nextH = Math.max(160, Math.min(window.innerHeight - 80, startH + (ev.clientY - startY)));
+          skyWin.style.width = nextW + 'px';
+          body.style.height = nextH + 'px';
+          body.style.maxHeight = nextH + 'px';
+        };
+        const up = () => {
+          skyGrip.removeEventListener('pointermove', move);
+          skyGrip.removeEventListener('pointerup', up);
+          skyGrip.removeEventListener('pointercancel', up);
+        };
+        skyGrip.addEventListener('pointermove', move);
+        skyGrip.addEventListener('pointerup', up);
+        skyGrip.addEventListener('pointercancel', up);
+      });
       document.querySelectorAll('#vrmaWatchWin .watch-move').forEach((btn) => {
         btn.addEventListener('click', () => {
           const which = btn.getAttribute('data-watch-move') || '';
@@ -38105,6 +38285,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (!body) return;
         e.preventDefault();
         e.stopPropagation();
+        try { grip.setPointerCapture(e.pointerId); } catch (_) {}
         const startY = e.clientY;
         const startH = body.getBoundingClientRect().height;
         const move = (ev) => {
