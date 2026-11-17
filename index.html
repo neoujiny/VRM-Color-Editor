@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.582-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle
+  Version: v5.4.589-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera
   ==================================================
 -->
 <!--
@@ -12,6 +12,27 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.589 / 2026-11-17 / Super Grok（土台は v5.4.588）
+    追加: コントロールパネルに「カメラ制御モード」。ボタン「カメラ制御」で、空の一覧と同じ、大きさを変えられる窓が開きます。タブの題は「カメラ制御」です。
+    追加: 自動カメラ。選んだ骨を見つめ、その周りを回り、画角は再生の最初から最後へ滑らかに寄ります。プレビューの再生と、MP4の書き出しで同じ時刻を使います。動きの長さに合わせるときは、その長さです。秒で長さを指定した書き出しは、その秒数です。
+    変更: カメラをドラッグすると自動は止まります。もう一度オンにするまで、手で動かした位置のままです。
+
+  v5.4.588 / 2026-11-17 / Super Grok（土台は v5.4.587）
+    変更: コントロールパネルの「床の格子を出す」を「床面のグリッド」にした。プレビュー表示設定の床面グリッドと同じ呼び方です。
+
+  v5.4.587 / 2026-11-17 / Super Grok（土台は v5.4.586）
+    修正: コントロールパネルの「赤い丸でも閉じます」を直した。閉じるのは、タブの×が入った四角いボタンです。
+    追加: コントロールパネルに、床の格子を出すチェック。最初は表示です。外すと隠します。ステージのGLBがあるときは、これまでどおり格子は出しません。
+    追加: 空の明るさの下に、コントラスト、彩度、透明度。水平線の上と下を別に指定できます。分けないときは、空全体が同じです。
+
+  v5.4.586 / 2026-11-17 / Super Grok（土台は v5.4.585）
+    修正: 鑑賞の太陽、ライト1、ライト2、風のハンドルは、見えていても掴めなかった。描画と同じ画面位置で当たりを取り、当たったときだけ掴む。外はカメラのまま。
+    修正: 風と太陽の向きを示す矢印が、回転リングの中に埋もれて消えていた。距離に合わせて伸ばし、リングの外まで出す。
+
+  v5.4.585 / 2026-11-17 / Super Grok（土台は v5.4.582）
+    追加: メイン画面の上部、再生ボタンの右に「鑑賞モード」。VRMAタブの「全画面で鑑賞」と同じ入口です。どちらのボタンでも、全画面になったらコントロールパネルを出します。
+    追加: コントロールパネルのいちばん上に、W でパネルの表示と非表示、Esc で鑑賞モードを終える、という案内を足した。
 
   v5.4.582 / 2026-11-17 / Super Grok（土台は v5.4.581）
     修正: スライダーの右端が VRM 標準の 90°で10° だった。読み込んだ VRoid も同じ値のため、動かしても以前の過剰な角度にならなかった。右端は、カーブを掛けない以前の等倍（横 29°、縦 18° まで）にした。
@@ -1240,7 +1261,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.582</title>
+  <title>VRM Color Editor - v5.4.589</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -1315,6 +1336,15 @@
     #previewPlayToggle span { position: relative; z-index: 1; }
     #previewPlayToggle .play-sheen { z-index: 0; }
     #previewPlayToggle:disabled { opacity: 0.45; cursor: default; }
+    #btnWatchModeTop {
+      color: white; border: none; padding: 8px 14px;
+      border-radius: 4px; cursor: pointer; font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5); font-size: 14px;
+      background: #4a148c; white-space: nowrap; flex: 0 0 auto;
+    }
+    #btnWatchModeTop:hover { background: #6a1b9a; }
+    #btnWatchModeTop.on { outline: 2px solid #fff; background: #6a1b9a; }
+    #vrmaWatchWin .watch-keys { margin: 0 0 10px; font-size: 12px; line-height: 1.55; color: #d5dde3; }
     #btnClusterPreview {
       color: white; border: none; padding: 8px 10px;
       border-radius: 4px; cursor: pointer; font-weight: bold;
@@ -2057,7 +2087,7 @@
     body.vrma-watch #splitDivider,
     body.vrma-watch #splitLabelLeft,
     body.vrma-watch #splitLabelRight,
-    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop):not(#watchSkyWin):not(#watchFaceWin),
+    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop):not(#watchSkyWin):not(#watchFaceWin):not(#watchCamWin),
     body.vrma-watch #stampPicker,
     body.vrma-watch #stampAimStatus,
     body.vrma-watch #vceDialog,
@@ -2067,8 +2097,8 @@
       display: none !important;
     }
     body.vrma-watch #vrmaWatchWin { z-index: 80000; }
-    #vrmaWatchWin, #watchSkyWin, #watchFaceWin { display: flex; flex-direction: column; overflow: visible; }
-    #vrmaWatchWin > .vce-float-head, #watchSkyWin > .vce-float-head, #watchFaceWin > .vce-float-head { flex: 0 0 auto; }
+    #vrmaWatchWin, #watchSkyWin, #watchFaceWin, #watchCamWin { display: flex; flex-direction: column; overflow: visible; }
+    #vrmaWatchWin > .vce-float-head, #watchSkyWin > .vce-float-head, #watchFaceWin > .vce-float-head, #watchCamWin > .vce-float-head { flex: 0 0 auto; }
     #vrmaWatchResize {
       position: relative; flex: 0 0 14px; height: 14px; z-index: 4;
       cursor: ns-resize; touch-action: none;
@@ -2113,7 +2143,7 @@
     #watchSkyGrid button { padding: 0; border: 1px solid #3a3a44; background: #14181c; color: #d5dde3; cursor: pointer; text-align: left; }
     #watchSkyGrid img { width: 100%; aspect-ratio: 2 / 1; height: auto; object-fit: cover; object-position: center top; display: block; background: #111; }
     #watchSkyGrid span { display: block; padding: 4px 4px 5px; font-size: 10px; line-height: 1.3; }
-    #watchSkyPick { margin: 0 0 8px; }
+    #watchSkySplitRows[hidden] { display: none !important; }
     #watchSkyPickImg { width: 100%; aspect-ratio: 2 / 1; height: auto; object-fit: cover; object-position: center top; display: block; border-radius: 6px; background: #111; border: 1px solid #3a3a44; }
     #watchSkyPickImg[hidden] { display: none !important; }
     #watchSkyWin { width: 360px; display: flex; flex-direction: column; overflow: visible; }
@@ -2145,6 +2175,23 @@
     #watchFaceWin .watch-scale-marks span:last-child { align-items: flex-end; }
     #watchFaceWin #watchLookCurveRead { font-size: 11px; color: #8e99a4; }
     #watchFaceResize {
+      position: relative; align-self: flex-end; flex: 0 0 18px; width: 28px; height: 18px; z-index: 4;
+      cursor: nwse-resize; touch-action: none;
+      background: linear-gradient(135deg, transparent 50%, #c4b8a4 50%);
+    }
+    #vrmaWatchWin #watchCamOpen { width: 100%; margin: 0 0 8px; min-height: 32px; background: #24343a; }
+    #vrmaWatchWin #watchCamOpen.on { outline: 2px solid #fff; background: #1c3a44; }
+    #watchCamWin { width: 340px; }
+    #watchCamWin .vce-float-body { height: 460px; overflow: auto; overscroll-behavior: contain; }
+    #watchCamWin .watch-note { margin: 0 0 8px; font-size: 11px; color: #8e99a4; line-height: 1.45; }
+    #watchCamWin h4 { margin: 14px 0 8px; padding-top: 10px; border-top: 1px solid #c4b8a4; font-size: 16px; color: #fff; }
+    #watchCamWin .watch-row { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin: 0 0 8px; font-size: 12px; color: #d5dde3; }
+    #watchCamWin .watch-check { flex-direction: row; align-items: center; gap: 8px; }
+    #watchCamWin .watch-row input[type="range"],
+    #watchCamWin .watch-row select,
+    #watchCamWin .watch-row input[type="number"] { width: 100%; min-width: 0; }
+    #watchCamWin .watch-read { font-size: 11px; color: #8e99a4; }
+    #watchCamWinResize {
       position: relative; align-self: flex-end; flex: 0 0 18px; width: 28px; height: 18px; z-index: 4;
       cursor: nwse-resize; touch-action: none;
       background: linear-gradient(135deg, transparent 50%, #c4b8a4 50%);
@@ -2798,6 +2845,7 @@
       <span class="play-sheen" aria-hidden="true"></span>
       <span id="previewPlayIcon">🎨</span><span id="previewPlayLabel">再生モード</span>
     </button>
+    <button id="btnWatchModeTop" type="button" aria-pressed="false" title="全画面の鑑賞モードに入ります。VRMAタブの全画面で鑑賞と同じです">鑑賞モード</button>
   </div>
   <div id="topChromeRight">
     <button id="btnShakeTest" type="button" title="左画面をドラッグするとモデルが揺れ、スプリングの動きを確認できます。カメラは動きません。">シェイク</button>
@@ -2820,7 +2868,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.582</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.589</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -2950,7 +2998,7 @@
             <button type="button" id="btnVrmaStageClear" style="width:100%; background:#555; margin:0 0 8px;">ステージを外す</button>
             <div style="font-size:11px; color:#aaa; line-height:1.4; margin-bottom:8px;">手元のGLBを選びます。いくつでも追加できます。鑑賞の窓にも、同じ追加と一覧があります。足の裏が床に来る高さで出します。書き出しには入りません。鑑賞中の矢印キーは、選んでいるGLBを動かします。選んでいないときは、読み込んだGLBを全部動かします。</div>
             <button type="button" id="btnVrmaWatch" aria-pressed="false" style="width:100%; background:#4a148c;">全画面で鑑賞</button>
-            <div style="font-size:11px; color:#aaa; line-height:1.4; margin:6px 0 0;">正規プレビューをオンにして、編集中のモデルだけを全画面にします。戻すのは Esc だけです。前の画面の分け方に戻ります。クリックでは部品を選び替えず、入る前の選択は残ります。ダブルクリックで部品を中央へ寄せることもしません。W で、他の浮動窓と同じ「鑑賞」の窓を出します。もう一度 W、または赤い丸で閉じます。ライトと風のギズモは出ます。マウスでカメラを移動、回転、拡大縮小できます。</div>
+            <div style="font-size:11px; color:#aaa; line-height:1.4; margin:6px 0 0;">正規プレビューをオンにして、編集中のモデルだけを全画面にします。入るとコントロールパネルを出します。W で表示と非表示を切り替えます。戻すのは Esc だけです。前の画面の分け方に戻ります。クリックでは部品を選び替えず、入る前の選択は残ります。ダブルクリックで部品を中央へ寄せることもしません。ライトと風のギズモは出ます。マウスでカメラを移動、回転、拡大縮小できます。</div>
           </div>
         </section>
 
@@ -4049,11 +4097,12 @@
           <button type="button" class="vce-float-fold" id="vrmaWatchFold" title="タブだけにする">⌃</button>
         </div>
         <div class="vce-float-body">
+          <p class="watch-keys">コントロールパネルを表示または非表示にするには キーボードのWキー<br>観賞モードを終了するにはキーボードのescキー</p>
           <div id="watchGizmoBar" class="watch-gizmo-bar" hidden>
             <span id="watchGizmoBarText">矢印を動かしています</span>
             <button type="button" id="watchGizmoBarHide">しまう</button>
           </div>
-          <p>全画面の鑑賞中に W で出します。もう一度 W、または赤い丸で閉じます。タブはドラッグで動かせます。</p>
+          <p>タブはドラッグで動かせます。×のボタンでも閉じます。</p>
           <h4>GLB</h4>
           <div class="file-upload-wrapper">
             <label for="watchPropFile" class="custom-file-btn">GLBを追加</label>
@@ -4062,7 +4111,8 @@
           <div id="watchPropDrop" class="vrm-drop-hint">この枠へ .glb をドロップして追加します</div>
           <div id="watchPropList"></div>
           <p class="watch-note">いくつでも追加できます。目玉で、そのGLBだけ表示を切り替えます。名前を押すと選び、位置・回転・大きさのギズモが出ます。中のメッシュは、色彩編集のパーツ一覧にも出ます。VRMの書き出しには入りません。</p>
-          <p class="watch-note">ステージのGLBが無いときは、床の格子が出ます。下のボタンで、GLBと同じ矢印を出して位置を動かせます。足の裏に合わせられます。鑑賞を出ると、編集画面の高さへ戻します。もう一度入ると、合わせた位置に戻ります。</p>
+          <p class="watch-note">ステージのGLBが無いときは、床面のグリッドが出ます。下のボタンで、GLBと同じ矢印を出して位置を動かせます。足の裏に合わせられます。鑑賞を出ると、編集画面の高さへ戻します。もう一度入ると、合わせた位置に戻ります。</p>
+          <label class="watch-row watch-check"><input id="watchShowGrid" type="checkbox" checked title="外すと、床面のグリッドを隠します。ステージのGLBがあるときは、これまでどおり出しません">床面のグリッド</label>
           <button type="button" class="watch-move" id="watchMoveGrid" data-watch-move="grid">床の位置を動かす</button>
           <h4>動き</h4>
           <label class="watch-row">プリセット<select id="watchVrmaPreset"><option value="">未選択</option></select></label>
@@ -4096,6 +4146,10 @@
           <h4>表情と目線</h4>
           <p class="watch-note">表情の強さと、カメラを見るかを、別の窓で変えます。</p>
           <button type="button" id="watchFaceOpen">表情と目線を開く</button>
+          <h4>カメラ制御モード</h4>
+          <p class="watch-note">再生と、動画の書き出しに合わせて、選んだ骨を見ながら回り、画角を最初から最後へ寄せます。カメラをドラッグすると止まります。もう一度オンにするまで、止めた位置のままです。</p>
+          <p id="watchCamStatus" class="watch-note">自動カメラはオフです。</p>
+          <button type="button" id="watchCamOpen">カメラ制御</button>
           <h4>空</h4>
           <p class="watch-note">Poly Haven の HDRI を、全天周の空として貼ります。CC0 です。モデルのライトは変えません。追加で一覧を開きます。選ぶと一覧は閉じ、ここにサムネールだけが残ります。削除は、空とサムネールを外します。1k が標準です。鑑賞を出ると画面からは外し、もう一度入ると戻します。シーンのJSONには入りません。</p>
           <div id="watchSkyPick">
@@ -4109,6 +4163,27 @@
           </div>
           <label class="watch-row">大きさ<select id="watchSkySize"><option value="1k" selected>1k</option><option value="2k">2k</option></select></label>
           <label class="watch-row">空の明るさ<input id="watchSkyExposure" type="range" min="0.05" max="4" step="0.05" value="0.6"></label>
+          <label class="watch-row">空のコントラスト<input id="watchSkyContrast" type="range" min="0" max="2" step="0.01" value="1" title="1は、読み込んだときのままです"></label>
+          <label class="watch-row">空の彩度<input id="watchSkySaturation" type="range" min="0" max="2" step="0.01" value="1" title="0は色のない灰色です。1は、読み込んだときのままです"></label>
+          <label class="watch-row">空の透明度<input id="watchSkyTrans" type="range" min="0" max="1" step="0.01" value="0" title="0は透けません。1は透けて、後ろの色が見えます"></label>
+          <label class="watch-row watch-check"><input id="watchSkySplit" type="checkbox">水平線の上と下を別にする</label>
+          <div id="watchSkySplitRows" hidden>
+            <p class="watch-note">全天周の、水平線より上と下です。分けているあいだは、上の4つは使いません。</p>
+            <div class="watch-card">
+              <div class="watch-card-title">水平線より上</div>
+              <label class="watch-row">明るさ<input id="watchSkyExposureUp" type="range" min="0.05" max="4" step="0.05" value="0.6"></label>
+              <label class="watch-row">コントラスト<input id="watchSkyContrastUp" type="range" min="0" max="2" step="0.01" value="1"></label>
+              <label class="watch-row">彩度<input id="watchSkySaturationUp" type="range" min="0" max="2" step="0.01" value="1"></label>
+              <label class="watch-row">透明度<input id="watchSkyTransUp" type="range" min="0" max="1" step="0.01" value="0"></label>
+            </div>
+            <div class="watch-card">
+              <div class="watch-card-title">水平線より下</div>
+              <label class="watch-row">明るさ<input id="watchSkyExposureDown" type="range" min="0.05" max="4" step="0.05" value="0.6"></label>
+              <label class="watch-row">コントラスト<input id="watchSkyContrastDown" type="range" min="0" max="2" step="0.01" value="1"></label>
+              <label class="watch-row">彩度<input id="watchSkySaturationDown" type="range" min="0" max="2" step="0.01" value="1"></label>
+              <label class="watch-row">透明度<input id="watchSkyTransDown" type="range" min="0" max="1" step="0.01" value="0"></label>
+            </div>
+          </div>
           <label class="watch-row">空の回転<input id="watchSkyYaw" type="range" min="0" max="360" step="1" value="0"></label>
           <label class="watch-row watch-check"><input id="watchSkySpin" type="checkbox">空を自動で回す</label>
           <label class="watch-row">1周の秒数<input id="watchSkySpinSec" type="number" min="0.5" max="3600" step="0.1" value="20" title="1周するのにかける秒です"></label>
@@ -4237,6 +4312,36 @@
           <p id="watchLookStatus" class="watch-note">頭と目は別々にオンにできます。オフのままでも、下に顔とカメラの差が出ます。</p>
         </div>
         <div id="watchFaceResize" aria-label="大きさを変える"></div>
+      </aside>
+      <aside id="watchCamWin" class="vce-float" hidden style="width:340px; left:420px; top:96px;" aria-label="カメラ制御">
+        <div class="vce-float-head" id="watchCamHead">
+          <button type="button" class="vce-float-close" id="watchCamWinClose" title="閉じる">×</button>
+          <span class="vce-float-title">カメラ制御</span>
+        </div>
+        <div class="vce-float-body" id="watchCamBody">
+          <p class="watch-note">注視、旋回、画角は同時です。選んだ骨を見つめ、その周りを回ります。画角だけ、開始から終了へ別の速さで寄ります。プレビューは、動きの1回分の時間です。動きの長さに合わせるときは、書き出しと同じ長さです。秒で長さを指定した書き出しは、その秒数で寄ります。ドラッグすると自動は止まり、オンに戻すまで手で動かした位置のままです。</p>
+          <label class="watch-row watch-check"><input id="watchCamOn" type="checkbox">自動カメラ</label>
+          <label class="watch-row">注視する骨<select id="watchCamBone">
+            <option value="head" selected>頭</option>
+            <option value="neck">首</option>
+            <option value="upperChest">上胸</option>
+            <option value="chest">胸</option>
+            <option value="spine">背骨</option>
+            <option value="hips">腰</option>
+          </select></label>
+          <h4>旋回</h4>
+          <label class="watch-row">半径（m）<input id="watchCamRadius" type="range" min="0.3" max="8" step="0.05" value="2.2" title="骨からカメラまでの水平の距離です"><span class="watch-read" id="watchCamRadiusRead">2.2 m</span></label>
+          <label class="watch-row">骨からの高さ（m）<input id="watchCamHeight" type="range" min="-2" max="3" step="0.05" value="0.15" title="プラスは骨より上です"><span class="watch-read" id="watchCamHeightRead">0.15 m</span></label>
+          <label class="watch-row">楕円の横比率<input id="watchCamEllipse" type="range" min="0.25" max="2.5" step="0.05" value="1" title="1は円です。大きくすると左右に広い楕円です"><span class="watch-read" id="watchCamEllipseRead">1（円）</span></label>
+          <label class="watch-row">1周の秒数<input id="watchCamRev" type="number" min="1" max="120" step="0.1" value="12" title="1周するのにかける秒です。再生の進みで数えます"></label>
+          <label class="watch-row">回り方<select id="watchCamDir"><option value="1" selected>上から見て反時計回り</option><option value="-1">上から見て時計回り</option></select></label>
+          <h4>画角</h4>
+          <p class="watch-note">最初の画角から最後の画角へ、再生時間いっぱいで滑らかに移します。途中の目盛りはありません。両端はゆっくり、真ん中は一定です。</p>
+          <label class="watch-row">開始の画角<input id="watchCamFovStart" type="range" min="8" max="80" step="1" value="38"><span class="watch-read" id="watchCamFovStartRead">38°</span></label>
+          <label class="watch-row">終了の画角<input id="watchCamFovEnd" type="range" min="8" max="80" step="1" value="24"><span class="watch-read" id="watchCamFovEndRead">24°</span></label>
+          <p id="watchCamFloatStatus" class="watch-note">自動カメラはオフです。</p>
+        </div>
+        <div id="watchCamWinResize" aria-label="大きさを変える"></div>
       </aside>
       <div id="watchMovieHud" hidden>
         <div class="watch-movie-hud-row">
@@ -4569,7 +4674,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.582';
+    const APP_VERSION = 'v5.4.589';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -5862,9 +5967,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function syncVrmaStageGrid() {
       const gridOn = document.getElementById('toggleGrid');
-      const want = !gridOn || !!gridOn.checked;
-      const blocking = !!(typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn && vrmaStageRoot.children.length);
-      gridEdited.visible = blocking ? false : want;
+      const editorWant = !gridOn || !!gridOn.checked;
+      if (typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn) {
+        const watchOn = document.getElementById('watchShowGrid');
+        const want = watchOn ? !!watchOn.checked : editorWant;
+        const blocking = !!(vrmaStageRoot && vrmaStageRoot.children && vrmaStageRoot.children.length);
+        gridEdited.visible = want && !blocking;
+        return;
+      }
+      gridEdited.visible = editorWant;
     }
     function stageGlbPreviewOn() {
       const el = document.getElementById('toggleStageGlb');
@@ -6249,8 +6360,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
 
     document.getElementById('toggleGrid').addEventListener('change', (e) => {
-      if (!vrmaStageRoot.visible) gridEdited.visible = e.target.checked;
       gridOriginal.visible = e.target.checked;
+      if (typeof vrmaWatchOn !== 'undefined' && vrmaWatchOn) {
+        syncVrmaStageGrid();
+        return;
+      }
+      if (!vrmaStageRoot.visible) gridEdited.visible = e.target.checked;
     });
     document.getElementById('toggleStageGlb').addEventListener('change', () => syncVrmaStageVis());
     document.getElementById('toggleColliders').addEventListener('change', () => {
@@ -6701,9 +6816,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (next === vrmaWatchOn) return;
       vrmaWatchOn = next;
       const btn = document.getElementById('btnVrmaWatch');
+      const top = document.getElementById('btnWatchModeTop');
       if (btn) {
         btn.classList.toggle('on', vrmaWatchOn);
         btn.setAttribute('aria-pressed', vrmaWatchOn ? 'true' : 'false');
+      }
+      if (top) {
+        top.classList.toggle('on', vrmaWatchOn);
+        top.setAttribute('aria-pressed', vrmaWatchOn ? 'true' : 'false');
       }
       document.body.classList.toggle('vrma-watch', vrmaWatchOn);
       if (!vrmaWatchOn) {
@@ -6750,8 +6870,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       if (typeof refreshBodyColliderVis === 'function') refreshBodyColliderVis();
       try {
-        if (vrmaWatchOn) watchEnter();
-        else watchExit();
+        if (vrmaWatchOn) {
+          watchEnter();
+          watchShowPanel();
+        } else watchExit();
       } catch (err) { console.error(err); }
       if (typeof applyGizmoHiddenNow === 'function') applyGizmoHiddenNow();
       if (typeof syncVrmaStageVis === 'function') syncVrmaStageVis();
@@ -6828,7 +6950,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
 
     function clearSceneGizmoOverlays() {
       try { transformControl.detach(); } catch (_) {}
-      const keep = new Set([transformControl, boneMarker, hoverBoxHelper, selectBoxHelper, paintCyl]);
+      const keep = new Set([transformControl, boneMarker, hoverBoxHelper, selectBoxHelper, paintCyl, watchHelpA, watchHelpB, watchWindArrow, watchSunArrow]);
       [...sceneGizmo.children].forEach((c) => {
         if (!keep.has(c)) sceneGizmo.remove(c);
       });
@@ -6884,7 +7006,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (this.domElement && this.domElement.ownerDocument.pointerLockElement) {
         return { x: 0, y: 0, button: event.button };
       }
-      const rect = getEditedPaneRect();
+      const rect = gizmoPointerRect();
       return {
         x: (event.clientX - rect.left) / rect.width * 2 - 1,
         y: -(event.clientY - rect.top) / rect.height * 2 + 1,
@@ -6916,29 +7038,88 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let gizmoBlockClickUntil = 0;
     const gizmoRaycaster = new THREE.Raycaster();
     const gizmoNdc = new THREE.Vector2();
+    const _gizmoAimCenter = new THREE.Vector3();
+    const _gizmoAimEdge = new THREE.Vector3();
+    const _gizmoAimRight = new THREE.Vector3();
+    function gizmoAxisName(obj) {
+      while (obj) {
+        const name = obj.name;
+        if (name === 'X' || name === 'Y' || name === 'Z' || name === 'XY' || name === 'YZ' || name === 'XZ' || name === 'XYZ' || name === 'E' || name === 'XYZE') return name;
+        obj = obj.parent;
+      }
+      return '';
+    }
+    function gizmoPointerRect() {
+      if (vrmaWatchOn && renderer && renderer.domElement) {
+        const r = renderer.domElement.getBoundingClientRect();
+        if (r.width > 1 && r.height > 1) return r;
+      }
+      return getEditedPaneRect();
+    }
     function gizmoAim(event) {
-      if (!transformControl || !transformControl.object || transformControl.visible === false || transformControl.enabled === false) return '';
+      if (!transformControl || !transformControl.object || transformControl.visible === false) return '';
+      if (!vrmaWatchOn && transformControl.enabled === false) return '';
       if (!isPointerInGizmoPane(event)) return '';
       const baseCam = currentPreviewMode === 'dual' ? cameraRight : cameraSingle;
-      transformControl.camera = previewOrtho ? viewCamera(baseCam) : baseCam;
+      transformControl.camera = (previewOrtho || vrmaWatchOn) ? viewCamera(baseCam) : baseCam;
       try { transformControl.updateMatrixWorld(true); } catch (_) {}
-      const picker = transformControl._gizmo && transformControl._gizmo.picker && transformControl._gizmo.picker[transformControl.mode];
-      if (!picker) return '';
-      const rect = getEditedPaneRect();
-      const pads = [[0, 0], [12, 0], [-12, 0], [0, 12], [0, -12], [8, 8], [-8, 8], [8, -8], [-8, -8]];
+      const mode = transformControl.mode;
+      const gizmoRoot = transformControl._gizmo;
+      const picker = gizmoRoot && gizmoRoot.picker && gizmoRoot.picker[mode];
+      const drawn = gizmoRoot && gizmoRoot.gizmo && gizmoRoot.gizmo[mode];
+      if (!picker && !drawn) return '';
+      const rect = gizmoPointerRect();
+      const pads = vrmaWatchOn
+        ? [[0, 0], [14, 0], [-14, 0], [0, 14], [0, -14], [10, 10], [-10, 10], [10, -10], [-10, -10], [22, 0], [-22, 0], [0, 22], [0, -22]]
+        : [[0, 0], [12, 0], [-12, 0], [0, 12], [0, -12], [8, 8], [-8, 8], [8, -8], [-8, -8]];
+      const roots = [];
+      if (picker) roots.push(picker);
+      if (vrmaWatchOn && drawn) roots.push(drawn);
       for (let i = 0; i < pads.length; i++) {
         const x = event.clientX + pads[i][0];
         const y = event.clientY + pads[i][1];
         if (x < rect.left || y < rect.top || x > rect.left + rect.width || y > rect.top + rect.height) continue;
         gizmoNdc.set((x - rect.left) / rect.width * 2 - 1, -((y - rect.top) / rect.height) * 2 + 1);
         gizmoRaycaster.setFromCamera(gizmoNdc, transformControl.camera);
-        const hits = gizmoRaycaster.intersectObject(picker, true);
+        const hits = gizmoRaycaster.intersectObjects(roots, true);
         for (let h = 0; h < hits.length; h++) {
           const obj = hits[h].object;
-          if (obj && obj.name && obj.visible !== false) return obj.name;
+          if (!obj) continue;
+          const name = gizmoAxisName(obj);
+          if (!name) continue;
+          if (!vrmaWatchOn && obj.visible === false) continue;
+          return name;
         }
       }
-      return '';
+      if (!vrmaWatchOn) return '';
+      const center = _gizmoAimCenter;
+      transformControl.object.getWorldPosition(center);
+      const cam = transformControl.camera;
+      const ndc = center.clone().project(cam);
+      if (ndc.z < -1 || ndc.z > 1) return '';
+      const sx = (ndc.x * 0.5 + 0.5) * rect.width + rect.left;
+      const sy = (-ndc.y * 0.5 + 0.5) * rect.height + rect.top;
+      const dx = event.clientX - sx;
+      const dy = event.clientY - sy;
+      const pix = Math.hypot(dx, dy);
+      const dist = Math.max(0.2, center.distanceTo(cam.position));
+      let factor;
+      if (cam.isOrthographicCamera) factor = (cam.top - cam.bottom) / (cam.zoom || 1);
+      else factor = dist * Math.min(1.9 * Math.tan(Math.PI * (cam.fov || 30) / 360) / (cam.zoom || 1), 7);
+      const handleScale = factor * (transformControl.size || 1) / 4;
+      const worldR = mode === 'rotate' ? 0.9 : 0.65;
+      _gizmoAimEdge.copy(center).addScaledVector(_gizmoAimRight.set(1, 0, 0).applyQuaternion(cam.quaternion), worldR * handleScale);
+      const edgeN = _gizmoAimEdge.project(cam);
+      const ex = (edgeN.x * 0.5 + 0.5) * rect.width + rect.left;
+      const ey = (-edgeN.y * 0.5 + 0.5) * rect.height + rect.top;
+      const rad = Math.max(22, Math.hypot(ex - sx, ey - sy));
+      if (pix > rad) return '';
+      if (mode === 'rotate') return pix > rad * 0.72 ? 'E' : 'Y';
+      if (pix < rad * 0.28) return 'XYZ';
+      const ang = Math.abs(Math.atan2(dy, dx));
+      if (ang < Math.PI / 5 || ang > Math.PI * 4 / 5) return 'X';
+      if (ang > Math.PI * 0.3 && ang < Math.PI * 0.7) return 'Y';
+      return 'Z';
     }
     function claimGizmoPointer(event) {
       gizmoPointerClaimed = true;
@@ -6949,6 +7130,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     transformControl._onPointerDown = function(event) {
       if (event.button !== 0) return;
       if (vrmaWatchOn) {
+        if (transformControl.object && transformControl.visible !== false) transformControl.enabled = true;
         const aimed = gizmoAim(event);
         if (!aimed) return;
         _origPointerDown.call(this, event);
@@ -7813,7 +7995,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         const on = !!(obj && obj.userData && (obj.userData.watchHandle || obj.userData.watchProp));
         transformControl.visible = on;
         transformControl.enabled = on;
-        if (on) transformControl.camera = cameraSingle;
+        if (on) transformControl.camera = viewCamera(cameraSingle);
         return;
       }
       try { if (typeof watchHideWatchGizmos === 'function') watchHideWatchGizmos(); } catch (_) {}
@@ -9316,6 +9498,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     bindVrmaSpeed('watchSpeed');
     bindVrmaBridge();
     document.getElementById('btnVrmaWatch').addEventListener('click', () => {
+      if (!vrmaWatchOn) setVrmaWatch(true);
+    });
+    const btnWatchModeTop = document.getElementById('btnWatchModeTop');
+    if (btnWatchModeTop) btnWatchModeTop.addEventListener('click', () => {
       if (!vrmaWatchOn) setVrmaWatch(true);
     });
     const btnVrmaFaceClear = document.getElementById('btnVrmaFaceClear');
@@ -35472,11 +35658,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       sceneGizmo.add(watchHelpA); sceneGizmo.add(watchHelpB);
       watchWindArrow = new THREE.Group();
       watchWindArrow.userData.watchHandle = 'wind';
-      const windMat = new THREE.MeshBasicMaterial({ color: 0x80deea, depthTest: false });
-      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.32, 8), windMat);
-      shaft.rotation.x = Math.PI / 2; shaft.position.z = 0.16;
-      const head = new THREE.Mesh(new THREE.ConeGeometry(0.038, 0.1, 10), windMat);
-      head.rotation.x = Math.PI / 2; head.position.z = 0.36;
+      const windMat = new THREE.MeshBasicMaterial({ color: 0x80deea, depthTest: false, depthWrite: false, toneMapped: false, side: THREE.DoubleSide });
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.5, 10), windMat);
+      shaft.rotation.x = Math.PI / 2; shaft.position.z = 0.25;
+      const head = new THREE.Mesh(new THREE.ConeGeometry(0.09, 0.18, 12), windMat.clone());
+      head.rotation.x = Math.PI / 2; head.position.z = 0.59;
+      shaft.frustumCulled = false; head.frustumCulled = false;
+      shaft.renderOrder = 100000; head.renderOrder = 100000;
       watchWindArrow.add(shaft); watchWindArrow.add(head);
       watchWindArrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(1, 0, 0));
       watchWindArrow.frustumCulled = false;
@@ -35484,11 +35672,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       sceneGizmo.add(watchWindArrow);
       watchSunArrow = new THREE.Group();
       watchSunArrow.userData.watchHandle = 'sun';
-      const sunMat = new THREE.MeshBasicMaterial({ color: 0xffe082, depthTest: false });
-      const sunShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.32, 8), sunMat);
-      sunShaft.rotation.x = Math.PI / 2; sunShaft.position.z = 0.16;
-      const sunHead = new THREE.Mesh(new THREE.ConeGeometry(0.038, 0.1, 10), sunMat);
-      sunHead.rotation.x = Math.PI / 2; sunHead.position.z = 0.36;
+      const sunMat = new THREE.MeshBasicMaterial({ color: 0xffe082, depthTest: false, depthWrite: false, toneMapped: false, side: THREE.DoubleSide });
+      const sunShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.5, 10), sunMat);
+      sunShaft.rotation.x = Math.PI / 2; sunShaft.position.z = 0.25;
+      const sunHead = new THREE.Mesh(new THREE.ConeGeometry(0.09, 0.18, 12), sunMat.clone());
+      sunHead.rotation.x = Math.PI / 2; sunHead.position.z = 0.59;
+      sunShaft.frustumCulled = false; sunHead.frustumCulled = false;
+      sunShaft.renderOrder = 100000; sunHead.renderOrder = 100000;
       watchSunArrow.add(sunShaft); watchSunArrow.add(sunHead);
       watchSunArrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(1, 2, 1).normalize());
       watchSunArrow.frustumCulled = false;
@@ -35719,6 +35909,37 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         });
       }
     }
+    function watchHoldInGizmo(obj) {
+      if (!obj) return;
+      if (obj.parent !== sceneGizmo) sceneGizmo.add(obj);
+      obj.frustumCulled = false;
+      obj.traverse((child) => { child.frustumCulled = false; });
+    }
+    function watchFitArrow(arrow) {
+      if (!arrow || !arrow.visible) return;
+      if (transformControl && transformControl.dragging && transformControl.object === arrow) return;
+      const cam = viewCamera(cameraSingle);
+      const dist = Math.max(0.35, arrow.position.distanceTo(cam.position));
+      let factor;
+      if (cam.isOrthographicCamera) factor = (cam.top - cam.bottom) / (cam.zoom || 1);
+      else factor = dist * Math.min(1.9 * Math.tan(Math.PI * (cam.fov || 30) / 360) / (cam.zoom || 1), 7);
+      arrow.scale.setScalar(Math.max(0.2, factor * 0.5));
+      arrow.renderOrder = 100000;
+      arrow.frustumCulled = false;
+      arrow.traverse((child) => {
+        child.frustumCulled = false;
+        if (!child.isMesh) return;
+        child.renderOrder = 100000;
+        const mats = Array.isArray(child.material) ? child.material : [child.material];
+        mats.forEach((mat) => {
+          if (!mat) return;
+          mat.depthTest = false;
+          mat.depthWrite = false;
+          mat.toneMapped = false;
+          mat.side = THREE.DoubleSide;
+        });
+      });
+    }
     function watchAttachGizmo() {
       if (!watchReady || !vrmaWatchOn || !transformControl) return;
       const which = watchGizmoWhich;
@@ -35772,6 +35993,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (which === 'lightB') obj = watchHelpB;
       if (which === 'wind') { obj = watchWindArrow; mode = 'rotate'; }
       if (which === 'sun') { obj = watchSunArrow; mode = 'rotate'; }
+      watchHoldInGizmo(obj);
       try { transformControl.attach(obj); } catch (_) {}
       try { transformControl.setMode(mode); } catch (_) {}
       transformControl.camera = cameraSingle;
@@ -36632,6 +36854,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchBeforeRender(step) {
       if (!vrmaWatchOn || !watchReady) return;
+      try { watchAutoCamApply(); } catch (_) {}
       try { watchSkyAdvance(step); watchSkyFollow(); } catch (_) {}
       try { watchSyncPoseMatrices(); } catch (_) {}
       let foot = null;
@@ -36648,10 +36871,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (watchWindArrow && foot && !(transformControl.dragging && transformControl.object === watchWindArrow)) {
         watchWindArrow.position.set(foot.x + 0.35, foot.y + 1.05, foot.z);
       }
+      if (watchWindArrow && watchWindArrow.visible) watchFitArrow(watchWindArrow);
       if (watchSunArrow && lightsEdited && lightsEdited.dir) {
         if (foot && !(transformControl.dragging && transformControl.object === watchSunArrow)) {
           watchSunArrow.position.set(foot.x - 0.35, foot.y + 1.35, foot.z);
         }
+        if (watchSunArrow.visible) watchFitArrow(watchSunArrow);
         _watchGrav.set(0, 0, 1).applyQuaternion(watchSunArrow.quaternion);
         if (_watchGrav.lengthSq() > 1e-8) lightsEdited.dir.position.copy(_watchGrav.normalize());
       }
@@ -38098,15 +38323,29 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         uniforms: {
           map: { value: null },
           exposure: { value: 0.6 },
+          contrast: { value: 1 },
+          saturation: { value: 1 },
+          alpha: { value: 1 },
+          split: { value: 0 },
+          exposureUp: { value: 0.6 },
+          contrastUp: { value: 1 },
+          saturationUp: { value: 1 },
+          alphaUp: { value: 1 },
+          exposureDown: { value: 0.6 },
+          contrastDown: { value: 1 },
+          saturationDown: { value: 1 },
+          alphaDown: { value: 1 },
           yaw: { value: 0 }
         },
         side: THREE.BackSide,
         depthWrite: false,
+        transparent: false,
         vertexShader: 'varying vec3 vDir; void main(){ vec4 wp = modelMatrix * vec4(position, 1.0); vDir = wp.xyz - cameraPosition; gl_Position = projectionMatrix * viewMatrix * wp; }',
-        fragmentShader: 'uniform sampler2D map; uniform float exposure; uniform float yaw; varying vec3 vDir; void main(){ vec3 d = normalize(vDir); float c = cos(yaw); float s = sin(yaw); float x = c * d.x + s * d.z; float z = -s * d.x + c * d.z; float u = atan(z, x) * 0.15915494309 + 0.5; float v = asin(clamp(d.y, -1.0, 1.0)) * 0.31830988618 + 0.5; vec3 col = texture2D(map, vec2(u, v)).rgb * exposure; col = col / (col + vec3(1.0)); gl_FragColor = vec4(pow(max(col, vec3(0.0)), vec3(0.454545)), 1.0); }'
+        fragmentShader: 'uniform sampler2D map; uniform float exposure; uniform float contrast; uniform float saturation; uniform float alpha; uniform float split; uniform float exposureUp; uniform float contrastUp; uniform float saturationUp; uniform float alphaUp; uniform float exposureDown; uniform float contrastDown; uniform float saturationDown; uniform float alphaDown; uniform float yaw; varying vec3 vDir; void main(){ vec3 d = normalize(vDir); float c = cos(yaw); float s = sin(yaw); float x = c * d.x + s * d.z; float z = -s * d.x + c * d.z; float u = atan(z, x) * 0.15915494309 + 0.5; float v = asin(clamp(d.y, -1.0, 1.0)) * 0.31830988618 + 0.5; float up = smoothstep(-0.02, 0.02, d.y); float expV = mix(exposure, mix(exposureDown, exposureUp, up), split); float conV = mix(contrast, mix(contrastDown, contrastUp, up), split); float satV = mix(saturation, mix(saturationDown, saturationUp, up), split); float alpV = mix(alpha, mix(alphaDown, alphaUp, up), split); vec3 col = texture2D(map, vec2(u, v)).rgb * expV; col = col / (col + vec3(1.0)); col = pow(max(col, vec3(0.0)), vec3(0.454545)); col = clamp((col - vec3(0.5)) * conV + vec3(0.5), 0.0, 1.0); float luma = dot(col, vec3(0.2126, 0.7152, 0.0722)); col = clamp(mix(vec3(luma), col, satV), 0.0, 1.0); gl_FragColor = vec4(col, alpV); }'
       });
       const mesh = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 24), mat);
       mesh.frustumCulled = false;
+      mesh.renderOrder = -10;
       mesh.raycast = function () {};
       mesh.userData.watchSky = true;
       watchSky = mesh;
@@ -38142,9 +38381,30 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         yaw += watchSkySpinRad;
       }
       const exp = watchNum('watchSkyExposure', 0.6, 0.05, 4);
+      const splitOn = !!(document.getElementById('watchSkySplit') && document.getElementById('watchSkySplit').checked);
       if (watchSky.material && watchSky.material.uniforms) {
-        if (watchSky.material.uniforms.exposure) watchSky.material.uniforms.exposure.value = exp;
-        if (watchSky.material.uniforms.yaw) watchSky.material.uniforms.yaw.value = yaw;
+        const u = watchSky.material.uniforms;
+        if (u.exposure) u.exposure.value = exp;
+        if (u.contrast) u.contrast.value = watchNum('watchSkyContrast', 1, 0, 2);
+        if (u.saturation) u.saturation.value = watchNum('watchSkySaturation', 1, 0, 2);
+        if (u.alpha) u.alpha.value = 1 - watchNum('watchSkyTrans', 0, 0, 1);
+        if (u.split) u.split.value = splitOn ? 1 : 0;
+        if (u.exposureUp) u.exposureUp.value = watchNum('watchSkyExposureUp', 0.6, 0.05, 4);
+        if (u.contrastUp) u.contrastUp.value = watchNum('watchSkyContrastUp', 1, 0, 2);
+        if (u.saturationUp) u.saturationUp.value = watchNum('watchSkySaturationUp', 1, 0, 2);
+        if (u.alphaUp) u.alphaUp.value = 1 - watchNum('watchSkyTransUp', 0, 0, 1);
+        if (u.exposureDown) u.exposureDown.value = watchNum('watchSkyExposureDown', 0.6, 0.05, 4);
+        if (u.contrastDown) u.contrastDown.value = watchNum('watchSkyContrastDown', 1, 0, 2);
+        if (u.saturationDown) u.saturationDown.value = watchNum('watchSkySaturationDown', 1, 0, 2);
+        if (u.alphaDown) u.alphaDown.value = 1 - watchNum('watchSkyTransDown', 0, 0, 1);
+        if (u.yaw) u.yaw.value = yaw;
+        const mat = watchSky.material;
+        const minA = splitOn ? Math.min(u.alphaUp ? u.alphaUp.value : 1, u.alphaDown ? u.alphaDown.value : 1) : (u.alpha ? u.alpha.value : 1);
+        const blend = minA < 0.999;
+        if (mat.transparent !== blend) {
+          mat.transparent = blend;
+          mat.needsUpdate = true;
+        }
       }
     }
     function watchSkyAttach() {
@@ -38286,6 +38546,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           watchSkyParkWait('float');
         }
       }
+    }
+    function watchShowPanel() {
+      const win = document.getElementById('vrmaWatchWin');
+      if (!win) return;
+      win.hidden = false;
+      if (typeof raiseFloat === 'function') raiseFloat(win);
+      requestAnimationFrame(() => { if (typeof clampFloat === 'function') clampFloat(win); });
     }
     function watchEnter() {
       watchEnsure();
@@ -38965,6 +39232,137 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       } catch (err) { console.error(err); }
       watchLookWriteExpressions(vrm, watchEyeYaw, watchEyePitch);
     }
+
+    const _watchAutoFocus = new THREE.Vector3();
+    const _watchAutoPos = new THREE.Vector3();
+    function watchCamEase(u) {
+      const t = u < 0 ? 0 : (u > 1 ? 1 : u);
+      return t * t * (3 - 2 * t);
+    }
+    function watchCamSay(text) {
+      const panel = document.getElementById('watchCamStatus');
+      const float = document.getElementById('watchCamFloatStatus');
+      if (panel) panel.textContent = text || '';
+      if (float) float.textContent = text || '';
+      const open = document.getElementById('watchCamOpen');
+      const box = document.getElementById('watchCamOn');
+      if (open) open.classList.toggle('on', !!(box && box.checked));
+    }
+    function watchCamReadouts() {
+      const radius = watchNum('watchCamRadius', 2.2, 0.3, 8);
+      const height = watchNum('watchCamHeight', 0.15, -2, 3);
+      const ellipse = watchNum('watchCamEllipse', 1, 0.25, 2.5);
+      const fov0 = watchNum('watchCamFovStart', 38, 8, 80);
+      const fov1 = watchNum('watchCamFovEnd', 24, 8, 80);
+      const put = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+      put('watchCamRadiusRead', radius.toFixed(2) + ' m');
+      put('watchCamHeightRead', (height >= 0 ? '+' : '') + height.toFixed(2) + ' m');
+      put('watchCamEllipseRead', Math.abs(ellipse - 1) < 0.001 ? '1（円）' : ellipse.toFixed(2));
+      put('watchCamFovStartRead', Math.round(fov0) + '°');
+      put('watchCamFovEndRead', Math.round(fov1) + '°');
+    }
+    function watchCamBoneNode() {
+      const sel = document.getElementById('watchCamBone');
+      const want = sel && sel.value ? sel.value : 'head';
+      const order = [want, 'head', 'neck', 'chest', 'upperChest', 'spine', 'hips'];
+      const vrm = typeof vrmEdited !== 'undefined' ? vrmEdited : null;
+      const human = vrm && vrm.humanoid;
+      if (!human) return null;
+      for (let i = 0; i < order.length; i++) {
+        let node = null;
+        try { node = human.getRawBoneNode ? human.getRawBoneNode(order[i]) : null; } catch (_) { node = null; }
+        if (!node) { try { node = human.getNormalizedBoneNode ? human.getNormalizedBoneNode(order[i]) : null; } catch (_) { node = null; } }
+        if (node) return node;
+      }
+      return null;
+    }
+    function watchCamSpan() {
+      let rate = Math.abs(typeof vrmaRate === 'number' ? vrmaRate : 1);
+      if (!(rate >= 0.05)) rate = 1;
+      if (watchMovieBusy) {
+        const duration = Math.max(1 / 30, watchMovieSeconds());
+        const elapsed = Math.min(duration, Math.max(0, (watchMovieMs || 0) / 1000));
+        return { elapsed: elapsed, duration: duration };
+      }
+      const dur = typeof vrmaClipDuration === 'function' ? vrmaClipDuration() : 0;
+      const clipT = typeof vrmaClipTime === 'function' ? vrmaClipTime() : 0;
+      const useClip = document.getElementById('watchMovieUseClip');
+      const loopBridge = (typeof vrmaLoopOn === 'function' && vrmaLoopOn() && typeof vrmaBridgeSeconds === 'function') ? vrmaBridgeSeconds() : 0;
+      let duration = 0;
+      let elapsed = 0;
+      if (dur > 0.05) {
+        const play = Math.min(60, dur / rate);
+        if (useClip && useClip.checked) duration = Math.max(1 / 30, watchMovieSeconds());
+        else duration = Math.max(1 / 30, (dur / rate) + loopBridge);
+        elapsed = Math.min(play, Math.max(0, clipT / rate));
+        if (typeof vrmaBridge !== 'undefined' && vrmaBridge && vrmaBridge.dur > 0) {
+          const through = 1 - Math.max(0, vrmaBridge.left) / vrmaBridge.dur;
+          elapsed = play + Math.max(0, Math.min(1, through)) * vrmaBridge.dur;
+        }
+      } else if (watchMovieBusy) {
+        duration = Math.max(1 / 30, watchMovieSeconds());
+        elapsed = Math.min(duration, Math.max(0, (watchMovieMs || 0) / 1000));
+      } else {
+        duration = Math.max(1 / 30, watchNum('watchMovieSec', 10, 1, 60));
+        elapsed = 0;
+      }
+      if (elapsed > duration) elapsed = duration;
+      if (!(duration > 0)) duration = 1 / 30;
+      return { elapsed: elapsed, duration: duration };
+    }
+    function watchAutoCamApply() {
+      const box = document.getElementById('watchCamOn');
+      if (!box || !box.checked || !vrmaWatchOn) return;
+      if (!cameraSingle || !controlsSingle) return;
+      if (typeof transformControl !== 'undefined' && transformControl && (transformControl.dragging || (typeof gizmoPointerClaimed !== 'undefined' && gizmoPointerClaimed))) return;
+      const span = watchCamSpan();
+      const u = watchCamEase(span.duration > 0 ? span.elapsed / span.duration : 0);
+      const radius = watchNum('watchCamRadius', 2.2, 0.3, 8);
+      const height = watchNum('watchCamHeight', 0.15, -2, 3);
+      const ellipse = watchNum('watchCamEllipse', 1, 0.25, 2.5);
+      const rev = watchNum('watchCamRev', 12, 1, 120);
+      const fov0 = watchNum('watchCamFovStart', 38, 8, 80);
+      const fov1 = watchNum('watchCamFovEnd', 24, 8, 80);
+      const dirEl = document.getElementById('watchCamDir');
+      const dir = dirEl && dirEl.value === '-1' ? -1 : 1;
+      const ang = dir * Math.PI * 2 * (span.elapsed / rev) + Math.PI / 2;
+      const focus = _watchAutoFocus;
+      const node = watchCamBoneNode();
+      if (node) {
+        node.updateWorldMatrix(true, false);
+        node.getWorldPosition(focus);
+      } else focus.set(0, 1.3, 0);
+      _watchAutoPos.set(focus.x + Math.cos(ang) * radius, focus.y + height, focus.z + Math.sin(ang) * ellipse * radius);
+      if (_watchAutoPos.distanceToSquared(focus) < 1e-4) _watchAutoPos.z += 0.45;
+      cameraSingle.up.set(0, 1, 0);
+      cameraSingle.zoom = 1;
+      cameraSingle.position.copy(_watchAutoPos);
+      controlsSingle.target.copy(focus);
+      cameraSingle.fov = fov0 + (fov1 - fov0) * u;
+      cameraSingle.lookAt(focus);
+      cameraSingle.updateProjectionMatrix();
+      controlsSingle.update();
+    }
+    function watchCamStopFromDrag() {
+      if (watchMovieBusy || !vrmaWatchOn) return;
+      if (typeof gizmoPointerClaimed !== 'undefined' && gizmoPointerClaimed) return;
+      if (typeof transformControl !== 'undefined' && transformControl && transformControl.dragging) return;
+      const box = document.getElementById('watchCamOn');
+      if (!box || !box.checked) return;
+      box.checked = false;
+      watchCamSay('ドラッグしたので、自動カメラを止めました。オンに戻すまで、この位置のままです。');
+    }
+    function watchCamOpenWin() {
+      const win = document.getElementById('watchCamWin');
+      if (!win) return;
+      win.hidden = false;
+      if (typeof raiseFloat === 'function') raiseFloat(win);
+      watchCamReadouts();
+    }
+    function watchCamCloseWin() {
+      const win = document.getElementById('watchCamWin');
+      if (win) win.hidden = true;
+    }
     (function watchBindUi() {
       const speedBtn = document.getElementById('watchSpeedApply');
       if (speedBtn) speedBtn.addEventListener('click', () => watchGoSpeed(watchNum('watchSpeed', 1, 0, 2)));
@@ -38989,8 +39387,89 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (skyList) skyList.addEventListener('click', () => { watchSkyOpenCatalog(); });
       if (skyClear) skyClear.addEventListener('click', () => { watchSkyClear(); });
       if (skyQuery) skyQuery.addEventListener('input', () => { if (watchSkyCatalog) watchSkyRenderList(); });
+      const showGrid = document.getElementById('watchShowGrid');
+      if (showGrid) showGrid.addEventListener('change', () => { try { syncVrmaStageGrid(); } catch (_) {} });
+      const skySplit = document.getElementById('watchSkySplit');
+      const skySplitRows = document.getElementById('watchSkySplitRows');
+      function watchSkyCopyGrade(fromId, toId) {
+        const from = document.getElementById(fromId);
+        const to = document.getElementById(toId);
+        if (from && to) to.value = from.value;
+      }
+      function watchSkySyncSplitUi(copy) {
+        const on = !!(skySplit && skySplit.checked);
+        if (skySplitRows) skySplitRows.hidden = !on;
+        if (on && copy) {
+          watchSkyCopyGrade('watchSkyExposure', 'watchSkyExposureUp');
+          watchSkyCopyGrade('watchSkyExposure', 'watchSkyExposureDown');
+          watchSkyCopyGrade('watchSkyContrast', 'watchSkyContrastUp');
+          watchSkyCopyGrade('watchSkyContrast', 'watchSkyContrastDown');
+          watchSkyCopyGrade('watchSkySaturation', 'watchSkySaturationUp');
+          watchSkyCopyGrade('watchSkySaturation', 'watchSkySaturationDown');
+          watchSkyCopyGrade('watchSkyTrans', 'watchSkyTransUp');
+          watchSkyCopyGrade('watchSkyTrans', 'watchSkyTransDown');
+        }
+        ['watchSkyExposure', 'watchSkyContrast', 'watchSkySaturation', 'watchSkyTrans'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.disabled = on;
+        });
+      }
+      if (skySplit) skySplit.addEventListener('change', () => watchSkySyncSplitUi(true));
+      watchSkySyncSplitUi(false);
       const faceOpen = document.getElementById('watchFaceOpen');
       if (faceOpen) faceOpen.addEventListener('click', () => { watchFaceOpen(); });
+      const camOpen = document.getElementById('watchCamOpen');
+      const camClose = document.getElementById('watchCamWinClose');
+      const camWin = document.getElementById('watchCamWin');
+      const camHead = document.getElementById('watchCamHead');
+      const camGrip = document.getElementById('watchCamWinResize');
+      const camOn = document.getElementById('watchCamOn');
+      if (camOpen) camOpen.addEventListener('click', () => { watchCamOpenWin(); });
+      if (camClose) camClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        watchCamCloseWin();
+      });
+      if (camOn) camOn.addEventListener('change', () => {
+        watchCamSay(camOn.checked ? '自動カメラはオンです。再生と書き出しの時刻に合わせて動きます。' : '自動カメラはオフです。');
+      });
+      ['watchCamRadius', 'watchCamHeight', 'watchCamEllipse', 'watchCamFovStart', 'watchCamFovEnd', 'watchCamRev'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('input', () => { watchCamReadouts(); });
+      });
+      watchCamReadouts();
+      if (camWin && camHead && typeof vceBindFloatHead === 'function') vceBindFloatHead(camWin, camHead);
+      if (camGrip && camWin) camGrip.addEventListener('pointerdown', (e) => {
+        if (e.button != null && e.button !== 0) return;
+        const body = document.getElementById('watchCamBody');
+        if (!body) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { camGrip.setPointerCapture(e.pointerId); } catch (_) {}
+        const startX = e.clientX;
+        const startY = e.clientY;
+        const startW = camWin.getBoundingClientRect().width;
+        const startH = body.getBoundingClientRect().height;
+        const move = (ev) => {
+          const nextW = Math.max(260, Math.min(window.innerWidth - 16, startW + (ev.clientX - startX)));
+          const nextH = Math.max(180, Math.min(window.innerHeight - 80, startH + (ev.clientY - startY)));
+          camWin.style.width = nextW + 'px';
+          body.style.height = nextH + 'px';
+          body.style.maxHeight = nextH + 'px';
+        };
+        const up = () => {
+          camGrip.removeEventListener('pointermove', move);
+          camGrip.removeEventListener('pointerup', up);
+          camGrip.removeEventListener('pointercancel', up);
+        };
+        camGrip.addEventListener('pointermove', move);
+        camGrip.addEventListener('pointerup', up);
+        camGrip.addEventListener('pointercancel', up);
+      });
+      if (typeof controlsSingle !== 'undefined' && controlsSingle && controlsSingle.addEventListener) {
+        controlsSingle.addEventListener('start', watchCamStopFromDrag);
+      }
       const faceClose = document.getElementById('watchFaceWinClose');
       const faceWin = document.getElementById('watchFaceWin');
       const faceHead = document.getElementById('watchFaceHead');
