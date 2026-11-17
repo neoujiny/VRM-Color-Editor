@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.571-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop
+  Version: v5.4.582-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle
   ==================================================
 -->
 <!--
@@ -12,6 +12,40 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.582 / 2026-11-17 / Super Grok（土台は v5.4.581）
+    修正: スライダーの右端が VRM 標準の 90°で10° だった。読み込んだ VRoid も同じ値のため、動かしても以前の過剰な角度にならなかった。右端は、カーブを掛けない以前の等倍（横 29°、縦 18° まで）にした。
+
+  v5.4.581 / 2026-11-17 / Super Grok（土台は v5.4.580）
+    追加: 視線カーブのスライダー。左端は読み込んだモデル（VRoid）のカーブ。右端は VRM 標準の 90°で10°。目盛りは 0、25、50、75、100。
+
+  v5.4.580 / 2026-11-17 / Super Grok（土台は v5.4.579）
+    修正: 眼球へ渡す角度は、カメラとの差をほぼそのまま回していた。VRMの視線カーブは、標準で 90° の差を骨の 10° に縮める。その倍率をモデルの値で掛ける。
+
+  v5.4.579 / 2026-11-17 / Super Grok（土台は v5.4.578）
+    修正: 目の角度は、顔とカメラのワールド角度を眼球のローカル回転へそのまま入れていた。正面以外では振りすぎ、上下が逆に見えた。カメラの方向を眼球の初期姿勢の座標系へ移し、その向きへ瞳の正面を回す。
+
+  v5.4.578 / 2026-11-17 / Super Grok（土台は v5.4.577）
+    修正: 目をカメラへ向けるをオンにしても、渡す角度が 0° のままだった。動きとの差（例: 横 -35°）を、眼球の初期の向きに直接足す。頭の回し方とは別。
+
+  v5.4.577 / 2026-11-17 / Super Grok（土台は v5.4.576）
+    変更: 頭をカメラへ向けるスイッチと、目をカメラへ向けるスイッチを分けた。角度は頭の骨の軸ではなく、左右の眼球の位置から測る。オフのままでも、動きの顔とカメラの差が表示される。
+
+  v5.4.576 / 2026-11-17 / Super Grok（土台は v5.4.575）
+    修正: カメラを見ても横も縦も 0° のままだった。正面をワールドの+Zに固定していたので、頭が横を向いても角度が 0 になっていた。頭の骨が向いている方向からカメラまでの角度を測り、その分だけ頭と眼球を回す。
+
+  v5.4.575 / 2026-11-17 / Super Grok（土台は v5.4.574）
+    修正: VRoid で視線が動かなかった。モデルを正面へ回したあとの頭の向きを基準に取り直し、踊りの姿勢の上から、頭と眼球をカメラへ向ける。視線の表情も、その角度で入れる。
+
+  v5.4.574 / 2026-11-17 / Super Grok（土台は v5.4.573）
+    修正: カメラを見ても、眼球が頭に付いたまま動いていなかった。眼球の骨を、頭とは別にカメラへ向ける。視線の表情（上下左右）も、同じ向きで足す。頭の回転のあとに、ばねで上書きされない位置で行う。
+
+  v5.4.573 / 2026-11-16 / Super Grok（土台は v5.4.572）
+    修正: カメラを見るをオンにしても、視線も頭も動かないか、カメラと反対を向いていた。VRM0は読み込みのあと向きを180度回すが、視線の基準はその前のままだった。回したあとの正面を基準にし直した。頭は、骨の正面の軸へ滑らかに向ける。
+
+  v5.4.572 / 2026-11-16 / Super Grok（土台は v5.4.571）
+    追加: コントロールパネルから「表情と目線」を開く。喜・怒・哀・楽と、各表情の強さをその場で変えられる。動きの表情より、こちらが優先される。
+    追加: カメラを見る。視線がカメラへゆっくり向く。追いつきで速さを変える。急には振り向かない。視線の項目が無いモデルは、頭の骨を少し向ける。
 
   v5.4.571 / 2026-11-16 / Super Grok（土台は v5.4.570）
     修正: 高さを変える位置にマウスを乗せると、ドラッグしていないのにその位置が逃げていた。取っ手がスクロールの中に重なっていた。スクロールの外へ出した。空の一覧も同じ。
@@ -1206,7 +1240,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.571</title>
+  <title>VRM Color Editor - v5.4.582</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2023,7 +2057,7 @@
     body.vrma-watch #splitDivider,
     body.vrma-watch #splitLabelLeft,
     body.vrma-watch #splitLabelRight,
-    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop):not(#watchSkyWin),
+    body.vrma-watch .vce-float:not(#vrmaWatchWin):not(#vceColorPop):not(#watchSkyWin):not(#watchFaceWin),
     body.vrma-watch #stampPicker,
     body.vrma-watch #stampAimStatus,
     body.vrma-watch #vceDialog,
@@ -2033,8 +2067,8 @@
       display: none !important;
     }
     body.vrma-watch #vrmaWatchWin { z-index: 80000; }
-    #vrmaWatchWin, #watchSkyWin { display: flex; flex-direction: column; overflow: visible; }
-    #vrmaWatchWin > .vce-float-head, #watchSkyWin > .vce-float-head { flex: 0 0 auto; }
+    #vrmaWatchWin, #watchSkyWin, #watchFaceWin { display: flex; flex-direction: column; overflow: visible; }
+    #vrmaWatchWin > .vce-float-head, #watchSkyWin > .vce-float-head, #watchFaceWin > .vce-float-head { flex: 0 0 auto; }
     #vrmaWatchResize {
       position: relative; flex: 0 0 14px; height: 14px; z-index: 4;
       cursor: ns-resize; touch-action: none;
@@ -2087,6 +2121,30 @@
     #watchSkyWin .watch-row input { width: 100%; min-width: 0; }
     #watchSkyWin .vce-float-body { height: 420px; overflow: auto; overscroll-behavior: contain; }
     #watchSkyWinResize {
+      position: relative; align-self: flex-end; flex: 0 0 18px; width: 28px; height: 18px; z-index: 4;
+      cursor: nwse-resize; touch-action: none;
+      background: linear-gradient(135deg, transparent 50%, #c4b8a4 50%);
+    }
+    #watchFaceWin { width: 320px; }
+    #watchFaceWin .vce-float-body { height: 420px; overflow: auto; overscroll-behavior: contain; }
+    #watchFacePresets { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+    #watchFacePresets button { flex: 1 1 30%; min-height: 32px; margin: 0; background: #24343a; }
+    #watchFaceList label { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 12px; color: #d5dde3; }
+    #watchFaceList label span:first-child { flex: 0 0 72px; }
+    #watchFaceList input[type="range"] { flex: 1; min-width: 0; }
+    #watchFaceWin button#watchFaceClear { width: 100%; margin: 0 0 8px; background: #555; }
+    #watchFaceWin .watch-note { margin: 0 0 8px; font-size: 11px; color: #8e99a4; line-height: 1.45; }
+    #watchFaceWin h4 { margin: 14px 0 8px; padding-top: 10px; border-top: 1px solid #c4b8a4; font-size: 16px; color: #fff; }
+    #watchFaceWin .watch-row { display: flex; flex-direction: column; align-items: stretch; gap: 3px; margin: 0 0 8px; font-size: 12px; color: #d5dde3; }
+    #watchFaceWin .watch-check { flex-direction: row; align-items: center; gap: 8px; }
+    #watchFaceWin .watch-row input[type="range"] { width: 100%; min-width: 0; }
+    #watchFaceWin .watch-scale-marks { display: flex; justify-content: space-between; margin: 1px 7px 0; }
+    #watchFaceWin .watch-scale-marks span { display: flex; flex-direction: column; align-items: center; width: 0; font-size: 10px; line-height: 1.2; color: #9aabba; white-space: nowrap; }
+    #watchFaceWin .watch-scale-marks span::before { content: ""; width: 1px; height: 7px; margin-bottom: 2px; background: #c4b8a4; }
+    #watchFaceWin .watch-scale-marks span:first-child { align-items: flex-start; }
+    #watchFaceWin .watch-scale-marks span:last-child { align-items: flex-end; }
+    #watchFaceWin #watchLookCurveRead { font-size: 11px; color: #8e99a4; }
+    #watchFaceResize {
       position: relative; align-self: flex-end; flex: 0 0 18px; width: 28px; height: 18px; z-index: 4;
       cursor: nwse-resize; touch-action: none;
       background: linear-gradient(135deg, transparent 50%, #c4b8a4 50%);
@@ -2762,7 +2820,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.571</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.582</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4035,6 +4093,9 @@
           <p>スライダーは -300% から 300% です。0% はその場で止まり、マイナスは戻ります。繰り返しは、VRMAタブのチェックのままです。</p>
           <label class="watch-row">終端から開始へ戻す秒<input type="range" id="watchLoopBridge" min="0" max="4" step="0.1" value="2" title="ループのとき、終端の姿勢から開始の姿勢まで骨を動かす秒数です。0はすぐ戻します"></label>
           <p class="watch-note" id="watchLoopBridgeLabel">2.0秒。ループのときだけ、終端の姿勢から開始の姿勢へ骨を動かしてから、再生を続けます。0秒は、すぐ先頭に戻ります。</p>
+          <h4>表情と目線</h4>
+          <p class="watch-note">表情の強さと、カメラを見るかを、別の窓で変えます。</p>
+          <button type="button" id="watchFaceOpen">表情と目線を開く</button>
           <h4>空</h4>
           <p class="watch-note">Poly Haven の HDRI を、全天周の空として貼ります。CC0 です。モデルのライトは変えません。追加で一覧を開きます。選ぶと一覧は閉じ、ここにサムネールだけが残ります。削除は、空とサムネールを外します。1k が標準です。鑑賞を出ると画面からは外し、もう一度入ると戻します。シーンのJSONには入りません。</p>
           <div id="watchSkyPick">
@@ -4140,6 +4201,42 @@
           <div id="watchSkyGrid"></div>
         </div>
         <div id="watchSkyWinResize" aria-label="大きさを変える"></div>
+      </aside>
+      <aside id="watchFaceWin" class="vce-float" hidden style="width:320px; left:400px; top:88px;" aria-label="表情と目線">
+        <div class="vce-float-head" id="watchFaceHead">
+          <button type="button" class="vce-float-close" id="watchFaceWinClose" title="閉じる">×</button>
+          <span class="vce-float-title">表情と目線</span>
+        </div>
+        <div class="vce-float-body" id="watchFaceBody">
+          <p class="watch-note">読み込んだVRMの表情です。喜・怒・哀・楽は、その表情を一杯にして、ほかの3つは戻します。下のスライダーは、今の強さです。動きを再生していても、ここで指定した表情が優先されます。</p>
+          <div id="watchFacePresets">
+            <button type="button" data-watch-preset="happy">喜</button>
+            <button type="button" data-watch-preset="angry">怒</button>
+            <button type="button" data-watch-preset="sad">哀</button>
+            <button type="button" data-watch-preset="relaxed">楽</button>
+            <button type="button" data-watch-preset="neutral">無表情</button>
+          </div>
+          <button type="button" id="watchFaceClear">表情を戻す</button>
+          <div id="watchFaceList"></div>
+          <h4>カメラ目線</h4>
+          <label class="watch-row watch-check"><input id="watchLookHead" type="checkbox">頭をカメラへ向ける</label>
+          <label class="watch-row watch-check"><input id="watchLookEyes" type="checkbox">目をカメラへ向ける</label>
+          <label class="watch-row">追いつき<input id="watchLookRate" type="range" min="0.5" max="24" step="0.5" value="6" title="小さいとゆっくり。大きいとすぐ向きます"></label>
+          <label class="watch-row">視線カーブ
+            <input id="watchLookCurve" type="range" min="0" max="100" step="1" value="0" list="watchLookCurveMarks" title="左は読み込んだモデルの視線カーブ。右は、カーブを掛けない以前の等倍です">
+            <datalist id="watchLookCurveMarks">
+              <option value="0" label="VRoid"></option>
+              <option value="25"></option>
+              <option value="50"></option>
+              <option value="75"></option>
+              <option value="100" label="等倍"></option>
+            </datalist>
+            <span class="watch-scale-marks" aria-hidden="true"><span>VRoid</span><span>25</span><span>50</span><span>75</span><span>等倍</span></span>
+            <span id="watchLookCurveRead">VRoid の値</span>
+          </label>
+          <p id="watchLookStatus" class="watch-note">頭と目は別々にオンにできます。オフのままでも、下に顔とカメラの差が出ます。</p>
+        </div>
+        <div id="watchFaceResize" aria-label="大きさを変える"></div>
       </aside>
       <div id="watchMovieHud" hidden>
         <div class="watch-movie-hud-row">
@@ -4472,7 +4569,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.571';
+    const APP_VERSION = 'v5.4.582';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -8212,6 +8309,55 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       });
       vceCanonicalRest.set(vrm, map);
     }
+    const _lookRestYaw = new THREE.Quaternion();
+    const _lookRestA = new THREE.Quaternion();
+    const _lookRestB = new THREE.Quaternion();
+    const _lookFace = new THREE.Vector3();
+    const _lookUp = new THREE.Vector3(0, 1, 0);
+    function vceSnapAxis(v) {
+      const axes = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+      let best = axes[4];
+      let bestD = -2;
+      axes.forEach((a) => {
+        const d = v.x * a[0] + v.y * a[1] + v.z * a[2];
+        if (d > bestD) { bestD = d; best = a; }
+      });
+      return best;
+    }
+    function vceRestoreLookApplierRest(vrm) {
+      const look = vrm && vrm.lookAt;
+      const applier = look && look.applier;
+      const map = vrm && vceCanonicalRest.get(vrm);
+      if (!applier || !map || !applier._restQuatLeftEye) return;
+      [['leftEye', '_restQuatLeftEye', '_restLeftEyeParentWorldQuat'], ['rightEye', '_restQuatRightEye', '_restRightEyeParentWorldQuat']].forEach((row) => {
+        const rec = map[row[0]];
+        if (!rec || !applier[row[1]] || !applier[row[2]]) return;
+        applier[row[1]].copy(rec.local);
+        applier[row[2]].copy(rec.world).multiply(_lookRestB.copy(rec.local).invert());
+      });
+    }
+    function vceCaptureLookHeadRest(vrm) {
+      if (!vrm || !vrm.humanoid) return;
+      let head = null;
+      try { head = vrm.humanoid.getRawBoneNode('head'); } catch (_) { head = null; }
+      if (!head) return;
+      try { if (vrm.scene) vrm.scene.updateMatrixWorld(true); } catch (_) {}
+      if (!vrm.userData.watchLookHeadRest) vrm.userData.watchLookHeadRest = new THREE.Quaternion();
+      head.getWorldQuaternion(vrm.userData.watchLookHeadRest);
+      if (vrm.lookAt && vrm.lookAt._restHeadWorldQuaternion) vrm.lookAt._restHeadWorldQuaternion.copy(vrm.userData.watchLookHeadRest);
+      if (!vrm.userData.watchEyeRest) vrm.userData.watchEyeRest = {};
+      ['leftEye', 'rightEye'].forEach((name) => {
+        let eye = null;
+        try { eye = vrm.humanoid.getRawBoneNode(name); } catch (_) { eye = null; }
+        if (!eye) return;
+        if (!vrm.userData.watchEyeRest[name]) vrm.userData.watchEyeRest[name] = new THREE.Quaternion();
+        eye.getWorldQuaternion(vrm.userData.watchEyeRest[name]);
+        if (!vrm.userData.watchEyeLocal) vrm.userData.watchEyeLocal = {};
+        if (!vrm.userData.watchEyeLocal[name]) vrm.userData.watchEyeLocal[name] = eye.quaternion.clone();
+      });
+      vrm.userData.watchAxes = null;
+      try { vceRestoreLookApplierRest(vrm); } catch (_) {}
+    }
 
     function vceApplyCanonicalHumanoid(vrm) {
       const map = vceCanonicalRest.get(vrm);
@@ -8232,12 +8378,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!vrm || typeof vrm.update !== 'function') return;
       if (!vceCanonicalPreviewOn() || !vceCanonicalRest.has(vrm)) {
         vrm.update(delta);
+        try { watchFaceApply(vrm); } catch (_) {}
+        try { watchLookFrame(vrm, delta); } catch (_) {}
         return;
       }
       try { if (vrm.humanoid && vrm.humanoid.update) vrm.humanoid.update(); } catch (_) {}
       try { vceApplyCanonicalHumanoid(vrm); } catch (_) {}
-      try { if (vrm.lookAt && vrm.lookAt.update) vrm.lookAt.update(delta); } catch (_) {}
       try { if (vrm.expressionManager && vrm.expressionManager.update) vrm.expressionManager.update(); } catch (_) {}
+      try { watchFaceApply(vrm); } catch (_) {}
       try { if (vrm.nodeConstraintManager && vrm.nodeConstraintManager.update) vrm.nodeConstraintManager.update(); } catch (_) {}
       try { if (vrm.springBoneManager && vrm.springBoneManager.update) vrm.springBoneManager.update(delta); } catch (_) {}
       try {
@@ -8247,6 +8395,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           });
         }
       } catch (_) {}
+      try { watchLookFrame(vrm, delta); } catch (_) {}
     }
 
     function setVrmaHint(text, warn) {
@@ -8597,6 +8746,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         scaleRow.appendChild(scaleNum);
         box.appendChild(scaleRow);
       });
+      try { watchFaceRebuild(); } catch (_) {}
     }
     function vceApplyFaceSliders() {
       if (!vceFaceTouched || vceFaceMotionOwns()) return;
@@ -9364,6 +9514,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (!vrmaStageUserMoved && typeof alignVrmaStageToFeet === 'function') alignVrmaStageToFeet();
         try { vceSnapshotCanonicalRest(vrmEdited); } catch (err) { console.error(err); }
         VRMUtils.rotateVRM0(vrmEdited);
+        try { vceCaptureLookHeadRest(vrmEdited); } catch (err) { console.error(err); }
         parseMeshStructure(vrmEdited);
         refreshEditorGuidance();
         populateGlbBoneSelect(vrmEdited);
@@ -9381,6 +9532,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           vrmOriginal = gltf2.userData.vrm; sceneOriginal.add(vrmOriginal.scene);
           try { vceSnapshotCanonicalRest(vrmOriginal); } catch (err) { console.error(err); }
           VRMUtils.rotateVRM0(vrmOriginal);
+          try { vceCaptureLookHeadRest(vrmOriginal); } catch (err) { console.error(err); }
           try { vceRememberFaceBinds(); vceApplyFaceScales(); } catch (err) { console.error(err); }
           try { mirrorAttachSpringsToOriginal(); } catch (err) { console.error(err); }
           try { if (vrmAnimation && vrmaStarted) bindVrmaToVrms(); } catch (err) { console.error(err); }
@@ -37711,6 +37863,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           try { if (i === 0 && vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
           if (i === 0) watchMovieStepMaterials(0);
           try { vceApplyFaceSliders(); } catch (_) {}
+          try { watchLookRepaint(); } catch (_) {}
           try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
           watchMoviePaint(canvas, ctx);
           const timestamp = Math.round((i + 1) * 1000000 / 30);
@@ -38189,6 +38342,628 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const watchWin = document.getElementById('vrmaWatchWin');
       if (watchWin) watchWin.hidden = true;
       watchSkyCloseCatalog();
+      watchFaceClose();
+      watchLookRelease();
+    }
+    const watchFaceWeight = new Map();
+    let watchFaceLive = false;
+    const watchFacePresetNames = ['happy', 'angry', 'sad', 'relaxed'];
+    const _watchLookPos = new THREE.Vector3();
+    const _watchLookHeadPos = new THREE.Vector3();
+    const _watchLookAim = new THREE.Vector3();
+    const _watchLookParentQ = new THREE.Quaternion();
+    const _watchLookGoalQ = new THREE.Quaternion();
+    const _watchLookEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+    const _watchHeadForward = new THREE.Vector3();
+    const _watchLookHeadQ = new THREE.Quaternion();
+    const watchHeadOffset = new THREE.Quaternion();
+    const watchHeadBase = new THREE.Quaternion();
+    const watchHeadApplied = new THREE.Quaternion();
+    let watchHeadHave = false;
+    let watchLookYaw = 0;
+    let watchLookPitch = 0;
+    let watchLookInit = false;
+    let watchLookHeld = false;
+    const _watchUp = new THREE.Vector3(0, 1, 0);
+    const _watchAlt = new THREE.Vector3(1, 0, 0);
+    const _watchSide = new THREE.Vector3();
+    const _watchBoneUp = new THREE.Vector3();
+    const _watchYawQ = new THREE.Quaternion();
+    const _watchPitchQ = new THREE.Quaternion();
+    const watchFaceForward = new THREE.Vector3();
+    const watchFaceUp = new THREE.Vector3(0, 1, 0);
+    const watchFaceRight = new THREE.Vector3(1, 0, 0);
+    let watchFaceGap = 0;
+    let watchFaceEyes = false;
+    let watchFaceRawYaw = 0;
+    let watchFaceRawPitch = 0;
+    let watchCamX = 0;
+    let watchCamZ = 0;
+    let watchEyeWasOn = false;
+    function watchEyeSlot() {
+      return { off: new THREE.Quaternion(), base: new THREE.Quaternion(), applied: new THREE.Quaternion(), have: false, init: false };
+    }
+    const watchEyeSlotMap = { left: watchEyeSlot(), right: watchEyeSlot() };
+    function watchLookBone(vrm, name) {
+      if (!vrm || !vrm.humanoid || !vrm.humanoid.getRawBoneNode) return null;
+      try { return vrm.humanoid.getRawBoneNode(name); } catch (_) { return null; }
+    }
+    function watchRestoreBone(node, state) {
+      if (!node || !state || !state.have) return;
+      if (Math.abs(node.quaternion.dot(state.applied)) > 0.999999) node.quaternion.copy(state.base);
+      state.have = false;
+      state.init = false;
+      state.off.identity();
+    }
+    let watchEyeYaw = 0;
+    let watchEyePitch = 0;
+    let watchEyeGainYaw = 1;
+    let watchEyeCurve = '90°で10°';
+    function watchEyeBlend() {
+      return watchNum('watchLookCurve', 0, 0, 100) / 100;
+    }
+    function watchLookCurveText() {
+      const el = document.getElementById('watchLookCurveRead');
+      if (!el) return;
+      const t = watchEyeBlend();
+      if (t <= 0.001) el.textContent = 'VRoid のカーブ';
+      else if (t >= 0.999) el.textContent = '以前の等倍';
+      else el.textContent = 'カーブから等倍へ ' + Math.round(t * 100) + '%';
+    }
+    function watchEyeCurveMap(vrm, isLeft, yawRad, pitchRad) {
+      const applier = vrm && vrm.lookAt && vrm.lookAt.applier;
+      const boneCurve = !applier || applier.type !== 'expression';
+      const lookRight = yawRad >= 0;
+      const inner = lookRight === isLeft;
+      const yawMap = boneCurve && applier ? (inner ? applier.rangeMapHorizontalInner : applier.rangeMapHorizontalOuter) : null;
+      const pitchMap = boneCurve && applier ? (pitchRad >= 0 ? applier.rangeMapVerticalUp : applier.rangeMapVerticalDown) : null;
+      const blend = watchEyeBlend();
+      const mapDeg = (map, absDeg) => {
+        const vMax = map && map.inputMaxValue > 0 ? map.inputMaxValue : 90;
+        const vOut = map && map.outputScale != null ? map.outputScale : 10;
+        const max = vMax + (90 - vMax) * blend;
+        const out = vOut + (10 - vOut) * blend;
+        let t = max > 0 ? absDeg / max : 0;
+        if (t < 0) t = 0;
+        if (t > 1) t = 1;
+        return { deg: out * t, max: max, out: out };
+      };
+      const yawDeg = Math.abs(THREE.MathUtils.radToDeg(yawRad));
+      const pitchDeg = Math.abs(THREE.MathUtils.radToDeg(pitchRad));
+      const yawM = mapDeg(yawMap, yawDeg);
+      const pitchM = mapDeg(pitchMap, pitchDeg);
+      const curvedYaw = THREE.MathUtils.degToRad((yawRad < 0 ? -1 : 1) * yawM.deg);
+      const curvedPitch = THREE.MathUtils.degToRad((pitchRad < 0 ? -1 : 1) * pitchM.deg);
+      const rawYaw = watchClamp(yawRad, -0.5, 0.5);
+      const rawPitch = watchClamp(pitchRad, -0.32, 0.32);
+      const yaw = curvedYaw + (rawYaw - curvedYaw) * blend;
+      const pitch = curvedPitch + (rawPitch - curvedPitch) * blend;
+      const appliedDeg = Math.abs(THREE.MathUtils.radToDeg(yaw));
+      watchEyeGainYaw = yawDeg > 0.05 ? appliedDeg / yawDeg : (blend >= 0.999 ? 1 : (yawM.max > 0 ? yawM.out / yawM.max : 0));
+      watchEyeCurve = blend >= 0.999 ? '等倍' : (blend <= 0.001 ? Math.round(yawM.max) + '°で' + Math.round(yawM.out) + '°' : Math.round(yawM.max) + '°で' + Math.round(yawM.out) + '° から等倍へ ' + Math.round(blend * 100) + '%');
+      return { yaw: yaw, pitch: pitch };
+    }
+    function watchClamp(n, min, max) {
+      if (n < min) return min;
+      if (n > max) return max;
+      return n;
+    }
+    function watchLookSmooth(current, goal, delta) {
+      const rate = watchNum('watchLookRate', 6, 0.5, 24);
+      const step = delta > 0.016 ? delta : 0.016;
+      const t = 1 - Math.exp(-rate * step);
+      return current + (goal - current) * t;
+    }
+    function watchViewCamera() {
+      try {
+        if (typeof previewFocusRig === 'function') {
+          const rig = previewFocusRig();
+          if (rig && rig.ctrl && rig.ctrl.update) rig.ctrl.update();
+          if (rig && rig.cam) return rig.cam;
+        }
+      } catch (_) {}
+      return cameraSingle;
+    }
+    function watchSnapAxis(v, target) {
+      const axes = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+      let best = axes[4];
+      let bestD = -2;
+      axes.forEach((a) => {
+        const d = v.x * a[0] + v.y * a[1] + v.z * a[2];
+        if (d > bestD) { bestD = d; best = a; }
+      });
+      return target.set(best[0], best[1], best[2]);
+    }
+    function watchAxesFor(vrm, key, restWorldQuat) {
+      if (!vrm.userData.watchAxes) vrm.userData.watchAxes = {};
+      if (vrm.userData.watchAxes[key]) return vrm.userData.watchAxes[key];
+      if (!restWorldQuat) return null;
+      const forward = new THREE.Vector3();
+      const up = new THREE.Vector3();
+      _lookRestA.copy(restWorldQuat).invert();
+      watchSnapAxis(_lookFace.set(0, 0, 1).applyQuaternion(_lookRestA), forward);
+      _lookRestA.copy(restWorldQuat).invert();
+      watchSnapAxis(_lookFace.set(0, 1, 0).applyQuaternion(_lookRestA), up);
+      if (Math.abs(forward.dot(up)) > 0.5) {
+        _lookRestA.copy(restWorldQuat).invert();
+        watchSnapAxis(_lookFace.set(1, 0, 0).applyQuaternion(_lookRestA), up);
+      }
+      const axes = { forward: forward, up: up };
+      vrm.userData.watchAxes[key] = axes;
+      return axes;
+    }
+    function watchAimOf(vrm, node, key, restWorldQuat) {
+      const axes = watchAxesFor(vrm, key, restWorldQuat);
+      if (!node || !axes) return { yaw: 0, pitch: 0 };
+      if (node.parent) node.parent.updateMatrixWorld(true);
+      const parentQ = node.parent ? node.parent.getWorldQuaternion(_watchLookParentQ) : _watchLookParentQ.identity();
+      const worldQ = _watchLookHeadQ.copy(parentQ).multiply(node.quaternion);
+      const forward = _watchHeadForward.copy(axes.forward).applyQuaternion(worldQ);
+      const up = _watchBoneUp.copy(axes.up).applyQuaternion(worldQ);
+      if (forward.lengthSq() < 1e-8 || up.lengthSq() < 1e-8) return { yaw: 0, pitch: 0 };
+      forward.normalize();
+      up.normalize();
+      const right = _watchSide.crossVectors(forward, up);
+      if (right.lengthSq() < 1e-8) return { yaw: 0, pitch: 0 };
+      right.normalize();
+      const cam = watchViewCamera();
+      cam.getWorldPosition(_watchLookPos);
+      node.getWorldPosition(_watchLookHeadPos);
+      const aim = _watchLookAim.copy(_watchLookPos).sub(_watchLookHeadPos);
+      if (aim.lengthSq() < 1e-8) return { yaw: 0, pitch: 0 };
+      aim.normalize();
+      return {
+        yaw: Math.atan2(aim.dot(right), aim.dot(forward)),
+        pitch: Math.atan2(aim.dot(up), Math.hypot(aim.dot(right), aim.dot(forward)))
+      };
+    }
+    function watchApplyWorld(vrm, node, state, yaw, pitch, key, restWorldQuat) {
+      if (!node || !node.parent) return;
+      const axes = watchAxesFor(vrm, key, restWorldQuat);
+      if (!axes) return;
+      if (state.have && Math.abs(node.quaternion.dot(state.applied)) > 0.999999) node.quaternion.copy(state.base);
+      state.base.copy(node.quaternion);
+      node.parent.updateMatrixWorld(true);
+      const parentQ = node.parent.getWorldQuaternion(_watchLookParentQ);
+      const worldQ = _watchLookHeadQ.copy(parentQ).multiply(state.base);
+      const forward = _watchHeadForward.copy(axes.forward).applyQuaternion(worldQ);
+      const up = _watchBoneUp.copy(axes.up).applyQuaternion(worldQ);
+      if (forward.lengthSq() < 1e-8 || up.lengthSq() < 1e-8) return;
+      forward.normalize();
+      up.normalize();
+      const right = _watchSide.crossVectors(forward, up);
+      if (right.lengthSq() < 1e-8) return;
+      right.normalize();
+      _watchYawQ.setFromAxisAngle(up, -yaw);
+      _watchLookAim.copy(right).applyQuaternion(_watchYawQ);
+      _watchPitchQ.setFromAxisAngle(_watchLookAim, pitch);
+      _watchLookGoalQ.copy(_watchPitchQ).multiply(_watchYawQ).multiply(worldQ);
+      _lookRestA.copy(parentQ).invert();
+      node.quaternion.copy(_lookRestA.multiply(_watchLookGoalQ));
+      state.applied.copy(node.quaternion);
+      state.have = true;
+      node.updateMatrix();
+      node.matrixWorldNeedsUpdate = true;
+    }
+    function watchLookWriteExpressions(vrm, yaw, pitch) {
+      const em = vrm && vrm.expressionManager;
+      const map = em && em.expressionMap;
+      const set = (name, value) => {
+        if (!map || !map[name] || !em.setValue) return;
+        let n = value;
+        if (n < 0) n = 0;
+        if (n > 1) n = 1;
+        try { em.setValue(name, n); } catch (_) {}
+      };
+      set('lookRight', yaw / 0.35);
+      set('lookLeft', -yaw / 0.35);
+      set('lookUp', pitch / 0.25);
+      set('lookDown', -pitch / 0.25);
+      try { if (em && em.update) em.update(); } catch (_) {}
+      if (!vrm.userData.watchLookMorphs) {
+        const found = [];
+        if (vrm.scene) vrm.scene.traverse((obj) => {
+          if (!obj.isMesh || !obj.morphTargetDictionary || !obj.morphTargetInfluences) return;
+          const dict = obj.morphTargetDictionary;
+          const pick = (re) => {
+            const keys = Object.keys(dict);
+            for (let i = 0; i < keys.length; i++) if (re.test(keys[i])) return dict[keys[i]];
+            return -1;
+          };
+          const rec = {
+            mesh: obj,
+            left: pick(/lookleft|look[ _.-]?left|eye[ _.-]?look[ _.-]?left/i),
+            right: pick(/lookright|look[ _.-]?right|eye[ _.-]?look[ _.-]?right/i),
+            up: pick(/lookup|look[ _.-]?up|eye[ _.-]?look[ _.-]?up/i),
+            down: pick(/lookdown|look[ _.-]?down|eye[ _.-]?look[ _.-]?down/i)
+          };
+          if (rec.left >= 0 || rec.right >= 0 || rec.up >= 0 || rec.down >= 0) found.push(rec);
+        });
+        vrm.userData.watchLookMorphs = found;
+      }
+      const leftW = Math.max(0, Math.min(1, -yaw / 0.35));
+      const rightW = Math.max(0, Math.min(1, yaw / 0.35));
+      const upW = Math.max(0, Math.min(1, pitch / 0.25));
+      const downW = Math.max(0, Math.min(1, -pitch / 0.25));
+      vrm.userData.watchLookMorphs.forEach((rec) => {
+        const inf = rec.mesh.morphTargetInfluences;
+        if (!inf) return;
+        if (rec.left >= 0) inf[rec.left] = leftW;
+        if (rec.right >= 0) inf[rec.right] = rightW;
+        if (rec.up >= 0) inf[rec.up] = upW;
+        if (rec.down >= 0) inf[rec.down] = downW;
+      });
+    }
+    function watchFaceClose() {
+      const win = document.getElementById('watchFaceWin');
+      if (win) win.hidden = true;
+    }
+    function watchFaceApply(vrm) {
+      if (!watchFaceLive || !vrmaWatchOn || vrm !== vrmEdited) return;
+      const em = vrm && vrm.expressionManager;
+      if (!em || !em.setValue) return;
+      watchFaceWeight.forEach((value, name) => {
+        try { em.setValue(name, value); } catch (_) {}
+      });
+      try { if (em.update) em.update(); } catch (_) {}
+    }
+    function watchFaceSetSlider(name, value) {
+      const box = document.getElementById('watchFaceList');
+      if (!box) return;
+      const input = box.querySelector('input[data-watch-face="' + name + '"]');
+      if (!input) return;
+      input.value = String(value);
+      const num = input.nextElementSibling;
+      if (num) num.textContent = Number(value).toFixed(2);
+    }
+    function watchFacePreset(name) {
+      watchFaceLive = true;
+      const keys = name === 'neutral' ? watchFacePresetNames : watchFacePresetNames;
+      keys.forEach((key) => {
+        const v = name !== 'neutral' && key === name ? 1 : 0;
+        watchFaceWeight.set(key, v);
+        watchFaceSetSlider(key, v);
+      });
+      watchFaceApply(vrmEdited);
+    }
+    function watchFaceClear() {
+      watchFaceLive = false;
+      watchFaceWeight.clear();
+      const box = document.getElementById('watchFaceList');
+      if (box) box.querySelectorAll('input[data-watch-face]').forEach((el) => {
+        el.value = '0';
+        const num = el.nextElementSibling;
+        if (num) num.textContent = '0.00';
+      });
+      const em = vrmEdited && vrmEdited.expressionManager;
+      if (!em || !em.setValue || vceFaceMotionOwns()) return;
+      vceFaceNames(vrmEdited).forEach((n) => { try { em.setValue(n, 0); } catch (_) {} });
+      try { if (em.update) em.update(); } catch (_) {}
+    }
+    function watchFaceRebuild() {
+      const box = document.getElementById('watchFaceList');
+      if (!box) return;
+      box.replaceChildren();
+      const names = vceFaceNames(vrmEdited);
+      if (!names.length) {
+        const p = document.createElement('p');
+        p.className = 'watch-note';
+        p.textContent = '読み込んだVRMに表情がありません。';
+        box.appendChild(p);
+        return;
+      }
+      names.forEach((name) => {
+        const row = document.createElement('label');
+        const title = document.createElement('span');
+        title.textContent = (typeof vceFaceLabel === 'object' && vceFaceLabel[name]) ? vceFaceLabel[name] : name;
+        const input = document.createElement('input');
+        input.type = 'range';
+        input.min = '0';
+        input.max = '1';
+        input.step = '0.01';
+        const cur = watchFaceWeight.has(name) ? watchFaceWeight.get(name) : 0;
+        input.value = String(cur);
+        input.setAttribute('data-watch-face', name);
+        const num = document.createElement('span');
+        num.textContent = Number(cur).toFixed(2);
+        input.addEventListener('input', () => {
+          let n = parseFloat(input.value);
+          if (!isFinite(n)) n = 0;
+          if (n < 0) n = 0;
+          if (n > 1) n = 1;
+          watchFaceWeight.set(name, n);
+          watchFaceLive = true;
+          num.textContent = n.toFixed(2);
+          watchFaceApply(vrmEdited);
+        });
+        row.appendChild(title);
+        row.appendChild(input);
+        row.appendChild(num);
+        box.appendChild(row);
+      });
+    }
+    function watchFaceOpen() {
+      const win = document.getElementById('watchFaceWin');
+      if (!win) return;
+      watchFaceRebuild();
+      win.hidden = false;
+      if (typeof raiseFloat === 'function') raiseFloat(win);
+    }
+    function watchFaceAim(vrm) {
+      const head = watchLookBone(vrm, 'head');
+      if (!head) return null;
+      const left = watchLookBone(vrm, 'leftEye');
+      const right = watchLookBone(vrm, 'rightEye');
+      const neck = watchLookBone(vrm, 'neck');
+      head.updateMatrixWorld(true);
+      head.getWorldPosition(_watchLookHeadPos);
+      const cam = watchViewCamera();
+      cam.getWorldPosition(_watchLookPos);
+      watchCamX = _watchLookPos.x - _watchLookHeadPos.x;
+      watchCamZ = _watchLookPos.z - _watchLookHeadPos.z;
+      _watchLookAim.copy(_watchLookPos).sub(_watchLookHeadPos);
+      watchFaceEyes = false;
+      watchFaceGap = 0;
+      if (left && right) {
+        left.updateMatrixWorld(true);
+        right.updateMatrixWorld(true);
+        left.getWorldPosition(_watchSide);
+        right.getWorldPosition(_watchBoneUp);
+        _watchAlt.copy(_watchSide).sub(_watchBoneUp);
+        watchFaceGap = _watchAlt.length();
+        if (watchFaceGap > 0.004) {
+          if (neck) {
+            neck.updateMatrixWorld(true);
+            neck.getWorldPosition(_watchHeadForward);
+            watchFaceUp.copy(_watchLookHeadPos).sub(_watchHeadForward);
+          } else watchFaceUp.copy(_watchUp);
+          if (watchFaceUp.lengthSq() < 1e-8) watchFaceUp.copy(_watchUp);
+          if (watchFaceUp.dot(_watchUp) < 0) watchFaceUp.negate();
+          watchFaceUp.normalize();
+          _watchAlt.addScaledVector(watchFaceUp, -_watchAlt.dot(watchFaceUp));
+          if (_watchAlt.lengthSq() > 1e-8) {
+            _watchAlt.normalize();
+            watchFaceForward.crossVectors(_watchAlt, watchFaceUp).normalize();
+            watchFaceEyes = true;
+          }
+        }
+      }
+      if (!watchFaceEyes) {
+        const e = head.matrixWorld.elements;
+        watchFaceForward.set(e[8], e[9], e[10]);
+        if (watchFaceForward.lengthSq() < 1e-8) watchFaceForward.set(0, 0, 1);
+        watchFaceForward.normalize();
+        watchFaceUp.set(e[4], e[5], e[6]);
+        if (watchFaceUp.lengthSq() < 1e-8 || Math.abs(watchFaceUp.dot(watchFaceForward)) > 0.9) watchFaceUp.copy(_watchUp);
+        watchFaceUp.addScaledVector(watchFaceForward, -watchFaceUp.dot(watchFaceForward));
+        if (watchFaceUp.lengthSq() < 1e-8) watchFaceUp.copy(_watchUp);
+        if (watchFaceUp.dot(_watchUp) < 0) watchFaceUp.negate();
+        watchFaceUp.normalize();
+      }
+      watchFaceRight.crossVectors(watchFaceForward, watchFaceUp);
+      if (watchFaceRight.lengthSq() < 1e-8) watchFaceRight.set(1, 0, 0);
+      watchFaceRight.normalize();
+      if (_watchLookAim.lengthSq() < 1e-8) {
+        watchFaceRawYaw = 0;
+        watchFaceRawPitch = 0;
+        return { yaw: 0, pitch: 0 };
+      }
+      _watchLookAim.normalize();
+      watchFaceRawYaw = Math.atan2(_watchLookAim.dot(watchFaceRight), _watchLookAim.dot(watchFaceForward));
+      watchFaceRawPitch = Math.atan2(_watchLookAim.dot(watchFaceUp), Math.hypot(_watchLookAim.dot(watchFaceRight), _watchLookAim.dot(watchFaceForward)));
+      return { yaw: watchFaceRawYaw, pitch: watchFaceRawPitch };
+    }
+    function watchApplyBasis(node, state, yaw, pitch) {
+      if (!node || !node.parent) return;
+      if (state.have && Math.abs(node.quaternion.dot(state.applied)) > 0.999999) node.quaternion.copy(state.base);
+      state.base.copy(node.quaternion);
+      node.parent.updateMatrixWorld(true);
+      const parentQ = node.parent.getWorldQuaternion(_watchLookParentQ);
+      const worldQ = _watchLookHeadQ.copy(parentQ).multiply(state.base);
+      _watchBoneUp.copy(watchFaceUp);
+      _watchYawQ.setFromAxisAngle(_watchBoneUp, -yaw);
+      _watchLookAim.copy(watchFaceRight).applyQuaternion(_watchYawQ);
+      _watchPitchQ.setFromAxisAngle(_watchLookAim, pitch);
+      _watchLookGoalQ.copy(_watchPitchQ).multiply(_watchYawQ).multiply(worldQ);
+      _lookRestA.copy(parentQ).invert();
+      node.quaternion.copy(_lookRestA.multiply(_watchLookGoalQ));
+      state.applied.copy(node.quaternion);
+      state.have = true;
+      node.updateMatrix();
+      node.matrixWorldNeedsUpdate = true;
+    }
+    function watchLookRelease() {
+      watchLookInit = false;
+      watchLookHeld = false;
+      watchEyeWasOn = false;
+      watchLookYaw = 0;
+      watchLookPitch = 0;
+      watchEyeYaw = 0;
+      watchEyePitch = 0;
+      watchHeadOffset.identity();
+      const vrm = vrmEdited;
+      watchRestoreBone(watchLookBone(vrm, 'head'), { have: watchHeadHave, applied: watchHeadApplied, base: watchHeadBase, off: watchHeadOffset, init: false });
+      watchHeadHave = false;
+      watchRestoreBone(watchLookBone(vrm, 'leftEye'), watchEyeSlotMap.left);
+      watchRestoreBone(watchLookBone(vrm, 'rightEye'), watchEyeSlotMap.right);
+      if (vrm) watchLookWriteExpressions(vrm, 0, 0);
+      if (!vrm || !vrm.lookAt) return;
+      const saved = vrm.userData && vrm.userData.watchLookSaved;
+      if (saved) {
+        vrm.lookAt.autoUpdate = !!saved.auto;
+        vrm.lookAt.target = saved.target;
+        vrm.userData.watchLookSaved = null;
+      }
+      try {
+        vrm.lookAt.yaw = 0;
+        vrm.lookAt.pitch = 0;
+      } catch (_) {}
+    }
+    function watchEyeLocalRest(vrm, name, node) {
+      const map = (typeof vceCanonicalRest !== 'undefined') ? vceCanonicalRest.get(vrm) : null;
+      const rec = map && map[name];
+      if (rec && rec.local) return rec.local;
+      if (!vrm.userData.watchEyeLocal) vrm.userData.watchEyeLocal = {};
+      if (!vrm.userData.watchEyeLocal[name] && node) vrm.userData.watchEyeLocal[name] = node.quaternion.clone();
+      return vrm.userData.watchEyeLocal[name] || null;
+    }
+    function watchApplyEyeLocal(vrm, name, node) {
+      const rest = watchEyeLocalRest(vrm, name, node);
+      if (!node || !node.parent || !rest) return null;
+      node.parent.updateWorldMatrix(true, false);
+      const parentQ = node.parent.getWorldQuaternion(_watchLookParentQ);
+      const restWorld = _watchLookHeadQ.copy(parentQ).multiply(rest);
+      const inv = _lookRestA.copy(restWorld).invert();
+      const fwd = _watchHeadForward.copy(watchFaceForward).applyQuaternion(inv);
+      const up = _watchBoneUp.copy(watchFaceUp).applyQuaternion(inv);
+      if (fwd.lengthSq() < 1e-8 || up.lengthSq() < 1e-8) return null;
+      fwd.normalize();
+      up.addScaledVector(fwd, -up.dot(fwd));
+      if (up.lengthSq() < 1e-8) return null;
+      up.normalize();
+      const right = _watchSide.crossVectors(fwd, up);
+      if (right.lengthSq() < 1e-8) return null;
+      right.normalize();
+      const cam = watchViewCamera();
+      cam.getWorldPosition(_watchLookPos);
+      node.getWorldPosition(_watchLookHeadPos);
+      const aim = _lookFace.copy(_watchLookPos).sub(_watchLookHeadPos);
+      if (aim.lengthSq() < 1e-8) return null;
+      aim.normalize().applyQuaternion(inv);
+      let yaw = Math.atan2(aim.dot(right), aim.dot(fwd));
+      let pitch = Math.atan2(aim.dot(up), Math.hypot(aim.dot(right), aim.dot(fwd)));
+      const scaled = watchEyeCurveMap(vrm, name === 'leftEye', yaw, pitch);
+      yaw = scaled.yaw;
+      pitch = scaled.pitch;
+      _watchYawQ.setFromAxisAngle(up, -yaw);
+      _watchLookAim.copy(right).applyQuaternion(_watchYawQ);
+      _watchPitchQ.setFromAxisAngle(_watchLookAim, pitch);
+      _watchLookGoalQ.copy(_watchPitchQ).multiply(_watchYawQ);
+      node.quaternion.copy(rest).multiply(_watchLookGoalQ);
+      node.updateMatrix();
+      node.matrixWorldNeedsUpdate = true;
+      return { yaw: yaw, pitch: pitch };
+    }
+    function watchLookFrame(vrm, delta) {
+      if (!vrmaWatchOn || vrm !== vrmEdited) return;
+      const headOn = !!(document.getElementById('watchLookHead') && document.getElementById('watchLookHead').checked);
+      const eyeOn = !!(document.getElementById('watchLookEyes') && document.getElementById('watchLookEyes').checked);
+      const head = watchLookBone(vrm, 'head');
+      if (!head) {
+        const el = document.getElementById('watchLookStatus');
+        if (el) el.textContent = '頭の骨が見つかりません。';
+        return;
+      }
+      if (watchHeadHave && Math.abs(head.quaternion.dot(watchHeadApplied)) > 0.999999) head.quaternion.copy(watchHeadBase);
+      const left = watchLookBone(vrm, 'leftEye');
+      const right = watchLookBone(vrm, 'rightEye');
+      if (left && watchEyeSlotMap.left.have && Math.abs(left.quaternion.dot(watchEyeSlotMap.left.applied)) > 0.999999) left.quaternion.copy(watchEyeSlotMap.left.base);
+      if (right && watchEyeSlotMap.right.have && Math.abs(right.quaternion.dot(watchEyeSlotMap.right.applied)) > 0.999999) right.quaternion.copy(watchEyeSlotMap.right.base);
+      const full = watchFaceAim(vrm);
+      if (!full) return;
+      const rawYaw = watchFaceRawYaw;
+      const rawPitch = watchFaceRawPitch;
+      if (!headOn) {
+        if (watchHeadHave) {
+          watchRestoreBone(head, { have: watchHeadHave, applied: watchHeadApplied, base: watchHeadBase, off: watchHeadOffset, init: false });
+          watchHeadHave = false;
+          watchLookYaw = 0;
+          watchLookPitch = 0;
+        }
+      } else {
+        if (!watchLookInit) {
+          watchLookYaw = 0;
+          watchLookPitch = 0;
+          watchLookInit = true;
+        }
+        watchLookYaw = watchLookSmooth(watchLookYaw, watchClamp(full.yaw, -0.7, 0.7), delta);
+        watchLookPitch = watchLookSmooth(watchLookPitch, watchClamp(full.pitch, -0.35, 0.28), delta);
+        const headState = { have: watchHeadHave, applied: watchHeadApplied, base: watchHeadBase };
+        watchApplyBasis(head, headState, watchLookYaw, watchLookPitch);
+        watchHeadHave = headState.have;
+        head.updateMatrixWorld(true);
+      }
+      if (!eyeOn) {
+        if (watchEyeWasOn) {
+          watchRestoreBone(left, watchEyeSlotMap.left);
+          watchRestoreBone(right, watchEyeSlotMap.right);
+          watchEyeYaw = 0;
+          watchEyePitch = 0;
+          watchLookWriteExpressions(vrm, 0, 0);
+          watchEyeWasOn = false;
+        }
+      } else {
+        watchEyeWasOn = true;
+        try {
+          const look = vrm.lookAt;
+          if (look) {
+            if (!vrm.userData.watchLookSaved) {
+              vrm.userData.watchLookSaved = { auto: !!look.autoUpdate, target: look.target || null };
+            }
+            look.autoUpdate = false;
+            look.target = null;
+          }
+          if (headOn && head) head.updateMatrixWorld(true);
+          if (headOn) watchFaceAim(vrm);
+          const leftAim = watchApplyEyeLocal(vrm, 'leftEye', left);
+          const rightAim = watchApplyEyeLocal(vrm, 'rightEye', right);
+          const aim = leftAim || rightAim;
+          watchEyeYaw = aim ? aim.yaw : 0;
+          watchEyePitch = aim ? aim.pitch : 0;
+          if (left && leftAim) {
+            watchEyeSlotMap.left.applied.copy(left.quaternion);
+            watchEyeSlotMap.left.have = true;
+          }
+          if (right && rightAim) {
+            watchEyeSlotMap.right.applied.copy(right.quaternion);
+            watchEyeSlotMap.right.have = true;
+          }
+          watchLookWriteExpressions(vrm, watchEyeYaw, watchEyePitch);
+          vrm.userData.watchEyeApply = (leftAim ? 1 : 0) + (rightAim ? 1 : 0);
+        } catch (err) { console.error(err); }
+      }
+      if (!headOn && !eyeOn) watchLookInit = false;
+      if (left) { left.updateMatrix(); left.matrixWorldNeedsUpdate = true; }
+      if (right) { right.updateMatrix(); right.matrixWorldNeedsUpdate = true; }
+      try { if (vrm.scene) vrm.scene.updateMatrixWorld(true); } catch (_) {}
+      watchFaceRawYaw = rawYaw;
+      watchFaceRawPitch = rawPitch;
+      watchLookHeld = !!(headOn || eyeOn);
+      watchLookStatus();
+    }
+    function watchLookStatus() {
+      const el = document.getElementById('watchLookStatus');
+      if (!el) return;
+      const headOn = !!(document.getElementById('watchLookHead') && document.getElementById('watchLookHead').checked);
+      const eyeOn = !!(document.getElementById('watchLookEyes') && document.getElementById('watchLookEyes').checked);
+      const yaw = Math.round(THREE.MathUtils.radToDeg(watchFaceRawYaw));
+      const pitch = Math.round(THREE.MathUtils.radToDeg(watchFaceRawPitch));
+      const headYaw = Math.round(THREE.MathUtils.radToDeg(watchLookYaw));
+      const eyeYaw = Math.round(THREE.MathUtils.radToDeg(watchEyeYaw));
+      const eyePitch = Math.round(THREE.MathUtils.radToDeg(watchEyePitch));
+      const gap = Math.round(watchFaceGap * 1000);
+      const bone = watchFaceEyes ? '眼球の間隔 ' + gap + 'mm' : '眼球の骨が使えません';
+      const headTxt = headOn ? '頭は横 ' + headYaw + '° 向けています' : '頭は向いていません';
+      const eyeTxt = eyeOn ? '目は横 ' + eyeYaw + '° 縦 ' + eyePitch + '°。倍率 ' + Math.round(watchEyeGainYaw * 100) + '%（' + watchEyeCurve + '）' : '目は向いていません';
+      const shapes = vrmEdited && vrmEdited.userData && vrmEdited.userData.watchLookMorphs ? vrmEdited.userData.watchLookMorphs.length : 0;
+      el.textContent = headTxt + '。' + eyeTxt + '。動きとの差 横 ' + yaw + '° 縦 ' + pitch + '°。' + bone + '。視線の形 ' + shapes + '。';
+    }
+    function watchLookRepaint() {
+      const box = document.getElementById('watchLookEyes');
+      if (!vrmaWatchOn || !box || !box.checked || !vrmEdited) return;
+      const vrm = vrmEdited;
+      const left = watchLookBone(vrm, 'leftEye');
+      const right = watchLookBone(vrm, 'rightEye');
+      try {
+        const leftAim = watchApplyEyeLocal(vrm, 'leftEye', left);
+        const rightAim = watchApplyEyeLocal(vrm, 'rightEye', right);
+        const aim = leftAim || rightAim;
+        if (aim) {
+          watchEyeYaw = aim.yaw;
+          watchEyePitch = aim.pitch;
+        }
+      } catch (err) { console.error(err); }
+      watchLookWriteExpressions(vrm, watchEyeYaw, watchEyePitch);
     }
     (function watchBindUi() {
       const speedBtn = document.getElementById('watchSpeedApply');
@@ -38214,6 +38989,57 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (skyList) skyList.addEventListener('click', () => { watchSkyOpenCatalog(); });
       if (skyClear) skyClear.addEventListener('click', () => { watchSkyClear(); });
       if (skyQuery) skyQuery.addEventListener('input', () => { if (watchSkyCatalog) watchSkyRenderList(); });
+      const faceOpen = document.getElementById('watchFaceOpen');
+      if (faceOpen) faceOpen.addEventListener('click', () => { watchFaceOpen(); });
+      const faceClose = document.getElementById('watchFaceWinClose');
+      const faceWin = document.getElementById('watchFaceWin');
+      const faceHead = document.getElementById('watchFaceHead');
+      const faceGrip = document.getElementById('watchFaceResize');
+      if (faceClose) faceClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        watchFaceClose();
+      });
+      if (faceWin && faceHead && typeof vceBindFloatHead === 'function') vceBindFloatHead(faceWin, faceHead);
+      document.querySelectorAll('#watchFacePresets button').forEach((btn) => {
+        btn.addEventListener('click', () => { watchFacePreset(btn.getAttribute('data-watch-preset') || ''); });
+      });
+      const faceClear = document.getElementById('watchFaceClear');
+      if (faceClear) faceClear.addEventListener('click', () => { watchFaceClear(); });
+      const lookHead = document.getElementById('watchLookHead');
+      const lookEyes = document.getElementById('watchLookEyes');
+      const lookCurve = document.getElementById('watchLookCurve');
+      if (lookHead) lookHead.addEventListener('change', () => { watchLookStatus(); });
+      if (lookEyes) lookEyes.addEventListener('change', () => { watchLookStatus(); });
+      if (lookCurve) lookCurve.addEventListener('input', () => { watchLookCurveText(); watchLookStatus(); });
+      watchLookCurveText();
+      if (faceGrip && faceWin) faceGrip.addEventListener('pointerdown', (e) => {
+        if (e.button != null && e.button !== 0) return;
+        const body = document.getElementById('watchFaceBody');
+        if (!body) return;
+        e.preventDefault();
+        e.stopPropagation();
+        try { faceGrip.setPointerCapture(e.pointerId); } catch (_) {}
+        const startX = e.clientX;
+        const startY = e.clientY;
+        const startW = faceWin.getBoundingClientRect().width;
+        const startH = body.getBoundingClientRect().height;
+        const move = (ev) => {
+          const nextW = Math.max(240, Math.min(window.innerWidth - 16, startW + (ev.clientX - startX)));
+          const nextH = Math.max(180, Math.min(window.innerHeight - 80, startH + (ev.clientY - startY)));
+          faceWin.style.width = nextW + 'px';
+          body.style.height = nextH + 'px';
+          body.style.maxHeight = nextH + 'px';
+        };
+        const up = () => {
+          faceGrip.removeEventListener('pointermove', move);
+          faceGrip.removeEventListener('pointerup', up);
+          faceGrip.removeEventListener('pointercancel', up);
+        };
+        faceGrip.addEventListener('pointermove', move);
+        faceGrip.addEventListener('pointerup', up);
+        faceGrip.addEventListener('pointercancel', up);
+      });
       const skyWin = document.getElementById('watchSkyWin');
       const skyHead = document.getElementById('watchSkyHead');
       const skyClose = document.getElementById('watchSkyWinClose');
@@ -38432,6 +39258,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
           if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
           try { vceApplyFaceSliders(); } catch (_) {}
+          try { watchLookRepaint(); } catch (_) {}
         } finally {
           try { if (vrmaWatchOn) watchRestoreWind(); } catch (_) {}
         }
@@ -38442,6 +39269,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           g.root.updateMatrix();
           g.root.updateWorldMatrix(true, true);
         });
+        try { if (vrmaWatchOn && vrmEdited) watchLookFrame(vrmEdited, delta); } catch (_) {}
       }
       try { updateShakeClone(delta); } catch (err) { console.error(err); }
       attachGroups.forEach(updateSpringVis);
