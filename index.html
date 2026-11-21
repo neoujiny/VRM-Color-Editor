@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.593-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise
+  Version: v5.4.599-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List
   ==================================================
 -->
 <!--
@@ -12,6 +12,24 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.599 / 2026-11-22 / Super Grok（土台は v5.4.598）
+    追加: samples の名前をアプリが持つ。bike.glb、hovercar.glb、vtol.glb、cyber-stage.glb はステージ。cyber_night_2k.hdr は空。選ぶとサーバから読んで、今の画面へ出す。フォルダの一覧は見ない。
+
+  v5.4.598 / 2026-11-21 / Super Grok（土台は v5.4.597）
+    追加: アプリと同じ場所の samples から、VRMA、GLB、シーンのJSON、空の .hdr を選んで読める。手元のファイルとして開いたときは取りに行かない。Webサーバのときは、一覧を待っても4秒で打ち切る。離れたWebサーバでは、VMCの再接続を繰り返さない。
+
+  v5.4.597 / 2026-11-21 / Super Grok（土台は v5.4.596）
+    追加: 鑑賞パネルに、内蔵ステージの鏡の色、明度、彩度、コントラスト、透明度。100%がそのまま。色は白がそのまま。
+
+  v5.4.596 / 2026-11-21 / Super Grok（土台は v5.4.595）
+    修正: 動画の書き出しが、毎フレームVRMAの姿勢で描いていた。VMCを受けているあいだは、書き出しでもそのポーズを描く。止めたポーズも残る。正規化が骨を戻す処理も、受信中は通さない。
+
+  v5.4.595 / 2026-11-21 / Super Grok（土台は v5.4.594）
+    修正: VMCの骨を書いても、その直後の正規化姿勢が上書きしてTポーズのままだった。描画の直前に、編集側と元側の両方へ書き直す。状態表示に、届いた骨の数と実際に置けた数を出す。
+
+  v5.4.594 / 2026-11-21 / Super Grok（土台は v5.4.593）
+    追加: 鑑賞のコントロールパネルに「VMCを受ける」。中継の ws://127.0.0.1:39540/ から骨と表情を受け、読み込んだVRMへ書く。受信中はVRMAよりVMCを優先する。/VMC/Ext/T と /VMC/Ext/OK は件数に数えるだけで、モデルは動かさない。
 
   v5.4.593 / 2026-11-19 / Super Grok（土台は v5.4.592）
     修正: 鏡の床の放射状のノイズ。Reflector の重ね方が、明るい空を白く潰していた。掛け算にして、元の床の放射線テクスチャは描かない。空の天頂も、極で線が広がらないようにした。
@@ -1274,7 +1292,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.593</title>
+  <title>VRM Color Editor - v5.4.599</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2884,7 +2902,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.593</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.599</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4128,6 +4146,13 @@
           <h4>GLB</h4>
           <button type="button" class="watch-move" id="watchBuiltInStage" aria-pressed="false">内蔵ステージを出す</button>
           <p class="watch-note">アプリに入っている直径6mのステージです。オンで足元に出します。オフでは、そのステージだけ外します。下から読み込んだGLBは残します。床の Mirror_Floor は、シーンを映す鏡に差し替えます。</p>
+          <h4>鏡</h4>
+          <label class="watch-row">色<input type="color" id="watchMirrorColor" value="#ffffff" title="鏡にかける色。白がそのままです"></label>
+          <label class="vrma-scrub">明度<input type="range" id="watchMirrorBright" min="0" max="200" step="1" value="100" title="鏡の明るさ。100%がそのままです"><span id="watchMirrorBrightLabel">100%</span></label>
+          <label class="vrma-scrub">彩度<input type="range" id="watchMirrorSat" min="0" max="200" step="1" value="100" title="鏡の色の濃さ。100%がそのまま、0%は灰色です"><span id="watchMirrorSatLabel">100%</span></label>
+          <label class="vrma-scrub">コントラスト<input type="range" id="watchMirrorContrast" min="0" max="200" step="1" value="100" title="鏡の明暗の差。100%がそのままです"><span id="watchMirrorContrastLabel">100%</span></label>
+          <label class="vrma-scrub">透明度<input type="range" id="watchMirrorAlpha" min="0" max="100" step="1" value="100" title="鏡の不透明度。100%がそのまま、0%は映りません"><span id="watchMirrorAlphaLabel">100%</span></label>
+          <p class="watch-note">床の鏡です。色、明度、彩度、コントラスト、透明度を変えます。100%と白が、そのままの映りです。</p>
           <div class="file-upload-wrapper">
             <label for="watchPropFile" class="custom-file-btn">GLBを追加</label>
             <input type="file" id="watchPropFile" accept=".glb,.gltf,model/gltf-binary" multiple style="display:none;">
@@ -4165,6 +4190,9 @@
             <span id="watchScrubLabel">0:00.0 / 0:00.0</span>
           </label>
           <p>スライダーは -300% から 300% です。0% はその場で止まり、マイナスは戻ります。繰り返しは、VRMAタブのチェックのままです。</p>
+          <h4>VMC</h4>
+          <button type="button" class="watch-move" id="watchVmc" aria-pressed="false">VMCを受ける</button>
+          <p class="watch-note" id="watchVmcStatus">止まっています。中継を開いたまま押します。受信中は、動きと表情をVMCが優先します。</p>
           <label class="watch-row">終端から開始へ戻す秒<input type="range" id="watchLoopBridge" min="0" max="4" step="0.1" value="2" title="ループのとき、終端の姿勢から開始の姿勢まで骨を動かす秒数です。0はすぐ戻します"></label>
           <p class="watch-note" id="watchLoopBridgeLabel">2.0秒。ループのときだけ、終端の姿勢から開始の姿勢へ骨を動かしてから、再生を続けます。0秒は、すぐ先頭に戻ります。</p>
           <h4>表情と目線</h4>
@@ -4278,6 +4306,13 @@
           <button type="button" id="watchSceneLoad">シーンを読み込む</button>
           <input type="file" id="watchSceneFile" accept=".json,application/json" hidden>
           <p id="watchSceneStatus" class="watch-note"></p>
+          <h4>samples</h4>
+          <p id="samplesMode" class="watch-note">開き方を見ています。</p>
+          <label class="watch-row">動き<select id="samplesVrma"><option value="">なし</option></select></label>
+          <label class="watch-row">GLB<select id="samplesGlb"><option value="">なし</option></select></label>
+          <label class="watch-row">シーン<select id="samplesScene"><option value="">なし</option></select></label>
+          <label class="watch-row">空のHDR<select id="samplesHdr"><option value="">なし</option></select></label>
+          <p id="samplesStatus" class="watch-note">アプリが名前を持っているファイルです。選ぶとサーバから読み、今の画面へ出します。GLBはステージ、HDRは空です。</p>
           <h4>読み込んだファイル</h4>
           <p class="watch-note">ここに名前と説明だけを出します。中身はシーンのJSONに入りません。</p>
           <div id="watchExternalFiles"></div>
@@ -4699,7 +4734,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.593';
+    const APP_VERSION = 'v5.4.599';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -6344,14 +6379,25 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         }
         const geo = new THREE.CircleGeometry(Math.min(radius, 80), 72);
         const mirrorSrc = Reflector.ReflectorShader;
+        const mirrorUniforms = THREE.UniformsUtils.clone(mirrorSrc.uniforms);
+        mirrorUniforms.uBright = { value: 1 };
+        mirrorUniforms.uSat = { value: 1 };
+        mirrorUniforms.uContrast = { value: 1 };
+        mirrorUniforms.uAlpha = { value: 1 };
+        let mirrorFrag = mirrorSrc.fragmentShader;
+        if (mirrorFrag.indexOf('uniform float uAlpha;') < 0) {
+          mirrorFrag = mirrorFrag.replace(
+            'uniform vec3 color;',
+            'uniform vec3 color;\n\t\t\tuniform float uBright;\n\t\t\tuniform float uSat;\n\t\t\tuniform float uContrast;\n\t\t\tuniform float uAlpha;'
+          );
+        }
+        const mirrorGrade = 'vec3 col = base.rgb * color; float luma = dot(col, vec3(0.2126, 0.7152, 0.0722)); col = mix(vec3(luma), col, uSat); col = (col - 0.5) * uContrast + 0.5; col *= uBright; gl_FragColor = vec4(clamp(col, 0.0, 1.0), uAlpha);';
+        mirrorFrag = mirrorFrag.replace('gl_FragColor = vec4( blendOverlay( base.rgb, color ), 1.0 );', mirrorGrade);
         const mirrorShader = {
           name: 'vceMirror',
-          uniforms: mirrorSrc.uniforms,
+          uniforms: mirrorUniforms,
           vertexShader: mirrorSrc.vertexShader,
-          fragmentShader: mirrorSrc.fragmentShader.replace(
-            'gl_FragColor = vec4( blendOverlay( base.rgb, color ), 1.0 );',
-            'gl_FragColor = vec4( base.rgb * color, 1.0 );'
-          )
+          fragmentShader: mirrorFrag
         };
         const mirror = new Reflector(geo, {
           clipBias: 0.003,
@@ -6391,7 +6437,60 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           mat.transparent = true;
           mat.opacity = 0;
         });
+        try { watchApplyMirrorLook(mirror); } catch (_) {}
       });
+    }
+    const watchMirrorLook = { color: '#ffffff', bright: 1, sat: 1, contrast: 1, alpha: 1 };
+    function watchMirrorRead() {
+      const colorEl = document.getElementById('watchMirrorColor');
+      const brightEl = document.getElementById('watchMirrorBright');
+      const satEl = document.getElementById('watchMirrorSat');
+      const conEl = document.getElementById('watchMirrorContrast');
+      const alphaEl = document.getElementById('watchMirrorAlpha');
+      if (colorEl && colorEl.value) watchMirrorLook.color = colorEl.value;
+      if (brightEl) watchMirrorLook.bright = Math.max(0, Math.min(2, Number(brightEl.value) / 100));
+      if (satEl) watchMirrorLook.sat = Math.max(0, Math.min(2, Number(satEl.value) / 100));
+      if (conEl) watchMirrorLook.contrast = Math.max(0, Math.min(2, Number(conEl.value) / 100));
+      if (alphaEl) watchMirrorLook.alpha = Math.max(0, Math.min(1, Number(alphaEl.value) / 100));
+      const put = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+      put('watchMirrorBrightLabel', Math.round(watchMirrorLook.bright * 100) + '%');
+      put('watchMirrorSatLabel', Math.round(watchMirrorLook.sat * 100) + '%');
+      put('watchMirrorContrastLabel', Math.round(watchMirrorLook.contrast * 100) + '%');
+      put('watchMirrorAlphaLabel', Math.round(watchMirrorLook.alpha * 100) + '%');
+    }
+    function watchApplyMirrorLook(target) {
+      watchMirrorRead();
+      let color = null;
+      try { color = new THREE.Color(watchMirrorLook.color); } catch (_) { color = new THREE.Color(0xffffff); }
+      const apply = (mirror) => {
+        const uniforms = mirror.material && mirror.material.uniforms;
+        if (!uniforms) return;
+        if (uniforms.color && uniforms.color.value && uniforms.color.value.isColor) uniforms.color.value.copy(color);
+        else if (uniforms.color) uniforms.color.value = color.clone();
+        if (uniforms.uBright) uniforms.uBright.value = watchMirrorLook.bright;
+        if (uniforms.uSat) uniforms.uSat.value = watchMirrorLook.sat;
+        if (uniforms.uContrast) uniforms.uContrast.value = watchMirrorLook.contrast;
+        if (uniforms.uAlpha) uniforms.uAlpha.value = watchMirrorLook.alpha;
+        if (mirror.material) {
+          const seeThrough = watchMirrorLook.alpha < 0.999;
+          if (mirror.material.transparent !== seeThrough) {
+            mirror.material.transparent = seeThrough;
+            mirror.material.needsUpdate = true;
+          }
+          mirror.material.depthWrite = true;
+        }
+      };
+      if (target) { apply(target); return; }
+      const seen = new Set();
+      const roots = [];
+      if (typeof watchProps !== 'undefined' && watchProps && watchProps.forEach) {
+        watchProps.forEach((prop) => { if (prop && prop.root) roots.push(prop.root); });
+      }
+      roots.forEach((root) => root.traverse((obj) => {
+        if (!obj.isMesh || !obj.userData || !obj.userData.vceReflector || seen.has(obj.uuid)) return;
+        seen.add(obj.uuid);
+        apply(obj);
+      }));
     }
     function watchTagPropMeshes(prop) {
       if (typeof registerGlbMeshes !== 'function') return;
@@ -7861,6 +7960,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     if (watchShadeGlb) watchShadeGlb.addEventListener('click', () => watchShadePick('glb'));
     const watchBuiltInStageBtn = document.getElementById('watchBuiltInStage');
     if (watchBuiltInStageBtn) watchBuiltInStageBtn.addEventListener('click', () => watchBuiltInStageToggle());
+    ['watchMirrorColor', 'watchMirrorBright', 'watchMirrorSat', 'watchMirrorContrast', 'watchMirrorAlpha'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', () => { try { watchApplyMirrorLook(); } catch (_) {} });
+    });
     watchShadeSync();
     let previewPoseFrozen = false;
     let gizmoHidden = false;
@@ -8714,6 +8817,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
 
     function vceApplyCanonicalHumanoid(vrm) {
+      if (vmcOn && vmcBones.size) return;
       const map = vceCanonicalRest.get(vrm);
       if (!map || !vrm || !vrm.humanoid) return;
       Object.keys(map).forEach((name) => {
@@ -8730,6 +8834,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
 
     function vceUpdateVrmPreview(vrm, delta) {
       if (!vrm || typeof vrm.update !== 'function') return;
+      if (vmcOn) { try { vmcApplyOne(vrm); } catch (_) {} }
       if (!vceCanonicalPreviewOn() || !vceCanonicalRest.has(vrm)) {
         vrm.update(delta);
         try { watchFaceApply(vrm); } catch (_) {}
@@ -9103,7 +9208,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       try { watchFaceRebuild(); } catch (_) {}
     }
     function vceApplyFaceSliders() {
-      if (!vceFaceTouched || vceFaceMotionOwns()) return;
+      if (vmcOn || !vceFaceTouched || vceFaceMotionOwns()) return;
       const box = document.getElementById('vrmaFaceList');
       if (!box) return;
       const sliders = box.querySelectorAll('input[data-face]');
@@ -38261,6 +38366,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           if (i === 0) watchMovieStepMaterials(0);
           try { vceApplyFaceSliders(); } catch (_) {}
           try { watchLookRepaint(); } catch (_) {}
+          try { vmcApplyFrame(); } catch (_) {}
           try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
           watchMoviePaint(canvas, ctx);
           const timestamp = Math.round((i + 1) * 1000000 / 30);
@@ -38787,6 +38893,58 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         }
       }
     }
+    async function watchSkyFromUrl(url, name) {
+      if (watchSkyBusy) {
+        watchSkyStatus('まだ空を読んでいます。', 'panel');
+        return;
+      }
+      const token = ++watchSkyToken;
+      watchSkyBusy = true;
+      watchSkySetWait(true);
+      watchSkyStatus((name || '空') + ' を読んでいます。', 'panel');
+      const kill = window.setTimeout(() => {
+        if (token !== watchSkyToken) return;
+        watchSkyToken += 1;
+        watchSkyBusy = false;
+        watchSkySetWait(false);
+        watchSkyStatus('空の読み込みを打ち切りました。', 'panel');
+      }, 60000);
+      try {
+        if (!watchSkyLoaderPromise) {
+          watchSkyLoaderPromise = import('three/addons/loaders/RGBELoader.js').then((mod) => new mod.RGBELoader());
+        }
+        const loader = await watchSkyLoaderPromise;
+        if (token !== watchSkyToken) return;
+        const tex = await new Promise((resolve, reject) => {
+          loader.load(url, resolve, undefined, () => reject(new Error('hdr')));
+        });
+        if (token !== watchSkyToken) {
+          try { tex.dispose(); } catch (_) {}
+          return;
+        }
+        tex.magFilter = THREE.LinearFilter;
+        tex.minFilter = THREE.LinearFilter;
+        tex.generateMipmaps = false;
+        tex.needsUpdate = true;
+        const sky = watchSkyEnsure();
+        if (watchSkyTex) { try { watchSkyTex.dispose(); } catch (_) {} }
+        watchSkyTex = tex;
+        sky.material.uniforms.map.value = tex;
+        watchSkyAttach();
+        watchSkyShown = { id: name || url, name: name || url };
+        watchSkyStatus((name || '空') + ' を空に貼りました。', 'panel');
+      } catch (err) {
+        if (token !== watchSkyToken) return;
+        console.error(err);
+        watchSkyStatus('この空を読めませんでした。', 'panel');
+      } finally {
+        window.clearTimeout(kill);
+        if (token === watchSkyToken) {
+          watchSkyBusy = false;
+          watchSkySetWait(false);
+        }
+      }
+    }
     function watchShowPanel() {
       const win = document.getElementById('vrmaWatchWin');
       if (!win) return;
@@ -39107,7 +39265,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (win) win.hidden = true;
     }
     function watchFaceApply(vrm) {
-      if (!watchFaceLive || !vrmaWatchOn || vrm !== vrmEdited) return;
+      if (vmcOn || !watchFaceLive || !vrmaWatchOn || vrm !== vrmEdited) return;
       const em = vrm && vrm.expressionManager;
       if (!em || !em.setValue) return;
       watchFaceWeight.forEach((value, name) => {
@@ -39353,7 +39511,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       return { yaw: yaw, pitch: pitch };
     }
     function watchLookFrame(vrm, delta) {
-      if (!vrmaWatchOn || vrm !== vrmEdited) return;
+      if (vmcOn || !vrmaWatchOn || vrm !== vrmEdited) return;
       const headOn = !!(document.getElementById('watchLookHead') && document.getElementById('watchLookHead').checked);
       const eyeOn = !!(document.getElementById('watchLookEyes') && document.getElementById('watchLookEyes').checked);
       const head = watchLookBone(vrm, 'head');
@@ -39457,6 +39615,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       el.textContent = headTxt + '。' + eyeTxt + '。動きとの差 横 ' + yaw + '° 縦 ' + pitch + '°。' + bone + '。視線の形 ' + shapes + '。';
     }
     function watchLookRepaint() {
+      if (vmcOn) return;
       const box = document.getElementById('watchLookEyes');
       if (!vrmaWatchOn || !box || !box.checked || !vrmEdited) return;
       const vrm = vrmEdited;
@@ -39930,6 +40089,340 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }, true);
     })();
 
+
+    let vmcOn = false;
+    let vmcSocket = null;
+    let vmcRetry = 0;
+    let vmcCount = 0;
+    let vmcBoneSeen = 0;
+    let vmcBlendSeen = 0;
+    let vmcApplied = 0;
+    let vmcLastAddress = '';
+    let vmcBones = new Map();
+    let vmcBlends = new Map();
+    let vmcUiAt = 0;
+    function vmcNum(arg, fallback) {
+      const n = arg && typeof arg.f === 'number' ? arg.f : (arg && arg.f != null ? Number(arg.f) : NaN);
+      return isFinite(n) ? n : fallback;
+    }
+    function vmcBoneName(raw) {
+      const s = String(raw || '');
+      if (!s) return '';
+      return s.charAt(0).toLowerCase() + s.slice(1);
+    }
+    function vmcExpressionName(em, raw) {
+      const map = em && em.expressionMap;
+      if (!map) return '';
+      const name = String(raw || '');
+      if (!name) return '';
+      if (map[name]) return name;
+      const lower = name.toLowerCase();
+      const keys = Object.keys(map);
+      const direct = keys.find((key) => key.toLowerCase() === lower);
+      if (direct) return direct;
+      const alias = {
+        joy: 'happy', happy: 'joy',
+        sorrow: 'sad', sad: 'sorrow',
+        fun: 'relaxed', relaxed: 'fun',
+        a: 'aa', aa: 'a',
+        i: 'ih', ih: 'i',
+        u: 'ou', ou: 'u',
+        e: 'ee', ee: 'e',
+        o: 'oh', oh: 'o',
+        blink_l: 'blinkLeft', blinkleft: 'blinkLeft',
+        blink_r: 'blinkRight', blinkright: 'blinkRight'
+      };
+      const mapped = alias[lower];
+      if (!mapped) return '';
+      if (map[mapped]) return mapped;
+      const hit = keys.find((key) => key.toLowerCase() === mapped.toLowerCase());
+      return hit || '';
+    }
+    function vmcUi(text) {
+      const el = document.getElementById('watchVmcStatus');
+      if (el && text) el.textContent = text;
+      const btn = document.getElementById('watchVmc');
+      if (btn) {
+        btn.setAttribute('aria-pressed', vmcOn ? 'true' : 'false');
+        btn.textContent = vmcOn ? 'VMCを切る' : 'VMCを受ける';
+      }
+    }
+    function vmcTake(data) {
+      if (!data || data.hello || !data.messages) return;
+      data.messages.forEach((msg) => {
+        if (!msg || !msg.address) return;
+        vmcCount += 1;
+        vmcLastAddress = msg.address;
+        const args = msg.args || [];
+        if (msg.address === '/VMC/Ext/Bone/Pos' && args.length >= 8 && args[0] && args[0].s) {
+          const name = vmcBoneName(args[0].s);
+          if (!name) return;
+          vmcBones.set(name, {
+            x: vmcNum(args[1], 0),
+            y: vmcNum(args[2], 0),
+            z: vmcNum(args[3], 0),
+            qx: vmcNum(args[4], 0),
+            qy: vmcNum(args[5], 0),
+            qz: vmcNum(args[6], 0),
+            qw: vmcNum(args[7], 1)
+          });
+          vmcBoneSeen += 1;
+        } else if (msg.address === '/VMC/Ext/Blend/Val' && args.length >= 2 && args[0] && args[0].s) {
+          const value = vmcNum(args[1], NaN);
+          if (!isFinite(value)) return;
+          vmcBlends.set(String(args[0].s), Math.max(0, Math.min(1, value)));
+          vmcBlendSeen += 1;
+        }
+      });
+    }
+    function vcePageKind() {
+      if (location.protocol === 'file:') return 'file';
+      const host = String(location.hostname || '').replace(/^\[|\]$/g, '').toLowerCase();
+      if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return 'local';
+      return 'web';
+    }
+    function vmcSchedule() {
+      if (!vmcOn) return;
+      if (vcePageKind() === 'web') {
+        vmcUi('このページはWebサーバ上です。中継は手元のPCです。繋がらないので、ここでは繰り返しません。');
+        return;
+      }
+      window.clearTimeout(vmcRetry);
+      vmcRetry = window.setTimeout(vmcConnect, 1500);
+    }
+    function vmcConnect() {
+      if (!vmcOn) return;
+      if (vmcSocket && (vmcSocket.readyState === 0 || vmcSocket.readyState === 1)) return;
+      vmcUi('中継を探しています。');
+      let ws = null;
+      try { ws = new WebSocket('ws://127.0.0.1:39540/'); } catch (_) { ws = null; }
+      if (!ws) {
+        vmcUi('中継に繋がりません。中継のウィンドウを開いてください。');
+        vmcSchedule();
+        return;
+      }
+      vmcSocket = ws;
+      ws.onopen = () => { if (vmcOn) vmcUi('受信を待っています。'); };
+      ws.onmessage = (ev) => {
+        if (!vmcOn) return;
+        let data = null;
+        try { data = JSON.parse(ev.data); } catch (_) { return; }
+        vmcTake(data);
+      };
+      ws.onerror = () => {};
+      ws.onclose = () => {
+        if (vmcSocket === ws) vmcSocket = null;
+        if (!vmcOn) return;
+        vmcUi('中継に繋がりません。中継のウィンドウを開いてください。');
+        vmcSchedule();
+      };
+    }
+    function vmcSet(on) {
+      vmcOn = !!on;
+      if (!vmcOn) {
+        window.clearTimeout(vmcRetry);
+        if (vmcSocket) {
+          try { vmcSocket.close(); } catch (_) {}
+          vmcSocket = null;
+        }
+        if (vrmEdited && vrmEdited.humanoid) vrmEdited.humanoid.autoUpdateHumanBones = true;
+        if (vrmOriginal && vrmOriginal.humanoid) vrmOriginal.humanoid.autoUpdateHumanBones = true;
+        vmcBones.clear();
+        vmcBlends.clear();
+        vmcUi('止まっています。中継を開いたまま押します。受信中は、動きと表情をVMCが優先します。');
+        return;
+      }
+      vmcCount = 0;
+      vmcBoneSeen = 0;
+      vmcBlendSeen = 0;
+      vmcApplied = 0;
+      vmcLastAddress = '';
+      vmcConnect();
+    }
+    function vmcApplyOne(vrm) {
+      if (!vrm || !vrm.humanoid) return 0;
+      let placed = 0;
+      if (!vmcBones.size) {
+        vrm.humanoid.autoUpdateHumanBones = true;
+      } else {
+        vrm.humanoid.autoUpdateHumanBones = false;
+        vmcBones.forEach((b, name) => {
+          let node = null;
+          try { node = vrm.humanoid.getRawBoneNode(name); } catch (_) { node = null; }
+          if (!node) return;
+          node.quaternion.set(b.qx, b.qy, -b.qz, -b.qw).normalize();
+          if (name === 'hips') node.position.set(b.x, b.y, -b.z);
+          placed += 1;
+        });
+      }
+      const em = vrm.expressionManager;
+      if (em && em.setValue && vmcBlends.size) {
+        vmcBlends.forEach((value, raw) => {
+          const key = vmcExpressionName(em, raw);
+          if (!key) return;
+          try { em.setValue(key, value); } catch (_) {}
+        });
+        try { if (em.update) em.update(); } catch (_) {}
+      }
+      return placed;
+    }
+    function vmcApplyFrame() {
+      if (!vmcOn) return;
+      const now = performance.now();
+      const placed = Math.max(vmcApplyOne(vrmEdited), vmcApplyOne(vrmOriginal));
+      vmcApplied = placed;
+      if (now - vmcUiAt > 250 && vmcSocket && vmcSocket.readyState === 1) {
+        vmcUiAt = now;
+        vmcUi('受信中です。' + vmcCount + '件。骨 ' + vmcBones.size + '（適用 ' + placed + '）。表情 ' + vmcBlends.size + '。' + (vmcLastAddress || ''));
+      }
+    }
+    const watchVmcBtn = document.getElementById('watchVmc');
+    if (watchVmcBtn) watchVmcBtn.addEventListener('click', () => vmcSet(!vmcOn));
+
+    function samplesSafe(base, rel) {
+      const name = String(rel || '').replace(/\\/g, '/').replace(/^\/+/, '');
+      if (!name || name.split('/').some((part) => !part || part === '.' || part === '..')) return '';
+      let url;
+      try { url = new URL(name, base); } catch (_) { return ''; }
+      if (url.origin !== base.origin) return '';
+      if (!url.pathname.startsWith(base.pathname)) return '';
+      return url.href;
+    }
+    function samplesKind(name) {
+      const lower = String(name || '').toLowerCase().split('?')[0];
+      if (/\.vrma$/.test(lower)) return 'vrma';
+      if (/\.(glb|gltf)$/.test(lower)) return 'glb';
+      if (/\.hdr$/.test(lower)) return 'hdr';
+      if (/\.json$/.test(lower) && !/index\.json$/.test(lower)) return 'scene';
+      return '';
+    }
+    function samplesPush(out, base, rel) {
+      const kind = samplesKind(rel);
+      const url = kind ? samplesSafe(base, rel) : '';
+      if (!url) return;
+      const name = String(rel).replace(/\\/g, '/').split('/').pop();
+      if (out.some((item) => item.url === url)) return;
+      out.push({ kind: kind, name: name, url: url });
+    }
+    function samplesFromJson(data, base) {
+      const out = [];
+      const add = (rel) => samplesPush(out, base, rel);
+      if (Array.isArray(data)) data.forEach(add);
+      else if (data && typeof data === 'object') {
+        ['vrma', 'glb', 'gltf', 'scene', 'scenes', 'hdr', 'sky', 'skies', 'files'].forEach((key) => {
+          if (Array.isArray(data[key])) data[key].forEach(add);
+        });
+      }
+      return out;
+    }
+    function samplesFromHtml(html, base) {
+      const out = [];
+      const re = /href\s*=\s*["']([^"']+)["']/gi;
+      let match;
+      while ((match = re.exec(String(html || '')))) {
+        let href = match[1];
+        if (!href || href.charAt(0) === '#' || href.charAt(0) === '?') continue;
+        let url;
+        try { url = new URL(href, base); } catch (_) { continue; }
+        if (url.origin !== base.origin || !url.pathname.startsWith(base.pathname)) continue;
+        const rel = decodeURIComponent(url.pathname.slice(base.pathname.length));
+        samplesPush(out, base, rel);
+      }
+      return out;
+    }
+    function vceFetchAbort(url, ms) {
+      const ctrl = new AbortController();
+      const timer = window.setTimeout(() => ctrl.abort(), ms);
+      return fetch(url, { signal: ctrl.signal, cache: 'no-store' }).finally(() => window.clearTimeout(timer));
+    }
+    const VCE_SAMPLE_FILES = [
+      'bike.glb',
+      'cyber-stage.glb',
+      'hovercar.glb',
+      'vtol.glb',
+      'cyber_night_2k.hdr'
+    ];
+    function samplesCatalog() {
+      const kind = vcePageKind();
+      if (kind === 'file') return { kind: kind, items: [] };
+      const base = new URL('samples/', location.href);
+      const items = [];
+      VCE_SAMPLE_FILES.forEach((name) => samplesPush(items, base, name));
+      return { kind: kind, items: items };
+    }
+    function samplesLoad(item) {
+      if (!item || !item.url) return;
+      const fail = (text) => {
+        if (item.kind === 'vrma') setVrmaHint(text, true);
+        else if (item.kind === 'scene') watchSceneStatus(text);
+        else if (item.kind === 'hdr') watchSkyStatus(text, 'panel');
+        else vceAlert(text);
+      };
+      if (item.kind === 'hdr') {
+        watchSkyFromUrl(item.url, item.name);
+        return;
+      }
+      vceFetchAbort(item.url, 60000).then((res) => {
+        if (!res.ok) throw new Error('samples');
+        return item.kind === 'scene' ? res.text() : res.arrayBuffer();
+      }).then((body) => {
+        if (item.kind === 'vrma') {
+          showVrmaFileOption(item.name);
+          const src = document.getElementById('vrmaPresetSelect');
+          if (src) src.value = '__file';
+          syncWatchVrmaChoices();
+          loadVrmaFromBuffer(body, item.name);
+        } else if (item.kind === 'glb') {
+          loadVrmaStageBuffer(body, item.name);
+        } else if (item.kind === 'scene') {
+          watchSceneLoadText(body);
+        }
+      }).catch(() => fail('samples の ' + item.name + ' を読めませんでした。'));
+    }
+    function samplesRender(pack) {
+      const modeEl = document.getElementById('samplesMode');
+      const status = document.getElementById('samplesStatus');
+      const groups = { vrma: [], glb: [], scene: [], hdr: [] };
+      (pack.items || []).forEach((item) => { if (groups[item.kind]) groups[item.kind].push(item); });
+      const bind = (id, items) => {
+        const sel = document.getElementById(id);
+        if (!sel) return;
+        sel.replaceChildren();
+        const blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = items.length ? '選ぶ' : 'なし';
+        sel.appendChild(blank);
+        items.forEach((item, index) => {
+          const opt = document.createElement('option');
+          opt.value = String(index);
+          opt.textContent = item.name;
+          sel.appendChild(opt);
+        });
+        sel.disabled = !items.length;
+        sel.onchange = () => {
+          const item = items[Number(sel.value)];
+          if (item) samplesLoad(item);
+        };
+      };
+      bind('samplesVrma', groups.vrma);
+      bind('samplesGlb', groups.glb);
+      bind('samplesScene', groups.scene);
+      bind('samplesHdr', groups.hdr);
+      if (modeEl) {
+        modeEl.textContent = pack.kind === 'file'
+          ? '手元のファイルとして開いています。'
+          : (pack.kind === 'local' ? '手元のWebサーバで開いています。' : 'Webサーバで開いています。');
+      }
+      if (!status) return;
+      if (pack.kind === 'file') status.textContent = 'samples は読みません。VMCは、この開き方で使えます。ファイルの選択は、これまでどおり使えます。';
+      else if (!pack.items.length) status.textContent = 'samples に読めるファイルはありません。index.json に名前を書くか、サーバがフォルダの一覧を返す必要があります。';
+      else status.textContent = pack.items.length + ' 件です。GLBはステージ、HDRは空に出します。';
+    }
+    function samplesBoot() {
+      try { samplesRender(samplesCatalog()); } catch (_) { samplesRender({ kind: vcePageKind(), items: [] }); }
+    }
+    samplesBoot();
+
     function animate() {
       requestAnimationFrame(animate);
       if (watchMovieBusy) return;
@@ -39977,6 +40470,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           vrmaAdvanceMixers(step);
           if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
           if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
+          try { vmcApplyFrame(); } catch (_) {}
           try { vceApplyFaceSliders(); } catch (_) {}
           try { watchLookRepaint(); } catch (_) {}
         } finally {
