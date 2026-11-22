@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.603-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample
+  Version: v5.4.604-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.604 / 2026-11-23 / Super Grok（土台は v5.4.603）
+    追加: 鑑賞の小物の影。置くGLBの、透けていない面だけ。ガラスと鏡と人型は入れない。濃さと色を変えられる。既定はオフ。止まっているあいだは影を作り直さない。オンのあいだは、足元の影を重ねない。
 
   v5.4.603 / 2026-11-23 / Super Grok（土台は v5.4.602）
     追加: samples に xmas-table-v2.glb。ステージとして読む。
@@ -1304,7 +1307,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.603</title>
+  <title>VRM Color Editor - v5.4.604</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2916,7 +2919,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.603</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.604</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4293,6 +4296,10 @@
           <label class="watch-row">影の種類<select id="watchShadowMode"><option value="off">なし</option><option value="blob">1. 足元の丸い影</option><option value="planar">2. 平らな面への投影</option><option value="picture">3. 低い解像度の影絵</option></select></label>
           <label class="watch-row">影の濃さ<input id="watchPictureOpacity" type="range" min="0" max="1" step="0.01" value="0.82" title="影2と影3に効きます"></label>
           <p id="watchShadowNote">影は出しません。本当の影マップは使いません。</p>
+          <label class="watch-row watch-check"><input id="watchPropShadow" type="checkbox">小物の影</label>
+          <label class="watch-row">小物の影の濃さ<input id="watchPropShadowDark" type="range" min="0" max="1" step="0.01" value="0.65" title="0で影は見えません。1で、指定した色まで寄せます"></label>
+          <label class="watch-row">小物の影の色<input id="watchPropShadowColor" type="color" value="#1a2430" title="影の部分へ混ぜる色です"></label>
+          <p class="watch-note">置くGLBの、透けていない面だけです。抜きのある面は入れます。ガラス、鏡、人型は入れません。止まったままだと影は作り直しません。オンのあいだは、足元の影を重ねません。</p>
           <h4>発光</h4>
           <label class="watch-row">発光の強さ<input id="watchEmit" type="range" min="0" max="3" step="0.05" value="1"></label>
           <p class="watch-note">1 は、読み込んだときの発光のままです。上げると、発光が黒の部品は表面の色で光ります。鑑賞を出ると戻します。</p>
@@ -4754,7 +4761,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.603';
+    const APP_VERSION = 'v5.4.604';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -35919,6 +35926,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       else if (mode === 'planar') note.textContent = '太陽の向きへ、姿勢を床へ落とします。足元が濃く、離れるほど薄くなります。縁はなめらかにぼかします。濃さは、上のスライダーです。重なった面で黒は足しません。';
       else if (mode === 'picture') note.textContent = '太陽の向きへ、今の姿勢を床へ落とします。濃さは、上のスライダーです。足元の丸い滲みはありません。';
       else note.textContent = '影は出しません。本当の影マップは使いません。';
+      const propOn = !!(document.getElementById('watchPropShadow') && document.getElementById('watchPropShadow').checked);
+      if (propOn && mode === 'off') note.textContent = '足元の影は出しません。置くGLBの、透けていない面だけ、影マップを使います。';
+      else if (propOn) note.textContent += ' 小物の影がオンのあいだは、足元の影は重ねません。';
       const opacity = document.getElementById('watchPictureOpacity');
       if (opacity) opacity.disabled = mode !== 'picture' && mode !== 'planar';
     }
@@ -36856,6 +36866,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!vrmaWatchOn || !watchReady || !vrmEdited || !watchPlanarMat) return;
       const mode = (document.getElementById('watchShadowMode') || {}).value || 'off';
       if (mode !== 'planar' || w <= 0 || h <= 0) return;
+      if (typeof watchPropShadowWanted === 'function' && watchPropShadowWanted()) return;
       const foot = vceEditedFootPlant();
       watchPlanarU.floorY.value = watchFloorAt(foot);
       watchLightRay(watchPlanarU.lightDir.value);
@@ -37172,6 +37183,158 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       watchMoteRoot.updateMatrixWorld(true);
     }
+    const watchPropShadowU = {
+      color: { value: new THREE.Color('#1a2430') },
+      dark: { value: 0.65 }
+    };
+    const _watchPropBox = new THREE.Box3();
+    const _watchPropMeshBox = new THREE.Box3();
+    const _watchPropCenter = new THREE.Vector3();
+    const _watchPropAim = new THREE.Vector3();
+    let watchPropShadowSig = '';
+    let watchPropFit = null;
+    function watchPropShadowWanted() {
+      const el = document.getElementById('watchPropShadow');
+      return !!(vrmaWatchOn && el && el.checked);
+    }
+    function watchPropMatSolid(mat) {
+      if (!mat || mat.isSpriteMaterial) return false;
+      const alpha = mat.opacity == null ? 1 : mat.opacity;
+      const cutout = (mat.alphaTest || 0) > 0.001;
+      const blend = (!!mat.transparent || alpha < 0.99) && !cutout;
+      if (blend) return false;
+      if (mat.transmission != null && mat.transmission > 0.02) return false;
+      return true;
+    }
+    function watchPropShadowInstall(mat) {
+      if (!mat || mat.userData.vcePropShadowHook) return;
+      mat.userData.vcePropShadowHook = true;
+      const prev = mat.onBeforeCompile;
+      const prevKey = mat.customProgramCacheKey ? mat.customProgramCacheKey.bind(mat) : null;
+      mat.onBeforeCompile = function (shader, rend) {
+        if (prev) prev.call(this, shader, rend);
+        shader.uniforms.uPropShadowColor = watchPropShadowU.color;
+        shader.uniforms.uPropShadowDark = watchPropShadowU.dark;
+        shader.fragmentShader = 'uniform vec3 uPropShadowColor;\nuniform float uPropShadowDark;\n' + shader.fragmentShader;
+        shader.fragmentShader = shader.fragmentShader.replace(
+          /directLight\.color \*= \( directLight\.visible && receiveShadow \) \? getShadow\( directionalShadowMap\[ i \][\s\S]*?\) : 1\.0;/,
+          'float vceShadow = ( directLight.visible && receiveShadow ) ? getShadow( directionalShadowMap[ i ], directionalLightShadow.shadowMapSize, directionalLightShadow.shadowBias, directionalLightShadow.shadowRadius, vDirectionalShadowCoord[ i ] ) : 1.0;\n\t\t\tfloat vceT = clamp((1.0 - clamp(vceShadow, 0.0, 1.0)) * uPropShadowDark, 0.0, 1.0);\n\t\t\tdirectLight.color *= mix(vec3(1.0), uPropShadowColor, vceT);'
+        );
+      };
+      mat.customProgramCacheKey = function () {
+        return (prevKey ? prevKey() : '') + '|vcePropShadow';
+      };
+      mat.needsUpdate = true;
+    }
+    function watchEachPropShadowMesh(fn) {
+      if (typeof watchProps === 'undefined' || !watchProps) return;
+      watchProps.forEach((prop) => {
+        if (!prop || !prop.root) return;
+        prop.root.traverse((obj) => {
+          if (!obj.isMesh) return;
+          if (obj.userData && (obj.userData.vceReflector || obj.userData.vceMirrorSwapped)) return;
+          if (obj.name === 'Mirror_Floor') return;
+          fn(obj);
+        });
+      });
+    }
+    function watchPropShadowClear() {
+      if (renderer && renderer.shadowMap) {
+        renderer.shadowMap.enabled = false;
+        renderer.shadowMap.autoUpdate = false;
+        renderer.shadowMap.needsUpdate = false;
+      }
+      const dir = lightsEdited && lightsEdited.dir;
+      if (dir) {
+        dir.castShadow = false;
+        if (dir.target) dir.target.position.set(0, 0, 0);
+      }
+      watchEachPropShadowMesh((mesh) => {
+        mesh.castShadow = false;
+        mesh.receiveShadow = false;
+      });
+      watchPropShadowSig = '';
+      watchPropFit = null;
+    }
+    function watchPropShadowFrame() {
+      const dir = lightsEdited && lightsEdited.dir;
+      if (!watchPropShadowWanted() || !dir || !renderer) {
+        if (renderer && renderer.shadowMap && renderer.shadowMap.enabled) watchPropShadowClear();
+        return;
+      }
+      const colorEl = document.getElementById('watchPropShadowColor');
+      if (colorEl) watchPropShadowU.color.value.set(colorEl.value || '#1a2430');
+      watchPropShadowU.dark.value = watchNum('watchPropShadowDark', 0.65, 0, 1);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFShadowMap;
+      renderer.shadowMap.autoUpdate = false;
+      dir.castShadow = true;
+      dir.shadow.mapSize.set(1024, 1024);
+      dir.shadow.bias = -0.0008;
+      dir.shadow.normalBias = 0.02;
+      dir.shadow.radius = 1;
+      if (dir.target && dir.target.parent !== sceneEdited) sceneEdited.add(dir.target);
+      _watchPropAim.copy(dir.position);
+      if (_watchPropAim.lengthSq() < 1e-8) _watchPropAim.set(1, 2, 1);
+      _watchPropAim.normalize();
+      let sig = _watchPropAim.x.toFixed(3) + ',' + _watchPropAim.y.toFixed(3) + ',' + _watchPropAim.z.toFixed(3);
+      let moving = false;
+      if (typeof watchProps !== 'undefined' && watchProps) {
+        watchProps.forEach((prop) => {
+          if (!prop || !prop.root) return;
+          if (prop.mixer) moving = true;
+          prop.root.updateWorldMatrix(true, true);
+          const e = prop.root.matrixWorld.elements;
+          sig += '|' + prop.id;
+          for (let i = 0; i < 16; i++) sig += (Math.round(e[i] * 100) / 100) + ',';
+        });
+      }
+      if (moving || sig !== watchPropShadowSig || !watchPropFit) {
+        _watchPropBox.makeEmpty();
+        let any = false;
+        watchEachPropShadowMesh((mesh) => {
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          const solid = !!mesh.visible && mats.some(watchPropMatSolid);
+          mesh.castShadow = solid;
+          mesh.receiveShadow = solid;
+          if (solid) mats.forEach((mat) => { if (watchPropMatSolid(mat)) watchPropShadowInstall(mat); });
+          if (!solid) return;
+          _watchPropMeshBox.setFromObject(mesh);
+          if (_watchPropMeshBox.isEmpty()) return;
+          _watchPropBox.union(_watchPropMeshBox);
+          any = true;
+        });
+        if (!any) {
+          watchPropFit = null;
+          renderer.shadowMap.enabled = false;
+          renderer.shadowMap.needsUpdate = false;
+          dir.castShadow = false;
+          watchPropShadowSig = sig;
+          return;
+        }
+        _watchPropBox.getCenter(_watchPropCenter);
+        const size = _watchPropBox.getSize(new THREE.Vector3());
+        const radius = Math.max(0.45, 0.5 * Math.sqrt(size.x * size.x + size.y * size.y + size.z * size.z));
+        watchPropFit = { x: _watchPropCenter.x, y: _watchPropCenter.y, z: _watchPropCenter.z, radius: radius, ax: _watchPropAim.x, ay: _watchPropAim.y, az: _watchPropAim.z };
+        watchPropShadowSig = sig;
+        renderer.shadowMap.needsUpdate = true;
+      }
+      if (!watchPropFit) return;
+      const fit = watchPropFit;
+      const dist = fit.radius * 3;
+      dir.target.position.set(fit.x, fit.y, fit.z);
+      dir.position.set(fit.x, fit.y, fit.z).addScaledVector(_watchPropAim.set(fit.ax, fit.ay, fit.az), dist);
+      dir.target.updateMatrixWorld();
+      dir.updateMatrixWorld();
+      dir.shadow.camera.left = -fit.radius;
+      dir.shadow.camera.right = fit.radius;
+      dir.shadow.camera.top = fit.radius;
+      dir.shadow.camera.bottom = -fit.radius;
+      dir.shadow.camera.near = Math.max(0.05, dist * 0.25);
+      dir.shadow.camera.far = dist + fit.radius * 2;
+      dir.shadow.camera.updateProjectionMatrix();
+      if (moving) renderer.shadowMap.needsUpdate = true;
+    }
     function watchBeforeRender(step) {
       if (!vrmaWatchOn || !watchReady) return;
       try { watchAutoCamApply(); } catch (_) {}
@@ -37201,12 +37364,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (_watchGrav.lengthSq() > 1e-8) lightsEdited.dir.position.copy(_watchGrav.normalize());
       }
       const mode = (document.getElementById('watchShadowMode') || {}).value || 'off';
+      const propShadowOn = typeof watchPropShadowWanted === 'function' && watchPropShadowWanted();
       const gap = foot ? foot.y - floorY : 0;
       try {
         if (mode === 'planar' || mode === 'picture') watchUpdateShadowFade(foot);
         watchPlanarU.picture.value = watchNum('watchPictureOpacity', 0.82, 0, 1);
         if (watchBlob) {
-          const show = mode === 'blob' && !!foot;
+          const show = mode === 'blob' && !!foot && !propShadowOn;
           watchBlob.visible = show;
           if (show) {
             watchState.blobTick = (watchState.blobTick || 0) + 1;
@@ -37224,7 +37388,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           }
         }
         if (watchPicture && watchPicture.mesh) {
-          const show = mode === 'picture' && !!foot && !!vrmEdited;
+          const show = mode === 'picture' && !!foot && !!vrmEdited && !propShadowOn;
           watchPicture.mesh.visible = show;
           if (show) {
             watchState.pictureTick += 1;
@@ -37239,6 +37403,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           }
         }
       } catch (err) { console.error(err); }
+      try { watchPropShadowFrame(); } catch (err) { console.error(err); }
     }
     function watchAfterRender(camera) {
       if (!vrmaWatchOn || !watchReady || !vrmEdited) return;
@@ -37923,6 +38088,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           moteEmit: watchSceneNum((document.getElementById('watchMoteEmit') || {}).value, 2.2, 0, 4)
         },
         shadow: (document.getElementById('watchShadowMode') || {}).value || 'off',
+        propShadow: {
+          on: !!(document.getElementById('watchPropShadow') && document.getElementById('watchPropShadow').checked),
+          dark: watchSceneNum((document.getElementById('watchPropShadowDark') || {}).value, 0.65, 0, 1),
+          color: watchSceneHex((document.getElementById('watchPropShadowColor') || {}).value, '#1a2430')
+        },
         pictureOpacity: watchSceneNum((document.getElementById('watchPictureOpacity') || {}).value, 0.82, 0, 1),
         emit: watchSceneNum((document.getElementById('watchEmit') || {}).value, 1, 0, 3),
         halo: {
@@ -38010,6 +38180,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const shadow = document.getElementById('watchShadowMode');
       const shadowOk = { off: 1, blob: 1, planar: 1, picture: 1 };
       if (shadow && shadowOk[data.shadow]) shadow.value = data.shadow;
+      const propShadow = data.propShadow || {};
+      watchSceneSet('watchPropShadow', !!propShadow.on);
+      watchSceneSet('watchPropShadowDark', watchSceneNum(propShadow.dark, 0.65, 0, 1));
+      watchSceneSet('watchPropShadowColor', watchSceneHex(propShadow.color, '#1a2430'));
       watchSceneSet('watchPictureOpacity', watchSceneNum(data.pictureOpacity, 0.82, 0, 1));
       watchShadowText();
       watchSceneSet('watchEmit', watchSceneNum(data.emit, 1, 0, 3));
@@ -39035,6 +39209,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchExit() {
       watchSkyDetach();
+      try { watchPropShadowClear(); } catch (_) {}
       try { watchSkyEnvUnapply(); } catch (_) {}
       watchRestoreWind();
       watchRestoreEmission();
@@ -39919,6 +40094,16 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       });
       const shadow = document.getElementById('watchShadowMode');
       if (shadow) shadow.addEventListener('change', watchShadowText);
+      ['watchPropShadow', 'watchPropShadowDark', 'watchPropShadowColor'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const poke = () => {
+          watchPropShadowSig = '';
+          watchShadowText();
+        };
+        el.addEventListener('input', poke);
+        el.addEventListener('change', poke);
+      });
       watchShadowText();
       const comp = document.getElementById('watchBloomComp');
       const bloomColor = document.getElementById('watchBloomColor');
