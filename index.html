@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.604-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow
+  Version: v5.4.605-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.605 / 2026-11-23 / Super Grok（土台は v5.4.604）
+    修正: 小物の影の濃さと色が、画面の色へ届くようにした。影の計算を、展開前の部品ごと差し替える。
 
   v5.4.604 / 2026-11-23 / Super Grok（土台は v5.4.603）
     追加: 鑑賞の小物の影。置くGLBの、透けていない面だけ。ガラスと鏡と人型は入れない。濃さと色を変えられる。既定はオフ。止まっているあいだは影を作り直さない。オンのあいだは、足元の影を重ねない。
@@ -1307,7 +1310,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.604</title>
+  <title>VRM Color Editor - v5.4.605</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2919,7 +2922,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.604</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.605</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4299,7 +4302,7 @@
           <label class="watch-row watch-check"><input id="watchPropShadow" type="checkbox">小物の影</label>
           <label class="watch-row">小物の影の濃さ<input id="watchPropShadowDark" type="range" min="0" max="1" step="0.01" value="0.65" title="0で影は見えません。1で、指定した色まで寄せます"></label>
           <label class="watch-row">小物の影の色<input id="watchPropShadowColor" type="color" value="#1a2430" title="影の部分へ混ぜる色です"></label>
-          <p class="watch-note">置くGLBの、透けていない面だけです。抜きのある面は入れます。ガラス、鏡、人型は入れません。止まったままだと影は作り直しません。オンのあいだは、足元の影を重ねません。</p>
+          <p class="watch-note">置くGLBの、透けていない面だけです。抜きのある面は入れます。ガラス、鏡、人型は入れません。止まったままだと影は作り直しません。オンのあいだは、足元の影を重ねません。濃さは影の強さです。色は、影の部分の表面へ掛ける色です。白にすると、濃さは見た目へ出ません。</p>
           <h4>発光</h4>
           <label class="watch-row">発光の強さ<input id="watchEmit" type="range" min="0" max="3" step="0.05" value="1"></label>
           <p class="watch-note">1 は、読み込んだときの発光のままです。上げると、発光が黒の部品は表面の色で光ります。鑑賞を出ると戻します。</p>
@@ -4761,7 +4764,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.604';
+    const APP_VERSION = 'v5.4.605';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -37208,21 +37211,33 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchPropShadowInstall(mat) {
       if (!mat || mat.userData.vcePropShadowHook) return;
+      if (!(mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial || mat.isMeshLambertMaterial || mat.isMeshPhongMaterial)) return;
       mat.userData.vcePropShadowHook = true;
       const prev = mat.onBeforeCompile;
       const prevKey = mat.customProgramCacheKey ? mat.customProgramCacheKey.bind(mat) : null;
+      if (!watchPropShadowInstall.lights && THREE.ShaderChunk && THREE.ShaderChunk.lights_fragment_begin) {
+        const raw = THREE.ShaderChunk.lights_fragment_begin;
+        const next = raw.replace(
+          /directLight\.color \*= \( directLight\.visible && receiveShadow \) \? getShadow\( directionalShadowMap\[ i \][\s\S]*?\) : 1\.0;/,
+          'vceShadowKeep = ( directLight.visible && receiveShadow ) ? getShadow( directionalShadowMap[ i ], directionalLightShadow.shadowMapSize, directionalLightShadow.shadowBias, directionalLightShadow.shadowRadius, vDirectionalShadowCoord[ i ] ) : 1.0;\n\t\tdirectLight.color *= 1.0;'
+        );
+        watchPropShadowInstall.lights = next === raw ? '' : next;
+      }
       mat.onBeforeCompile = function (shader, rend) {
         if (prev) prev.call(this, shader, rend);
         shader.uniforms.uPropShadowColor = watchPropShadowU.color;
         shader.uniforms.uPropShadowDark = watchPropShadowU.dark;
-        shader.fragmentShader = 'uniform vec3 uPropShadowColor;\nuniform float uPropShadowDark;\n' + shader.fragmentShader;
+        shader.fragmentShader = 'uniform vec3 uPropShadowColor;\nuniform float uPropShadowDark;\nfloat vceShadowKeep = 1.0;\n' + shader.fragmentShader;
+        if (watchPropShadowInstall.lights) {
+          shader.fragmentShader = shader.fragmentShader.replace('#include <lights_fragment_begin>', watchPropShadowInstall.lights);
+        }
         shader.fragmentShader = shader.fragmentShader.replace(
-          /directLight\.color \*= \( directLight\.visible && receiveShadow \) \? getShadow\( directionalShadowMap\[ i \][\s\S]*?\) : 1\.0;/,
-          'float vceShadow = ( directLight.visible && receiveShadow ) ? getShadow( directionalShadowMap[ i ], directionalLightShadow.shadowMapSize, directionalLightShadow.shadowBias, directionalLightShadow.shadowRadius, vDirectionalShadowCoord[ i ] ) : 1.0;\n\t\t\tfloat vceT = clamp((1.0 - clamp(vceShadow, 0.0, 1.0)) * uPropShadowDark, 0.0, 1.0);\n\t\t\tdirectLight.color *= mix(vec3(1.0), uPropShadowColor, vceT);'
+          '#include <opaque_fragment>',
+          'outgoingLight = mix(outgoingLight, outgoingLight * uPropShadowColor, clamp((1.0 - clamp(vceShadowKeep, 0.0, 1.0)) * uPropShadowDark, 0.0, 1.0));\n#include <opaque_fragment>'
         );
       };
       mat.customProgramCacheKey = function () {
-        return (prevKey ? prevKey() : '') + '|vcePropShadow';
+        return (prevKey ? prevKey() : '') + '|vcePropShadow2';
       };
       mat.needsUpdate = true;
     }
