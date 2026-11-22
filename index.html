@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.601-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample
+  Version: v5.4.602-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.602 / 2026-11-22 / Super Grok（土台は v5.4.601）
+    修正: 内蔵ステージの注視をずらす矢印が出るようにした。ずらすのを終えると、黄色い球も消える。
 
   v5.4.601 / 2026-11-22 / Super Grok（土台は v5.4.600）
     追加: 鑑賞の空に、手元の .hdr を貼れる。サーバは使わない。samples に finnish_winter_2k.hdr を足した。
@@ -1298,7 +1301,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.601</title>
+  <title>VRM Color Editor - v5.4.602</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2910,7 +2913,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.601</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.602</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4748,7 +4751,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.601';
+    const APP_VERSION = 'v5.4.602';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -36248,6 +36251,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (watchHelpB) watchHelpB.visible = false;
         if (watchWindArrow) watchWindArrow.visible = false;
         if (watchSunArrow) watchSunArrow.visible = false;
+        if (watchCamFocusMark) watchCamFocusMark.visible = false;
         watchSyncGizmoBar('');
         return;
       }
@@ -36258,10 +36262,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (watchWindArrow) watchWindArrow.visible = false;
         if (watchSunArrow) watchSunArrow.visible = false;
         mark.visible = true;
+        watchHoldInGizmo(mark);
         try { watchCamSyncMark(); } catch (_) {}
         try { transformControl.attach(mark); } catch (_) {}
         try { transformControl.setMode('translate'); } catch (_) {}
-        transformControl.camera = cameraSingle;
+        transformControl.camera = (typeof viewCamera === 'function') ? viewCamera(cameraSingle) : cameraSingle;
         transformControl.visible = true;
         transformControl.enabled = true;
         watchSyncGizmoBar(which);
@@ -36353,7 +36358,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const propOn = !!(obj && obj.userData && obj.userData.watchProp);
       const on = !!(obj && transformControl.visible && obj.userData && (obj.userData.watchHandle || propOn));
       if (!on || w <= 0 || h <= 0) return;
-      const keep = new Set([transformControl, watchHelpA, watchHelpB, watchWindArrow, watchSunArrow]);
+      const keep = new Set([transformControl, watchHelpA, watchHelpB, watchWindArrow, watchSunArrow, watchCamFocusMark]);
       const prev = [];
       sceneGizmo.children.forEach((child) => {
         prev.push([child, child.visible]);
@@ -39039,6 +39044,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (watchHelpB) watchHelpB.visible = false;
       if (watchWindArrow) watchWindArrow.visible = false;
       if (watchSunArrow) watchSunArrow.visible = false;
+      if (watchCamFocusMark) watchCamFocusMark.visible = false;
       if (watchState.sunSaved && lightsEdited && lightsEdited.dir) {
         lightsEdited.dir.position.copy(watchState.sunSaved.position);
         lightsEdited.dir.color.copy(watchState.sunSaved.color);
@@ -39753,11 +39759,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       );
       mark.name = 'WatchCamFocus';
       mark.userData.watchCamFocus = true;
+      mark.userData.watchHandle = true;
       mark.userData.editorOnly = true;
       mark.frustumCulled = false;
       mark.renderOrder = 100000;
       mark.visible = false;
-      sceneEdited.add(mark);
       watchCamFocusMark = mark;
       return mark;
     }
@@ -39774,7 +39780,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     function watchCamSyncMark() {
       if (!watchCamFocusMark && !watchCamWantsStage() && watchGizmoWhich !== 'camFocus') return;
       const mark = watchCamFocusMarkEnsure();
-      const show = !!(vrmaWatchOn && !watchMovieBusy && (watchCamWantsStage() || watchGizmoWhich === 'camFocus'));
+      const show = !!(vrmaWatchOn && !watchMovieBusy && watchGizmoWhich === 'camFocus');
       mark.visible = show;
       if (!show) return;
       if (watchGizmoWhich === 'camFocus' && transformControl && (transformControl.dragging || (typeof gizmoPointerClaimed !== 'undefined' && gizmoPointerClaimed))) return;
