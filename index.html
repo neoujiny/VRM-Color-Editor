@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.605-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade
+  Version: v5.4.606-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.606 / 2026-11-23 / Super Grok（土台は v5.4.605）
+    追加: 動画の残像。なし、4回、8回、16回。1枚の時間を分けて描き、明るさのまま平均する。シャッターはその1枚分。ばねは、始める前に0.5秒だけ馴染ませる。なしの書き出しは今までどおり。
 
   v5.4.605 / 2026-11-23 / Super Grok（土台は v5.4.604）
     修正: 小物の影の濃さと色が、画面の色へ届くようにした。影の計算を、展開前の部品ごと差し替える。
@@ -1310,7 +1313,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.605</title>
+  <title>VRM Color Editor - v5.4.606</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2922,7 +2925,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.605</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.606</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4317,6 +4320,13 @@
           <p class="watch-note">1920×1080、30fps。画面が遅れていても、動きは1枚ずつ1/30秒で取り直します。書き出し中は遅く見えます。ファイルは30fpsです。この間、モデルは動かせません。進み具合は画面の一番上に出ます。その欄は動画には写りません。ファイル名は、続き編集用のVRMと同じで、拡張子だけ .mp4 です。WebM になるときだけ .webm です。矢印は映しません。ばねは、開始時に静止へ戻してから進めます。画面で見ている揺れとは、少し違うことがあります。</p>
           <p id="watchMovieFormat" class="watch-note">形式を確認しています。</p>
           <label class="watch-row">長さ（秒）<input id="watchMovieSec" type="number" min="1" max="60" step="1" value="10"></label>
+          <label class="watch-row">残像<select id="watchMovieBlur" title="1枚の時間を、この回数に分けて描き、平均します">
+            <option value="1" selected>なし</option>
+            <option value="4">弱い（4回）</option>
+            <option value="8">標準（8回）</option>
+            <option value="16">強い（16回）</option>
+          </select></label>
+          <p class="watch-note">なしは、今までどおり1回だけ描きます。ほかは、その1枚の時間を分けて描き、明るさのまま平均します。カメラ、動き、ばね、影もその時間で進みます。書き出し時間は、回数だけ増えます。残像がオンのときは、一気に書き出すでも進み具合を出し、中止できます。ばねは、始める前に0.5秒分だけ馴染ませます。</p>
           <label class="watch-row watch-check"><input id="watchMovieUseClip" type="checkbox">動きの長さに合わせる</label>
           <p class="watch-note">速さは、今のスライダーの絶対値です。0のときは等速です。逆再生の向きでは書かず、正方向です。動きの長さに合わせると、その速さで1回分を書き、繰り返しがオンのときは「終端から開始へ戻す秒」も足します。その戻す秒は、遅くしても伸びません。繰り返しがオフのときは足しません。長さを秒で指定したときも、終わりに達すれば同じ戻りを書きます。60秒を超える動きは60秒で止めますが、戻す秒だけは足します。中止は捨てます。ここまで保存は、そこまでのファイルにします。Esc は中止です。一気に書き出すがオンのときは、進み具合も中止も出さず、終わるまで止まりません。</p>
           <label class="watch-row">ファイル名<input id="watchMovieName" type="text" maxlength="180" spellcheck="false" autocomplete="off"></label>
@@ -4764,7 +4774,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.605';
+    const APP_VERSION = 'v5.4.606';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -38119,7 +38129,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         },
         movie: {
           seconds: watchSceneNum((document.getElementById('watchMovieSec') || {}).value, 10, 1, 60),
-          useClip: !!(document.getElementById('watchMovieUseClip') && document.getElementById('watchMovieUseClip').checked)
+          useClip: !!(document.getElementById('watchMovieUseClip') && document.getElementById('watchMovieUseClip').checked),
+          blur: watchMovieBlurCount()
         },
         stage: {
           position: watchSceneVec(vrmaStageRoot.position.x, vrmaStageRoot.position.y, vrmaStageRoot.position.z),
@@ -38214,6 +38225,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const movie = data.movie || {};
       watchSceneSet('watchMovieSec', Math.round(watchSceneNum(movie.seconds, 10, 1, 60)));
       watchSceneSet('watchMovieUseClip', !!movie.useClip);
+      const blurOk = { 1: 1, 4: 1, 8: 1, 16: 1 };
+      const blurN = parseInt(movie.blur, 10);
+      watchSceneSet('watchMovieBlur', blurOk[blurN] ? String(blurN) : '1');
       const movieClip = document.getElementById('watchMovieUseClip');
       const movieSec = document.getElementById('watchMovieSec');
       if (movieClip && movieSec) movieSec.disabled = movieClip.checked;
@@ -38480,14 +38494,82 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       renderer.setRenderTarget(null);
       ctx.drawImage(renderer.domElement, 0, 0, 1920, 1080);
     }
+    function watchMovieBlurCount() {
+      const el = document.getElementById('watchMovieBlur');
+      const n = parseInt(el && el.value, 10);
+      if (n === 4 || n === 8 || n === 16) return n;
+      return 1;
+    }
+    const watchMovieBlurAcc = { sum: null, img: null };
+    function watchMovieToLinear(c) {
+      const x = c / 255;
+      return x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    }
+    function watchMovieFromLinear(x) {
+      const c = x <= 0.0031308 ? x * 12.92 : 1.055 * Math.pow(Math.max(0, x), 1 / 2.4) - 0.055;
+      return Math.max(0, Math.min(255, Math.round(c * 255)));
+    }
+    function watchMovieBlurReset(w, h) {
+      const need = w * h * 3;
+      if (!watchMovieBlurAcc.sum || watchMovieBlurAcc.sum.length !== need) watchMovieBlurAcc.sum = new Float32Array(need);
+      else watchMovieBlurAcc.sum.fill(0);
+      if (!watchMovieBlurAcc.img || watchMovieBlurAcc.img.width !== w || watchMovieBlurAcc.img.height !== h) {
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        watchMovieBlurAcc.img = canvas.getContext('2d', { alpha: false }).createImageData(w, h);
+      }
+    }
+    function watchMovieBlurAdd(ctx) {
+      const img = watchMovieBlurAcc.img;
+      const fresh = ctx.getImageData(0, 0, img.width, img.height);
+      const src = fresh.data;
+      const sum = watchMovieBlurAcc.sum;
+      let s = 0;
+      for (let i = 0; i < src.length; i += 4) {
+        sum[s++] += watchMovieToLinear(src[i]);
+        sum[s++] += watchMovieToLinear(src[i + 1]);
+        sum[s++] += watchMovieToLinear(src[i + 2]);
+      }
+    }
+    function watchMovieBlurFinish(ctx, samples) {
+      const img = watchMovieBlurAcc.img;
+      const dst = img.data;
+      const sum = watchMovieBlurAcc.sum;
+      const inv = 1 / samples;
+      let s = 0;
+      for (let i = 0; i < dst.length; i += 4) {
+        dst[i] = watchMovieFromLinear(sum[s++] * inv);
+        dst[i + 1] = watchMovieFromLinear(sum[s++] * inv);
+        dst[i + 2] = watchMovieFromLinear(sum[s++] * inv);
+        dst[i + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+      sum.fill(0);
+    }
+    function watchMovieWarmSprings() {
+      const dt = 1 / 60;
+      for (let n = 0; n < 30; n++) {
+        try { watchApplyWind(); } catch (_) {}
+        try {
+          if (vrmEdited) vceUpdateVrmPreview(vrmEdited, dt);
+          if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, dt);
+        } finally {
+          try { watchRestoreWind(); } catch (_) {}
+        }
+      }
+    }
     async function watchMovieRun() {
       if (watchMovieBusy || !vrmaWatchOn || !vrmEdited) return;
       const seconds = watchMovieSeconds();
       if (!(seconds > 0)) { watchMovieNote('動きが無いので、長さに合わせた書き出しはできません。'); return; }
       const framesWanted = Math.max(1, Math.min(1920, Math.round(seconds * 30)));
+      const blurN = watchMovieBlurCount();
+      const blurOn = blurN > 1;
       const straightEl = document.getElementById('watchMovieStraight');
       const movieStraight = !!(straightEl && straightEl.checked);
       const safariMovie = !vceBrowserIsChrome();
+      const quiet = movieStraight && !safariMovie && !blurOn;
       if (safariMovie) {
         const win = document.getElementById('vrmaWatchWin');
         if (win) win.hidden = false;
@@ -38525,15 +38607,16 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchMovieLeaveAfter = false;
       watchMovieBusy = true;
       vrmaUserPaused = false;
-      watchMovieButtons(true, movieStraight && !safariMovie);
+      watchMovieButtons(true, quiet);
       if (safariMovie) {
         watchMovieHudSet(0, framesWanted, '書き出しています');
-        watchMovieNote('書き出しています。');
-      } else if (movieStraight) {
+        watchMovieNote(blurOn ? ('書き出しています。残像は' + blurN + '回です。') : '書き出しています。');
+      } else if (quiet) {
         watchMovieNote('一気に書き出しています。終わるまで止まりません。');
         await new Promise((resolve) => setTimeout(resolve, 0));
       } else {
         watchMovieHudSet(0, framesWanted, '書き出しています');
+        if (blurOn) watchMovieNote('残像は' + blurN + '回です。書き出し時間は、その回数だけ増えます。');
       }
       try { watchPutGizmoAway(); } catch (_) {}
       if (controlsSingle) controlsSingle.enabled = false;
@@ -38551,6 +38634,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           const painted = await watchMovieProveConfig(kind.config, canvas);
           if (!painted) throw new Error('この画面からは動画を書けませんでした');
         }
+        if (blurOn) watchMovieBlurReset(1920, 1080);
         const chunks = [];
         const copies = [];
         let failed = null;
@@ -38570,37 +38654,70 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         });
         try { encoder.configure(kind.config); } catch (err) { failed = err || new Error('configure'); }
         for (let i = 0; i < framesWanted && !failed; i++) {
-          if ((safariMovie || !movieStraight) && (watchMovieStop || watchMovieFinish || !vrmaWatchOn)) break;
-          if (watchSkyMovie) watchSkyMovie.frame = i;
-          watchMovieMs = i * (1000 / 30);
-          const step = 1 / 30;
-          if (i === 0) {
-            if (vrmAnimation && typeof vrmaSeek === 'function') vrmaSeek(0);
-            watchMovieResetSprings();
+          if (!quiet && (watchMovieStop || watchMovieFinish || !vrmaWatchOn)) break;
+          if (blurOn) {
+            for (let k = 0; k < blurN; k++) {
+              if (i === 0 && k === 0) {
+                if (vrmAnimation && typeof vrmaSeek === 'function') vrmaSeek(0);
+                watchMovieResetSprings();
+                watchMovieWarmSprings();
+              }
+              const step = (1 / 30) / blurN;
+              const along = i + (k + 1) / blurN;
+              watchMovieMs = along * (1000 / 30);
+              if (watchSkyMovie) watchSkyMovie.frame = along;
+              if (vrmaMixerEdited) vrmaMixerEdited.timeScale = rate;
+              if (vrmaMixerOriginal) vrmaMixerOriginal.timeScale = rate;
+              try { vrmaAdvanceMixers(step); } catch (err) { console.error(err); }
+              try { watchApplyWind(); } catch (_) {}
+              try {
+                if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
+                if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
+              } finally {
+                try { watchRestoreWind(); } catch (_) {}
+              }
+              watchMovieStepMaterials(step);
+              try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(step); } catch (_) {}
+              try { vceApplyFaceSliders(); } catch (_) {}
+              try { watchLookRepaint(); } catch (_) {}
+              try { vmcApplyFrame(); } catch (_) {}
+              try { watchBeforeRender(step); } catch (err) { console.error(err); }
+              watchMoviePaint(canvas, ctx);
+              watchMovieBlurAdd(ctx);
+            }
+            watchMovieBlurFinish(ctx, blurN);
           } else {
+            if (watchSkyMovie) watchSkyMovie.frame = i;
+            watchMovieMs = i * (1000 / 30);
+            const step = 1 / 30;
+            if (i === 0) {
+              if (vrmAnimation && typeof vrmaSeek === 'function') vrmaSeek(0);
+              watchMovieResetSprings();
+            } else {
+              if (vrmaMixerEdited) vrmaMixerEdited.timeScale = rate;
+              if (vrmaMixerOriginal) vrmaMixerOriginal.timeScale = rate;
+              try { vrmaAdvanceMixers(step); } catch (err) { console.error(err); }
+              try { watchApplyWind(); } catch (_) {}
+              try {
+                if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
+                if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
+              } finally {
+                try { watchRestoreWind(); } catch (_) {}
+              }
+              watchMovieStepMaterials(step);
+              try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(step); } catch (_) {}
+            }
             if (vrmaMixerEdited) vrmaMixerEdited.timeScale = rate;
             if (vrmaMixerOriginal) vrmaMixerOriginal.timeScale = rate;
-            try { vrmaAdvanceMixers(step); } catch (err) { console.error(err); }
-            try { watchApplyWind(); } catch (_) {}
-            try {
-              if (vrmEdited) vceUpdateVrmPreview(vrmEdited, step);
-              if (vrmOriginal) vceUpdateVrmPreview(vrmOriginal, step);
-            } finally {
-              try { watchRestoreWind(); } catch (_) {}
-            }
-            watchMovieStepMaterials(step);
-            try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(step); } catch (_) {}
+            try { if (i === 0 && vrmEdited) vceUpdateVrmPreview(vrmEdited, 0); } catch (_) {}
+            try { if (i === 0 && vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
+            if (i === 0) watchMovieStepMaterials(0);
+            try { vceApplyFaceSliders(); } catch (_) {}
+            try { watchLookRepaint(); } catch (_) {}
+            try { vmcApplyFrame(); } catch (_) {}
+            try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
+            watchMoviePaint(canvas, ctx);
           }
-          if (vrmaMixerEdited) vrmaMixerEdited.timeScale = rate;
-          if (vrmaMixerOriginal) vrmaMixerOriginal.timeScale = rate;
-          try { if (i === 0 && vrmEdited) vceUpdateVrmPreview(vrmEdited, 0); } catch (_) {}
-          try { if (i === 0 && vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
-          if (i === 0) watchMovieStepMaterials(0);
-          try { vceApplyFaceSliders(); } catch (_) {}
-          try { watchLookRepaint(); } catch (_) {}
-          try { vmcApplyFrame(); } catch (_) {}
-          try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
-          watchMoviePaint(canvas, ctx);
           const timestamp = Math.round((i + 1) * 1000000 / 30);
           let frame = null;
           try { frame = new VideoFrame(canvas, { timestamp: timestamp, alpha: 'discard' }); }
@@ -38621,11 +38738,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           drawn += 1;
           if (safariMovie) {
             try { await encoder.flush(); } catch (err) { failed = err || new Error('flush'); }
-            watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。');
+            watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。' + (blurOn ? (' 残像' + blurN + '回。') : ''));
             watchMovieHudSet(drawn, framesWanted, '書き出しています');
             await new Promise((resolve) => setTimeout(resolve, 0));
-          } else if (!movieStraight) {
-            watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。');
+          } else if (!quiet) {
+            watchMovieNote(drawn + ' / ' + framesWanted + ' 枚を描いています。' + (blurOn ? (' 残像' + blurN + '回。') : ''));
             watchMovieHudSet(drawn, framesWanted, '書き出しています');
             await new Promise((resolve) => setTimeout(resolve, 0));
           }
@@ -38637,9 +38754,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
             }
           }
         }
-        const keepWriting = safariMovie ? (!watchMovieStop && vrmaWatchOn) : (movieStraight || (!watchMovieStop && vrmaWatchOn));
+        const keepWriting = quiet ? true : (!watchMovieStop && vrmaWatchOn);
         if (keepWriting && !failed && drawn > 0) {
-          if (safariMovie || !movieStraight) {
+          if (!quiet) {
             watchMovieNote('ファイルにまとめています。');
             watchMovieHudSet(drawn, framesWanted, 'ファイルにまとめています');
           }
@@ -38648,7 +38765,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         try { encoder.close(); } catch (_) {}
         try { await Promise.all(copies); } catch (err) { if (!failed) failed = err; }
         if (failed) throw failed;
-        if ((safariMovie || !movieStraight) && (watchMovieStop || !vrmaWatchOn)) {
+        if (!quiet && (watchMovieStop || !vrmaWatchOn)) {
           watchMovieNote('中止しました。ファイルは作っていません。');
           return;
         }
