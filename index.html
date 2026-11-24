@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.614-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height
+  Version: v5.4.615-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height, Path Curve Always Drawn
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.615 / 2026-11-25 / Super Grok（土台は v5.4.614）
+    修正: 通り道の線が、矢印を出していないと画面に出なかった。鑑賞モードでは常に出す。
 
   v5.4.614 / 2026-11-25 / Super Grok（土台は v5.4.613）
     追加: 通り道の点は、床からの高さもドラッグで変えられる。線は点の高さを通る。
@@ -1337,7 +1340,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.614</title>
+  <title>VRM Color Editor - v5.4.615</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2951,7 +2954,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.614</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.615</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4467,7 +4470,7 @@
           <label class="watch-row">半径（m）<input id="watchCamRadius" type="range" min="0.3" max="8" step="0.05" value="2.2" title="骨からカメラまでの水平の距離です"><span class="watch-read" id="watchCamRadiusRead">2.2 m</span></label>
           <label class="watch-row">骨からの高さ（m）<input id="watchCamHeight" type="range" min="-2" max="3" step="0.05" value="0.15" title="プラスは骨より上です"><span class="watch-read" id="watchCamHeightRead">0.15 m</span></label>
           <label class="watch-row">楕円の横比率<input id="watchCamEllipse" type="range" min="0.25" max="2.5" step="0.05" value="1" title="1は円です。大きくすると左右に広い楕円です。点を足したあとは使いません"><span class="watch-read" id="watchCamEllipseRead">1（円）</span></label>
-          <p class="watch-note">自動カメラがオンのとき、通り道が閉じた線で出ます。線の上を左クリックすると点ができます。点をドラッグすると、横にも上下にも動きます。画面の上へ引くと高くなり、下へ引くと低くなります。点の真上で Shift を押しながら左クリックすると、その点だけ消えます。点が3つ未満になると、半径と楕円の円へ戻ります。円の高さは「骨からの高さ」です。この線は動画には写りません。</p>
+          <p class="watch-note">鑑賞モードでは、通り道が閉じた線で出ます。線の上を左クリックすると点ができます。点をドラッグすると、横にも上下にも動きます。画面の上へ引くと高くなり、下へ引くと低くなります。点の真上で Shift を押しながら左クリックすると、その点だけ消えます。点が3つ未満になると、半径と楕円の円へ戻ります。円の高さは「骨からの高さ」です。自動カメラがオンのとき、カメラはこの線を通ります。この線は動画には写りません。</p>
           <label class="watch-row">1周の秒数<input id="watchCamRev" type="number" min="1" max="120" step="0.1" value="12" title="1周の秒数を選んだとき、何秒で1周するかです"></label>
           <label class="watch-row">旋回の長さ<select id="watchCamClock">
             <option value="sec" selected>1周の秒数</option>
@@ -4815,7 +4818,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.614';
+    const APP_VERSION = 'v5.4.615';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -36426,9 +36429,19 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const obj = transformControl && transformControl.object;
       const propOn = !!(obj && obj.userData && obj.userData.watchProp);
       const focusOn = typeof watchGizmoWhich !== 'undefined' && watchGizmoWhich === 'camFocus' && watchCamFocusMark && watchCamFocusMark.visible;
-      const on = focusOn || !!(obj && transformControl.visible && obj.userData && (obj.userData.watchHandle || propOn));
-      if (!on || w <= 0 || h <= 0) return;
-      const keep = new Set([transformControl, watchHelpA, watchHelpB, watchWindArrow, watchSunArrow, watchCamFocusMark, watchCamPathRoot]);
+      const gizmoOn = focusOn || !!(obj && transformControl.visible && obj.userData && (obj.userData.watchHandle || propOn));
+      const pathOn = !!(typeof watchCamPathRoot !== 'undefined' && watchCamPathRoot && watchCamPathRoot.visible);
+      if ((!gizmoOn && !pathOn) || w <= 0 || h <= 0) return;
+      const keep = new Set();
+      if (pathOn) keep.add(watchCamPathRoot);
+      if (gizmoOn) {
+        keep.add(transformControl);
+        keep.add(watchHelpA);
+        keep.add(watchHelpB);
+        keep.add(watchWindArrow);
+        keep.add(watchSunArrow);
+        if (focusOn) keep.add(watchCamFocusMark);
+      }
       const prev = [];
       sceneGizmo.children.forEach((child) => {
         prev.push([child, child.visible]);
@@ -40348,6 +40361,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     let watchCamPathLine = null;
     let watchCamPathPos = null;
     const watchCamPathDots = [];
+    const watchCamPathBeads = [];
     const watchCamPathFocus = new THREE.Vector3();
     const watchCamPathRay = new THREE.Raycaster();
     const watchCamPathPlane = new THREE.Plane();
@@ -40439,6 +40453,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchCamPathLine.frustumCulled = false;
       watchCamPathLine.renderOrder = 100000;
       watchCamPathRoot.add(watchCamPathLine);
+      const beadGeo = new THREE.SphereGeometry(0.035, 10, 8);
+      const beadMat = new THREE.MeshBasicMaterial({ color: 0x7fd0ff, depthTest: false, transparent: true, opacity: 0.95 });
+      for (let i = 0; i < 48; i++) {
+        const bead = new THREE.Mesh(beadGeo, beadMat);
+        bead.frustumCulled = false;
+        bead.renderOrder = 100000;
+        watchCamPathRoot.add(bead);
+        watchCamPathBeads.push(bead);
+      }
       sceneGizmo.add(watchCamPathRoot);
     }
     function watchCamPathProject(p, cam, rect) {
@@ -40509,8 +40532,6 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchCamPathDown(event) {
       if (!vrmaWatchOn || watchMovieBusy || event.button !== 0) return;
-      const box = document.getElementById('watchCamOn');
-      if (!box || !box.checked) return;
       if (typeof watchGizmoWhich !== 'undefined' && watchGizmoWhich === 'camFocus') return;
       if (typeof vceEventOnFloat === 'function' && vceEventOnFloat(event)) return;
       if (typeof gizmoPointerClaimed !== 'undefined' && gizmoPointerClaimed) return;
@@ -40544,8 +40565,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     }
     function watchCamPathFrame() {
       watchCamPathEnsure();
-      const box = document.getElementById('watchCamOn');
-      const show = !!(vrmaWatchOn && !watchMovieBusy && box && box.checked);
+      const show = !!(vrmaWatchOn && !watchMovieBusy);
       watchCamPathRoot.visible = show;
       if (!show) return;
       watchCamFocusNow(watchCamPathFocus);
@@ -40565,6 +40585,11 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       }
       watchCamPathLine.geometry.attributes.position.needsUpdate = true;
       watchCamPathLine.geometry.computeBoundingSphere();
+      watchCamPathBeads.forEach((bead, index) => {
+        const p = watchCamPath.length >= 3 ? watchCamPathAt(index / watchCamPathBeads.length) : watchCamEllipseOffset(index / watchCamPathBeads.length, radius, ellipse);
+        bead.position.set(watchCamPathFocus.x + p.x, watchCamPathFocus.y + p.y, watchCamPathFocus.z + p.z);
+        bead.visible = true;
+      });
       while (watchCamPathDots.length < watchCamPath.length) {
         const dot = new THREE.Mesh(
           new THREE.SphereGeometry(0.05, 14, 10),
