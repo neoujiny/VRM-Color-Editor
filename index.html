@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.613-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve
+  Version: v5.4.614-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height
   ==================================================
 -->
 <!--
@@ -12,6 +12,9 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.614 / 2026-11-25 / Super Grok（土台は v5.4.613）
+    追加: 通り道の点は、床からの高さもドラッグで変えられる。線は点の高さを通る。
 
   v5.4.613 / 2026-11-25 / Super Grok（土台は v5.4.612）
     追加: 自動カメラの通り道を、閉じたベジェ曲線で変えられる。線の左クリックで点を足し、ドラッグで動かし、点の真上の Shift + 左クリックで消す。
@@ -1334,7 +1337,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.613</title>
+  <title>VRM Color Editor - v5.4.614</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2948,7 +2951,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.613</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.614</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4464,7 +4467,7 @@
           <label class="watch-row">半径（m）<input id="watchCamRadius" type="range" min="0.3" max="8" step="0.05" value="2.2" title="骨からカメラまでの水平の距離です"><span class="watch-read" id="watchCamRadiusRead">2.2 m</span></label>
           <label class="watch-row">骨からの高さ（m）<input id="watchCamHeight" type="range" min="-2" max="3" step="0.05" value="0.15" title="プラスは骨より上です"><span class="watch-read" id="watchCamHeightRead">0.15 m</span></label>
           <label class="watch-row">楕円の横比率<input id="watchCamEllipse" type="range" min="0.25" max="2.5" step="0.05" value="1" title="1は円です。大きくすると左右に広い楕円です。点を足したあとは使いません"><span class="watch-read" id="watchCamEllipseRead">1（円）</span></label>
-          <p class="watch-note">自動カメラがオンのとき、通り道が閉じた線で出ます。線の上を左クリックすると点ができます。点をドラッグすると、その場所の曲線が動きます。点の真上で Shift を押しながら左クリックすると、その点だけ消えます。点が3つ未満になると、半径と楕円の円へ戻ります。この線は動画には写りません。</p>
+          <p class="watch-note">自動カメラがオンのとき、通り道が閉じた線で出ます。線の上を左クリックすると点ができます。点をドラッグすると、横にも上下にも動きます。画面の上へ引くと高くなり、下へ引くと低くなります。点の真上で Shift を押しながら左クリックすると、その点だけ消えます。点が3つ未満になると、半径と楕円の円へ戻ります。円の高さは「骨からの高さ」です。この線は動画には写りません。</p>
           <label class="watch-row">1周の秒数<input id="watchCamRev" type="number" min="1" max="120" step="0.1" value="12" title="1周の秒数を選んだとき、何秒で1周するかです"></label>
           <label class="watch-row">旋回の長さ<select id="watchCamClock">
             <option value="sec" selected>1周の秒数</option>
@@ -4812,7 +4815,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.613';
+    const APP_VERSION = 'v5.4.614';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -38176,7 +38179,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           camClock: watchCamClockMode()
         },
         camPath: (typeof watchCamPath !== 'undefined' && watchCamPath.length >= 3)
-          ? watchCamPath.map((p) => [watchSceneRound(p.x, 4), watchSceneRound(p.z, 4)])
+          ? watchCamPath.map((p) => [watchSceneRound(p.x, 4), watchSceneRound(isFinite(p.y) ? p.y : watchNum('watchCamHeight', 0.15, -2, 3), 4), watchSceneRound(p.z, 4)])
           : [],
         stage: {
           position: watchSceneVec(vrmaStageRoot.position.x, vrmaStageRoot.position.y, vrmaStageRoot.position.z),
@@ -38281,9 +38284,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         data.camPath.forEach((pair) => {
           if (!pair || pair.length < 2) return;
           const x = Number(pair[0]);
-          const z = Number(pair[1]);
-          if (!isFinite(x) || !isFinite(z)) return;
-          next.push({ x: x, z: z });
+          const y = pair.length >= 3 ? Number(pair[1]) : watchNum('watchCamHeight', 0.15, -2, 3);
+          const z = pair.length >= 3 ? Number(pair[2]) : Number(pair[1]);
+          if (!isFinite(x) || !isFinite(y) || !isFinite(z)) return;
+          next.push({ x: x, y: y, z: z });
         });
         watchCamPath = next.length >= 3 ? next : [];
       }
@@ -40312,7 +40316,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const frac = turns - Math.floor(turns);
       if (watchCamPath.length >= 3) {
         const p = watchCamPathAt(frac);
-        _watchAutoPos.set(focus.x + p.x, focus.y + height, focus.z + p.z);
+        _watchAutoPos.set(focus.x + p.x, focus.y + p.y, focus.z + p.z);
       } else {
         _watchAutoPos.set(focus.x + Math.cos(ang) * radius, focus.y + height, focus.z + Math.sin(ang) * ellipse * radius);
       }
@@ -40349,9 +40353,18 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     const watchCamPathPlane = new THREE.Plane();
     const watchCamPathHitV = new THREE.Vector3();
     const watchCamPathNdc = new THREE.Vector2();
+    const watchCamPathNormal = new THREE.Vector3();
+    const watchCamPathAnchor = new THREE.Vector3();
+    function watchCamPathHeightOf(p) {
+      if (p && isFinite(p.y)) return p.y;
+      return watchNum('watchCamHeight', 0.15, -2, 3);
+    }
+    function watchCamPathMix(a, b, c, d, f, f2, f3) {
+      return 0.5 * ((2 * b) + (-a + c) * f + (2 * a - 5 * b + 4 * c - d) * f2 + (-a + 3 * b - 3 * c + d) * f3);
+    }
     function watchCamEllipseOffset(t, radius, ellipse) {
       const ang = (t - Math.floor(t)) * Math.PI * 2 + Math.PI / 2;
-      return { x: Math.cos(ang) * radius, z: Math.sin(ang) * ellipse * radius };
+      return { x: Math.cos(ang) * radius, y: watchNum('watchCamHeight', 0.15, -2, 3), z: Math.sin(ang) * ellipse * radius };
     }
     function watchCamPathAt(t) {
       const pts = watchCamPath;
@@ -40368,22 +40381,28 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const f2 = f * f;
       const f3 = f2 * f;
       return {
-        x: 0.5 * ((2 * p1.x) + (-p0.x + p2.x) * f + (2 * p0.x - 5 * p1.x + 4 * p2.x - p3.x) * f2 + (-p0.x + 3 * p1.x - 3 * p2.x + p3.x) * f3),
-        z: 0.5 * ((2 * p1.z) + (-p0.z + p2.z) * f + (2 * p0.z - 5 * p1.z + 4 * p2.z - p3.z) * f2 + (-p0.z + 3 * p1.z - 3 * p2.z + p3.z) * f3)
+        x: watchCamPathMix(p0.x, p1.x, p2.x, p3.x, f, f2, f3),
+        y: watchCamPathMix(watchCamPathHeightOf(p0), watchCamPathHeightOf(p1), watchCamPathHeightOf(p2), watchCamPathHeightOf(p3), f, f2, f3),
+        z: watchCamPathMix(p0.z, p1.z, p2.z, p3.z, f, f2, f3)
       };
     }
     function watchCamPathSegDist(p, a, b) {
-      const abx = b.x - a.x;
-      const abz = b.z - a.z;
-      const den = abx * abx + abz * abz;
-      let k = den > 1e-8 ? ((p.x - a.x) * abx + (p.z - a.z) * abz) / den : 0;
+      const ax = a.x, ay = watchCamPathHeightOf(a), az = a.z;
+      const bx = b.x, by = watchCamPathHeightOf(b), bz = b.z;
+      const px = p.x, py = watchCamPathHeightOf(p), pz = p.z;
+      const abx = bx - ax, aby = by - ay, abz = bz - az;
+      const den = abx * abx + aby * aby + abz * abz;
+      let k = den > 1e-8 ? ((px - ax) * abx + (py - ay) * aby + (pz - az) * abz) / den : 0;
       if (k < 0) k = 0;
       if (k > 1) k = 1;
-      const x = a.x + abx * k - p.x;
-      const z = a.z + abz * k - p.z;
-      return x * x + z * z;
+      const x = ax + abx * k - px;
+      const y = ay + aby * k - py;
+      const z = az + abz * k - pz;
+      return x * x + y * y + z * z;
     }
     function watchCamPathInsert(offset) {
+      const y = isFinite(offset.y) ? offset.y : watchNum('watchCamHeight', 0.15, -2, 3);
+      const made = { x: offset.x, y: y, z: offset.z };
       if (watchCamPath.length < 3) {
         const radius = watchNum('watchCamRadius', 2.2, 0.3, 8);
         const ellipse = watchNum('watchCamEllipse', 1, 0.25, 2.5);
@@ -40392,10 +40411,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         let at = 0;
         let best = Infinity;
         for (let i = 0; i < 8; i++) {
-          const d = watchCamPathSegDist(offset, base[i], base[(i + 1) % 8]);
+          const d = watchCamPathSegDist(made, base[i], base[(i + 1) % 8]);
           if (d < best) { best = d; at = i; }
         }
-        base.splice(at + 1, 0, { x: offset.x, z: offset.z });
+        base.splice(at + 1, 0, made);
         watchCamPath = base;
         return at + 1;
       }
@@ -40403,10 +40422,10 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       let best = Infinity;
       const n = watchCamPath.length;
       for (let i = 0; i < n; i++) {
-        const d = watchCamPathSegDist(offset, watchCamPath[i], watchCamPath[(i + 1) % n]);
+        const d = watchCamPathSegDist(made, watchCamPath[i], watchCamPath[(i + 1) % n]);
         if (d < best) { best = d; at = i; }
       }
-      watchCamPath.splice(at + 1, 0, { x: offset.x, z: offset.z });
+      watchCamPath.splice(at + 1, 0, made);
       return at + 1;
     }
     function watchCamPathEnsure() {
@@ -40422,8 +40441,8 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchCamPathRoot.add(watchCamPathLine);
       sceneGizmo.add(watchCamPathRoot);
     }
-    function watchCamPathProject(p, height, cam, rect) {
-      watchCamPathHitV.set(watchCamPathFocus.x + p.x, watchCamPathFocus.y + height, watchCamPathFocus.z + p.z);
+    function watchCamPathProject(p, cam, rect) {
+      watchCamPathHitV.set(watchCamPathFocus.x + p.x, watchCamPathFocus.y + watchCamPathHeightOf(p), watchCamPathFocus.z + p.z);
       watchCamPathHitV.project(cam);
       return {
         x: (watchCamPathHitV.x * 0.5 + 0.5) * rect.width + rect.left,
@@ -40436,13 +40455,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const rect = domSingle.getBoundingClientRect();
       if (!(rect.width > 0) || !(rect.height > 0)) return null;
       const cam = viewCamera(cameraSingle);
-      const height = watchNum('watchCamHeight', 0.15, -2, 3);
       const radius = watchNum('watchCamRadius', 2.2, 0.3, 8);
       const ellipse = watchNum('watchCamEllipse', 1, 0.25, 2.5);
       let bestPoint = -1;
       let bestPointD = 16;
       watchCamPath.forEach((p, index) => {
-        const s = watchCamPathProject(p, height, cam, rect);
+        const s = watchCamPathProject(p, cam, rect);
         if (s.behind) return;
         const d = Math.hypot(s.x - event.clientX, s.y - event.clientY);
         if (d < bestPointD) { bestPointD = d; bestPoint = index; }
@@ -40453,24 +40471,41 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       let bestD = 12;
       for (let i = 0; i < count; i++) {
         const p = watchCamPath.length >= 3 ? watchCamPathAt(i / count) : watchCamEllipseOffset(i / count, radius, ellipse);
-        const s = watchCamPathProject(p, height, cam, rect);
+        const s = watchCamPathProject(p, cam, rect);
         if (s.behind) continue;
         const d = Math.hypot(s.x - event.clientX, s.y - event.clientY);
         if (d < bestD) { bestD = d; best = p; }
       }
       if (!best) return null;
-      return { point: -1, x: best.x, z: best.z };
+      return { point: -1, x: best.x, y: best.y, z: best.z };
     }
     function watchCamPathPlanePoint(event) {
       if (!domSingle) return null;
       const rect = domSingle.getBoundingClientRect();
       if (!(rect.width > 0) || !(rect.height > 0)) return null;
+      const cam = viewCamera(cameraSingle);
       watchCamPathNdc.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
-      watchCamPathRay.setFromCamera(watchCamPathNdc, viewCamera(cameraSingle));
-      const y = watchCamPathFocus.y + watchNum('watchCamHeight', 0.15, -2, 3);
-      watchCamPathPlane.set(new THREE.Vector3(0, 1, 0), -y);
+      watchCamPathRay.setFromCamera(watchCamPathNdc, cam);
+      const held = watchCamPathDrag >= 0 ? watchCamPath[watchCamPathDrag] : null;
+      const anchor = held || { x: 0, y: watchNum('watchCamHeight', 0.15, -2, 3), z: 0 };
+      watchCamPathAnchor.set(watchCamPathFocus.x + anchor.x, watchCamPathFocus.y + watchCamPathHeightOf(anchor), watchCamPathFocus.z + anchor.z);
+      cam.getWorldDirection(watchCamPathNormal);
+      if (Math.abs(watchCamPathNormal.y) > 0.82) {
+        watchCamPathNormal.y = 0;
+        if (watchCamPathNormal.lengthSq() < 1e-6) watchCamPathNormal.set(0, 0, 1);
+        else watchCamPathNormal.normalize();
+      }
+      watchCamPathPlane.setFromNormalAndCoplanarPoint(watchCamPathNormal, watchCamPathAnchor);
       if (!watchCamPathRay.ray.intersectPlane(watchCamPathPlane, watchCamPathHitV)) return null;
-      return { x: watchCamPathHitV.x - watchCamPathFocus.x, z: watchCamPathHitV.z - watchCamPathFocus.z };
+      let x = watchCamPathHitV.x - watchCamPathFocus.x;
+      let y = watchCamPathHitV.y - watchCamPathFocus.y;
+      let z = watchCamPathHitV.z - watchCamPathFocus.z;
+      if (!isFinite(x) || !isFinite(y) || !isFinite(z)) return null;
+      const flat = Math.hypot(x, z);
+      if (flat > 12) { x *= 12 / flat; z *= 12 / flat; }
+      if (y < -8) y = -8;
+      if (y > 8) y = 8;
+      return { x: x, y: y, z: z };
     }
     function watchCamPathDown(event) {
       if (!vrmaWatchOn || watchMovieBusy || event.button !== 0) return;
@@ -40490,18 +40525,15 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         return;
       }
       if (hit.point >= 0) watchCamPathDrag = hit.point;
-      else {
-        const plane = watchCamPathPlanePoint(event);
-        const at = plane && isFinite(plane.x) && isFinite(plane.z) ? plane : { x: hit.x, z: hit.z };
-        watchCamPathDrag = watchCamPathInsert(at);
-      }
+      else watchCamPathDrag = watchCamPathInsert({ x: hit.x, y: hit.y, z: hit.z });
       if (controlsSingle) controlsSingle.enabled = false;
     }
     function watchCamPathMove(event) {
       if (watchCamPathDrag < 0 || watchCamPathDrag >= watchCamPath.length) return;
       const hit = watchCamPathPlanePoint(event);
-      if (!hit || !isFinite(hit.x) || !isFinite(hit.z)) return;
+      if (!hit || !isFinite(hit.x) || !isFinite(hit.y) || !isFinite(hit.z)) return;
       watchCamPath[watchCamPathDrag].x = hit.x;
+      watchCamPath[watchCamPathDrag].y = hit.y;
       watchCamPath[watchCamPathDrag].z = hit.z;
       event.preventDefault();
     }
@@ -40518,7 +40550,6 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       if (!show) return;
       watchCamFocusNow(watchCamPathFocus);
       if (!isFinite(watchCamPathFocus.x)) return;
-      const height = watchNum('watchCamHeight', 0.15, -2, 3);
       const radius = watchNum('watchCamRadius', 2.2, 0.3, 8);
       const ellipse = watchNum('watchCamEllipse', 1, 0.25, 2.5);
       const count = 96;
@@ -40529,7 +40560,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       for (let i = 0; i <= count; i++) {
         const p = watchCamPath.length >= 3 ? watchCamPathAt(i / count) : watchCamEllipseOffset(i / count, radius, ellipse);
         watchCamPathPos[i * 3] = watchCamPathFocus.x + p.x;
-        watchCamPathPos[i * 3 + 1] = watchCamPathFocus.y + height;
+        watchCamPathPos[i * 3 + 1] = watchCamPathFocus.y + p.y;
         watchCamPathPos[i * 3 + 2] = watchCamPathFocus.z + p.z;
       }
       watchCamPathLine.geometry.attributes.position.needsUpdate = true;
@@ -40549,7 +40580,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         dot.visible = on;
         if (!on) return;
         const p = watchCamPath[index];
-        dot.position.set(watchCamPathFocus.x + p.x, watchCamPathFocus.y + height, watchCamPathFocus.z + p.z);
+        dot.position.set(watchCamPathFocus.x + p.x, watchCamPathFocus.y + watchCamPathHeightOf(p), watchCamPathFocus.z + p.z);
       });
     }
     if (domSingle) {
