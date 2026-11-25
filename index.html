@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.621-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height, Path Curve Always Drawn, No Dummy Path Dots, Path Group Gizmo, Sky Export Color, Movie Progress, Movie Color Matches The Screen
+  Version: v5.4.623-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height, Path Curve Always Drawn, No Dummy Path Dots, Path Group Gizmo, Sky Export Color, Movie Progress, Movie Color Matches The Screen, Watch Movie Gaze Before Draw, Samples Progress One Line
   ==================================================
 -->
 <!--
@@ -12,6 +12,12 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.623 / 2026-11-25 / Super Grok（土台は v5.4.622）
+    修正: samples の読み込みで、残り割合の文が2行にならない。バーの下の1行だけに出す。
+
+  v5.4.622 / 2026-11-25 / Super Grok（土台は v5.4.621）
+    修正: 書き出しの各コマは、先にカメラの位置を決め、鑑賞と同じ手順で顔と目をそのカメラへ向ける。瞳の絵は、1920×1080 の画素に合わせて描く。見ている画面の大きさは変えない。
 
   v5.4.621 / 2026-11-25 / Super Grok（土台は v5.4.620）
     修正: 書き出しの色を、見ている画面と同じ変換にする。空は画面用の明るさのまま書く。人型とGLBは、画面と同じくシェーダーの中で明るくしてから、そのまま画素にする。描く回数は増やさない。
@@ -1358,7 +1364,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.621</title>
+  <title>VRM Color Editor - v5.4.623</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2983,7 +2989,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.621</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.623</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4860,7 +4866,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.621';
+    const APP_VERSION = 'v5.4.623';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -37357,8 +37363,13 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
           current = watchBloom.ups[i];
         }
         renderer.setRenderTarget(into || null);
-        const view = into ? { x: into.width, y: into.height } : renderer.getSize(watchBloom.origin);
-        renderer.setViewport(0, 0, view.x, view.y);
+        if (into) {
+          if (into.viewport) into.viewport.set(0, 0, into.width, into.height);
+          renderer.setRenderTarget(into);
+        } else {
+          const view = renderer.getSize(watchBloom.origin);
+          renderer.setViewport(0, 0, view.x, view.y);
+        }
         renderer.autoClear = false;
         const boost = Math.min(2.2, 0.85 + reach * 1.3);
         watchBloom.add.uniforms.strength.value = strength * boost;
@@ -38747,6 +38758,18 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchMovieRt.isXRRenderTarget = true;
       return watchMovieRt;
     }
+    function watchMovieBind(rt) {
+      if (!rt) return;
+      rt.viewport.set(0, 0, rt.width, rt.height);
+      renderer.setRenderTarget(rt);
+      renderer.setScissorTest(false);
+    }
+    function watchMovieAim(step) {
+      if (!vrmEdited || typeof watchLookFrame !== 'function') return;
+      const dt = step > 0 ? step : (1 / 30);
+      watchLookFrame(vrmEdited, dt);
+      try { watchSyncPoseMatrices(); } catch (_) {}
+    }
     function watchMoviePaint(canvas, ctx) {
       const rt = watchMovieRtEnsure();
       const cam = viewCamera(cameraSingle);
@@ -38755,15 +38778,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       cam.aspect = 1920 / 1080;
       cam.updateProjectionMatrix();
       try {
-        renderer.setRenderTarget(rt);
-        renderer.setViewport(0, 0, 1920, 1080);
-        renderer.setScissorTest(false);
+        watchMovieBind(rt);
         renderer.autoClear = true;
         renderer.clear(true, true, true);
         renderer.render(sceneEdited, cam);
         try { watchRenderPlanar(cam, 0, 0, 1920, 1080); } catch (err) { console.error(err); }
-        renderer.setRenderTarget(rt);
-        renderer.setViewport(0, 0, 1920, 1080);
+        watchMovieBind(rt);
         const bloom = watchNum('watchBloom', 0, 0, 2);
         if (bloom > 0.001) {
           try { watchRenderBloom(cam, bloom, rt); } catch (err) { console.error(err); }
@@ -38917,6 +38937,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
         if (safariMovie) {
           if (watchSkyMovie) watchSkyMovie.frame = 0;
           try { watchBeforeRender(0); } catch (_) {}
+          try { watchMovieAim(1 / 30); } catch (_) {}
           watchMoviePaint(canvas, ctx);
           const painted = await watchMovieProveConfig(kind.config, canvas);
           if (!painted) throw new Error('この画面からは動画を書けませんでした');
@@ -38966,9 +38987,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
               watchMovieStepMaterials(step);
               try { if (typeof watchUpdatePropMixers === 'function') watchUpdatePropMixers(step); } catch (_) {}
               try { vceApplyFaceSliders(); } catch (_) {}
-              try { watchLookRepaint(); } catch (_) {}
               try { vmcApplyFrame(); } catch (_) {}
               try { watchBeforeRender(step); } catch (err) { console.error(err); }
+              try { watchMovieAim(step); } catch (_) {}
               watchMoviePaint(canvas, ctx);
               watchMovieBlurAdd(ctx);
             }
@@ -39000,9 +39021,9 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
             try { if (i === 0 && vrmOriginal) vceUpdateVrmPreview(vrmOriginal, 0); } catch (_) {}
             if (i === 0) watchMovieStepMaterials(0);
             try { vceApplyFaceSliders(); } catch (_) {}
-            try { watchLookRepaint(); } catch (_) {}
             try { vmcApplyFrame(); } catch (_) {}
             try { watchBeforeRender(i === 0 ? 0 : step); } catch (err) { console.error(err); }
+            try { watchMovieAim(step); } catch (_) {}
             watchMoviePaint(canvas, ctx);
           }
           const timestamp = Math.round((i + 1) * 1000000 / 30);
@@ -41632,21 +41653,12 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const bar = document.getElementById('samplesProgress');
       const fill = document.getElementById('samplesProgressFill');
       const label = document.getElementById('samplesProgressText');
-      const status = document.getElementById('samplesStatus');
       if (bar) bar.hidden = !on;
       if (label) {
         label.hidden = !on;
         label.textContent = text || '';
       }
       if (fill) fill.style.width = (ratio == null ? 0 : Math.max(0, Math.min(100, ratio))) + '%';
-      if (!status) return;
-      if (on) {
-        if (!status.dataset.samplesHold) status.dataset.samplesHold = status.textContent;
-        status.textContent = text || '';
-      } else if (status.dataset.samplesHold) {
-        status.textContent = status.dataset.samplesHold;
-        delete status.dataset.samplesHold;
-      }
     }
     function samplesSizeText(n) {
       if (!(n > 0)) return '0MB';
