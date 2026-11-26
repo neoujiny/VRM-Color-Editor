@@ -2,8 +2,8 @@
 <!-- 
   ==================================================
   VRM Color Editor
-  Version: v5.4.624-PRO
-  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height, Path Curve Always Drawn, No Dummy Path Dots, Path Group Gizmo, Sky Export Color, Movie Progress, Movie Color Matches The Screen, Watch Movie Gaze Before Draw, Samples Progress One Line, Path Points On Edited View
+  Version: v5.4.625-PRO
+  Description: Picture Shadow Opacity, Watch Shadow Soft And Picture Frame, Watch Movie Straight Through, Watch Scene Json, Watch Movie Name Field, Watch Movie Uses Continue Export Name, Watch Movie Progress Bar, Picture Shadow Meets The Feet, Watch Movie Includes Loop Return, Watch Movie Export At Fixed 30fps, Watch Gizmos Hide On Every Exit Path, Not Only Escape, Camera Far Fifty Percent, Watch Motes Bounce On Floor And Stage, Watch Motes Bounce During Movie Export, Merge Fixed Data Into This Html, Merge Fixed Text File, Watch Motes Bounce On Body Colliders, Part Frame Follows Skinned Pose, Body Mesh Export Group, Body Parts On Node Graph, Sound Export Hold Note, Solid Color Keeps Original, Keep Single Sided Parts, Thin Sheet Double Side Option, Watch Loads Many GLB, Safari Watch Movie Mp4, Watch Floor Uses Stage Root, Safari Save Leaves Fullscreen, Picture Shadow Every Other Frame, Safari Save Needs A Second Press, Planar Shadow Smooth Blur And Shared Opacity, Watch Non Chrome Mp4 Note, Face Expression Sliders, Face Expression Strength In File, Blend Shape Tab, Blend Shape Note Shorter, Safari Movie Encode Proof, Watch Color Pop Above, Watch File Keeps Mode, Force Single Side On Load, Vpo Flip Single Side, Watch Movie Auto Download, Watch Fullscreen Frame Rate, Watch Sky Poly Haven, Watch Panel Title And Poly Haven Credit, Watch Sky Wait Bar, Watch Sky Texture Not Raw, Watch Panel Above Color, Watch Panel Height, Planar Shadow Behind Model, Watch Grid Move, Watch Sky Catalog Float, Watch Sky Yaw Actually Turns, Watch Sky Spin Options, Watch Sky Thumb Crop, Watch Resize Grip Stable, Sky List Thumb Same Crop, Watch Face And LookAt, Watch LookAt Rest After Turn, Watch Eyes Follow Camera, Eye Curve Reaches Full Angle, Watch Mode Button On Top Bar, Watch Gizmo Handles And Wind Arrow, Watch Grid Toggle And Sky Grade, Watch Floor Grid Wording, Watch Auto Camera, Watch Sky On Stage GLB, Watch Shade Choice, Built In Cyber Stage, Watch Floor Reflector, Watch Mirror Noise, Watch Vmc Receive, Watch Vmc Pose After Canonical, Watch Movie Keeps Vmc Pose, Watch Mirror Grade, Samples Folder, Local Or Web Detect, Baked Samples List, Watch Stage Camera Focus, Local Sky HDR, Finnish Winter Sample, Watch Focus Gizmo Fix, Xmas Table Sample, Watch Prop Shadow, Watch Prop Shadow Grade, Watch Movie Motion Blur, Samples Folder Paths And Progress, Atoll Sunset Skies, Samples Progress For Every File, Built-in Stage v2, Watch Focus Gizmo Steady, One Samples Progress Bar, Camera Orbit Clock Switch, Camera Path Curve, Path Point Height, Path Curve Always Drawn, No Dummy Path Dots, Path Group Gizmo, Sky Export Color, Movie Progress, Movie Color Matches The Screen, Watch Movie Gaze Before Draw, Samples Progress One Line, Path Points On Edited View, Straight Export Bar Only, New Sample Skies And Stages
   ==================================================
 -->
 <!--
@@ -12,6 +12,10 @@
   ==================================================
   鉄則 / 2026-11-11 / Super Grok
     編集する前に、そのファイルの控えを artifacts に残し、控えがあることを確認してから直す。提出前に、構文チェックと、ワークスペースの整合を済ませる。整合とは、public の本体と、artifacts の名前付き差分の、版番号と大きさが一致すること。古い版のファイルは消さない。
+
+  v5.4.625 / 2026-11-26 / Super Grok（土台は v5.4.624）
+    修正: 一気に書き出すときは、上の帯を残り割合のバーだけにする。中止とここまで保存は出さない。止めたいときは、一気に書き出すのチェックを外す。
+    追加: samples の空に HDR/alien_cockpit_2k.hdr、HDR/alien_cockpit_4k.hdr、HDR/nostromo_space_2k.hdr、HDR/nostromo_space_4k.hdr。ステージに GLB/spiral_cocoon_v2.glb、GLB/glass_lattice_drifter.glb、GLB/glass_lattice_drifter_stage_float.glb。
 
   v5.4.624 / 2026-11-25 / Super Grok（土台は v5.4.623）
     修正: 通り道の点は、編集中の画面に出ている線の上をクリックすると付く。左右に並ぶ画面では、右の画面の線に合わせる。書き出し中は、視線の説明文を毎コマ書き換えない。
@@ -1367,7 +1371,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>VRM Color Editor - v5.4.624</title>
+  <title>VRM Color Editor - v5.4.625</title>
   <style>
     html, body {
       margin: 0; padding: 0; overflow: hidden;
@@ -2992,7 +2996,7 @@
   <div id="app">
     <div id="guiPanel">
       <div id="panelHead">
-        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.624</small></h3>
+        <h3>🎨 VRM 色彩編集ツール <small id="appVersionLabel" style="color:#aaa;">v5.4.625</small></h3>
         <div id="libStatusLine" style="font-size:11px; color:#90caf9; margin:0; line-height:1.5;">作業中: …</div>
         <div id="clusterLimitBanner" style="display:none;"></div>
       </div>
@@ -4402,7 +4406,7 @@
             <option value="clip">動き1回と戻り</option>
           </select></label>
           <p class="watch-note">旋回の長さは、カメラ制御と同じです。1周の秒数は、動きが繰り返してもカメラを戻さず、その秒で1周します。動き1回と戻りは、動き1回と、骨を最初の姿勢へ戻す秒で、ちょうど1周します。</p>
-          <p class="watch-note">速さは、今のスライダーの絶対値です。0のときは等速です。逆再生の向きでは書かず、正方向です。動きの長さに合わせると、その速さで1回分を書き、繰り返しがオンのときは「終端から開始へ戻す秒」も足します。その戻す秒は、遅くしても伸びません。繰り返しがオフのときは足しません。長さを秒で指定したときも、終わりに達すれば同じ戻りを書きます。60秒を超える動きは60秒で止めますが、戻す秒だけは足します。中止は捨てます。ここまで保存は、そこまでのファイルにします。Esc は中止です。一気に書き出すがオンのときは、進み具合も中止も出さず、終わるまで止まりません。</p>
+          <p class="watch-note">速さは、今のスライダーの絶対値です。0のときは等速です。逆再生の向きでは書かず、正方向です。動きの長さに合わせると、その速さで1回分を書き、繰り返しがオンのときは「終端から開始へ戻す秒」も足します。その戻す秒は、遅くしても伸びません。繰り返しがオフのときは足しません。長さを秒で指定したときも、終わりに達すれば同じ戻りを書きます。60秒を超える動きは60秒で止めますが、戻す秒だけは足します。中止は捨てます。ここまで保存は、そこまでのファイルにします。Esc は中止です。一気に書き出すがオンのときは、上の帯は残り割合だけです。中止とここまで保存は出ません。途中で止めたいときは、一気に書き出すのチェックを外します。</p>
           <label class="watch-row">ファイル名<input id="watchMovieName" type="text" maxlength="180" spellcheck="false" autocomplete="off"></label>
           <label class="watch-row watch-check"><input id="watchMovieStraight" type="checkbox" checked>一気に書き出す</label>
           <label class="watch-row watch-check"><input id="watchMovieManualSave" type="checkbox">保存するボタンで保存する</label>
@@ -4869,7 +4873,7 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     import { VRMLoaderPlugin, VRMMetaLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
     import { MToonMaterial } from '@pixiv/three-vrm-materials-mtoon';
     import { createVRMAnimationClip, VRMAnimationLoaderPlugin, VRMLookAtQuaternionProxy } from '@pixiv/three-vrm-animation';
-    const APP_VERSION = 'v5.4.624';
+    const APP_VERSION = 'v5.4.625';
     (function initExportDebugBox() {
       const gate = document.getElementById('vceExportDebug');
       const box = document.getElementById('vceExportDebugBox');
@@ -37704,16 +37708,39 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       const text = document.getElementById('watchMovieHudText');
       const clock = document.getElementById('watchMovieHudClock');
       const fill = document.getElementById('watchMovieHudFill');
-      const done = Math.max(0, drawn) / 30;
-      const all = Math.max(0, total) / 30;
-      const left = Math.max(0, all - done);
-      if (text) text.textContent = phase || '書き出しています';
-      if (clock) clock.textContent = watchMovieClockText(done) + ' / ' + watchMovieClockText(all) + '　残り ' + watchMovieClockText(left);
-      if (fill) fill.style.width = (total > 0 ? Math.max(0, Math.min(100, drawn / total * 100)) : 0) + '%';
+      const finish = document.getElementById('watchMovieFinish');
+      const stop = document.getElementById('watchMovieHudCancel');
+      const quiet = !!(hud && hud.dataset.quiet === '1');
+      const done = Math.max(0, drawn);
+      const all = Math.max(0, total);
+      const pctDone = all > 0 ? Math.max(0, Math.min(100, done / all * 100)) : 0;
+      const remain = Math.max(0, Math.min(100, Math.round(100 - pctDone)));
+      if (quiet) {
+        if (text) text.textContent = '残り ' + remain + '%';
+        if (clock) clock.hidden = true;
+        if (finish) finish.hidden = true;
+        if (stop) stop.hidden = true;
+      } else {
+        if (clock) clock.hidden = false;
+        if (finish) finish.hidden = false;
+        if (stop) stop.hidden = false;
+        if (text) text.textContent = phase || '書き出しています';
+        if (clock) clock.textContent = watchMovieClockText(done / 30) + ' / ' + watchMovieClockText(all / 30) + '　残り ' + watchMovieClockText(Math.max(0, all - done) / 30);
+      }
+      if (fill) fill.style.width = pctDone + '%';
     }
     function watchMovieHudHide() {
       const hud = document.getElementById('watchMovieHud');
-      if (hud) hud.hidden = true;
+      if (hud) {
+        hud.hidden = true;
+        delete hud.dataset.quiet;
+      }
+      const clock = document.getElementById('watchMovieHudClock');
+      const finish = document.getElementById('watchMovieFinish');
+      const stop = document.getElementById('watchMovieHudCancel');
+      if (clock) clock.hidden = false;
+      if (finish) finish.hidden = false;
+      if (stop) stop.hidden = false;
     }
     function watchMovieButtons(running, straight) {
       const start = document.getElementById('watchMovieStart');
@@ -38919,12 +38946,14 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
       watchMovieBusy = true;
       vrmaUserPaused = false;
       watchMovieButtons(true, quiet);
+      const hud = document.getElementById('watchMovieHud');
+      if (hud) hud.dataset.quiet = quiet ? '1' : '';
       if (safariMovie) {
         watchMovieHudSet(0, framesWanted, '書き出しています');
         watchMovieNote(blurOn ? ('書き出しています。残像は' + blurN + '回です。') : '書き出しています。');
       } else if (quiet) {
         watchMovieHudSet(0, framesWanted, '書き出しています');
-        watchMovieNote('一気に書き出しています。上の帯が進みます。終わるまで止まりません。');
+        watchMovieNote('一気に書き出しています。上の帯は残り割合です。終わるまで止まりません。');
         await new Promise((resolve) => requestAnimationFrame(resolve));
       } else {
         watchMovieHudSet(0, framesWanted, '書き出しています');
@@ -41644,13 +41673,20 @@ window.__VRMA_PRESETS=[{"id":"VRMA_01","name":"プリセット 1（VRMA_01）","
     const VCE_SAMPLE_FILES = [
       'GLB/bike.glb',
       'GLB/cyber-stage-v2.glb',
+      'GLB/glass_lattice_drifter.glb',
+      'GLB/glass_lattice_drifter_stage_float.glb',
       'GLB/hovercar.glb',
+      'GLB/spiral_cocoon_v2.glb',
       'GLB/vtol.glb',
       'GLB/xmas-table-v2.glb',
+      'HDR/alien_cockpit_2k.hdr',
+      'HDR/alien_cockpit_4k.hdr',
+      'HDR/atoll_sunset_v2_2k.hdr',
+      'HDR/atoll_sunset_v2_4k.hdr',
       'HDR/cyber_night_2k.hdr',
       'HDR/finnish_winter_2k.hdr',
-      'HDR/atoll_sunset_v2_2k.hdr',
-      'HDR/atoll_sunset_v2_4k.hdr'
+      'HDR/nostromo_space_2k.hdr',
+      'HDR/nostromo_space_4k.hdr'
     ];
     function samplesCatalog() {
       const kind = vcePageKind();
